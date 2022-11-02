@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2021.3/staging' branch; Version is '2021.3.7f1 (24e8595d6d43) revision 2418777'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ko' Physical Memory: 15721 MB
+OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'ko' Physical Memory: 15761 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
@@ -11,13 +11,13 @@ C:\Program Files\Unity\Hub\Editor\2021.3.7f1\Editor\Unity.exe
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/User/Desktop/BattleInDungeon
+C:/Users/User/Desktop/bid/BID/BattleInDungeon
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-59857
-Successfully changed project path to: C:/Users/User/Desktop/BattleInDungeon
-C:/Users/User/Desktop/BattleInDungeon
+62819
+Successfully changed project path to: C:/Users/User/Desktop/bid/BID/BattleInDungeon
+C:/Users/User/Desktop/bid/BID/BattleInDungeon
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,105 +47,116 @@ C:/Users/User/Desktop/BattleInDungeon
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 78.05 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 71.70 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.7f1 (24e8595d6d43)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.7f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/User/Desktop/BattleInDungeon/Assets
+[Subsystems] Discovering subsystems at path C:/Users/User/Desktop/bid/BID/BattleInDungeon/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
     Renderer: AMD Radeon(TM) Graphics (ID=0x1638)
     Vendor:   ATI
-    VRAM:     7860 MB
-    Driver:   31.0.12002.92
+    VRAM:     7880 MB
+    Driver:   30.0.13023.4001
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.7f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.7f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56040
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56052
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.7f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.7f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.7f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.017628 seconds.
+Registered in 0.017779 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 68.51 ms, found 3 plugins.
+[usbmuxd] Start listen thread
+[usbmuxd] Listen thread started
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 66.15 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.599 seconds
+- Completed reload, in  0.623 seconds
 Domain Reload Profiling:
-	ReloadAssembly (600ms)
-		BeginReloadAssembly (96ms)
+	ReloadAssembly (624ms)
+		BeginReloadAssembly (80ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (387ms)
-			LoadAssemblies (92ms)
+		EndReloadAssembly (426ms)
+			LoadAssemblies (78ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (78ms)
+			SetupTypeCache (102ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (25ms)
-			SetupLoadedEditorAssemblies (233ms)
+			RebuildScriptCaches (23ms)
+			SetupLoadedEditorAssemblies (249ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (10ms)
+				InitializePlatformSupportModulesInManaged (61ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (69ms)
+				RefreshPlugins (66ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (107ms)
-				ProcessInitializeOnLoadMethodAttributes (46ms)
+				ProcessInitializeOnLoadAttributes (83ms)
+				ProcessInitializeOnLoadMethodAttributes (37ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.012402 seconds.
+Registered in 0.009827 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\User\Desktop\BattleInDungeon\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\User\Desktop\BattleInDungeon\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\User\Desktop\bid\BID\BattleInDungeon\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\User\Desktop\bid\BID\BattleInDungeon\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.68 ms, found 3 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.139 seconds
+- Completed reload, in  2.826 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1140ms)
-		BeginReloadAssembly (141ms)
+	ReloadAssembly (2826ms)
+		BeginReloadAssembly (2005ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (19ms)
-		EndReloadAssembly (865ms)
-			LoadAssemblies (127ms)
+			CreateAndSetChildDomain (1904ms)
+		EndReloadAssembly (718ms)
+			LoadAssemblies (106ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (213ms)
+			SetupTypeCache (207ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (43ms)
-			SetupLoadedEditorAssemblies (465ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (344ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
+				InitializePlatformSupportModulesInManaged (26ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (106ms)
-				ProcessInitializeOnLoadAttributes (290ms)
-				ProcessInitializeOnLoadMethodAttributes (35ms)
-				AfterProcessingInitializeOnLoad (24ms)
+				BeforeProcessingInitializeOnLoad (91ms)
+				ProcessInitializeOnLoadAttributes (187ms)
+				ProcessInitializeOnLoadMethodAttributes (25ms)
+				AfterProcessingInitializeOnLoad (14ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (15ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 0.73 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3377 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 27 unused Assets / (111.4 KB). Loaded Objects now: 3834.
-Memory consumption went from 117.1 MB to 117.0 MB.
-Total: 3.986700 ms (FindLiveObjects: 0.478500 ms CreateObjectMapping: 0.273500 ms MarkObjects: 3.097300 ms  DeleteObjects: 0.136300 ms)
+Unloading 27 unused Assets / (111.2 KB). Loaded Objects now: 3853.
+Memory consumption went from 129.3 MB to 129.2 MB.
+Total: 2.583400 ms (FindLiveObjects: 0.206800 ms CreateObjectMapping: 0.088800 ms MarkObjects: 2.182300 ms  DeleteObjects: 0.104700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -159,185 +170,13 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 6395.940274 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Scenes/Ancient Dungeon All Props.unity
-  artifactKey: Guid(25208fe991b82df4e969cf3f12d705fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Scenes/Ancient Dungeon All Props.unity using Guid(25208fe991b82df4e969cf3f12d705fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c78ff45a04a265ee4f56241e4cb36667') in 0.010319 seconds 
+  Time since last request: 1368891.180431 seconds.
+  path: Assets/Scenes/GameScene 1.unity
+  artifactKey: Guid(ffa31a0afacaa2c42a79e8fdc08ee749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/GameScene 1.unity using Guid(ffa31a0afacaa2c42a79e8fdc08ee749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67fbbcd8b2d0d775a60d88604afca6e6') in 0.008884 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Scenes/Ancient Dungeon Scenes.unity
-  artifactKey: Guid(e9bbf1b356866a94d8d0b80fd1aa00ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Scenes/Ancient Dungeon Scenes.unity using Guid(e9bbf1b356866a94d8d0b80fd1aa00ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '392bf72572d0995dbe161162cef49228') in 0.003380 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.510457 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e55ccaa32d8e5c1de03c07a5412c8c3c') in 0.003541 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.913323 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Arch_A_01.prefab
-  artifactKey: Guid(4d872d8e2f4bdec4bac889b0da1bde4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Arch_A_01.prefab using Guid(4d872d8e2f4bdec4bac889b0da1bde4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '946b84601d5dd3bcfd5c555a41fae8c9') in 0.341797 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Frame_D_01.prefab
-  artifactKey: Guid(2cf0caa42afdfb54e9506d1fd4e9bf3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Frame_D_01.prefab using Guid(2cf0caa42afdfb54e9506d1fd4e9bf3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2681d3fd3a98123826e25ec5b7c40589') in 0.019523 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_K_01.prefab
-  artifactKey: Guid(57758918dbff5ad49aaca24c57ef6124) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_K_01.prefab using Guid(57758918dbff5ad49aaca24c57ef6124) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ca200eba871228c5ccde21c07d3125e') in 0.034189 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_RuneGate_B_01.prefab
-  artifactKey: Guid(92583293d4d2c3246844f410150de2b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_RuneGate_B_01.prefab using Guid(92583293d4d2c3246844f410150de2b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4dfcad24ea13dd78624be4dfdb74ae47') in 0.111792 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_DoorFrame_A_01.prefab
-  artifactKey: Guid(640d241ed85c9cf41bd817d511487c00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_DoorFrame_A_01.prefab using Guid(640d241ed85c9cf41bd817d511487c00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8063861c4a2e29409282845a29853f42') in 0.019024 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000055 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Stair_A_01.prefab
-  artifactKey: Guid(293dbd69a556d2f4bb91fbd645f4714b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Stair_A_01.prefab using Guid(293dbd69a556d2f4bb91fbd645f4714b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c38c2fbf30956e57c9a3d0f872e07d09') in 0.022183 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Pillar_F_01.prefab
-  artifactKey: Guid(0d5174f31756a3347818bf6777c48778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Pillar_F_01.prefab using Guid(0d5174f31756a3347818bf6777c48778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2028734d6ea0297854e6c0cd279c218f') in 0.018326 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000059 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_ArchPillar_B_01.prefab
-  artifactKey: Guid(a4be8009addf8544ba5d93a9fd959252) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_ArchPillar_B_01.prefab using Guid(a4be8009addf8544ba5d93a9fd959252) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dc30f88d54d7b319934b472cb2947d3') in 0.031480 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Brazier_A_01.prefab
-  artifactKey: Guid(5c562d2732b333244885c668ec82d168) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Brazier_A_01.prefab using Guid(5c562d2732b333244885c668ec82d168) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76aa80b917062d1f41e5fc3909c81ca2') in 0.021359 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000045 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_G_01.prefab
-  artifactKey: Guid(f45cfc5d8ebdc004d8bfd6fa0ed8dc97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_G_01.prefab using Guid(f45cfc5d8ebdc004d8bfd6fa0ed8dc97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69ef2bc0ca690042921e041cdd56fccd') in 0.028830 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_DecoTile_A_01.prefab
-  artifactKey: Guid(bd9df3c2e72b1d647aa652b0c30bd660) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_DecoTile_A_01.prefab using Guid(bd9df3c2e72b1d647aa652b0c30bd660) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb4d5ddc9811c6e9909f7577f4edf40e') in 0.020739 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Pillar_G_01.prefab
-  artifactKey: Guid(2e7f83972904b8641b1feab3b865552b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Pillar_G_01.prefab using Guid(2e7f83972904b8641b1feab3b865552b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7332ccb19738941cedcc3d6ebae21dca') in 0.021099 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_RuneGate_A_01.prefab
-  artifactKey: Guid(e28b1803f45f67942a023542560900c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_RuneGate_A_01.prefab using Guid(e28b1803f45f67942a023542560900c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa4a8a4324dd904f9841736ed74058e4') in 0.021843 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_RuneGateGround_A_01.prefab
-  artifactKey: Guid(5a9bef20d6b4feb4d91dd3dda4714826) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_RuneGateGround_A_01.prefab using Guid(5a9bef20d6b4feb4d91dd3dda4714826) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f3a1e9f89cf0d1410b609b6d42cdbbf') in 0.028651 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_M_01.prefab
-  artifactKey: Guid(01f6d3d7e0c674546944f70ebbbe9961) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_M_01.prefab using Guid(01f6d3d7e0c674546944f70ebbbe9961) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ee600035034983c94737727811379e6') in 0.026653 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_RuneGateGround_B_01.prefab
-  artifactKey: Guid(782235bf2b67e764194facd690e15533) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_RuneGateGround_B_01.prefab using Guid(782235bf2b67e764194facd690e15533) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48605d37905f0b3db157580669d763b4') in 0.017936 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000035 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_B_01.prefab
-  artifactKey: Guid(49be6bc92ca705846aa64d12fe136793) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_B_01.prefab using Guid(49be6bc92ca705846aa64d12fe136793) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e589dc05c2f3b2205c48e2e7393a82aa') in 0.027039 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_ArchDeco_A_01.prefab
-  artifactKey: Guid(505e614f17adc814994f09f8702d9044) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_ArchDeco_A_01.prefab using Guid(505e614f17adc814994f09f8702d9044) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '922ea678ade51c71684e7081bf907b85') in 0.020002 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000031 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_H_01.prefab
-  artifactKey: Guid(35a4573a77601984eafc0de39fedf268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_H_01.prefab using Guid(35a4573a77601984eafc0de39fedf268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1aa0efe1c294c64cb340d5472e122f52') in 0.029811 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_I_01.prefab
-  artifactKey: Guid(ab56ad81aab013649ab6dfd224a3b6a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_I_01.prefab using Guid(ab56ad81aab013649ab6dfd224a3b6a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d983e9298044822e23ea8c57e74b25e') in 0.027876 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000038 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Pillar_B_01.prefab
-  artifactKey: Guid(19379584ea328d74185dd629aed10a0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Pillar_B_01.prefab using Guid(19379584ea328d74185dd629aed10a0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af163e2ea77f29649b64fdcfdfcb6d82') in 0.016980 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_O_01.prefab
-  artifactKey: Guid(6e5c18a857f12c54d9413eb225eab57e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_O_01.prefab using Guid(6e5c18a857f12c54d9413eb225eab57e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12df16c4e047357aa035ca4d7ff45c5d') in 0.025573 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_Q_01.prefab
-  artifactKey: Guid(b83773d40e29b024c8bbefd13d48ded1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_Q_01.prefab using Guid(b83773d40e29b024c8bbefd13d48ded1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a620b6e1cfcdc89c896c83e8d82a89a2') in 0.029602 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000057 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_D_01.prefab
-  artifactKey: Guid(3aa711f4db76cf44c8fe0e4abff706eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_D_01.prefab using Guid(3aa711f4db76cf44c8fe0e4abff706eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8425b11548ef2d1dc38238282313ad8') in 0.036293 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Wall_A_01.prefab
-  artifactKey: Guid(344f06d8122119f41a2985edae3f2c56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Wall_A_01.prefab using Guid(344f06d8122119f41a2985edae3f2c56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58ed407ea34ea8b169e5091bab36322b') in 0.027291 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_J_01.prefab
-  artifactKey: Guid(8dda87fd7c134004a8722e1930fc60dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Ground_J_01.prefab using Guid(8dda87fd7c134004a8722e1930fc60dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c68f0f5d856928bf0b9e8e4139a1670e') in 0.029914 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Stair_B_01.prefab
-  artifactKey: Guid(fadf2a52f8615bb4fbc8096067b45581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ancient-Dungeon-BuiltInRP/Prefabs/AD_Stair_B_01.prefab using Guid(fadf2a52f8615bb4fbc8096067b45581) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd58c9babe05e2fdd2561672aa5bf05b7') in 0.025248 seconds 
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+  Time since last request: 15.107182 seconds.
+  path: Assets/Scenes/TitleScene.unity
+  artifactKey: Guid(ffa31a0afacaa2c42a79e8fdc08ee749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/TitleScene.unity using Guid(ffa31a0afacaa2c42a79e8fdc08ee749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07c4ba990d629f932192a8b46a76368b') in 0.002949 seconds 
