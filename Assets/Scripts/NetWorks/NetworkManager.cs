@@ -32,23 +32,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private GameObject postman;
 
     //세션ID 닉네임 연동 
-    Dictionary<string, string> Nick_Session_key = new Dictionary<string, string>();
-    string mySessionID;
-    string myBetsId;
-
+    private Dictionary<string, string> Nick_Session_key = new Dictionary<string, string>();
+    private string mySessionID;
+    private string myBetsId;
+    private int readyCount = 0;
+    private int myButtonNum = 0;
 
     ReadyState myReadyState = ReadyState.None;
-
-    int readyCount = 0;
-    int myButtonNum = 0;
-
-    //준비완료 상태를 받는 변수 하나 필요
+    //This is 
     public enum ReadyState
     {
         None,
         Ready,
         UnReady,
     }
+
+
 
 
 
