@@ -134,7 +134,7 @@ public class DashSkill : MonoBehaviourPun, SkillMethod
                 skillCool = true;
                 Debug.Log("스킬사용");
                 // UIMgr SkillCool send  //Four
-                GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 15);
+                //GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 15);
             }
         }
     }
@@ -169,7 +169,7 @@ public class DashSkill : MonoBehaviourPun, SkillMethod
         //  sound.Play();
 
         //Three
-        GameMgr.Instance.DestroyTarget(skill, 1f);
+        //GameMgr.Instance.DestroyTarget(skill, 1f);
         yield return new WaitForSeconds(0.5f);
         dashAttack = false;
         navMeshAgent.speed = 5f;

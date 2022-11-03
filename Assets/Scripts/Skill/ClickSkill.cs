@@ -99,7 +99,7 @@ public class ClickSkill : MonoBehaviourPun, SkillMethod
                 skillCool = true;
                 Debug.Log("스킬사용");
                 // Send cooldown x seconds to UI manager
-                GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 2);
+               // GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 2);
             }
         }
     }
@@ -115,7 +115,7 @@ public class ClickSkill : MonoBehaviourPun, SkillMethod
         skill.transform.Rotate(0, -80, 0);
         skill.GetComponent<BoxCollider>().enabled = true;
 
-        GameMgr.Instance.DestroyTarget(skill, 2f);
+     //   GameMgr.Instance.DestroyTarget(skill, 2f);
 
         yield break;
     }
