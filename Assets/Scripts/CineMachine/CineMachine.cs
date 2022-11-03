@@ -29,10 +29,12 @@ public class CineMachine : MonoBehaviour
 
         Debug.Log(sceneCam1);
         //Initialize the cart position to 0
+        
+        //sceneCam1.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition = 0 ;
         dollyCart.m_Position = 0f;
         while (true)
         {
-            dollyCart.m_Speed = 3;
+            dollyCart.m_Speed = 15;
             if (dollyCart.m_Position >= dollyCart.m_Path.PathLength)
             {
 
@@ -51,7 +53,7 @@ public class CineMachine : MonoBehaviour
         dollyCart2.m_Position = 0f;
         while (true)
         {
-            dollyCart2.m_Speed = 5;
+            dollyCart2.m_Speed = 15;
             if (dollyCart2.m_Position >= dollyCart2.m_Path.PathLength)
             {
                 coroutine = StartCoroutine("Cut1");
