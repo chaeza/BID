@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviourPun
     private void Start()
     {
         playerInfo = GetComponent<PlayerInfo>();
-        myAnimator = GetComponent<Animator>();
+       // myAnimator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = playerInfo.moveSpeed;
     }
@@ -30,11 +30,12 @@ public class PlayerMove : MonoBehaviourPun
 
     private void Update()
     {
-        if (photonView.IsMine == false) return;
+        //if (photonView.IsMine == false) return;
         if (GameMgr.Instance.playerInput.inputKey2 == KeyCode.Mouse1)
         {
             clickPos = Input.mousePosition;
             clickPos.z = 18f;
+            Move(clickPos);
         }
 
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.S)
@@ -46,7 +47,7 @@ public class PlayerMove : MonoBehaviourPun
         {
             if (Vector3.Distance(desiredDir, transform.position) > 0.1f)
             {
-                myAnimator.SetBool("isMove", true);
+                //myAnimator.SetBool("isMove", true);
                 navMeshAgent.isStopped = false;
                 navMeshAgent.updateRotation = true;
                 navMeshAgent.updatePosition = true;
@@ -66,14 +67,13 @@ public class PlayerMove : MonoBehaviourPun
         // 사운드
         // 실제 움직임 (포지션 변경)
         RaycastHit hit;
-        int mask = 1 << LayerMask.NameToLayer("Terrain");
+        int mask = 1 << LayerMask.NameToLayer("Ground");
         bool nullCheck = Physics.Raycast(Camera.main.ScreenPointToRay(mousePos), out hit, 9999, mask);
 
         bool nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
-        bool nullCheckHit2 = (nullCheck) ? hit.transform.gameObject.CompareTag("UnGround") : false;
 
 
-        if (nullCheckHit == true || nullCheckHit2 == true)
+        if (nullCheckHit == true)
         {
             desiredDir = hit.point;
             desiredDir.y = transform.position.y;
@@ -83,7 +83,7 @@ public class PlayerMove : MonoBehaviourPun
 
     public void MoveStop()
     {
-        myAnimator.SetBool("isMove", false);
+       // myAnimator.SetBool("isMove", false);
         navMeshAgent.isStopped = true;
         navMeshAgent.velocity = Vector3.zero;
         navMeshAgent.updateRotation = false;
