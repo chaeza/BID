@@ -27,7 +27,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject[] readyButton;
     public Image[] lobbyTorchlightOn;
     public Image[] lobbyTorchlightOff;
-    public RawImage brokenWindow;
+  //  public RawImage brokenWindow;
 
     private GameObject postman;
 
@@ -55,7 +55,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         //    DontDestroyOnLoad(this);
         ClearLobby();
-        photonView.StartCoroutine(AutoSyncDelay());
+      //  photonView.StartCoroutine(AutoSyncDelay());
         if (FindObjectOfType<TitleToGameScene>() == null)
         {
             postman = Instantiate(Postman);
@@ -77,14 +77,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Start()
     {
 
-        brokenWindow.gameObject.SetActive(false);
+     //   brokenWindow.gameObject.SetActive(false);
         audioSource.gameObject.SetActive(false);
-        StartCoroutine(broken());
-        for (int i = 0; i < soulEff.Length; i++)
+      //  StartCoroutine(broken());
+        for (int i = 0; i < readyButton.Length; i++)
         {
-            soulEff[i].SetActive(false);
-            reddyButton[i].GetComponent<Image>().color = Color.gray;
-            reddyButton[i].GetComponent<Button>().interactable = false;
+            lobbyTorchlightOn[i].gameObject.SetActive(false);
+            lobbyTorchlightOff[i].gameObject.SetActive(true);
+          //  soulEff[i].SetActive(false);
+            readyButton[i].GetComponent<Image>().color = Color.gray;
+            readyButton[i].GetComponent<Button>().interactable = false;
         }
         btnConnect.interactable = false; // 버튼 입력 막기
         lobbyPanel.SetActive(false);
@@ -200,9 +202,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         for (int i = 0; i < nickName.Length; i++)
         {
             nickName[i].text = " ";
-            soulEff[i].SetActive(false);
-            reddyButton[i].GetComponent<Image>().color = Color.gray;
-            reddyButton[i].GetComponent<Button>().interactable = false;
+            lobbyTorchlightOn[i].gameObject.SetActive(false);
+            lobbyTorchlightOff[i].gameObject.SetActive(true);
+            //soulEff[i].SetActive(false);
+            readyButton[i].GetComponent<Image>().color = Color.gray;
+            readyButton[i].GetComponent<Button>().interactable = false;
         }
     }
     #endregion
@@ -217,19 +221,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         for (int i = 0; i < sortedPlayers.Length; i++)
         {
             nickName[i].text = sortedPlayers[i].NickName;
-            soulEff[i].SetActive(true);
+            lobbyTorchlightOn[i].gameObject.SetActive(true);
+            lobbyTorchlightOff[i].gameObject.SetActive(false);
+            // soulEff[i].SetActive(true);
             //자신의 버튼만 활성화 하기 
             if (sortedPlayers[i].NickName == PhotonNetwork.NickName)
             {
                 Debug.Log("i : " + i);
                 myButtonNum = i;
-                reddyButton[myButtonNum].GetComponent<Button>().interactable = true; //나만 누르기 위해 활성화
+                readyButton[myButtonNum].GetComponent<Button>().interactable = true; //나만 누르기 위해 활성화
 
                 //내 상태가 레디면 노란색 -->그런데 이건 서버에서 표현 해줘야 하기 때문에 RPC함수 사용
                 gameObject.GetPhotonView().RPC("ButtonColor", RpcTarget.All, myReadyState, myButtonNum);
             }
 
-            if (reddyButton[i].GetComponent<Image>().color == Color.yellow)
+            if (readyButton[i].GetComponent<Image>().color == Color.yellow)
             {
                 gameObject.GetPhotonView().RPC("ReadyCounT", RpcTarget.MasterClient);
             }
@@ -242,9 +248,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void ButtonColor(ReadyState readyState, int buttonNum)
     {
         if (readyState == ReadyState.Ready)
-            reddyButton[buttonNum].GetComponent<Image>().color = Color.yellow;
+            readyButton[buttonNum].GetComponent<Image>().color = Color.yellow;
         else
-            reddyButton[buttonNum].GetComponent<Image>().color = Color.grey;
+            readyButton[buttonNum].GetComponent<Image>().color = Color.grey;
     }
 
     #region 게임 실행
@@ -316,14 +322,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         else Debug.Log("누군가 레디 취소함");
     }
 
-    IEnumerator broken()
+   /* IEnumerator broken()
     {
         int ran = Random.Range(12, 22);
         yield return new WaitForSeconds(ran);
 
         brokenWindow.gameObject.SetActive(true);
         audioSource.gameObject.SetActive(true);
-    }
+    }*/
 
     //---------------------------------------------------------------------------------------------------------------------------------------------
 
