@@ -26,4 +26,25 @@ public class PlayerInfo : MonoBehaviourPun
     [field: SerializeField] public float basicAttackSpeed { get; private set; } = 1;
     [field: SerializeField] public float basicAttackDamage { get; private set; } = 10;
     [field: SerializeField] public float damageDecrease { get; private set; } = 0;
+
+    // skill range picture
+    public GameObject skilla;
+    // skill range
+    public RectTransform myskillRangerect = null;
+    public bool stay { get; set; } = false;
+
+    // Limit movement when using skills
+    public void Stay(float time)
+    {
+        stay = true;
+        GetComponent<PlayerMove>().MoveStop();
+        StartCoroutine(StayMe(time));
+    }
+
+    IEnumerator StayMe(float time)
+    {
+        yield return new WaitForSeconds(time);
+        stay = false;
+        yield break;
+    }
 }
