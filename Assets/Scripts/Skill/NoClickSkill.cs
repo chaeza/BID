@@ -6,7 +6,7 @@ using Photon.Pun;
 public class NoClickSkill : MonoBehaviourPun, SkillMethod
 {
     // Sound
-    AudioSource skillSound;
+    private AudioSource skillSound;
     // Skill Cool 
     private bool skillCool = false;
 
@@ -22,25 +22,25 @@ public class NoClickSkill : MonoBehaviourPun, SkillMethod
         if (skillCool == false)
         {
             // The effect is a photon instance.
-            GameObject a = PhotonNetwork.Instantiate("SwampField", transform.position, Quaternion.identity);
+            GameObject skill = PhotonNetwork.Instantiate("MagmaStrike", transform.position, Quaternion.identity);
 
             // ADD HitScript
-            //a.AddComponent<>();
+            // a.AddComponent<>();
 
             // Assigns an attacker to the effect.
-            a.SendMessage("AttackerName", gameObject.GetPhotonView().ViewID, SendMessageOptions.DontRequireReceiver);
+            skill.SendMessage("AttackerName", gameObject.GetPhotonView().ViewID, SendMessageOptions.DontRequireReceiver);
             // Position value when skill is created
-            a.transform.position = gameObject.transform.position; // + new Vector3(0, 0, 0);
+            skill.transform.position = gameObject.transform.position; // + new Vector3(0, 0, 0);
 
-            skillSound = a.GetComponent<AudioSource>();
+            skillSound = skill.GetComponent<AudioSource>();
             StartCoroutine(SoundStart());
             skillSound.Play();
 
             // skill remove (a, time)
-            GameMgr.Instance.DestroyTarget(a, 8f);
+            GameMgr.Instance.DestroyTarget(skill, 8f);
             skillCool = true;
             Debug.Log("use skill");
-            // UIMgr SkillColl send
+            // UIMgr SkillCool send
             GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 18);
         }
 

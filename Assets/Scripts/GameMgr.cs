@@ -10,7 +10,6 @@ public class GameMgr : Singleton<GameMgr>
     [Tooltip("Game MGR uIMgr")]
     [field: SerializeField]
     public UIMgr uIMgr { get; set; } = null;
-
     public PlayerInput playerInput { get;  set; } = null;
     public FollowCam followCam { get;  set; } = null;
 

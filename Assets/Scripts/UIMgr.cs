@@ -8,12 +8,12 @@ using Photon.Pun;
 
 public class UIMgr : MonoBehaviourPun
 {   // Save the object that called the skill cooldown
-    GameObject cooltimeGameobject = null;
+    private GameObject cooltimeGameobject = null;
     // Save multiple skill types to this object
-    GameObject skillUI = null;
+    private GameObject skillUI = null;
 
     [Header("ÄðÅ¸ÀÓ")]
-    [SerializeField] TextMeshProUGUI cooltimeText;
+    [SerializeField] private TextMeshProUGUI cooltimeText;
 
     //Object that called the skill cooldown to the UI manager, cooldown time
     public void SkillCooltime(GameObject my, int Cool)
