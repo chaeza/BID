@@ -13,7 +13,6 @@ public class DashSkill : MonoBehaviourPun, SkillMethod
     // 5. 스킬 범위 설정 (Five)
     // 6. 사운드 설정 (Six)
 
-
     // Skill Range Picture
     private GameObject skilla;
     // NavMesh
