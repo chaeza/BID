@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviourPun
     private float ratioX = 1.3103305785123966942148760330579f;
     private float ratioY = 1.2954545454545454545454545454545f;
     private RaycastHit hit;
-    private Vector2 mousePos = Vector2.zero;
+    //private Vector2 mousePos = Vector2.zero;
     private Vector3 clickPos = Vector3.one;
     private Vector3 desiredDir;
     private bool isMove = false;
@@ -42,8 +42,8 @@ public class PlayerMove : MonoBehaviourPun
         {
             if (Input.mousePosition.x > 1643 && Input.mousePosition.x < 1883 & Input.mousePosition.y > 11 && Input.mousePosition.y < 252)
             {
-                
-                clickPos = new Vector3(546.6f - mousePos.x * ratioX, transform.position.y, 502.3f - mousePos.y * ratioY);
+                clickPos = Input.mousePosition;
+                MoveMiniMap(clickPos);
             }
             else
             {
@@ -83,10 +83,10 @@ public class PlayerMove : MonoBehaviourPun
         mask = 1 << LayerMask.NameToLayer("Ground");
 
 
-        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        //Ray ray = Camera.main.ScreenPointToRay(mousePos);
         nullCheck = Physics.Raycast(Camera.main.ScreenPointToRay(mousePos), out hit, 9999, mask);
 
-        Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);
+        //Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);
 
 
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
@@ -97,11 +97,19 @@ public class PlayerMove : MonoBehaviourPun
         }
     }
 
-    public void MoveMiniMap()
+    public void MoveMiniMap(Vector3 mousePos)
     {
         mousePos.x = Input.mousePosition.x - 1642.384f;
         mousePos.y = Input.mousePosition.y - 11.25826f;
-
+        mask = 1 << LayerMask.NameToLayer("Ground");
+        
+        nullCheck = Physics.Raycast(new Vector3(546.6f - mousePos.x * ratioX, 1000, 502.3f - mousePos.y * ratioY), Vector3.down,out hit,9999, mask);
+        nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
+        if (nullCheckHit == true)
+        {
+            desiredDir = hit.point;
+            isMove = true;
+        }
     }
 
     public void MoveStop()
