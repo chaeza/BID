@@ -37,11 +37,11 @@ public class BloodField : MonoBehaviourPun , SkillMethod
             skillSound.Play();
 
             // skill remove (a, time)
-            GameMgr.Instance.DestroyTarget(skill, 8f);
+            //GameMgr.Instance.DestroyTarget(skill, 8f);
             skillCool = true;
             Debug.Log("use skill");
             // UIMgr SkillCool send
-            GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 18);
+            //GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 18);
         }
 
         //SkillSound Start

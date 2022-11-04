@@ -9,7 +9,6 @@ public partial class FollowCam : MonoBehaviour
     [SerializeField] private float distanceFromPlayerX;
     [SerializeField] private float cameraSpeed;
     [SerializeField] private Transform playerPos;
-    [SerializeField] private GameObject rayCamara;
     private bool followBool = false;
     private float playerY;
 
@@ -31,8 +30,6 @@ public partial class FollowCam : MonoBehaviour
 
     private void Update()
     {
-        rayCamara.transform.position = playerPos.position+ Vector3.up * 30;
-        rayCamara.transform.LookAt(playerPos.position);
         if (Input.GetKey(KeyCode.Space) || followBool == true)
         {
             transform.position = new Vector3(playerPos.position.x,playerY,playerPos.position.z) + Vector3.forward * distanceFromPlayerZ + Vector3.up * distanceFromPlayerY + Vector3.right * distanceFromPlayerX;

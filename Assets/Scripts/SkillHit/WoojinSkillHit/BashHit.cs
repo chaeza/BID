@@ -25,8 +25,8 @@ public class BashHit : MonoBehaviourPun
             attackList.Add(other.gameObject);
 
 
-            GameMgr.Instance.DestroyTarget(a, 6.2f);
-            GameMgr.Instance.DestroyTarget(gameObject, 6.2f);
+           // GameMgr.Instance.DestroyTarget(a, 6.2f);
+            //GameMgr.Instance.DestroyTarget(gameObject, 6.2f);
         }
 
     }
