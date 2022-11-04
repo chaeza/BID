@@ -11,6 +11,8 @@ public class PlayerMove : MonoBehaviourPun
     private PlayerInfo playerInfo;
     private Animator myAnimator;
     private NavMeshAgent navMeshAgent;
+    private GhostEffect ghostEffect;
+
 
     private RaycastHit hit;
     private Vector3 clickPos = Vector3.one;
@@ -25,6 +27,7 @@ public class PlayerMove : MonoBehaviourPun
         playerInfo = GetComponent<PlayerInfo>();
         myAnimator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        ghostEffect = GetComponent<GhostEffect>();  
         navMeshAgent.speed = playerInfo.moveSpeed;
         MoveStop();
     }
@@ -35,11 +38,13 @@ public class PlayerMove : MonoBehaviourPun
 
     private void Update()
     {
+  
         //if (photonView.IsMine == false) return;
         if (GameMgr.Instance.playerInput.inputKey2 == KeyCode.Mouse1)
         {
             clickPos = Input.mousePosition;
             Move(clickPos);
+      
         }
 
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.S)
@@ -59,31 +64,39 @@ public class PlayerMove : MonoBehaviourPun
                 navMeshAgent.updatePosition = true;
 
                 navMeshAgent.SetDestination(desiredDir);
+            
+               
+
             }
             else
                 MoveStop();
         }
-
-
-
     }
+    bool ghostCheck = false;
+    IEnumerator ghostEffDelady(float time)
+    {
+        if (ghostCheck == true) yield break;
+        else ghostCheck = true;
+        while (isMove ==true)
+        {
+            yield return new WaitForSeconds(time);
+            ghostEffect.CreateGhostEffectObject(Color.white, 0f, 0.1f, 0.7f, 0.85f, 0.5f);
+        }
+        ghostCheck = false;
+    }
+
     public void Move(Vector3 mousePos)
     {
-        Debug.Log("MOve");
         mask = 1 << LayerMask.NameToLayer("Ground");
-
-
-        //Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        
         nullCheck = Physics.Raycast(Camera.main.ScreenPointToRay(mousePos), out hit, 9999, mask);
-
-        //Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);
-
 
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
         if (nullCheckHit == true)
         {
             desiredDir = hit.point;
             isMove = true;
+            StartCoroutine(ghostEffDelady(0.2f));
         }
     }
 
