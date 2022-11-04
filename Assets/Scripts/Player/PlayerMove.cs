@@ -42,12 +42,14 @@ public class PlayerMove : MonoBehaviourPun
         {
             if (Input.mousePosition.x > 1643 && Input.mousePosition.x < 1883 & Input.mousePosition.y > 11 && Input.mousePosition.y < 252)
             {
-                mousePos.x = Input.mousePosition.x - 1642.384f;
-                mousePos.y = Input.mousePosition.y - 11.25826f;
+                
                 clickPos = new Vector3(546.6f - mousePos.x * ratioX, transform.position.y, 502.3f - mousePos.y * ratioY);
             }
-            else clickPos = Input.mousePosition;
-            Move(clickPos);
+            else
+            {
+                clickPos = Input.mousePosition;
+                Move(clickPos);
+            }
         }
 
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.S)
@@ -81,10 +83,10 @@ public class PlayerMove : MonoBehaviourPun
         mask = 1 << LayerMask.NameToLayer("Ground");
 
 
-        //Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
         nullCheck = Physics.Raycast(Camera.main.ScreenPointToRay(mousePos), out hit, 9999, mask);
 
-        //Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);
+        Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);
 
 
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
@@ -93,6 +95,13 @@ public class PlayerMove : MonoBehaviourPun
             desiredDir = hit.point;
             isMove = true;
         }
+    }
+
+    public void MoveMiniMap()
+    {
+        mousePos.x = Input.mousePosition.x - 1642.384f;
+        mousePos.y = Input.mousePosition.y - 11.25826f;
+
     }
 
     public void MoveStop()
