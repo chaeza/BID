@@ -11,9 +11,24 @@ public class UIMgr : MonoBehaviourPun
     private GameObject cooltimeGameobject = null;
     // Save multiple skill types to this object
     private GameObject skillUI = null;
+    [Header("스킬 Icon")]
+    [SerializeField] private Image[] skillIcon;
 
     [Header("쿨타임")]
     [SerializeField] private TextMeshProUGUI cooltimeText;
+
+    public void SkillIcon(int skillNum)
+    {
+        switch (skillNum)
+        {
+            case 0:
+                System.Console.WriteLine("0번 들어옴");
+                //Instantiate(스킬프리팹이름, IconPos, Quaternion.identity, GameObject.Find("Canvas").transform);
+                break;
+            case 1:
+                break;
+        }
+    }
 
     //Object that called the skill cooldown to the UI manager, cooldown time
     public void SkillCooltime(GameObject my, int Cool)
