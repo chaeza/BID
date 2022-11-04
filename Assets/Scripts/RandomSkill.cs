@@ -16,7 +16,7 @@ public class RandomSkill : MonoBehaviour
         skillRan = Random.Range(0, skillNum);
 
         // Choose the skill you want to test
-        //skillRan = 10;
+        skillRan = 0;
        
         if (skillRan == 0) player.AddComponent<BloodField>();
         else if (skillRan == 1) player.AddComponent<ArrowRain>();

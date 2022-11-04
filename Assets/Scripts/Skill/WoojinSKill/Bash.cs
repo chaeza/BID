@@ -131,10 +131,10 @@ public class Bash : MonoBehaviourPun, SkillMethod
                 GetComponent<PlayerInfo>().Stay(0.5f);
                 StartCoroutine(Attack(desiredDir, 0.2f));
                 // Turn on the cooldown so that it cannot be used again
-                skillCool = true;
+               // skillCool = true;
                 Debug.Log("스킬사용");
                 // UIMgr SkillCool send  //Four
-                GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 15);
+               // GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 15);
             }
         }
     }

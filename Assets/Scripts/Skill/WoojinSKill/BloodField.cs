@@ -28,20 +28,25 @@ public class BloodField : MonoBehaviourPun , SkillMethod
             skill.AddComponent<BloodFieldHit>();
 
             // Assigns an attacker to the effect.
-            skill.SendMessage("AttackerName", gameObject.GetPhotonView().ViewID, SendMessageOptions.DontRequireReceiver);
+            //skill.SendMessage("AttackerName", gameObject.GetPhotonView().ViewID, SendMessageOptions.DontRequireReceiver);
             // Position value when skill is created
-            skill.transform.position = gameObject.transform.position; // + new Vector3(0, 0, 0);
+            skill.transform.position = gameObject.transform.position  + new Vector3(0, 3.5f, 0);
+            skill.transform.Rotate(-90f, 0f, 0f);
 
-            skillSound = skill.GetComponent<AudioSource>();
-            StartCoroutine(SoundStart());
-            skillSound.Play();
+            // skillSound = skill.GetComponent<AudioSource>();
+            //  StartCoroutine(SoundStart());
+            //skillSound.Play();
+
+
 
             // skill remove (a, time)
-            GameMgr.Instance.DestroyTarget(skill, 8f);
-            skillCool = true;
+
+            Destroy(skill, 5f);
+           // GameMgr.Instance.DestroyTarget(skill, 8f);
+           // skillCool = true;
             Debug.Log("use skill");
             // UIMgr SkillCool send
-            GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 18);
+           // GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 18);
         }
 
         //SkillSound Start
