@@ -33,6 +33,14 @@ public class PlayerInfo : MonoBehaviourPun
     public RectTransform myskillRangerect = null;
     public bool stay { get; set; } = false;
 
+
+    private void Start()
+    {
+       // if (photonView.IsMine == true)
+            gameObject.tag = "Player";
+            GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+    }
+
     // Limit movement when using skills
     public void Stay(float time)
     {
