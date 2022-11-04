@@ -16,11 +16,11 @@ public class RandomSkill : MonoBehaviour
         skillRan = Random.Range(0, skillNum);
 
         // Choose the skill you want to test
-        skillRan = 0;
+        skillRan = 2;
        
         if (skillRan == 0) player.AddComponent<BloodField>();
         else if (skillRan == 1) player.AddComponent<ArrowRain>();
-        else if (skillRan == 2) player.AddComponent<Bash>();
+        else if (skillRan == 2) player.AddComponent<BashTest>();
 
         else
             Debug.Log("Player didn't get any skil");
