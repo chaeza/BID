@@ -46,7 +46,7 @@ public class Bash : MonoBehaviourPun, SkillMethod
             target.y = mousePos.y;
             target.z = 0;
 
-            skilla.transform.position = target;
+          //  skilla.transform.position = target;
 
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
@@ -87,9 +87,9 @@ public class Bash : MonoBehaviourPun, SkillMethod
             if (skillClick == false)
             {
                 // Turn on the skill range picture
-                skilla.SetActive(true);
-                myskillRangerect.gameObject.SetActive(true);
-                myskillRangerect.sizeDelta = new Vector2(skillRange, skillRange);
+               // skilla.SetActive(true);
+               // myskillRangerect.gameObject.SetActive(true);
+              //  myskillRangerect.sizeDelta = new Vector2(skillRange, skillRange);
 
                 skillClick = true;
             }
@@ -97,8 +97,8 @@ public class Bash : MonoBehaviourPun, SkillMethod
             else
             {
                 skillClick = false;
-                myskillRangerect.gameObject.SetActive(false);
-                skilla.SetActive(false);
+               // myskillRangerect.gameObject.SetActive(false);
+              //  skilla.SetActive(false);
             }
         }
     }
@@ -131,10 +131,10 @@ public class Bash : MonoBehaviourPun, SkillMethod
                 GetComponent<PlayerInfo>().Stay(0.5f);
                 StartCoroutine(Attack(desiredDir, 0.2f));
                 // Turn on the cooldown so that it cannot be used again
-                skillCool = true;
+               // skillCool = true;
                 Debug.Log("스킬사용");
                 // UIMgr SkillCool send  //Four
-                //GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 15);
+               // GameMgr.Instance.uIMgr.SkillCooltime(gameObject, 15);
             }
         }
     }
@@ -170,7 +170,7 @@ public class Bash : MonoBehaviourPun, SkillMethod
         //  sound.Play();
 
         //Three
-        //GameMgr.Instance.DestroyTarget(b, 1f);
+        GameMgr.Instance.DestroyTarget(b, 1f);
         yield return new WaitForSeconds(0.5f);
         dashAttack = false;
         navMeshAgent.speed = 5f;

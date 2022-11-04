@@ -69,7 +69,7 @@ public class PlayerMove : MonoBehaviourPun
     }
     public void Move(Vector3 mousePos)
     {
-        Debug.Log("MOve");
+        Debug.Log("Move");
         mask = 1 << LayerMask.NameToLayer("Ground");
 
 
