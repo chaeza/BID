@@ -16,14 +16,15 @@ public class UIMgr : MonoBehaviourPun
 
     [Header("ÄðÅ¸ÀÓ")]
     [SerializeField] private TextMeshProUGUI cooltimeText;
-
+    
+  //  Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
     public void SkillIcon(int skillNum)
     {
         switch (skillNum)
         {
             case 0:
                 System.Console.WriteLine("0¹ø µé¾î¿È");
-                //Instantiate(½ºÅ³ÇÁ¸®ÆÕÀÌ¸§, IconPos, Quaternion.identity, GameObject.Find("Canvas").transform);
+          //      Instantiate(skillIcon[0], IconPos, Quaternion.identity, GameObject.Find("Canvas").transform);
                 break;
             case 1:
                 break;

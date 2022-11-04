@@ -96,7 +96,7 @@ public class PlayerMove : MonoBehaviourPun
         {
             desiredDir = hit.point;
             isMove = true;
-            StartCoroutine(ghostEffDelady(0.2f));
+           // StartCoroutine(ghostEffDelady(0.2f));
         }
     }
 

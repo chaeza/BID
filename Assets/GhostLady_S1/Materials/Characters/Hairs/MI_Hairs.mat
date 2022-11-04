@@ -8,12 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MI_Hairs
-  m_Shader: {fileID: 4800000, guid: 5cc78a9705f4af549990498481c717c0, type: 3}
-  m_ValidKeywords:
-  - _ISDYED_ON
+  m_Shader: {fileID: 4800000, guid: 33b5a0927a8e2ef43a270537befe9f78, type: 3}
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _ADD_PRECOMPUTED_VELOCITY
   - _DOUBLESIDED_ON
+  - _ISDYED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
@@ -25,8 +25,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _AO:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Alpha:
         m_Texture: {fileID: 2800000, guid: 6b81df8f03df5984c8f52e18144bf6a0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BC:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColor:
@@ -53,11 +61,23 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Dirt:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DyeMask:
         m_Texture: {fileID: 2800000, guid: a47caf91dd4ef9a4cae3a3176751fd3a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissiveMask1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissivePannerMap1:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -81,6 +101,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: 2aeb1f4a492c1cd47b3dbc5cdd36f3f7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Mask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Metallic:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -90,6 +118,10 @@ Material:
         m_Scale: {x: 40, y: 40}
         m_Offset: {x: 0, y: 0}
     - _NoiseTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -109,12 +141,32 @@ Material:
         m_Texture: {fileID: 2800000, guid: 3e00f30d7c9bc024c97e3fd2a63aab72, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Roughness:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecularTex:
         m_Texture: {fileID: 2800000, guid: 66826dc165064714e9f1f1fa7e9d16aa, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextNoise:
         m_Texture: {fileID: 2800000, guid: dfeb1ce67808dcd4cb71e8ed64a757b1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture01:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture02:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture03:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture04:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -128,7 +180,16 @@ Material:
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
+    - _BlendColorPower01: 0
+    - _BlendColorPower02: 0
+    - _BlendColorPower03: 0
+    - _BlendColorPower04: 0
     - _BlendMode: 0
+    - _BlendTexture01: 0
+    - _BlendTexture02: 0
+    - _BlendTexture03: 0
+    - _BlendTexture04: 0
+    - _BlendTextureMode: 0
     - _Brighness: 0.2
     - _Brightness: 1.2
     - _BumpScale: 1
@@ -137,12 +198,19 @@ Material:
     - _CullModeForward: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DirtBoots: 0
+    - _DirtRoughness: 0
     - _DitherBoost: 32.8
     - _DitherBoosts: 9.5
     - _DoubleSidedEnable: 1
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 0
     - _Emiss: 0.3
+    - _EmissiveBoots2: 0
+    - _EmissiveBoots3: 0
+    - _EmissiveBoots4: 0
+    - _EmissiveBoots5: 0
+    - _EmissivePannerTilling1: 1
     - _EnableFogOnTransparent: 1
     - _Gloss: 0.942
     - _GlossMapScale: 1
@@ -150,6 +218,10 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _MetallicBoost: 0.84
+    - _MetallicBoots01: 1
+    - _MetallicBoots02: 1
+    - _MetallicBoots03: 0
+    - _MetallicBoots04: 1
     - _MetallicValue: 1
     - _MipBias: -1
     - _Mode: 0
@@ -163,6 +235,10 @@ Material:
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
     - _Roughness: 1.5
+    - _RoughnessBoost01: 1
+    - _RoughnessBoost02: 1
+    - _RoughnessBoost03: 1
+    - _RoughnessBoost04: 1
     - _RoughnessRoot: 0.13
     - _RoughnessTip: 0.29
     - _SmoothnessTextureChannel: 0
@@ -204,11 +280,20 @@ Material:
     - _isDyed: 1
     - _useFlowMapTexture: 0
     m_Colors:
+    - _BlendColor01: {r: 1, g: 1, b: 1, a: 0}
+    - _BlendColor02: {r: 1, g: 1, b: 1, a: 0}
+    - _BlendColor03: {r: 1, g: 1, b: 1, a: 0}
+    - _BlendColor04: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 0.3018868, g: 0.22926308, b: 0.22926308, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _DyedColor: {r: 0.48589355, g: 0.515753, b: 0.5754717, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissiveColor2: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor3: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor4: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor5: {r: 0, g: 0, b: 0, a: 0}
     - _FlowTangent: {r: 1, g: 1, b: 0, a: 0.003921569}
+    - _PannerProperty1: {r: 0, g: 0, b: 0, a: 0}
     - _RootColor: {r: 0.41077787, g: 0.44512507, b: 0.4811321, a: 1}
     - _TangentA: {r: 0, g: 0.23670661, b: 0.8679245, a: 0.003921569}
     - _TangentB: {r: 0.4374777, g: 0.62379295, b: 0.8207547, a: 0.003921569}
