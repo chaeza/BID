@@ -5,15 +5,22 @@ using Photon.Pun;
 using Photon.Realtime;
 
 
-public class GameMgr : Singleton<GameMgr>
+public partial class GameMgr : Singleton<GameMgr>
 {
-    public PlayerInput playerInput { get; private set; } = null;
-    public FollowCam followCam { get; private set; } = null;
+    [Tooltip("Game MGR uIMgr")]
+    [field: SerializeField]
+    public UIMgr uIMgr { get; private set; } = null;
 
     private void Awake()
     {
         playerInput = gameObject.AddComponent<PlayerInput>();
         followCam = FindObjectOfType<FollowCam>();
 
+    }
+
+    // Skill Destroy
+    public void DestroyTarget(GameObject desObject, float time)
+    {
+        photonView.RPC("PunDestroyObject", RpcTarget.All, desObject.GetPhotonView().ViewID, time);
     }
 }

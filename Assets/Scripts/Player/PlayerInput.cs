@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    //이 스크립트는 플레이어에게 
     public KeyCode inputKey { get; private set; }
     public KeyCode inputKey2 { get; private set; }
 
@@ -14,7 +13,7 @@ public class PlayerInput : MonoBehaviour
 
     public KeyCode yKey { get; private set; }
     public KeyCode Esc { get; private set; }
-    bool escDown;
+    private bool escDown;
     void Update()
     {
 
@@ -35,8 +34,6 @@ public class PlayerInput : MonoBehaviour
         //else if () 로 이모션 추가 
         else emotionKey2 = KeyCode.Alpha0;
         #endregion
-
-
 
         if (Input.GetKey(KeyCode.Mouse1)) inputKey2 = KeyCode.Mouse1;
         else inputKey2 = KeyCode.Alpha0;

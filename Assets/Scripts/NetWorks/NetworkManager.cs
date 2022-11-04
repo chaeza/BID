@@ -37,8 +37,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private string myBetsId;
     private int readyCount = 0;
     private int myButtonNum = 0;
-
-    ReadyState myReadyState = ReadyState.None;
+    [Header("³»»óÅÂ")]
+   public ReadyState myReadyState = ReadyState.None;
     //This is 
     public enum ReadyState
     {
@@ -76,14 +76,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-
      //   brokenWindow.gameObject.SetActive(false);
         audioSource.gameObject.SetActive(false);
       //  StartCoroutine(broken());
         for (int i = 0; i < readyButton.Length; i++)
         {
             lobbyTorchlightOn[i].gameObject.SetActive(false);
-            lobbyTorchlightOff[i].gameObject.SetActive(true);
+            lobbyTorchlightOff[i].gameObject.SetActive(false);
           //  soulEff[i].SetActive(false);
             readyButton[i].GetComponent<Image>().color = Color.gray;
             readyButton[i].GetComponent<Button>().interactable = false;
