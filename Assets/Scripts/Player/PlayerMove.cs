@@ -11,8 +11,10 @@ public class PlayerMove : MonoBehaviourPun
     private PlayerInfo playerInfo;
     private Animator myAnimator;
     private NavMeshAgent navMeshAgent;
-
+    private float ratioX = 1.3103305785123966942148760330579f;
+    private float ratioY = 1.2954545454545454545454545454545f;
     private RaycastHit hit;
+    private Vector2 mousePos = Vector2.zero;
     private Vector3 clickPos = Vector3.one;
     private Vector3 desiredDir;
     private bool isMove = false;
@@ -38,7 +40,13 @@ public class PlayerMove : MonoBehaviourPun
         //if (photonView.IsMine == false) return;
         if (GameMgr.Instance.playerInput.inputKey2 == KeyCode.Mouse1)
         {
-            clickPos = Input.mousePosition;
+            if (Input.mousePosition.x > 1643 && Input.mousePosition.x < 1883 & Input.mousePosition.y > 11 && Input.mousePosition.y < 252)
+            {
+                mousePos.x = Input.mousePosition.x - 1642.384f;
+                mousePos.y = Input.mousePosition.y - 11.25826f;
+                clickPos = new Vector3(546.6f - mousePos.x * ratioX, transform.position.y, 502.3f - mousePos.y * ratioY);
+            }
+            else clickPos = Input.mousePosition;
             Move(clickPos);
         }
 

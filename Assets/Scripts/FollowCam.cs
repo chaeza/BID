@@ -11,9 +11,10 @@ public partial class FollowCam : MonoBehaviour
     [SerializeField] private Transform playerPos;
     [SerializeField] private GameObject rayCamara;
     [SerializeField] private Vector2 mousePos;
-    private float ratio = 1.31255f;
     private bool followBool = false;
     private float playerY;
+    private float ratioX = 1.3103305785123966942148760330579f;
+    private float ratioY = 1.2954545454545454545454545454545f;
 
 
 
@@ -33,10 +34,8 @@ public partial class FollowCam : MonoBehaviour
 
     private void Update()
     {
-
-        Debug.Log("마우스 x : " + Input.mousePosition.x);
-        Debug.Log("마우스 y : " + Input.mousePosition.y);
-        Debug.Log("마우스 z : " + Input.mousePosition.z);
+        Debug.Log("mouse x : " + Input.mousePosition.x);
+        Debug.Log("mouse y : " + Input.mousePosition.y);
         rayCamara.transform.position = playerPos.position + Vector3.up * 30;
         rayCamara.transform.LookAt(playerPos.position);
         if (Input.GetKey(KeyCode.Space) || followBool == true)
@@ -46,11 +45,11 @@ public partial class FollowCam : MonoBehaviour
         // Click on the mini map
         if (Input.GetKey(KeyCode.Mouse0) && Input.mousePosition.x > 1643 && Input.mousePosition.x < 1883 & Input.mousePosition.y > 11 && Input.mousePosition.y < 252)
         {
-            mousePos.x = Input.mousePosition.x - 1643;
-            mousePos.y = Input.mousePosition.y - 11;
-            transform.position = new Vector3(546.6f - mousePos.x * ratio, transform.position.y, 507.6f - mousePos.y * ratio);
+            mousePos.x = Input.mousePosition.x - 1642.384f;
+            mousePos.y = Input.mousePosition.y - 11.25826f;
+            transform.position = new Vector3(546.6f - mousePos.x * ratioX, transform.position.y, 502.3f - mousePos.y * ratioY+distanceFromPlayerZ);
         }
-        if (GameMgr.Instance.playerInput.yKey == KeyCode.Y && followBool == false) followBool = true;
+        if (Input.GetKey(KeyCode.Y) && followBool == false) followBool = true;
         else if (GameMgr.Instance.playerInput.yKey == KeyCode.Y && followBool == true) followBool = false;
         if (followBool == false)
         {
