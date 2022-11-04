@@ -28,7 +28,7 @@ public class ArrowRain : MonoBehaviourPun, SkillMethod
             target.y = mousePos.y;
             target.z = 0;
 
-            skilla.transform.position = target;
+          //  skilla.transform.position = target;
 
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
@@ -50,17 +50,17 @@ public class ArrowRain : MonoBehaviourPun, SkillMethod
         {
             if (skillClick == false)
             {
-                skilla.SetActive(true);
-                myskillRangerect.gameObject.SetActive(true);
-                myskillRangerect.sizeDelta = new Vector2(skillRange, skillRange);
+               // skilla.SetActive(true);
+              //  myskillRangerect.gameObject.SetActive(true);
+              //  myskillRangerect.sizeDelta = new Vector2(skillRange, skillRange);
                 skillClick = true;
             }
 
             else
             {
                 skillClick = false;
-                myskillRangerect.gameObject.SetActive(false);
-                skilla.SetActive(false);
+              //  myskillRangerect.gameObject.SetActive(false);
+              //  skilla.SetActive(false);
             }
         }
     }
