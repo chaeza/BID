@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MI_Eyes
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 083ba83dd0dcbf047a4394a5b56ba4b1, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ADD_PRECOMPUTED_VELOCITY
@@ -107,6 +107,10 @@ Material:
     - _BlendColorPower02: 0
     - _BlendColorPower03: 0
     - _BlendColorPower04: 0
+    - _BlendColorPower2: 0
+    - _BlendColorPower3: 0
+    - _BlendColorPower4: 0
+    - _BlendColorPower5: 0
     - _BlendMode: 0
     - _BumpScale: 1
     - _CullMode: 2

@@ -15,7 +15,7 @@ public class PlayerAttack : MonoBehaviourPun
         sound = GetComponent<AudioSource>();
         myAnimator = GetComponent<Animator>();
         playerInfo = GetComponent<PlayerInfo>();
-    }
+    }  
 
 
     private void Update()

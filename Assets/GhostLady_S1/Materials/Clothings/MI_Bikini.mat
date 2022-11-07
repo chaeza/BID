@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MI_Bikini
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: c6710fc4925049b489716304e8c8a7d9, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ADD_PRECOMPUTED_VELOCITY
@@ -56,6 +56,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissiveMask1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissivePannerMap1:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -139,11 +147,17 @@ Material:
     - _DarkMode: 0
     - _DetailNormalMapScale: 1
     - _DirtBoots: 0
+    - _DirtRoughness: 0
     - _DirtRoughness_Power: 0
     - _DitherBoosts: 1
     - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
+    - _EmissiveBoots2: 0
+    - _EmissiveBoots3: 0
+    - _EmissiveBoots4: 0
+    - _EmissiveBoots5: 0
+    - _EmissivePannerTilling1: 1
     - _EnableFogOnTransparent: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -206,5 +220,10 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissiveColor2: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor3: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor4: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor5: {r: 0, g: 0, b: 0, a: 0}
+    - _PannerProperty1: {r: 0, g: 0, b: 0, a: 0}
     - _SSSColor1: {r: 1, g: 0.8184171, b: 0.7122642, a: 1}
   m_BuildTextureStacks: []
