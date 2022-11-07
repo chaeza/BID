@@ -37,8 +37,8 @@ public partial class FollowCam : MonoBehaviour
         //Debug.Log("마우스 x : " + Input.mousePosition.x);
         //Debug.Log("마우스 y : " + Input.mousePosition.y);
         //Debug.Log("마우스 z : " + Input.mousePosition.z);
-        rayCamara.transform.position = playerPos.position + Vector3.up * 30;
-        rayCamara.transform.LookAt(playerPos.position);
+       // rayCamara.transform.position = playerPos.position + Vector3.up * 30;
+       // rayCamara.transform.LookAt(playerPos.position);
         if (Input.GetKey(KeyCode.Space) || followBool == true)
         {
             transform.position = new Vector3(playerPos.position.x, playerY, playerPos.position.z) + Vector3.forward * distanceFromPlayerZ + Vector3.up * distanceFromPlayerY + Vector3.right * distanceFromPlayerX;
