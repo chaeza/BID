@@ -11,8 +11,10 @@ public class PlayerMove : MonoBehaviourPun
     private PlayerInfo playerInfo;
     private Animator myAnimator;
     private NavMeshAgent navMeshAgent;
-
+    private float ratioX = 1.3103305785123966942148760330579f;
+    private float ratioY = 1.2954545454545454545454545454545f;
     private RaycastHit hit;
+    //private Vector2 mousePos = Vector2.zero;
     private Vector3 clickPos = Vector3.one;
     private Vector3 desiredDir;
     private bool isMove = false;
@@ -38,8 +40,16 @@ public class PlayerMove : MonoBehaviourPun
         //if (photonView.IsMine == false) return;
         if (GameMgr.Instance.playerInput.inputKey2 == KeyCode.Mouse1)
         {
-            clickPos = Input.mousePosition;
-            Move(clickPos);
+            if (Input.mousePosition.x > 1643 && Input.mousePosition.x < 1883 & Input.mousePosition.y > 11 && Input.mousePosition.y < 252)
+            {
+                clickPos = Input.mousePosition;
+                MoveMiniMap(clickPos);
+            }
+            else
+            {
+                clickPos = Input.mousePosition;
+                Move(clickPos);
+            }
         }
 
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.S)
@@ -79,6 +89,21 @@ public class PlayerMove : MonoBehaviourPun
         //Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);
 
 
+        nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
+        if (nullCheckHit == true)
+        {
+            desiredDir = hit.point;
+            isMove = true;
+        }
+    }
+
+    public void MoveMiniMap(Vector3 mousePos)
+    {
+        mousePos.x = Input.mousePosition.x - 1642.384f;
+        mousePos.y = Input.mousePosition.y - 11.25826f;
+        mask = 1 << LayerMask.NameToLayer("Ground");
+        
+        nullCheck = Physics.Raycast(new Vector3(546.6f - mousePos.x * ratioX, 1000, 502.3f - mousePos.y * ratioY), Vector3.down,out hit,9999, mask);
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
         if (nullCheckHit == true)
         {

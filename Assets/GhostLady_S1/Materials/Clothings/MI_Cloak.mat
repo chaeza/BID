@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MI_Cloak
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: c6710fc4925049b489716304e8c8a7d9, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ADD_PRECOMPUTED_VELOCITY
@@ -34,7 +34,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BC:
-        m_Texture: {fileID: 2800000, guid: 9a6c30455c79edd479db381500420711, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1714f39e3e698c843ad6d260ea38668f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColor:
@@ -58,10 +58,26 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Dirt:
-        m_Texture: {fileID: 2800000, guid: 118d1892e682fed42a0a2dd34b652358, type: 3}
+        m_Texture: {fileID: 2800000, guid: cab112eac0f304245bb8059c057a3174, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissiveMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissiveMask1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissivePannerMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissivePannerMap1:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -123,6 +139,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _ASEOutlineWidth: 0
     - _AddPrecomputedVelocity: 1
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 1
@@ -145,12 +162,22 @@ Material:
     - _DarkMode: 0
     - _DetailNormalMapScale: 1
     - _DirtBoots: 0
+    - _DirtRoughness: 0
     - _DirtRoughness_Power: 0
     - _DitherBoosts: 4.39
     - _DoubleSidedEnable: 1
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 0
+    - _EmissiveBoots1: 0
+    - _EmissiveBoots2: 0
+    - _EmissiveBoots3: 0
+    - _EmissiveBoots4: 0
+    - _EmissiveBoots5: 0
+    - _EmissivePannerTilling: 1
+    - _EmissivePannerTilling1: 1
     - _EnableFogOnTransparent: 1
+    - _Float0: 0
+    - _Float1: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -207,6 +234,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
+    - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _BlendColor01: {r: 1, g: 1, b: 1, a: 0}
     - _BlendColor02: {r: 1, g: 1, b: 1, a: 0}
     - _BlendColor03: {r: 1, g: 1, b: 1, a: 0}
@@ -214,6 +242,16 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissiveColor01: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor02: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor03: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor04: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor2: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor3: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor4: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissiveColor5: {r: 0, g: 0, b: 0, a: 0}
+    - _PannerProperty: {r: 0, g: 0, b: 0, a: 0}
+    - _PannerProperty1: {r: 0, g: 0, b: 0, a: 0}
     - _SSSColor2: {r: 1, g: 0.8184171, b: 0.7122642, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

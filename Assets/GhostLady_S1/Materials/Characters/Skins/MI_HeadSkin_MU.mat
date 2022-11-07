@@ -17,18 +17,20 @@ MonoBehaviour:
   m_MaterialReferences: []
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MI_HeadSkin_MU
-  m_Shader: {fileID: 4800000, guid: 253869db2350ef74b8ded21df899e14b, type: 3}
-  m_ShaderKeywords: _ADD_PRECOMPUTED_VELOCITY
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ADD_PRECOMPUTED_VELOCITY
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -124,6 +126,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 1
     - _AlphaCutoff: 0.5
@@ -190,10 +193,13 @@ Material:
     - _SurfaceType: 0
     - _TransAmbient: 0.2
     - _TransDirect: 1
+    - _TransNormal: 0.5
     - _TransNormalDistortion: 0.1
     - _TransScattering: 2
     - _TransShadow: 0.9
+    - _TransStrength: 1
     - _Translucency: 1
+    - _TransmissionShadow: 0.5
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentSortPriority: 0
@@ -212,8 +218,7 @@ Material:
     - _BlendColor03: {r: 1, g: 1, b: 1, a: 0}
     - _BlendColor04: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DiffusionProfileAsset: {r: 1.1322838e-29, g: -1.1648191e+32, b: 4.2482054e+29,
-        a: 6.875481e+37}
+    - _DiffusionProfileAsset: {r: 1.1322838e-29, g: -1.1648191e+32, b: 4.2482054e+29, a: 6.875481e+37}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor1: {r: 1, g: 0, b: 0, a: 0}
@@ -227,3 +232,4 @@ Material:
     - _PannerProperty: {r: 0, g: 0, b: 0, a: 0}
     - _SSSColor: {r: 0.5471698, g: 0.077783935, b: 0, a: 1}
     - _Tint: {r: 1, g: 0.8288271, b: 0.7311321, a: 0}
+  m_BuildTextureStacks: []

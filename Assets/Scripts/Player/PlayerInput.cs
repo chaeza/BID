@@ -16,8 +16,6 @@ public class PlayerInput : MonoBehaviour
     private bool escDown;
     void Update()
     {
-
-
         if (Input.GetKeyDown(KeyCode.Y)) yKey = KeyCode.Y;
         else yKey = KeyCode.Alpha0;
 
@@ -62,8 +60,5 @@ public class PlayerInput : MonoBehaviour
             escDown = false;
             Esc = KeyCode.Alpha0;
         }
-
-        //    Debug.Log(inputKey);
-
     }
 }
