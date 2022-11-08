@@ -34,11 +34,14 @@ public class PlayerInfo : MonoBehaviourPun
     public bool stay { get; set; } = false;
 
 
-    private void Start()
+    private void Awake()
     {
-       // if (photonView.IsMine == true)
+        //if (photonView.IsMine == true) 
+        
             gameObject.tag = "Player";
-           // GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+            GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+        
+       
     }
 
     // Limit movement when using skills

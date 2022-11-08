@@ -12,19 +12,19 @@ public class UIMgr : MonoBehaviourPun
     // Save multiple skill types to this object
     private GameObject skillUI = null;
     [Header("½ºÅ³ Icon")]
-    [SerializeField] private Image[] skillIcon;
+    [SerializeField] private SpriteRenderer[] skillIcon;
 
     [Header("ÄðÅ¸ÀÓ")]
     [SerializeField] private TextMeshProUGUI cooltimeText;
     
-  //  Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
+    //Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
     public void SkillIcon(int skillNum)
     {
         switch (skillNum)
         {
             case 0:
-                System.Console.WriteLine("0¹ø µé¾î¿È");
-          //      Instantiate(skillIcon[0], IconPos, Quaternion.identity, GameObject.Find("Canvas").transform);
+                Debug.Log("0¹øµé¾î¿È");
+                Instantiate(skillIcon[0], Vector3.zero, Quaternion.identity, GameObject.Find("Canvas").transform);
                 break;
             case 1:
                 break;

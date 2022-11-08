@@ -34,8 +34,8 @@ public partial class FollowCam : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("mouse x : " + Input.mousePosition.x);
-        Debug.Log("mouse y : " + Input.mousePosition.y);
+       // Debug.Log("mouse x : " + Input.mousePosition.x);
+       // Debug.Log("mouse y : " + Input.mousePosition.y);
         //rayCamara.transform.position = playerPos.position + Vector3.up * 30;
         //rayCamara.transform.LookAt(playerPos.position);
         if (Input.GetKey(KeyCode.Space) || followBool == true)
