@@ -22,6 +22,7 @@ public class PlayerMove : MonoBehaviourPun
     private Vector3 clickPos = Vector3.one;
     private Vector3 desiredDir;
     private bool isMove = false;
+    private bool isClick = false;
     private bool nullCheck;
     private bool nullCheckHit;
     private int mask;
@@ -80,6 +81,7 @@ public class PlayerMove : MonoBehaviourPun
             {
                 clickPos = Input.mousePosition;
                 Move(clickPos);
+                isClick = true;
             }
         }
 
@@ -88,38 +90,31 @@ public class PlayerMove : MonoBehaviourPun
             MoveStop();
         }
 
-        if (isMove == true)
+        if (isMove == true && isClick == true)
         {
-            if (Mathf.Abs(desiredDir.z - transform.position.z) < 0.5f) desiredDir.y = transform.position.y;
-            else if (Mathf.Abs(desiredDir.x - transform.position.x) < 0.5f) desiredDir.y = transform.position.y;
             if (Vector3.Distance(desiredDir, transform.position) > 0.5f)
             {
                 myAnimator.SetBool("isMove", true);
                 navMeshAgent.isStopped = false;
                 navMeshAgent.updateRotation = true;
                 navMeshAgent.updatePosition = true;
-
+                isClick = false;
                 navMeshAgent.SetDestination(desiredDir);
             }
-            else
-                MoveStop();
         }
+        if (Mathf.Abs(desiredDir.z - transform.position.z) < 0.5f) desiredDir.y = transform.position.y;
+        else if (Mathf.Abs(desiredDir.x - transform.position.x) < 0.5f) desiredDir.y = transform.position.y;
+        if (Vector3.Distance(desiredDir, transform.position) < 0.5f) MoveStop();
 
 
 
     }
     public void Move(Vector3 mousePos)
     {
-    //    Debug.Log("Move");
-        mask = 1 << LayerMask.NameToLayer("Ground");
-
-
         //Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        // Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);
+        mask = 1 << LayerMask.NameToLayer("Ground");
         nullCheck = Physics.Raycast(Camera.main.ScreenPointToRay(mousePos), out hit, 9999, mask);
-
-        //Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);
-
-
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
         if (nullCheckHit == true)
         {
@@ -133,8 +128,8 @@ public class PlayerMove : MonoBehaviourPun
         mousePos.x = Input.mousePosition.x - 1642.384f;
         mousePos.y = Input.mousePosition.y - 11.25826f;
         mask = 1 << LayerMask.NameToLayer("Ground");
-        
-        nullCheck = Physics.Raycast(new Vector3(546.6f - mousePos.x * ratioX, 1000, 502.3f - mousePos.y * ratioY), Vector3.down,out hit,9999, mask);
+
+        nullCheck = Physics.Raycast(new Vector3(546.6f - mousePos.x * ratioX, 1000, 502.3f - mousePos.y * ratioY), Vector3.down, out hit, 9999, mask);
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
         if (nullCheckHit == true)
         {

@@ -11,7 +11,7 @@ namespace RPG_Indicator
         public RpgIndicatorData[] data;
         public DecalProjector MainIndicator;
         public DecalProjector RangeIndicator;
-        public float ProjectorHeight = 5;
+        public float ProjectorHeight = 10;
         [Space(10)]
         public bool ShowMainIndicator;
         public bool ShowRangeIndicator;
@@ -230,7 +230,7 @@ namespace RPG_Indicator
                 Vector3 targetPos = (player.position + raycastHit.point) / 2;
                 Vector3 Distance = targetPos - player.position;
                 Distance = Vector3.ClampMagnitude((Distance * 2), Range);
-                MainIndicator.transform.position = player.position + Distance;
+                MainIndicator.transform.position = player.position + Distance+(Vector3.up*10);
             }
         }
         private void RotateIndicator()
@@ -258,7 +258,7 @@ namespace RPG_Indicator
         }
         private void BasicSetup()
         {
-            transform.localPosition = new Vector3(0, ProjectorHeight / 2, 0);
+            transform.localPosition = new Vector3(0, 1, 0);
             MainIndicator.transform.localPosition = initialPosition;
             MainIndicator.scaleMode = DecalScaleMode.InheritFromHierarchy;
             MainIndicator.enabled = true;
