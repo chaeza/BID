@@ -25,7 +25,7 @@ public class ItemSpawner : MonoBehaviourPun
 
     private void Awake()
     {
-        RandomBigAreaItemSpawn();
+     //   RandomBigAreaItemSpawn();
     }
 
     public void RandomBigAreaItemSpawn()
