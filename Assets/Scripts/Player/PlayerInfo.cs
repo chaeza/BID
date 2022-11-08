@@ -36,9 +36,9 @@ public class PlayerInfo : MonoBehaviourPun
 
     private void Start()
     {
-       // if (photonView.IsMine == true)
-            gameObject.tag = "Player";
-           // GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+        // if (photonView.IsMine == true)
+        gameObject.tag = "Player";
+        GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
     }
 
     // Limit movement when using skills

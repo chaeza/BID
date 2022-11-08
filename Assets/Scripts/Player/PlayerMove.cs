@@ -4,13 +4,11 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.AI;
 
-
-
 public class PlayerMove : MonoBehaviourPun
 {
+    public NavMeshAgent navMeshAgent { get; private set; } = null;
     private PlayerInfo playerInfo;
     private Animator myAnimator;
-    private NavMeshAgent navMeshAgent;
     private float ratioX = 1.3103305785123966942148760330579f;
     private float ratioY = 1.2954545454545454545454545454545f;
 
