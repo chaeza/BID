@@ -10,15 +10,15 @@ public class UIMgr : MonoBehaviourPun
 {   // Save the object that called the skill cooldown
     private GameObject cooltimeGameobject = null;
     // Save multiple skill types to this object
-    private GameObject skillUI = null;
+/*    private GameObject skillUI = null;
     [Header("½ºÅ³ Icon")]
-    [SerializeField] private SpriteRenderer[] skillIcon;
+    [SerializeField] private SpriteRenderer[] skillIcon;*/
 
     [Header("ÄðÅ¸ÀÓ")]
     [SerializeField] private TextMeshProUGUI cooltimeText;
     
     //Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
-    public void SkillIcon(int skillNum)
+    /*public void SkillIcon(int skillNum)
     {
         switch (skillNum)
         {
@@ -29,7 +29,7 @@ public class UIMgr : MonoBehaviourPun
             case 1:
                 break;
         }
-    }
+    }*/
 
     //Object that called the skill cooldown to the UI manager, cooldown time
     public void SkillCooltime(GameObject my, int Cool)

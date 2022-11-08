@@ -16,7 +16,7 @@ public class RandomSkill : MonoBehaviour
         skillRan = Random.Range(0, skillNum);
         //skill Test number
         skillRan = 0;
-        GameMgr.Instance.uIMgr.SkillIcon(skillRan);
+        //GameMgr.Instance.uIMgr.SkillIcon(skillRan);
         if (skillRan == 0) player.AddComponent<BloodField>();
         //else if (skillRan == 1) player.AddComponent<SwordCrash>();
         
