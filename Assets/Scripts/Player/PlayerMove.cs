@@ -13,6 +13,10 @@ public class PlayerMove : MonoBehaviourPun
     private NavMeshAgent navMeshAgent;
     private float ratioX = 1.3103305785123966942148760330579f;
     private float ratioY = 1.2954545454545454545454545454545f;
+
+    //test indicator
+    private CodeExample codeExample;
+
     private RaycastHit hit;
     //private Vector2 mousePos = Vector2.zero;
     private Vector3 clickPos = Vector3.one;
@@ -27,6 +31,7 @@ public class PlayerMove : MonoBehaviourPun
         playerInfo = GetComponent<PlayerInfo>();
         myAnimator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        codeExample = GameObject.FindObjectOfType<CodeExample>();
         navMeshAgent.speed = playerInfo.moveSpeed;
         MoveStop();
     }
@@ -37,6 +42,32 @@ public class PlayerMove : MonoBehaviourPun
 
     private void Update()
     {
+        //test indicator
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            codeExample.Cone();
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            codeExample.Line();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            codeExample.Area();
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            codeExample.Radius();
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            codeExample.Cast();
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            codeExample.Interrupt();
+        }
+
         //if (photonView.IsMine == false) return;
         if (GameMgr.Instance.playerInput.inputKey2 == KeyCode.Mouse1)
         {
@@ -79,7 +110,7 @@ public class PlayerMove : MonoBehaviourPun
     }
     public void Move(Vector3 mousePos)
     {
-        Debug.Log("Move");
+    //    Debug.Log("Move");
         mask = 1 << LayerMask.NameToLayer("Ground");
 
 
