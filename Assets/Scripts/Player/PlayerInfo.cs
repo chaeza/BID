@@ -42,6 +42,7 @@ public class PlayerInfo : MonoBehaviourPun
     [field: SerializeField] public state playerStay { get; private set; }
     [field: SerializeField] public state playerAlive { get; private set; }
 
+    private FollowCam followCam;
     public delegate void OnChangeMoveSpeed();
     public event OnChangeMoveSpeed onChangeMoveSpeed;
     // skill range picture
@@ -53,12 +54,18 @@ public class PlayerInfo : MonoBehaviourPun
     private Coroutine unbeatableCoroutine;
     private string sessionID;
 
+    private void Awake()
+    {
+        followCam = FindObjectOfType<FollowCam>();
+    }
     private void Start()
     {
-        // if (photonView.IsMine == true)
+        if (photonView.IsMine == true) gameObject.tag = "MainPlayer";
         gameObject.tag = "Player";
         // GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
+        followCam.SetPlayerPos(gameObject.transform);
+        
     }
     public void StayPlayer(float time)
     {
