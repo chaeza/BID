@@ -50,24 +50,24 @@ public partial class FollowCam : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Y) && followBool == false) followBool = true;
         else if (GameMgr.Instance.playerInput.yKey == KeyCode.Y && followBool == true) followBool = false;
-        if (followBool == false)
-        {
-            if (Input.mousePosition.x >= 1890)
-            {
-                transform.position = transform.position - Vector3.right * cameraSpeed;
-            }
-            else if (Input.mousePosition.x <= 10)
-            {
-                transform.position = transform.position + Vector3.right * cameraSpeed;
-            }
-            if (Input.mousePosition.y >= 1050)
-            {
-                transform.position = transform.position - Vector3.forward * cameraSpeed;
-            }
-            else if (Input.mousePosition.y <= 5)
-            {
-                transform.position = transform.position + Vector3.forward * cameraSpeed;
-            }
-        }
+        //if (followBool == false)
+        //{
+        //    if (Input.mousePosition.x >= 1890)
+        //    {
+        //        transform.position = transform.position - Vector3.right * cameraSpeed;
+        //    }
+        //    else if (Input.mousePosition.x <= 10)
+        //    {
+        //        transform.position = transform.position + Vector3.right * cameraSpeed;
+        //    }
+        //    if (Input.mousePosition.y >= 1050)
+        //    {
+        //        transform.position = transform.position - Vector3.forward * cameraSpeed;
+        //    }
+        //    else if (Input.mousePosition.y <= 5)
+        //    {
+        //        transform.position = transform.position + Vector3.forward * cameraSpeed;
+        //    }
+        //}
     }
 }
