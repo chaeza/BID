@@ -26,7 +26,7 @@ public class PlayerInfo : MonoBehaviourPun
     [field: SerializeField] public float basicAttackSpeed { get; private set; } = 1;
     [field: SerializeField] public float basicAttackDamage { get; private set; } = 10;
     [field: SerializeField] public float damageDecrease { get; private set; } = 0;
-
+    [field: SerializeField] public FollowCam followCam { get; private set; } 
     // skill range picture
     public GameObject skilla;
     // skill range
@@ -34,11 +34,17 @@ public class PlayerInfo : MonoBehaviourPun
     public bool stay { get; set; } = false;
 
 
+    private void Awake()
+    {
+        followCam = FindObjectOfType<FollowCam>();
+    }
+
     private void Start()
     {
-       // if (photonView.IsMine == true)
-            gameObject.tag = "Player";
-           // GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+        // if (photonView.IsMine == true)
+        gameObject.tag = "Player";
+        GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+        followCam.SetPlayerPos(gameObject.transform); 
     }
 
     // Limit movement when using skills
