@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class PlayerSpawner : MonoBehaviour
+public class PlayerSpawner : MonoBehaviourPun
 {
-    // Start is called before the first frame update
-    void Start()
+   Vector3 playerPos = new Vector3(379.9445f, 62.06178f, 326.5233f);
+
+    private void Awake()
     {
-        
+        if(photonView.IsMine)
+        PhotonNetwork.Instantiate("Player", playerPos,Quaternion.identity);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
