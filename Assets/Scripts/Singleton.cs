@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Singleton<T> : MonoBehaviourPun where T : Singleton<T>
+public class Singleton<T> : MonoBehaviourPun where T : class
 {
     private static T _instance = null;
     public static T Instance
