@@ -11,13 +11,13 @@ public class PlayerMove : MonoBehaviourPun
     private Animator myAnimator;
     private float ratioX = 1.3103305785123966942148760330579f;
     private float ratioY = 1.2954545454545454545454545454545f;
-
+    
     //test indicator
     private CodeExample codeExample;
 
     private RaycastHit hit;
-    //private Vector2 mousePos = Vector2.zero;
     private Vector3 clickPos = Vector3.one;
+    private Vector3 adjustedPos = Vector3.zero;
     private Vector3 desiredDir;
     private bool isMove = false;
     private bool isClick = false;
@@ -66,7 +66,7 @@ public class PlayerMove : MonoBehaviourPun
         {
             codeExample.Interrupt();
         }
-
+        
         //if (photonView.IsMine == false) return;
         if (GameMgr.Instance.playerInput.inputKey2 == KeyCode.Mouse1)
         {
@@ -74,6 +74,7 @@ public class PlayerMove : MonoBehaviourPun
             {
                 clickPos = Input.mousePosition;
                 MoveMiniMap(clickPos);
+                isClick = true;
             }
             else
             {
@@ -123,11 +124,10 @@ public class PlayerMove : MonoBehaviourPun
 
     public void MoveMiniMap(Vector3 mousePos)
     {
-        mousePos.x = Input.mousePosition.x - 1642.384f;
-        mousePos.y = Input.mousePosition.y - 11.25826f;
+        adjustedPos.x = mousePos.x - 1642.384f;
+        adjustedPos.y = mousePos.y - 11.25826f;
         mask = 1 << LayerMask.NameToLayer("Ground");
-
-        nullCheck = Physics.Raycast(new Vector3(546.6f - mousePos.x * ratioX, 1000, 502.3f - mousePos.y * ratioY), Vector3.down, out hit, 9999, mask);
+        nullCheck = Physics.Raycast(new Vector3(546.6f - adjustedPos.x * ratioX, 1000, 502.3f - adjustedPos.y * ratioY), Vector3.down, out hit, 9999, mask);
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
         if (nullCheckHit == true)
         {

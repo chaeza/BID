@@ -308,6 +308,7 @@ MonoBehaviour:
   <basicAttackSpeed>k__BackingField: 1
   <basicAttackDamage>k__BackingField: 10
   <damageDecrease>k__BackingField: 0
+  <followCam>k__BackingField: {fileID: 0}
   skilla: {fileID: 0}
   myskillRangerect: {fileID: 0}
 --- !u!195 &1694025840
