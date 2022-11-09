@@ -38,11 +38,12 @@ public class PlayerInfo : MonoBehaviourPun
     [field: SerializeField] public float damageDecrease { get; private set; } = 0;
     [field: Header("PlayerState")]
     [field: SerializeField] public state playerUnbeatable { get; private set; }
-    [field: SerializeField] public state playerIsMove { get; private set; }
+    [field: SerializeField] public state playerStun { get; private set; }
+    [field: SerializeField] public state playerStay { get; private set; }
     [field: SerializeField] public state playerAlive { get; private set; }
 
-    public delegate void ChangeMoveSpeed();
-    public event ChangeMoveSpeed changeMoveSpeed;
+    public delegate void OnChangeMoveSpeed();
+    public event OnChangeMoveSpeed onChangeMoveSpeed;
     // skill range picture
     public GameObject skilla;
     // skill range
@@ -57,11 +58,11 @@ public class PlayerInfo : MonoBehaviourPun
         // if (photonView.IsMine == true)
         gameObject.tag = "Player";
         // GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
-        if (changeMoveSpeed != null) changeMoveSpeed();
+        if (onChangeMoveSpeed != null) onChangeMoveSpeed();
     }
     public void StayPlayer(float time)
     {
-        StartCoroutine(Stun(state.Stay,time));
+        StartCoroutine(Stay(time));
     }
 
     [PunRPC]
@@ -78,7 +79,7 @@ public class PlayerInfo : MonoBehaviourPun
         if (attackInfo.attackState == state.Stun)
         {
             if (stunCoroutine != null) StopCoroutine(stunCoroutine);
-            stunCoroutine = StartCoroutine(Stun(state.Stun,attackInfo.timer));
+            stunCoroutine = StartCoroutine(Stun(attackInfo.timer));
         }
         else if (attackInfo.attackState == state.Slow)
         {
@@ -106,6 +107,12 @@ public class PlayerInfo : MonoBehaviourPun
             curHP = maxHP;
     }
     [PunRPC]
+    private void ChangeMoveSpeed(float value)
+    {
+        moveSpeed = value;
+        if (onChangeMoveSpeed != null) onChangeMoveSpeed();
+    }
+    [PunRPC]
     private void SetUnbeatable(float time)
     {
         if (unbeatableCoroutine != null) StopCoroutine(unbeatableCoroutine);
@@ -120,18 +127,25 @@ public class PlayerInfo : MonoBehaviourPun
     #region playerStateChange
     IEnumerator Slow(float slowDownRate, float time)
     {
-        moveSpeed = basicMoveSpeed;
-        moveSpeed *= slowDownRate / 100;
-        if (changeMoveSpeed != null) changeMoveSpeed();
+        float Sp = basicMoveSpeed;
+        Sp *= slowDownRate / 100;
+        ChangeMoveSpeed(Sp);
         yield return new WaitForSeconds(time);
-        moveSpeed = basicMoveSpeed;
+        ChangeMoveSpeed(basicMoveSpeed);
         yield break;
     }
-    IEnumerator Stun(state change,float time)
+    IEnumerator Stay(float time)
     {
-        playerIsMove = change;
+        playerStay = state.Stay;
         yield return new WaitForSeconds(time);
-        playerIsMove = state.None;
+        playerStay = state.None;
+        yield break;
+    }
+    IEnumerator Stun(float time)
+    {
+        playerStun = state.Stun;
+        yield return new WaitForSeconds(time);
+        playerStun = state.None;
         yield break;
     }
     IEnumerator DamageDecrease(float value, float time)

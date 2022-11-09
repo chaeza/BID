@@ -32,7 +32,7 @@ public class PlayerMove : MonoBehaviourPun
         navMeshAgent = GetComponent<NavMeshAgent>();
         codeExample = GameObject.FindObjectOfType<CodeExample>();
         navMeshAgent.speed = playerInfo.moveSpeed;
-        playerInfo.changeMoveSpeed += myChangeSpeed;
+        playerInfo.onChangeMoveSpeed += myChangeSpeed;
         MoveStop();
     }
     private void myChangeSpeed()
@@ -70,7 +70,7 @@ public class PlayerMove : MonoBehaviourPun
         }
 
         //if (photonView.IsMine == false) return;
-        if (playerInfo.playerIsMove == state.Stun || playerInfo.playerIsMove == state.Stay)
+        if (playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay)
         {
             MoveStop();
             return;

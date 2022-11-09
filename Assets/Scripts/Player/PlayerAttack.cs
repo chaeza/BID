@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviourPun
     {
         //if (photonView.IsMine == false) return;
         if (playerInfo.playerAlive == state.Die) return;
-        if (playerInfo.playerIsMove == state.Stun) return;
+        if (playerInfo.playerStun == state.Stun) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.A)
         {
             Attack();
