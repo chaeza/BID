@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class ViewScreen : MonoBehaviour
 {
-    [SerializeField] private GameObject mainCamera = null;
+    private GameObject mainCamera = null;
     private Vector2 tempVec;
     private float ratioX = 1.3103305785123966942148760330579f;
     private float ratioY = 1.2954545454545454545454545454545f;
     private float distanceFromPlayerZ = 90;
-    private float distanceFromPlayerY = 120;
     private float distanceFromPlayerX = -10;
-    
+
+    private void Start()
+    {
+        mainCamera = Camera.main.gameObject;
+    }
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         tempVec.x = 546.6f - mainCamera.transform.position.x + distanceFromPlayerX;
         tempVec.y = 507.6f - mainCamera.transform.position.z + distanceFromPlayerZ;
