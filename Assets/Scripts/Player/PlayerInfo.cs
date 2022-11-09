@@ -67,7 +67,7 @@ public class PlayerInfo : MonoBehaviourPun
         follow.SetPlayerPos(gameObject.transform);
         // if (photonView.IsMine == true)
         gameObject.tag = "Player";
-        // GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+        GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
     }
     public void StayPlayer(float time)

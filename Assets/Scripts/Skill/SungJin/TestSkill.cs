@@ -32,7 +32,7 @@ public class TestSkill : Skill
     private void Update()
     {
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.D) SkillUse();
-        if (GameMgr.Instance.playerInput.inputKey == KeyCode.Mouse0) SkillClick(Input.mousePosition);
+        else if (GameMgr.Instance.playerInput.inputKey == KeyCode.Mouse0) SkillClick(Input.mousePosition);
     }
     protected override void SkillFire()
     {
