@@ -15,6 +15,8 @@ public partial class FollowCam : MonoBehaviour
     private float playerY;
     private float ratioX = 1.3103305785123966942148760330579f;
     private float ratioY = 1.2954545454545454545454545454545f;
+    private Vector3 forwardDir = new Vector3(0.64f,0,-6.7784f).normalized;
+    private Vector3 rightDir = new Vector3(-3.3678f,0,-0.5175f).normalized;
 
     public void SetPlayerPos(Transform player)
     {
@@ -50,21 +52,25 @@ public partial class FollowCam : MonoBehaviour
         else if (GameMgr.Instance.playerInput.yKey == KeyCode.Y && followBool == true) followBool = false;
         if (followBool == false)
         {
+            // 오른쪽
             if (Input.mousePosition.x >= 1890)
             {
-                transform.position = transform.position - Vector3.right * cameraSpeed;
+                transform.position = transform.position + rightDir * cameraSpeed;
             }
+            // 왼쪽
             else if (Input.mousePosition.x <= 10)
             {
-                transform.position = transform.position + Vector3.right * cameraSpeed;
+                transform.position = transform.position - rightDir * cameraSpeed;
             }
+            // 위쪽
             if (Input.mousePosition.y >= 1050)
             {
-                transform.position = transform.position - Vector3.forward * cameraSpeed;
+                transform.position = transform.position + forwardDir * cameraSpeed;
             }
+            // 아래쪽
             else if (Input.mousePosition.y <= 5)
             {
-                transform.position = transform.position + Vector3.forward * cameraSpeed;
+                transform.position = transform.position - forwardDir * cameraSpeed;
             }
         }
     }
