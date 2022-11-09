@@ -19,7 +19,7 @@ public class MiniMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        target = GameObject.FindWithTag("Player");
+        target = GameObject.FindWithTag("MainPlayer");
         tempVec.x = 546.6f - target.transform.position.x;
         tempVec.y = 507.6f - target.transform.position.z;
         if (target == null)

@@ -13,7 +13,8 @@ public class CodeExample : MonoBehaviour
     // Style refer to the array od RPGIndicatorData. It will affect the colors, materials and layer to use
     private void Start()
     {
-      //  Radius();
+        //  Radius();
+
     }
     public void Cone(float angle,float range)
     {

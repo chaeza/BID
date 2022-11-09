@@ -39,7 +39,7 @@ public class PlayerMove : MonoBehaviourPun
 
     private void Update()
     {
-        //if (photonView.IsMine == false) return;
+        if (photonView.IsMine == false) return;
         if (playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay)
         {
             MoveStop();

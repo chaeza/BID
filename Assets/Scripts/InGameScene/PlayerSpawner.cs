@@ -13,15 +13,14 @@ public class PlayerSpawner : MonoBehaviourPunCallbacks
     {
         playerOn = new bool[spawnPoint.Length];
         Player[] playerList = PhotonNetwork.PlayerList;
+        Debug.Log(playerList.Length + "vvvvvvvvvvvv");
         for (int i = 0; i < playerList.Length; i++)
         {
             if (playerList[i].NickName == PhotonNetwork.NickName) spawnPointNum = i;
         }
-        if (photonView.IsMine)
-        {
-           GameObject player = PhotonNetwork.Instantiate("Player", spawnPoint[spawnPointNum].transform.position, Quaternion.identity);
-            Debug.Log("积己肯丰");
-        }
+        GameObject player = PhotonNetwork.Instantiate("Player", spawnPoint[spawnPointNum].transform.position, Quaternion.identity);
+        GameMgr.Instance.followCam.SetPlayerPos(player.transform);
+        Debug.Log("积己肯丰");
     }
     public int PlayerInstantiateLogic()
     {

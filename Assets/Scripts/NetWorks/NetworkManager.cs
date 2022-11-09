@@ -55,7 +55,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         //    DontDestroyOnLoad(this);
         ClearLobby();
-      //  photonView.StartCoroutine(AutoSyncDelay());
+        photonView.StartCoroutine(AutoSyncDelay());
         if (FindObjectOfType<TitleToGameScene>() == null)
         {
             postman = Instantiate(Postman);

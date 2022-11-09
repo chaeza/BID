@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2984988034229991135, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2984988034229991405, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -305,10 +309,14 @@ MonoBehaviour:
   <maxHP>k__BackingField: 100
   <curHP>k__BackingField: 100
   <moveSpeed>k__BackingField: 10
+  <basicMoveSpeed>k__BackingField: 10
   <basicAttackSpeed>k__BackingField: 1
   <basicAttackDamage>k__BackingField: 10
   <damageDecrease>k__BackingField: 0
-  <followCam>k__BackingField: {fileID: 0}
+  <playerUnbeatable>k__BackingField: 0
+  <playerStun>k__BackingField: 0
+  <playerStay>k__BackingField: 0
+  <playerAlive>k__BackingField: 0
   skilla: {fileID: 0}
   myskillRangerect: {fileID: 0}
 --- !u!195 &1694025840
