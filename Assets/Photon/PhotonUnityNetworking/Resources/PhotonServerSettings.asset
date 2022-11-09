@@ -52,6 +52,9 @@ MonoBehaviour:
   - SetUnbeatable
   - Attack
   - ChangeMoveSpeed
+  - EndGame
+  - Get_NewBets
+  - RPC_All_SessionID
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

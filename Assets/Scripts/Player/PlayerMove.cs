@@ -87,8 +87,8 @@ public class PlayerMove : MonoBehaviourPun
     }
     public void Move(Vector3 mousePos)
     {
-        //Ray ray = Camera.main.ScreenPointToRay(mousePos);
-        // Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);
+       /* Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);*/
         mask = 1 << LayerMask.NameToLayer("Ground");
         nullCheck = Physics.Raycast(Camera.main.ScreenPointToRay(mousePos), out hit, 9999, mask);
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
