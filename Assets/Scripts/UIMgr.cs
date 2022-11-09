@@ -9,21 +9,17 @@ using Photon.Pun;
 public class UIMgr : MonoBehaviourPun
 {   // Save the object that called the skill cooldown
     private GameObject cooltimeGameobject = null;
-    // Save multiple skill types to this object
-    private GameObject skillUI = null;
     [Header("½ºÅ³ Icon")]
     [SerializeField] private GameObject[] skillIcon;
-
-
     [Header("ÄðÅ¸ÀÓ")]
-    [SerializeField] private TextMeshProUGUI cooltimeText;
+    [SerializeField] private TextMeshProUGUI skillCoolTimeText;
 
     Vector2 createPoint = new Vector2(180,90);
 
 
 
     //  Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
-    public void SkillIcon(int skillNum)
+    public void SetSkillIcon(int skillNum)
     {
         Instantiate(skillIcon[skillNum], createPoint, Quaternion.identity, GameObject.Find("Canvas").transform);
     }

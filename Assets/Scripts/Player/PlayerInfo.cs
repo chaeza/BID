@@ -20,6 +20,8 @@ public enum state
 }
 public struct DamageInfo
 {
+    public AttackType attackType;
+    public float interval;
     public state attackState;
     public float attackDamage;
     public float slowDownRate;
@@ -42,9 +44,11 @@ public class PlayerInfo : MonoBehaviourPun
     [field: SerializeField] public state playerStay { get; private set; }
     [field: SerializeField] public state playerAlive { get; private set; }
 
-    private FollowCam followCam;
+    private FollowCam follow;
     public delegate void OnChangeMoveSpeed();
     public event OnChangeMoveSpeed onChangeMoveSpeed;
+    public delegate void OnGetDamage();
+    public event OnGetDamage onGetDamage;
     // skill range picture
     public GameObject skilla;
     // skill range
@@ -56,16 +60,15 @@ public class PlayerInfo : MonoBehaviourPun
 
     private void Awake()
     {
-        followCam = FindObjectOfType<FollowCam>();
+        follow = FindObjectOfType<FollowCam>();
     }
     private void Start()
     {
-        if (photonView.IsMine == true) gameObject.tag = "MainPlayer";
+        follow.SetPlayerPos(gameObject.transform);
+        // if (photonView.IsMine == true)
         gameObject.tag = "Player";
-        // GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+        GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
-        followCam.SetPlayerPos(gameObject.transform);
-        
     }
     public void StayPlayer(float time)
     {
@@ -94,6 +97,7 @@ public class PlayerInfo : MonoBehaviourPun
             slowCoroutine = StartCoroutine(Slow(attackInfo.slowDownRate, attackInfo.timer));
         }
         curHP -= attackInfo.attackDamage * ((100 - damageDecrease) / 100);
+        if (onGetDamage != null) onGetDamage();
         if (curHP <= 0)
         {
             curHP = 0;

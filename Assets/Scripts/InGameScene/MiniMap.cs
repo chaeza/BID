@@ -7,8 +7,9 @@ public class MiniMap : MonoBehaviour
     // player position
     private GameObject target;
     // position correction
-    private Vector3 offset;
-    private float ratio = 1.355117f;
+    private Vector2 tempVec;
+    private float ratioX = 1.3103305785123966942148760330579f;
+    private float ratioY = 1.2954545454545454545454545454545f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +19,14 @@ public class MiniMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        target = GameObject.FindWithTag("mainPlayer");
+        target = GameObject.FindWithTag("Player");
+        tempVec.x = 546.6f - target.transform.position.x;
+        tempVec.y = 507.6f - target.transform.position.z;
         if (target == null)
             return;
         else
         {
-            transform.localPosition = new Vector3(target.transform.position.x * ratio, target.transform.position.z * ratio, 0);
+            transform.localPosition = new Vector2(-121 + (tempVec.x / ratioX), -121 + (tempVec.y / ratioY));
         }
     }
 }
