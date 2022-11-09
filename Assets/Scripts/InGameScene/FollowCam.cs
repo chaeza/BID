@@ -16,7 +16,7 @@ public partial class FollowCam : MonoBehaviour
     private float ratioX = 1.3103305785123966942148760330579f;
     private float ratioY = 1.2954545454545454545454545454545f;
     private Vector3 forwardDir = new Vector3(0.64f,0,-6.7784f).normalized;
-    private Vector3 rightDir = new Vector3(-3.3678f,0,-0.5175f).normalized;
+    private Vector3 rightDir = new Vector3(-5.5936f,0,-0.26f).normalized;
 
     public void SetPlayerPos(Transform player)
     {
