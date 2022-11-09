@@ -11,7 +11,7 @@ namespace RPG_Indicator
         public RpgIndicatorData[] data;
         public DecalProjector MainIndicator;
         public DecalProjector RangeIndicator;
-        public float ProjectorHeight = 5;
+        public float ProjectorHeight = 100;
         [Space(10)]
         public bool ShowMainIndicator;
         public bool ShowRangeIndicator;
@@ -65,7 +65,7 @@ namespace RPG_Indicator
         void Start()
         {
             InitiateIndicator();
-            layermask = 1 << LayerMask.NameToLayer("Ground");
+            layermask = 1 << LayerMask.NameToLayer("Indicator");
             Debug.Log("at start  : "+ layermask);
         }
         private void Update()
@@ -81,7 +81,7 @@ namespace RPG_Indicator
             MainIndicator.material = new Material(data[style].ConeIndicator);
             BasicSetup();
             MainIndicator.material.SetFloat("_Angle", angle);
-            MainIndicator.transform.localScale = new Vector3(range * 2, range * 2, ProjectorHeight);
+            MainIndicator.transform.localScale = new Vector3(range * 2, range * 2, 100);
             Range = range;
 
             if (showRangeIndicator) ShowRange(range, color, style);
@@ -98,7 +98,7 @@ namespace RPG_Indicator
         {
             MainIndicator.material = new Material(data[style].LineIndicator);
             BasicSetup();
-            MainIndicator.transform.localScale = new Vector3(length, (range * 2), ProjectorHeight);
+            MainIndicator.transform.localScale = new Vector3(length, (range * 2),100);
             Range = range;
 
             if (showRangeIndicator) ShowRange(range, color, style);
@@ -114,7 +114,7 @@ namespace RPG_Indicator
         {
             MainIndicator.material = new Material(data[style].AreaIndicator);
             BasicSetup();
-            MainIndicator.transform.localScale = new Vector3(radius * 2, radius * 2, ProjectorHeight);
+            MainIndicator.transform.localScale = new Vector3(radius * 2, radius * 2, 100);
             Range = range;
 
             if (showRangeIndicator) ShowRange(range, color, style);
@@ -131,7 +131,7 @@ namespace RPG_Indicator
             HideRange();
             MainIndicator.material = new Material(data[style].RadiusIndicator);
             BasicSetup();
-            MainIndicator.transform.localScale = new Vector3(radius * 2, radius * 2, ProjectorHeight);
+            MainIndicator.transform.localScale = new Vector3(radius * 2, radius * 2, 100);
             Range = radius;
             if (showRangeIndicator) ShowRange(radius, color, style);
             ColorChange(color, style);
@@ -148,7 +148,7 @@ namespace RPG_Indicator
             ColorChange(color, style);
             RangeIndicator.scaleMode = DecalScaleMode.InheritFromHierarchy;
             RangeIndicator.enabled = true;
-            RangeIndicator.transform.localScale = new Vector3(range * 2, range * 2, ProjectorHeight);
+            RangeIndicator.transform.localScale = new Vector3(range * 2, range * 2,100);
             Range = range;
             if (isPlayer)
             {
@@ -225,12 +225,12 @@ namespace RPG_Indicator
             }
 
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit raycastHit, 2000, 1 << LayerMask.NameToLayer("Ground")))
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, 2000, 1 << LayerMask.NameToLayer("Indicator")))
             {
                 Vector3 targetPos = (player.position + raycastHit.point) / 2;
                 Vector3 Distance = targetPos - player.position;
                 Distance = Vector3.ClampMagnitude((Distance * 2), Range);
-                MainIndicator.transform.position = player.position + Distance;
+                MainIndicator.transform.position = player.position + Distance+(Vector3.up*10);
             }
         }
         private void RotateIndicator()
@@ -258,7 +258,7 @@ namespace RPG_Indicator
         }
         private void BasicSetup()
         {
-            transform.localPosition = new Vector3(0, ProjectorHeight / 2, 0);
+            transform.localPosition = new Vector3(0, 10, 0);
             MainIndicator.transform.localPosition = initialPosition;
             MainIndicator.scaleMode = DecalScaleMode.InheritFromHierarchy;
             MainIndicator.enabled = true;
@@ -266,7 +266,7 @@ namespace RPG_Indicator
         }
         private void ColorChange(IndicatorColor color, int style)
         {
-            layermask = 1 << LayerMask.NameToLayer("Ground");
+            layermask = 1 << LayerMask.NameToLayer("Indicator");
             switch (color)
             {
                 case IndicatorColor.Ally:
