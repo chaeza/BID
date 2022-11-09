@@ -8,6 +8,7 @@ TagManager:
   - NPC
   - FxTemporaire
   - Bullet
+  - MainPlayer
   layers:
   - Default
   - TransparentFX

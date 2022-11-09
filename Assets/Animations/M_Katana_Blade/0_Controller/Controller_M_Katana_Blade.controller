@@ -36,9 +36,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.78571427
+  m_ExitTime: 0
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -105,9 +105,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.85294116
+  m_ExitTime: 0
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -8881,9 +8881,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.8026316
+  m_ExitTime: 0
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -9194,10 +9194,10 @@ AnimatorStateMachine:
     m_Position: {x: 876, y: 1116, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102940269401549080}
-    m_Position: {x: -70, y: 280, z: 0}
+    m_Position: {x: 70, y: 260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102986279358905062}
-    m_Position: {x: -70, y: 350, z: 0}
+    m_Position: {x: 70, y: 340, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102247344202437292}
     m_Position: {x: 516, y: 12, z: 0}
@@ -9218,7 +9218,7 @@ AnimatorStateMachine:
     m_Position: {x: 732, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102009501352868412}
-    m_Position: {x: -70, y: 420, z: 0}
+    m_Position: {x: 80, y: 410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102411211021343402}
     m_Position: {x: 732, y: -132, z: 0}
@@ -9362,7 +9362,7 @@ AnimatorStateMachine:
     m_Position: {x: 1008, y: -468, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102009005531585698}
-    m_Position: {x: -220, y: -40, z: 0}
+    m_Position: {x: -130, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102838178404311534}
     m_Position: {x: 1008, y: -420, z: 0}

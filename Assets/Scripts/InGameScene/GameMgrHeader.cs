@@ -21,4 +21,10 @@ public partial class GameMgr : Singleton<GameMgr>
     [Tooltip("Game MGR randomSkill")]
     [field: SerializeField]
     public RandomSkill randomSkill { get; private set; } = null;
+    [Tooltip("Game MGR randomItem")]
+    [field: SerializeField]
+    public RandomItem randomItem { get; private set; } = null;
+    [Tooltip("Game MGR inventory")]
+    [field: SerializeField]
+    public Inventory inventory { get; private set; } = null;
 }

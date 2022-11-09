@@ -5,6 +5,13 @@ using Photon.Pun;
 
 public class TestSkill : Skill
 {
+    [SerializeField] private GameObject Eff;
+
+    //PlayerInfo playerInfo;
+    //private void Awake()
+    //{
+    //    playerInfo = GetComponent<PlayerInfo>();
+    //}
     private void Start()
     {
         skillInfo.angle = 20;//use Cone
@@ -13,6 +20,9 @@ public class TestSkill : Skill
         skillInfo.length = 6;//use Projectile,
         skillInfo.cooltime = 0;
         skillInfo.skillType = SkillType.NonTarget;
+
+        skillInfo.skillDamageInfo.attackType = AttackType.Shot;
+        skillInfo.skillDamageInfo.interval = 0;
         skillInfo.skillDamageInfo.attackDamage = 0;
         skillInfo.skillDamageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.skillDamageInfo.attackState = state.None;
@@ -22,10 +32,11 @@ public class TestSkill : Skill
     private void Update()
     {
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.D) SkillUse();
-        if (GameMgr.Instance.playerInput.inputKey == KeyCode.Mouse0) SkillClick(Input.mousePosition);
+        else if (GameMgr.Instance.playerInput.inputKey == KeyCode.Mouse0) SkillClick(Input.mousePosition);
     }
     protected override void SkillFire()
     {
-        Debug.Log("새로운스킬발사");
+        GameObject eff = PhotonNetwork.Instantiate("HitBox", transform.position, Quaternion.identity);
+        eff.AddComponent<HitBox>().damageInfo = skillInfo.skillDamageInfo;
     }
 }
