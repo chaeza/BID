@@ -40,47 +40,33 @@ public class Skill : MonoBehaviourPun
     }
     protected void SkillUse()
     {
+        codeExample.Interrupt();
         if (skillInfo.skillType == SkillType.Immediate)
         {
-            codeExample.Interrupt();
             codeExample.Radius(skillInfo.radius);
             SkillFire();
         }
         else if (skillInfo.skillType == SkillType.Projectile)
         {
-            if (click == true)
-            {
-                codeExample.Interrupt();
-                click = false;
-            }
+            if (click == true) click = false;
             else
             {
-                Debug.Log("사용");
                 codeExample.Line(skillInfo.length, skillInfo.range);
                 click = true;
             }
         }
         else if (skillInfo.skillType == SkillType.Cone)
         {
-            if (click == true)
-            {
-                codeExample.Interrupt();
-                click = false;
-            }
+            if (click == true) click = false;
             else
             {
-                Debug.Log("사용");
                 codeExample.Cone(skillInfo.angle, skillInfo.range);
                 click = true;
             }
         }
         else if (skillInfo.skillType == SkillType.NonTarget)
         {
-            if (click == true)
-            {
-                codeExample.Interrupt();
-                click = false;
-            }
+            if (click == true) click = false;
             else
             {
                 codeExample.Area(skillInfo.radius, skillInfo.range);

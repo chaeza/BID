@@ -20,6 +20,8 @@ public enum state
 }
 public struct DamageInfo
 {
+    public AttackType attackType;
+    public float interval;
     public state attackState;
     public float attackDamage;
     public float slowDownRate;
@@ -45,6 +47,8 @@ public class PlayerInfo : MonoBehaviourPun
     private FollowCam follow;
     public delegate void OnChangeMoveSpeed();
     public event OnChangeMoveSpeed onChangeMoveSpeed;
+    public delegate void OnGetDamage();
+    public event OnGetDamage onGetDamage;
     // skill range picture
     public GameObject skilla;
     // skill range
@@ -93,6 +97,7 @@ public class PlayerInfo : MonoBehaviourPun
             slowCoroutine = StartCoroutine(Slow(attackInfo.slowDownRate, attackInfo.timer));
         }
         curHP -= attackInfo.attackDamage * ((100 - damageDecrease) / 100);
+        if (onGetDamage != null) onGetDamage();
         if (curHP <= 0)
         {
             curHP = 0;
