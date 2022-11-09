@@ -19,13 +19,13 @@ public class RandomSkill : MonoBehaviour
         //skill Test number
         skillRan = 0;
         //GameMgr.Instance.uIMgr.SkillIcon(skillRan);
-        if (skillRan == 0) player.AddComponent<BloodField>();
+        //if (skillRan == 0) player.AddComponent<BloodField>();
         //else if (skillRan == 1) player.AddComponent<SwordCrash>();
 
         //  else if (skillRan == 9) player.0AddComponent<Skill_BasicMissile>();
 
-        else
-            Debug.Log("Player didn't get any skill");
+        //else
+        //    Debug.Log("Player didn't get any skill");
         //GameMgr.Instance.uIMgr.SkillUI(skillRan);
     }
 }

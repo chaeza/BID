@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviourPun
 
     private RaycastHit hit;
     private Vector3 clickPos = Vector3.one;
+    private Vector3 hitPos = Vector3.zero;
     private Vector3 desiredDir;
     private bool isMove = false;
     private bool isClick = false;
@@ -50,6 +51,7 @@ public class PlayerMove : MonoBehaviourPun
             {
                 clickPos = Input.mousePosition;
                 MoveMiniMap(clickPos);
+                isClick = true;
             }
             else
             {
@@ -99,11 +101,11 @@ public class PlayerMove : MonoBehaviourPun
 
     public void MoveMiniMap(Vector3 mousePos)
     {
-        mousePos.x = Input.mousePosition.x - 1642.384f;
-        mousePos.y = Input.mousePosition.y - 11.25826f;
+        hitPos.x = mousePos.x - 1642.384f;
+        hitPos.y = mousePos.y - 11.25826f;
         mask = 1 << LayerMask.NameToLayer("Ground");
 
-        nullCheck = Physics.Raycast(new Vector3(546.6f - mousePos.x * ratioX, 1000, 502.3f - mousePos.y * ratioY), Vector3.down, out hit, 9999, mask);
+        nullCheck = Physics.Raycast(new Vector3(546.6f - hitPos.x * ratioX, 1000, 502.3f - hitPos.y * ratioY), Vector3.down, out hit, 9999, mask);
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
         if (nullCheckHit == true)
         {
