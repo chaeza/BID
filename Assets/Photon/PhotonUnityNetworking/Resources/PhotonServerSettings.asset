@@ -44,6 +44,13 @@ MonoBehaviour:
   - RPC_ClearLobby
   - ZeroCounT
   - ItemInit
+  - RPC_GetDamage
+  - ChangeHP
+  - MySessionID
+  - RPC_Die
+  - SetDamageDecrpease
+  - SetUnbeatable
+  - Attack
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

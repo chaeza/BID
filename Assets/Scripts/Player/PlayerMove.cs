@@ -34,11 +34,13 @@ public class PlayerMove : MonoBehaviourPun
         navMeshAgent = GetComponent<NavMeshAgent>();
         codeExample = GameObject.FindObjectOfType<CodeExample>();
         navMeshAgent.speed = playerInfo.moveSpeed;
+        playerInfo.changeMoveSpeed += myChangeSpeed;
         MoveStop();
     }
-    public void ChageSpeed(float speed)
+    private void myChangeSpeed()
     {
-        navMeshAgent.speed = speed;
+        navMeshAgent.speed = playerInfo.moveSpeed;
+        Debug.Log("델리게이트 무브스피드 변경");
     }
 
     private void Update()
@@ -70,6 +72,11 @@ public class PlayerMove : MonoBehaviourPun
         }
 
         //if (photonView.IsMine == false) return;
+        if (playerInfo.playerIsMove == state.Stun || playerInfo.playerIsMove == state.Stay)
+        {
+            MoveStop();
+            return;
+        }
         if (GameMgr.Instance.playerInput.inputKey2 == KeyCode.Mouse1)
         {
             if (Input.mousePosition.x > 1643 && Input.mousePosition.x < 1883 & Input.mousePosition.y > 11 && Input.mousePosition.y < 252)
@@ -147,5 +154,6 @@ public class PlayerMove : MonoBehaviourPun
         navMeshAgent.updateRotation = false;
         navMeshAgent.updatePosition = false;
         isMove = false;
+        desiredDir = Vector3.zero;
     }
 }

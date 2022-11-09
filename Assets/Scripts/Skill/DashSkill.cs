@@ -128,7 +128,7 @@ public class DashSkill : MonoBehaviourPun, SkillMethod
             {
                 GetComponent<Animator>().SetTrigger("isSkill1");
                 transform.LookAt(desiredDir);
-                GetComponent<PlayerInfo>().Stay(0.5f);
+                //GetComponent<PlayerInfo>().Stay(0.5f);
                 StartCoroutine(Attack(desiredDir, 0.2f));
                 // Turn on the cooldown so that it cannot be used again
                 skillCool = true;
