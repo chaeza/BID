@@ -9,8 +9,8 @@ public class PlayerMove : MonoBehaviourPun
     public NavMeshAgent navMeshAgent { get; private set; } = null;
     private PlayerInfo playerInfo;
     private Animator myAnimator;
-    private float ratioX = 1.3103305785123966942148760330579f;
-    private float ratioY = 1.2954545454545454545454545454545f;
+    private float ratioX = 1.3206611570247933884297520661157f;
+    private float ratioY = 1.2966942148760330578512396694215f;
 
     private RaycastHit hit;
     private Vector3 clickPos = Vector3.one;
@@ -47,7 +47,7 @@ public class PlayerMove : MonoBehaviourPun
         }
         if (GameMgr.Instance.playerInput.inputKey2 == KeyCode.Mouse1)
         {
-            if (Input.mousePosition.x > 1643 && Input.mousePosition.x < 1883 & Input.mousePosition.y > 11 && Input.mousePosition.y < 252)
+            if (Input.mousePosition.x > 1623 && Input.mousePosition.x < 1867 & Input.mousePosition.y > 15 && Input.mousePosition.y < 260)
             {
                 clickPos = Input.mousePosition;
                 MoveMiniMap(clickPos);
@@ -105,7 +105,7 @@ public class PlayerMove : MonoBehaviourPun
         hitPos.y = mousePos.y - 15.24192f;
         mask = 1 << LayerMask.NameToLayer("Ground");
 
-        nullCheck = Physics.Raycast(new Vector3(546.6f - hitPos.x * ratioX, 1000, 502.3f - hitPos.y * ratioY), Vector3.down, out hit, 9999, mask);
+        nullCheck = Physics.Raycast(new Vector3(547.5f - hitPos.x * ratioX, 1000, 508.59f - hitPos.y * ratioY), Vector3.down, out hit, 9999, mask);
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
         if (nullCheckHit == true)
         {

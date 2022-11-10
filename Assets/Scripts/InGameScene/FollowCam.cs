@@ -14,8 +14,8 @@ public partial class FollowCam : MonoBehaviour
     private Transform playerPos;
     private bool followBool = false;
     private float playerY;
-    private float ratioX = 1.3103305785123966942148760330579f;
-    private float ratioY = 1.2954545454545454545454545454545f;
+    private float ratioX = 1.3206611570247933884297520661157f;
+    private float ratioY = 1.2966942148760330578512396694215f;
     private Vector3 forwardDir = new Vector3(0.64f,0,-6.7784f).normalized;
     private Vector3 rightDir = new Vector3(-5.5936f,0,-0.26f).normalized;
 
@@ -47,11 +47,11 @@ public partial class FollowCam : MonoBehaviour
             transform.position = new Vector3(playerPos.position.x, playerY, playerPos.position.z) + Vector3.forward * distanceFromPlayerZ + Vector3.up * distanceFromPlayerY + Vector3.right * distanceFromPlayerX;
         }
         // Click on the mini map
-        if (Input.GetKey(KeyCode.Mouse0) && Input.mousePosition.x > 1623 && Input.mousePosition.x < 1867 & Input.mousePosition.y > 15 && Input.mousePosition.y < 260)
+        if (Input.GetKey(KeyCode.Mouse0) && Input.mousePosition.x > 1653 && Input.mousePosition.x < 1837 & Input.mousePosition.y > 32 && Input.mousePosition.y < 243)
         {
             mousePos.x = Input.mousePosition.x - 1623.024f;
             mousePos.y = Input.mousePosition.y - 15.24192f;
-            transform.position = new Vector3(546.6f - mousePos.x * ratioX, transform.position.y, 502.3f - mousePos.y * ratioY + distanceFromPlayerZ);
+            transform.position = new Vector3(547.5f - mousePos.x * ratioX + distanceFromPlayerX, transform.position.y, 508.59f - mousePos.y * ratioY + distanceFromPlayerZ);
         }
         if (Input.GetKey(KeyCode.Y) && followBool == false) followBool = true;
         else if (GameMgr.Instance.playerInput.yKey == KeyCode.Y && followBool == true) followBool = false;
