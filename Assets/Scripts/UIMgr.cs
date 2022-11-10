@@ -21,15 +21,24 @@ public class UIMgr : MonoBehaviourPun
     private Vector2 createPoint = new Vector2(130,90);
 
 
-
+    [PunRPC]
+    public void EndGame(string nickName)
+    {
+        if (PhotonNetwork.NickName == nickName)
+        {
+            Debug.Log("승리 이미지");
+        }
+        else
+        {
+            Debug.Log("패배 이미지 ");
+        }
+    }
     //  Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
     public void SetSkillIcon(int skillNum)
     {
         skillUI = Instantiate(skillIcon[skillNum], createPoint, Quaternion.identity, GameObject.Find("Canvas").transform);
         skillUI.transform.SetParent(skillIconP.transform);
         //skillDescription = skillUI.transform.GetChild(0).gameObject;
-
-
     }
 
     //Object that called the skill cooldown to the UI manager, cooldown time
