@@ -10,6 +10,7 @@ public struct SkillInfo
     public float radius;
     public float angle;
     public float length;
+    public int skillNum;
     public int cooltime;
 }
 public enum SkillType
@@ -29,7 +30,7 @@ public class Skill : MonoBehaviourPun
     protected Vector3 desiredDir;
     protected bool click;
 
-
+    private bool isCanSkill = true;
     private RaycastHit hit;
     private bool nullCheck;
     private bool nullCheckHit;
@@ -38,14 +39,20 @@ public class Skill : MonoBehaviourPun
     private void Awake()
     {
         codeExample = FindObjectOfType<CodeExample>();
+        GameMgr.Instance.uIMgr.onResetCoolTime += ResetCoolTime;
     }
     protected void SkillUse()
     {
+        if (isCanSkill == false) return;
         codeExample.Interrupt();
         if (skillInfo.skillType == SkillType.Immediate)
         {
             codeExample.Radius(skillInfo.radius);
-            SkillFire();
+            if (isCanSkill == true)
+            {
+                isCanSkill = false;
+                SkillFire();
+            }
         }
         else if (skillInfo.skillType == SkillType.Projectile)
         {
@@ -76,7 +83,11 @@ public class Skill : MonoBehaviourPun
         }
         else if (skillInfo.skillType == SkillType.Buff)
         {
-            SkillFire();
+            if (isCanSkill == true)
+            {
+                isCanSkill = false;
+                SkillFire();
+            }
         }
         else if (skillInfo.skillType == SkillType.Passive)
         {
@@ -99,15 +110,23 @@ public class Skill : MonoBehaviourPun
                 desiredDir = hit.point;
             }
             if (Vector3.Distance(clickPos, transform.position) > skillInfo.range) { Debug.Log("사정거리 밖"); return; }
-            SkillFire();
+            if (isCanSkill == true)
+            {
+                isCanSkill = false;
+                SkillFire();
+            }
         }
     }
     protected virtual void SkillFire()
     {
         Debug.Log("기존스킬발사");
     }
-    protected void ResetCoolTime()
+    protected void ResetCoolTime(int skillNum)
     {
-        
+        if (skillNum == skillInfo.skillNum)
+        {
+            isCanSkill = true;
+            Debug.Log("리셋");
+        }
     }
 }

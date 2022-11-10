@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System.Threading;
 
 public enum AttackType
 {
@@ -13,6 +14,7 @@ public class HitBox : MonoBehaviourPun
     public DamageInfo damageInfo;
     private List<GameObject> attackList = new List<GameObject>();
     private float timer;
+    private int count;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +23,11 @@ public class HitBox : MonoBehaviourPun
         {
             other.gameObject.GetPhotonView().RPC("RPC_GetDamage", RpcTarget.All,damageInfo);
             attackList.Add(other.gameObject);
+            if(damageInfo.interval!=0)
+            {
+                count++;
+                if (count >= damageInfo.interval) GameMgr.Instance.DestroyTarget(gameObject, 0f);
+            }
         }
     }
 

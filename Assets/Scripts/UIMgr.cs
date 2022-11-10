@@ -16,7 +16,7 @@ public class UIMgr : MonoBehaviourPun
     private GameObject skillUI;
     private GameObject skillDescription;
 
-    public delegate void OnResetCoolTime();
+    public delegate void OnResetCoolTime(int skillNum);
     public event OnResetCoolTime onResetCoolTime;
     private Vector2 createPoint = new Vector2(130,90);
 
@@ -33,17 +33,17 @@ public class UIMgr : MonoBehaviourPun
     }
 
     //Object that called the skill cooldown to the UI manager, cooldown time
-    public void SkillCooltime(int time)
+    public void SkillCooltime(int time,int skillNum)
     {
         // Change the color of the icon to be dimmed to give it an inactive feel.
-        skillUI.GetComponent<Image>().color = new Color(160 / 255f, 160 / 255f, 160 / 255f);
+        skillUI.GetComponent<RawImage>().color = new Color(160 / 255f, 160 / 255f, 160 / 255f);
         // Change the cool-time text to the max value of the cool-time.
         skillCoolTimeText.text = time.ToString();
         // Execute the cool-time coroutine and wait for the cool-time time.
-        StartCoroutine(SkillCooltime_Count(time));
+        StartCoroutine(SkillCooltime_Count(time,skillNum));
 
     }
-    IEnumerator SkillCooltime_Count(int time)
+    IEnumerator SkillCooltime_Count(int time, int skillNum)
     {
         // Store the received cooldown time in i
         for (int i = time - 1; i >= 0; --i)
@@ -56,9 +56,9 @@ public class UIMgr : MonoBehaviourPun
         }
 
         // icon color original position
-         skillUI.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f);
+         skillUI.GetComponent<RawImage>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f);
         // Call ResetCooltime to the object that called the saved UI manager to use the skill again
-        if (onResetCoolTime != null) onResetCoolTime();
+        if (onResetCoolTime != null) onResetCoolTime(skillNum);
         // instead of disabling text, just print nothing
         skillCoolTimeText.text = " ";
         yield break;
