@@ -12,9 +12,9 @@ public class RandomSkill : MonoBehaviour
     public void GetRandomSkill(GameObject player)
     {
         //Random skill number
-        skillRan = Random.Range(0, skillNum);
+        skillRan = Random.Range(1, skillNum+1);
         GameMgr.Instance.uIMgr.SetSkillIcon(skillRan);
-        if (skillRan == 0) player.AddComponent<TestSkill>();
+        if (skillRan == 1) player.AddComponent<TestSkill>();
         else
            Debug.Log("Player didn't get any skill");
     }

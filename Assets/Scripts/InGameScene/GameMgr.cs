@@ -19,8 +19,23 @@ public partial class GameMgr : Singleton<GameMgr>
     }
 
     // Skill Destroy
+    public GameObject PunFindObject(int viewID)
+    {
+        GameObject find = null;
+        PhotonView[] viewObject = FindObjectsOfType<PhotonView>();
+        for (int i = 0; i < viewObject.Length; i++)
+        {
+            if (viewObject[i].ViewID == viewID) find = viewObject[i].gameObject;
+        }
+        return find;
+    }
     public void DestroyTarget(GameObject desObject, float time)
     {
         photonView.RPC("PunDestroyObject", RpcTarget.All, desObject.GetPhotonView().ViewID, time);
+    }
+    [PunRPC]
+    public void PunDestroyObject(int viewID, float time)
+    {
+        Destroy(PunFindObject(viewID), time);
     }
 }
