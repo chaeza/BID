@@ -18,7 +18,7 @@ public class TestSkill : Skill
         skillInfo.radius = 6;//use Immediate,NonTarget
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.length = 6;//use Projectile,
-        skillInfo.cooltime = 0;
+        skillInfo.cooltime = 5;
         skillInfo.skillType = SkillType.NonTarget;
 
         skillInfo.skillDamageInfo.attackType = AttackType.Shot;
@@ -36,7 +36,8 @@ public class TestSkill : Skill
     }
     protected override void SkillFire()
     {
-        GameObject eff = PhotonNetwork.Instantiate("HitBox", transform.position, Quaternion.identity);
-        eff.AddComponent<HitBox>().damageInfo = skillInfo.skillDamageInfo;
+        //GameObject eff = PhotonNetwork.Instantiate("HitBox", transform.position, Quaternion.identity);
+        //eff.AddComponent<HitBox>().damageInfo = skillInfo.skillDamageInfo;
+       // GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime);
     }
 }

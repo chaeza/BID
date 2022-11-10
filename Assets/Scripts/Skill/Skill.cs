@@ -10,7 +10,7 @@ public struct SkillInfo
     public float radius;
     public float angle;
     public float length;
-    public float cooltime;
+    public int cooltime;
 }
 public enum SkillType
 {
@@ -23,11 +23,12 @@ public enum SkillType
 }
 public class Skill : MonoBehaviourPun
 {
-    protected SkillInfo skillInfo;
     protected CodeExample codeExample;
-    protected bool click;
+    protected SkillInfo skillInfo;
     protected Vector3 clickPos;
     protected Vector3 desiredDir;
+    protected bool click;
+
 
     private RaycastHit hit;
     private bool nullCheck;
@@ -104,5 +105,9 @@ public class Skill : MonoBehaviourPun
     protected virtual void SkillFire()
     {
         Debug.Log("기존스킬발사");
+    }
+    protected void ResetCoolTime()
+    {
+        
     }
 }

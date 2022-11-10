@@ -55,7 +55,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         //    DontDestroyOnLoad(this);
         ClearLobby();
-      //  photonView.StartCoroutine(AutoSyncDelay());
+        photonView.StartCoroutine(AutoSyncDelay());
         if (FindObjectOfType<TitleToGameScene>() == null)
         {
             postman = Instantiate(Postman);
@@ -251,17 +251,21 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         else
             readyButton[buttonNum].GetComponent<Image>().color = Color.grey;
     }
-
+    /// <summary>
+    /// Start game with in playerList players
+    /// </summary>
     #region 게임 실행
     public void LoadScene()
     {
         // 마스터일때만 해당 함수 실행 가능
         if (PhotonNetwork.IsMasterClient)
         {
-            if (readyCount == 5)
+            if (readyCount == PhotonNetwork.PlayerList.Length && readyCount>1)
             {
                 Debug.Log("시작");
                 //5명 레디 완료시 2초후 게임 실행 코루틴 
+
+                PhotonNetwork.CurrentRoom.IsOpen = false;
                 photonView.StartCoroutine(MainStartTimer());
             }
         }
@@ -314,21 +318,25 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     IEnumerator MainStartTimer()
     {
         yield return new WaitForSeconds(2);
-        if (readyCount == 5)
+        if (readyCount == PhotonNetwork.PlayerList.Length && readyCount > 1)
         {
             PhotonNetwork.LoadLevel("LoadingScene");
         }
-        else Debug.Log("누군가 레디 취소함");
+        else
+        {
+            Debug.Log("누군가 레디 취소함");
+            PhotonNetwork.CurrentRoom.IsOpen = true;
+        }
     }
 
-   /* IEnumerator broken()
-    {
-        int ran = Random.Range(12, 22);
-        yield return new WaitForSeconds(ran);
+    /* IEnumerator broken()
+     {
+         int ran = Random.Range(12, 22);
+         yield return new WaitForSeconds(ran);
 
-        brokenWindow.gameObject.SetActive(true);
-        audioSource.gameObject.SetActive(true);
-    }*/
+         brokenWindow.gameObject.SetActive(true);
+         audioSource.gameObject.SetActive(true);
+     }*/
 
     //---------------------------------------------------------------------------------------------------------------------------------------------
 

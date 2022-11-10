@@ -15,7 +15,7 @@ public class TestItem : Skill
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.length = 6;//use Projectile,
         skillInfo.cooltime = 0;
-        skillInfo.skillType = SkillType.NonTarget;
+        skillInfo.skillType = SkillType.Projectile;
 
         skillInfo.skillDamageInfo.attackType = AttackType.Shot;
         skillInfo.skillDamageInfo.interval = 0;

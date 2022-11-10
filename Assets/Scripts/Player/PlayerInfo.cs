@@ -7,6 +7,8 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.IO;
 using TMPro;
+using RPG_Indicator;
+
 
 public enum state
 {
@@ -44,7 +46,6 @@ public class PlayerInfo : MonoBehaviourPun
     [field: SerializeField] public state playerStay { get; private set; }
     [field: SerializeField] public state playerAlive { get; private set; }
 
-    private FollowCam follow;
     public delegate void OnChangeMoveSpeed();
     public event OnChangeMoveSpeed onChangeMoveSpeed;
     public delegate void OnGetDamage();
@@ -58,16 +59,14 @@ public class PlayerInfo : MonoBehaviourPun
     private Coroutine unbeatableCoroutine;
     private string sessionID;
 
-    private void Awake()
-    {
-        follow = FindObjectOfType<FollowCam>();
-    }
+
     private void Start()
     {
-        follow.SetPlayerPos(gameObject.transform);
-        // if (photonView.IsMine == true)
-        gameObject.tag = "Player";
-        GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+        if (photonView.IsMine == true) 
+        {
+            gameObject.tag = "MainPlayer";
+            GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+        }
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
     }
     public void StayPlayer(float time)
