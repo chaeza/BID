@@ -23,11 +23,11 @@ public enum SkillType
 }
 public class Skill : MonoBehaviourPun
 {
-    protected SkillInfo skillInfo;
     protected CodeExample codeExample;
-    protected bool click;
+    protected SkillInfo skillInfo;
     protected Vector3 clickPos;
     protected Vector3 desiredDir;
+    protected bool click;
 
 
     private RaycastHit hit;

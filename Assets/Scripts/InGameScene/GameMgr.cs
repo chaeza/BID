@@ -13,6 +13,7 @@ public partial class GameMgr : Singleton<GameMgr>
         randomSkill = gameObject.AddComponent<RandomSkill>();
         randomItem = gameObject.AddComponent<RandomItem>();
         inventory = gameObject.AddComponent<Inventory>();
+        codeExample = FindObjectOfType<CodeExample>();
         followCam = FindObjectOfType<FollowCam>();
         uIMgr = FindObjectOfType<UIMgr>();
     }

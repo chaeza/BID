@@ -62,8 +62,11 @@ public class PlayerInfo : MonoBehaviourPun
 
     private void Start()
     {
-        if (photonView.IsMine == true)  gameObject.tag = "MainPlayer";
-        GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+        if (photonView.IsMine == true) 
+        {
+            gameObject.tag = "MainPlayer";
+            GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+        }
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
     }
     public void StayPlayer(float time)

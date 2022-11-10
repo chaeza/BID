@@ -14,7 +14,7 @@ public class LodingSync : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        if(PhotonNetwork.IsMasterClient)
+     
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 

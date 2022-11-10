@@ -38,6 +38,6 @@ public class TestSkill : Skill
     {
         //GameObject eff = PhotonNetwork.Instantiate("HitBox", transform.position, Quaternion.identity);
         //eff.AddComponent<HitBox>().damageInfo = skillInfo.skillDamageInfo;
-        GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime);
+       // GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG_Indicator;
 
 public partial class GameMgr : Singleton<GameMgr>
 {
@@ -27,4 +28,7 @@ public partial class GameMgr : Singleton<GameMgr>
     [Tooltip("Game MGR inventory")]
     [field: SerializeField]
     public Inventory inventory { get; private set; } = null;
+    [Tooltip("Game MGR codeExample")]
+    [field: SerializeField]
+    public CodeExample codeExample { get; private set; } = null;
 }

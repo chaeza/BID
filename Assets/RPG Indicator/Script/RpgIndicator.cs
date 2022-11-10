@@ -11,7 +11,7 @@ namespace RPG_Indicator
         public RpgIndicatorData[] data;
         public DecalProjector MainIndicator;
         public DecalProjector RangeIndicator;
-        public float ProjectorHeight = 100;
+        public float ProjectorHeight = 0.5f;
         [Space(10)]
         public bool ShowMainIndicator;
         public bool ShowRangeIndicator;
@@ -221,7 +221,7 @@ namespace RPG_Indicator
             }
             if (player == null)
             {
-                player = GameObject.FindWithTag("Player").transform;
+                player = GameObject.FindWithTag("MainPlayer").transform;
             }
 
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
@@ -242,7 +242,7 @@ namespace RPG_Indicator
             }
             if (player == null)
             {
-                player = GameObject.FindWithTag("Player").transform;
+                player = GameObject.FindWithTag("MainPlayer").transform;
             }
 
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
