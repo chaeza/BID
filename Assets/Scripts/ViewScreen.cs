@@ -6,8 +6,8 @@ public class ViewScreen : MonoBehaviour
 {
     [SerializeField] private GameObject mainCamera = null;
     private Vector2 tempVec;
-    private float ratioX = 1.3103305785123966942148760330579f;
-    private float ratioY = 1.2954545454545454545454545454545f;
+    private float ratioX = 1.3206611570247933884297520661157f;
+    private float ratioY = 1.2966942148760330578512396694215f;
     private float distanceFromPlayerZ = 90;
     private float distanceFromPlayerX = -10;
 

@@ -1,20 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class MiniMap : MonoBehaviour
+public class MiniMapRender : MonoBehaviourPun
 {
     // player position
     [SerializeField] private GameObject target;
     // position correction
     private Vector2 tempVec;
-    private float ratioX = 1.3103305785123966942148760330579f;
-    private float ratioY = 1.2954545454545454545454545454545f;
+    private float ratioX = 1.3206611570247933884297520661157f;
+    private float ratioY = 1.2966942148760330578512396694215f;
     
-    // Update is called once per frame
+    public void SetTarget(GameObject player)
+    {
+        target = player;
+    }
+    
+    [PunRPC]
+    public void SetParentMiniMap()
+    {
+        transform.parent = GameObject.Find("MiniMapView").transform;
+    }
     void Update()
     {
-        target = GameObject.FindWithTag("MainPlayer");
+        if (photonView.IsMine != true) return;
         tempVec.x = 546.6f - target.transform.position.x;
         tempVec.y = 507.6f - target.transform.position.z;
         if (target == null)
