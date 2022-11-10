@@ -38,8 +38,8 @@ public partial class FollowCam : MonoBehaviour
 
     private void Update()
     {
-        // Debug.Log("mouse x : " + Input.mousePosition.x);
-        //Debug.Log("mouse y : " + Input.mousePosition.y);
+        Debug.Log("mouse x : " + Input.mousePosition.x);
+        Debug.Log("mouse y : " + Input.mousePosition.y);
         //rayCamara.transform.position = playerPos.position + Vector3.up * 30;
         //rayCamara.transform.LookAt(playerPos.position);
         if (Input.GetKey(KeyCode.Space) || followBool == true)
@@ -47,10 +47,10 @@ public partial class FollowCam : MonoBehaviour
             transform.position = new Vector3(playerPos.position.x, playerY, playerPos.position.z) + Vector3.forward * distanceFromPlayerZ + Vector3.up * distanceFromPlayerY + Vector3.right * distanceFromPlayerX;
         }
         // Click on the mini map
-        if (Input.GetKey(KeyCode.Mouse0) && Input.mousePosition.x > 1643 && Input.mousePosition.x < 1883 & Input.mousePosition.y > 11 && Input.mousePosition.y < 252)
+        if (Input.GetKey(KeyCode.Mouse0) && Input.mousePosition.x > 1623 && Input.mousePosition.x < 1867 & Input.mousePosition.y > 15 && Input.mousePosition.y < 260)
         {
-            mousePos.x = Input.mousePosition.x - 1642.384f;
-            mousePos.y = Input.mousePosition.y - 11.25826f;
+            mousePos.x = Input.mousePosition.x - 1623.024f;
+            mousePos.y = Input.mousePosition.y - 15.24192f;
             transform.position = new Vector3(546.6f - mousePos.x * ratioX, transform.position.y, 502.3f - mousePos.y * ratioY + distanceFromPlayerZ);
         }
         if (Input.GetKey(KeyCode.Y) && followBool == false) followBool = true;
@@ -58,22 +58,22 @@ public partial class FollowCam : MonoBehaviour
         if (followBool == false)
         {
             // 오른쪽
-            if (Input.mousePosition.x >= 1890 && viewScreen.SetViewScreenPos() == true)
+            if (Input.mousePosition.x >= 1890 && viewScreen.transform.localPosition.x <= 90)
             {
                 transform.position = transform.position + rightDir * cameraSpeed;
             }
             // 왼쪽
-            else if (Input.mousePosition.x <= 10 && viewScreen.SetViewScreenPos() == true)
+            else if (Input.mousePosition.x <= 10 && viewScreen.transform.localPosition.x >= -90)
             {
                 transform.position = transform.position - rightDir * cameraSpeed;
             }
             // 위쪽
-            if (Input.mousePosition.y >= 1050 && viewScreen.SetViewScreenPos() == true)
+            if (Input.mousePosition.y >= 1050 && viewScreen.transform.localPosition.y <= 103)
             {
                 transform.position = transform.position + forwardDir * cameraSpeed;
             }
             // 아래쪽
-            else if (Input.mousePosition.y <= 5 && viewScreen.SetViewScreenPos() == true)
+            else if (Input.mousePosition.y <= 5 && viewScreen.transform.localPosition.y >= -103)
             {
                 transform.position = transform.position - forwardDir * cameraSpeed;
             }
