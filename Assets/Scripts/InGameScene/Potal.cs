@@ -16,6 +16,9 @@ public class Potal : MonoBehaviourPun
     public Potal[] exit;
     public PotalData potalData;
 
+
+
+
     //Delay 
     [SerializeField]
     private float transferTimer = 0;
