@@ -9,6 +9,7 @@ public partial class FollowCam : MonoBehaviour
     [SerializeField] private float distanceFromPlayerX;
     [SerializeField] private float cameraSpeed;
     [SerializeField] private GameObject rayCamara;
+    [SerializeField] private ViewScreen viewScreen;
     [SerializeField] private Vector2 mousePos;
     private Transform playerPos;
     private bool followBool = false;
@@ -24,6 +25,10 @@ public partial class FollowCam : MonoBehaviour
         transform.position = playerPos.position + Vector3.forward * distanceFromPlayerZ + Vector3.up * distanceFromPlayerY + Vector3.right * distanceFromPlayerX;
         playerY = playerPos.transform.position.y;
         transform.LookAt(playerPos.position + Vector3.up * 2);
+    }
+    private void Awake()
+    {
+        viewScreen = FindObjectOfType<ViewScreen>();
     }
 
     private void Start()
@@ -53,22 +58,22 @@ public partial class FollowCam : MonoBehaviour
         if (followBool == false)
         {
             // 오른쪽
-            if (Input.mousePosition.x >= 1890)
+            if (Input.mousePosition.x >= 1890 && viewScreen.SetViewScreenPos() == true)
             {
                 transform.position = transform.position + rightDir * cameraSpeed;
             }
             // 왼쪽
-            else if (Input.mousePosition.x <= 10)
+            else if (Input.mousePosition.x <= 10 && viewScreen.SetViewScreenPos() == true)
             {
                 transform.position = transform.position - rightDir * cameraSpeed;
             }
             // 위쪽
-            if (Input.mousePosition.y >= 1050)
+            if (Input.mousePosition.y >= 1050 && viewScreen.SetViewScreenPos() == true)
             {
                 transform.position = transform.position + forwardDir * cameraSpeed;
             }
             // 아래쪽
-            else if (Input.mousePosition.y <= 5)
+            else if (Input.mousePosition.y <= 5 && viewScreen.SetViewScreenPos() == true)
             {
                 transform.position = transform.position - forwardDir * cameraSpeed;
             }

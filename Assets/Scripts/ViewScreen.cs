@@ -10,8 +10,17 @@ public class ViewScreen : MonoBehaviour
     private float ratioY = 1.2954545454545454545454545454545f;
     private float distanceFromPlayerZ = 90;
     private float distanceFromPlayerX = -10;
-    
-    // Update is called once per frame
+
+    // A bool value to check if the view screen is inside the minimap
+    public bool SetViewScreenPos()
+    {
+        if (transform.localPosition.x <= 91 & transform.localPosition.x >= -91 && transform.localPosition.y <= 104.125f && transform.localPosition.y >= -104.125f)
+        {
+            return true;
+        }
+        else return false;
+    }
+
     void Update()
     {
         tempVec.x = 546.6f - mainCamera.transform.position.x + distanceFromPlayerX;
