@@ -55,7 +55,8 @@ MonoBehaviour:
   - EndGame
   - Get_NewBets
   - RPC_All_SessionID
-  - PunDestroyObject
+  - RandomBigAreaItemSpawn
+  - RandomSpawnPointDistrubuter
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
