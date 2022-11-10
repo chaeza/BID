@@ -14,6 +14,7 @@ public class LodingSync : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+     
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 

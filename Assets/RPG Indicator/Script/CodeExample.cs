@@ -13,34 +13,34 @@ public class CodeExample : MonoBehaviour
     // Style refer to the array od RPGIndicatorData. It will affect the colors, materials and layer to use
     private void Start()
     {
-      //  Radius();
+        //  Radius();
+
     }
-    public void Cone()
+    public void Cone(float angle,float range)
     {
-        Debug.Log("Ddd");
         // Cone ability with a 40 degree angle and range of 10
-        PlayerIndicator.ShowCone(40, 10, true, RpgIndicator.IndicatorColor.Ally, 0);
+        PlayerIndicator.ShowCone(angle, range, true, RpgIndicator.IndicatorColor.Ally, 0);
     }
-    public void Line()
+    public void Line(float length,float range)
     {
         // Line ability with a length og 6 and range of 10
-        PlayerIndicator.ShowLine(6, 10, true, RpgIndicator.IndicatorColor.Ally, 0);
+        PlayerIndicator.ShowLine(length, range, true, RpgIndicator.IndicatorColor.Ally, 0);
     }
-    public void Area()
+    public void Area(float radius,float range)
     {
         // Area ability with a radius of 5 and range of 10 and with 2 custom colors
         PlayerIndicator.CustomColor("#80989700", "#80989700");
-        PlayerIndicator.ShowArea(5, 10, true, RpgIndicator.IndicatorColor.Custom, 0);
+        PlayerIndicator.ShowArea(radius, range, true, RpgIndicator.IndicatorColor.Custom, 0);
     }
-    public void Radius()
+    public void Radius(float radius)
     {
         // Radius ability with a radius of 10
-        PlayerIndicator.ShowRadius(10, false, RpgIndicator.IndicatorColor.Enemy, 0);
+        PlayerIndicator.ShowRadius(radius, false, RpgIndicator.IndicatorColor.Enemy, 0);
     }
-    public void Cast()
+    public void Cast(float time)
     {
         // Start casting with a casting time of 5 seconds
-        PlayerIndicator.Casting(5);
+        PlayerIndicator.Casting(time);
     }
     public void Interrupt()
     {

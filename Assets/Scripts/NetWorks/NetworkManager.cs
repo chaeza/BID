@@ -55,7 +55,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         //    DontDestroyOnLoad(this);
         ClearLobby();
-      //  photonView.StartCoroutine(AutoSyncDelay());
+        photonView.StartCoroutine(AutoSyncDelay());
         if (FindObjectOfType<TitleToGameScene>() == null)
         {
             postman = Instantiate(Postman);
@@ -134,7 +134,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("조인 실패");
         //맥스 인원과 방 상태 표현 (시작인지 아닌지)
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 4, IsOpen = true });
+        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 5, IsOpen = true });
     }
     //자신이 들어갈때 
     public override void OnJoinedRoom()
@@ -258,10 +258,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         // 마스터일때만 해당 함수 실행 가능
         if (PhotonNetwork.IsMasterClient)
         {
-            if (readyCount == 4)
+            if (readyCount == 5)
             {
                 Debug.Log("시작");
-                //4명 레디 완료시 2초후 게임 실행 코루틴 
+                //5명 레디 완료시 2초후 게임 실행 코루틴 
                 photonView.StartCoroutine(MainStartTimer());
             }
         }
@@ -314,7 +314,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     IEnumerator MainStartTimer()
     {
         yield return new WaitForSeconds(2);
-        if (readyCount == 4)
+        if (readyCount == 5)
         {
             PhotonNetwork.LoadLevel("LoadingScene");
         }

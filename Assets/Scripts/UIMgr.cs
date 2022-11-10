@@ -8,61 +8,59 @@ using Photon.Pun;
 
 public class UIMgr : MonoBehaviourPun
 {   // Save the object that called the skill cooldown
-    private GameObject cooltimeGameobject = null;
-    // Save multiple skill types to this object
-/*    private GameObject skillUI = null;
     [Header("½ºÅ³ Icon")]
-    [SerializeField] private SpriteRenderer[] skillIcon;*/
+    [SerializeField] private GameObject[] skillIcon;
+    [SerializeField] private GameObject skillIconP;
+    [SerializeField] private GameObject itemIconP;
+    [SerializeField] private TextMeshProUGUI skillCoolTimeText;
+    private GameObject skillUI;
+    private GameObject skillDescription;
 
-    [Header("ÄðÅ¸ÀÓ")]
-    [SerializeField] private TextMeshProUGUI cooltimeText;
-    
-    //Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
-    /*public void SkillIcon(int skillNum)
+    public delegate void OnResetCoolTime();
+    public event OnResetCoolTime onResetCoolTime;
+    private Vector2 createPoint = new Vector2(130,90);
+
+
+
+    //  Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
+    public void SetSkillIcon(int skillNum)
     {
-        switch (skillNum)
-        {
-            case 0:
-                Debug.Log("0¹øµé¾î¿È");
-                Instantiate(skillIcon[0], Vector3.zero, Quaternion.identity, GameObject.Find("Canvas").transform);
-                break;
-            case 1:
-                break;
-        }
-    }*/
+        skillUI = Instantiate(skillIcon[skillNum], createPoint, Quaternion.identity, GameObject.Find("Canvas").transform);
+        skillUI.transform.SetParent(skillIconP.transform);
+        //skillDescription = skillUI.transform.GetChild(0).gameObject;
 
-    //Object that called the skill cooldown to the UI manager, cooldown time
-    public void SkillCooltime(GameObject my, int Cool)
-    {
-
-        // Save the called object object.
-        cooltimeGameobject = my;
-        // Change the color of the icon to be dimmed to give it an inactive feel.
-       // skillUI.GetComponent<Image>().color = new Color(160 / 255f, 160 / 255f, 160 / 255f);
-        // Change the cool-time text to the max value of the cool-time.
-      //  cooltimeText.text = Cool.ToString();
-        // Execute the cool-time coroutine and wait for the cool-time time.
-        StartCoroutine(Cooltime(Cool));
 
     }
-    IEnumerator Cooltime(int Cool)
+
+    //Object that called the skill cooldown to the UI manager, cooldown time
+    public void SkillCooltime(int time)
+    {
+        // Change the color of the icon to be dimmed to give it an inactive feel.
+        skillUI.GetComponent<Image>().color = new Color(160 / 255f, 160 / 255f, 160 / 255f);
+        // Change the cool-time text to the max value of the cool-time.
+        skillCoolTimeText.text = time.ToString();
+        // Execute the cool-time coroutine and wait for the cool-time time.
+        StartCoroutine(SkillCooltime_Count(time));
+
+    }
+    IEnumerator SkillCooltime_Count(int time)
     {
         // Store the received cooldown time in i
-        for (int i = Cool - 1; i >= 0; --i)
+        for (int i = time - 1; i >= 0; --i)
         {
             // wait 1 second
             yield return new WaitForSeconds(1f);
             // Decrease cooldown text by -1
-          //  cooltimeText.text = i.ToString();
+            skillCoolTimeText.text = i.ToString();
             yield return null;
         }
 
         // icon color original position
-       // skillUI.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f);
+         skillUI.GetComponent<Image>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f);
         // Call ResetCooltime to the object that called the saved UI manager to use the skill again
-        cooltimeGameobject.SendMessage("ResetCooltime", SendMessageOptions.DontRequireReceiver);
+        if (onResetCoolTime != null) onResetCoolTime();
         // instead of disabling text, just print nothing
-       // cooltimeText.text = " ";
+        skillCoolTimeText.text = " ";
         yield break;
     }
 }
