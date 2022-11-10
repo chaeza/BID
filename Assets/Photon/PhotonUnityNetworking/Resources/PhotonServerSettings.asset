@@ -56,6 +56,10 @@ MonoBehaviour:
   - Get_NewBets
   - RPC_All_SessionID
   - RandomBigAreaItemSpawn
+  - RandomSpawnPointDistrubuter
+  - PunDestroyObject
+  - Test_Die
+  - LoadingState
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
