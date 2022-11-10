@@ -5,7 +5,7 @@ using UnityEngine;
 public class MiniMap : MonoBehaviour
 {
     // player position
-    private GameObject target;
+    [SerializeField] private GameObject target;
     // position correction
     private Vector2 tempVec;
     private float ratioX = 1.3103305785123966942148760330579f;

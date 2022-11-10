@@ -101,8 +101,8 @@ public class PlayerMove : MonoBehaviourPun
 
     public void MoveMiniMap(Vector3 mousePos)
     {
-        hitPos.x = mousePos.x - 1642.384f;
-        hitPos.y = mousePos.y - 11.25826f;
+        hitPos.x = mousePos.x - 1623.024f;
+        hitPos.y = mousePos.y - 15.24192f;
         mask = 1 << LayerMask.NameToLayer("Ground");
 
         nullCheck = Physics.Raycast(new Vector3(546.6f - hitPos.x * ratioX, 1000, 502.3f - hitPos.y * ratioY), Vector3.down, out hit, 9999, mask);
