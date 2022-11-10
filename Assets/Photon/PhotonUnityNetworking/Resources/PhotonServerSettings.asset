@@ -44,6 +44,7 @@ MonoBehaviour:
   - RPC_ClearLobby
   - ZeroCounT
   - ItemInit
+  - RandomBigAreaItemSpawn
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
