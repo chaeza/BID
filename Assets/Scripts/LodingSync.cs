@@ -14,14 +14,14 @@ public class LodingSync : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-     
+
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     void Start()
     {
         if (PhotonNetwork.IsMasterClient) photonView.StartCoroutine(LoadAsynSceneCoroutine());
-       // else photonView.StartCoroutine(PlayerSceneCoroutine());
+        // else photonView.StartCoroutine(PlayerSceneCoroutine());
     }
 
     private void Update()
@@ -38,7 +38,7 @@ public class LodingSync : MonoBehaviourPunCallbacks
         while (!operation.isDone)
         {
             slider.value = time / 3f;
-            photonView.RPC("LoadingState", RpcTarget.All,slider.value);
+            photonView.RPC("LoadingState", RpcTarget.All, slider.value);
             if (time > 3) operation.allowSceneActivation = true;
 
             yield return new WaitForFixedUpdate();
