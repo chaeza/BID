@@ -41,8 +41,7 @@ public class TestSkill : Skill
     protected override void SkillFire()
     {
         GameObject eff = PhotonNetwork.Instantiate("Bash", transform.position, Quaternion.identity);
-        eff.AddComponent<HitBox>();
-        eff.GetComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
+        eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
 
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum);
     }
