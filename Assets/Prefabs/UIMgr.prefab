@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fffadb84f0485f4ba3867ec0a1e2eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
 --- !u!1 &233004159122449548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1932,8 +1933,14 @@ MonoBehaviour:
   skillIcon:
   - {fileID: 4695253256746028096, guid: 04bf7567fe39707428c32a7381f913ea, type: 3}
   - {fileID: 4695253256746028096, guid: 04bf7567fe39707428c32a7381f913ea, type: 3}
+  itemIcon:
+  - {fileID: 4695253256746028096, guid: eb17a19333f06da4e81c8ad3a132f1e8, type: 3}
+  - {fileID: 4695253256746028096, guid: f6ce94acbb9cfbe4cb6672c98f9c326c, type: 3}
+  - {fileID: 4695253256746028096, guid: b218af1091c06854b8b67658c5005a62, type: 3}
+  - {fileID: 4695253256746028096, guid: c9c6f2648c07c5d40a12889408034c1b, type: 3}
   skillIconP: {fileID: 4930380061875257290}
   itemIconP: {fileID: 1330391357489714280}
+  skillCoolTime: {fileID: 0}
   skillCoolTimeText: {fileID: 0}
 --- !u!1 &3144517216745727697
 GameObject:
