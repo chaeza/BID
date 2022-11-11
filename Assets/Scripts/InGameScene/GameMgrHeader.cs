@@ -7,6 +7,10 @@ public partial class GameMgr : Singleton<GameMgr>
 {
     [field: Tooltip("Game MGR Player Input")]
 
+    [Tooltip("Game MGR GameSceneLogic")]
+    [field: SerializeField]
+    public GameSceneLogic gameSceneLogic { get; private set; } = null;
+
     [Tooltip("Game MGR playerInput")]
     [field: SerializeField]
     public PlayerInput playerInput { get; private set; } = null;

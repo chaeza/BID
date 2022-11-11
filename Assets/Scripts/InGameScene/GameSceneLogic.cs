@@ -30,9 +30,7 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
             }
         }
         Debug.Log("살아남은 플레이어 수 = " + alivePlayerNum);
-        if (alivePlayerNum == 1)
-        {
-            GameMgr.Instance.uIMgr.photonView.RPC("EndGame", RpcTarget.All, 1, AliveNum[winner].gameObject.GetPhotonView().ViewID);
-        }
+        if (alivePlayerNum == 1)  GameMgr.Instance.uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
+        
     }
 }

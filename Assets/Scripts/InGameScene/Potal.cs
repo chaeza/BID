@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+public struct PotalData
+{
+    public bool isCenter;
+    public bool isRandomPotal;
+    public int potalTotalNum;
+    public int num;
+}
+
 public class Potal : MonoBehaviourPun
 {
+    public Potal[] exit;
+    public PotalData potalData;
+
     //Delay 
     [SerializeField]
     private float transferTimer = 0;
 
-
-    //conneted Num
-    private int myPotalNum = 0;
-    private int pairPotalNum = 0;
 
     //Priority Queue for Transfer Player
     List<int> viewIDList = new List<int>();
@@ -21,7 +28,7 @@ public class Potal : MonoBehaviourPun
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "PlayerPrefab(Clone)")
+        if (other.gameObject.name == "Player(Clone)")
         {
             //Priority Queue Enqueue
             playerList.Add(other.gameObject);
@@ -29,7 +36,6 @@ public class Potal : MonoBehaviourPun
             launchPlayerList.Enqueue(other.gameObject);
 
             StartCoroutine(ReadyToTransfer(transferTimer));
-
         }
         else
             Debug.Log("It is Not Player");
@@ -56,18 +62,19 @@ public class Potal : MonoBehaviourPun
     {
         GameObject player = new GameObject();
         yield return new WaitForSeconds(time);
+
         if (launchPlayerList.Count > 0)
         {
             player = launchPlayerList.Dequeue();
-            Debug.Log(player.GetPhotonView().ViewID + "????d");
+            // Debug.Log(player.GetPhotonView().ViewID + "????d");
             player.GetComponent<PlayerMove>().navMeshAgent.updatePosition = true;
-            player.transform.position = player.transform.position + new Vector3(0, 0, 10);
-            //  player.GetComponent<Rigidbody>().position = player.GetComponent<Rigidbody>().position + new Vector3(0, 0, 10);
+
+            if (potalData.isCenter == false) player.transform.position = exit[0].gameObject.transform.position;
+
+            else if (potalData.isCenter == true) player.transform.position = exit[Random.Range(0, potalData.potalTotalNum)].gameObject.transform.position;
 
             viewIDList.Remove(player.gameObject.GetPhotonView().ViewID);
             playerList.Remove(player.gameObject);
         }
-        // player.GetComponent<PlayerMove>().MoveStop();
-
     }
 }

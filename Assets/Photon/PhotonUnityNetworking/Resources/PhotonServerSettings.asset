@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 01f4fc49-e360-4995-85b1-2ae8c111626c
+    AppIdRealtime: 4d2913a8-c174-404c-8251-7e4df56b38b9
     AppIdFusion: 
     AppIdChat: 
     AppIdVoice: 
@@ -58,9 +58,8 @@ MonoBehaviour:
   - RandomBigAreaItemSpawn
   - RandomSpawnPointDistrubuter
   - PunDestroyObject
-  - BlackHolePos
-  - RPC_BlackHolePos
-  - RandomBlackHole
+  - Test_Die
+  - LoadingState
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
