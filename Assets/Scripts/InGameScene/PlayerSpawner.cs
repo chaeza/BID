@@ -35,10 +35,11 @@ public class PlayerSpawner : MonoBehaviourPunCallbacks
             if (playerList[i].NickName == PhotonNetwork.NickName) spawnPointNum = i;
         }
         GameObject player = PhotonNetwork.Instantiate("Player", spawnPoint[spawnPointNum].transform.position, Quaternion.identity);
+        GameObject miniMapRender = PhotonNetwork.Instantiate("MiniMapRender",Vector3.zero, Quaternion.identity);
+        miniMapRender.GetPhotonView().RPC("SetParentMiniMap", RpcTarget.All);
         GameMgr.Instance.followCam.SetPlayerPos(player.transform);
         GameMgr.Instance.codeExample.PlayerIndicator = player.GetComponentInChildren<RpgIndicator>();
-
-        Debug.Log("생성완료");
+        miniMapRender.GetComponent<MiniMapRender>().SetTarget(player);
     }
 
     [PunRPC]

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 1adfdb50-72b8-47e6-af98-608eb7519a4d
+    AppIdRealtime: 4d2913a8-c174-404c-8251-7e4df56b38b9
     AppIdFusion: 
     AppIdChat: 
     AppIdVoice: 
@@ -58,6 +58,9 @@ MonoBehaviour:
   - RandomBigAreaItemSpawn
   - RandomSpawnPointDistrubuter
   - PunDestroyObject
+  - Test_Die
+  - LoadingState
+  - SetParentMiniMap
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

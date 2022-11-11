@@ -105,6 +105,20 @@ public struct DamageInfo
     private void RPC_Die(int attackerViewID)
     {
         playerAlive = state.Die;
+        GameMgr.Instance.gameSceneLogic.AliveNumCheck();
+    }
+    [PunRPC]
+    private void Test_Die()
+    {
+        playerAlive = state.Die;
+        GameMgr.Instance.gameSceneLogic.AliveNumCheck();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+            gameObject.GetPhotonView().RPC("Test_Die", RpcTarget.All);
+
     }
 
     [PunRPC]
