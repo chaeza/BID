@@ -14,10 +14,14 @@ public class TestSkill : Skill
     //}
     private void Start()
     {
-        skillInfo.angle = 20;//use Cone
-        skillInfo.radius = 6;//use Immediate,NonTarget
-        skillInfo.range = 30;//use Projectile,NonTarget,Cone
-        skillInfo.length = 6;//use Projectile,
+        //use Cone
+        skillInfo.angle = 20;
+        //use Immediate,NonTarget
+        skillInfo.radius = 6;
+        //use Projectile,NonTarget,Cone
+        skillInfo.range = 30;
+        //use Projectile,
+        skillInfo.length = 6;
         skillInfo.cooltime = 5;
         skillInfo.skillNum = 1;
         skillInfo.skillType = SkillType.NonTarget;

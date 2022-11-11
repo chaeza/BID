@@ -5,29 +5,31 @@ using Photon.Pun;
 
 public class BlackHole : MonoBehaviourPun
 {
-    // 근처 콜라이더들을 담아 둔다.
+    // Store nearby colliders.
     private Collider[] colliders = null;
-    // 시간을 담당할 변수
+    // variable to hold the time
     private float time;
-    // 방향을 담당할 변수
+    // Variable for direction
     private Vector3 dir;
 
 
     private void Update()
     {
-        // 시간 저장
+
+        // save time
         time += Time.deltaTime;
-        // 내부에 구체를 생성하여 그 구체에 닿은 콜라이더들의 배열을 반환  // x 반경
+        // Creates a sphere inside and returns an array of colliders that touched the sphere // x radius
         colliders = Physics.OverlapSphere(transform.position, 30f);
         BlackHoleCheck();
     }
 
     private void BlackHoleCheck()
     {
-        // 반복문을 돌려 콜라이더 배열에 존재하는 오브젝트를 컨트롤한다.
+
+        // Run the loop to control the objects in the collider array.
         foreach (Collider collider in colliders)
         {
-            // 거리 측정
+            // measure distance
             float dis = Vector3.Distance(this.transform.position, collider.transform.position);
 
             if (time > 6)
