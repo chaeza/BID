@@ -6,30 +6,33 @@ using Photon.Pun;
 public class PotalSystem : MonoBehaviourPun
 {
     [SerializeField]
-    private Potal centerPotal;
+    private Portal centerPortal;
     [SerializeField]
-    private Potal[] nonCenterPotal;
+    private Portal[] nonCenterPortal;
 
     private void Start()
     {
-        centerPotal.exit = nonCenterPotal;
-        centerPotal.potalData.num = 0;
-        centerPotal.potalData.isCenter = true;
-        centerPotal.potalData.isRandomPotal = false;
-        centerPotal.potalData.potalTotalNum = nonCenterPotal.Length;
+        
+        centerPortal.exit = nonCenterPortal;
+        centerPortal.portalData.num = 0;
+        centerPortal.portalData.isCenter = true;
+        centerPortal.portalData.isDestoryed = false;
+        centerPortal.portalData.isRandomPotal = false;
+        centerPortal.portalData.potalTotalNum = nonCenterPortal.Length;
         ConnectPotal();
     }
     
     private void ConnectPotal()
     {
-        for (int i = 0; i < nonCenterPotal.Length; i++)
+        for (int i = 0; i < nonCenterPortal.Length; i++)
         {
-            nonCenterPotal[i].exit = new Potal[1];
-            nonCenterPotal[i].exit[0] = centerPotal;
-            nonCenterPotal[i].potalData.num = i + 1;
-            nonCenterPotal[i].potalData.isCenter = false;
-            nonCenterPotal[i].potalData.isRandomPotal = false;
-            nonCenterPotal[i].potalData.potalTotalNum = nonCenterPotal.Length;
+            nonCenterPortal[i].exit = new Portal[1];
+            nonCenterPortal[i].exit[0] = centerPortal;
+            nonCenterPortal[i].portalData.num = i + 1;
+            nonCenterPortal[i].portalData.isCenter = false;
+            nonCenterPortal[i].portalData.isDestoryed = false;
+            nonCenterPortal[i].portalData.isRandomPotal = false;
+            nonCenterPortal[i].portalData.potalTotalNum = nonCenterPortal.Length;
         }
     }
 }

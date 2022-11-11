@@ -13,32 +13,31 @@ public class Inventory : MonoBehaviour
         inventory.Add(-1);
         inventory.Add(-1);
         inventory.Add(-1);
-        inventory.Add(-1);
     }
     public int AddInventory(int Num)// 해당 배열에 아이템번호를 넣어 가지고 있는 아이템을 판별함
     {
-        if (inventory[1] == -1)
+        if (inventory[0] == -1)
+        {
+            inventory[0] = Num;
+            return 0;
+            //GameMgr.Instance.uIMgr.ItemUI(1, Num);
+        }
+        else if (inventory[1] == -1)
         {
             inventory[1] = Num;
             return 1;
-            //GameMgr.Instance.uIMgr.ItemUI(1, Num);
+            //GameMgr.Instance.uIMgr.ItemUI(2, Num);
         }
         else if (inventory[2] == -1)
         {
             inventory[2] = Num;
             return 2;
-            //GameMgr.Instance.uIMgr.ItemUI(2, Num);
-        }
-        else if (inventory[3] == -1)
-        {
-            inventory[3] = Num;
-            return 3;
             //GameMgr.Instance.uIMgr.ItemUI(3, Num);
         }
         else
         {
-            inventory[4] = Num;
-            return 4;
+            inventory[3] = Num;
+            return 3;
             //GameMgr.Instance.uIMgr.ItemUI(4, Num);
         }
     }

@@ -11,13 +11,14 @@ public partial class FollowCam : MonoBehaviour
     [SerializeField] private GameObject rayCamara;
     [SerializeField] private ViewScreen viewScreen;
     [SerializeField] private Vector2 mousePos;
+    private Portal[] portals;
     private Transform playerPos;
     private bool followBool = false;
     private float playerY;
     private float ratioX = 1.3206611570247933884297520661157f;
     private float ratioY = 1.2966942148760330578512396694215f;
-    private Vector3 forwardDir = new Vector3(0.64f,0,-6.7784f).normalized;
-    private Vector3 rightDir = new Vector3(-5.5936f,0,-0.26f).normalized;
+    private Vector3 forwardDir = new Vector3(0.64f, 0, -6.7784f).normalized;
+    private Vector3 rightDir = new Vector3(-5.5936f, 0, -0.26f).normalized;
 
     public void SetPlayerPos(Transform player)
     {
@@ -26,20 +27,33 @@ public partial class FollowCam : MonoBehaviour
         playerY = playerPos.transform.position.y;
         transform.LookAt(playerPos.position + Vector3.up * 2);
     }
+    public void SetCameraResetting()
+    {
+        followBool = true;
+        Invoke("ReSetCameraResetting", 0.1f);
+    }
+
+    void ReSetCameraResetting() => followBool=false;
+
     private void Awake()
     {
         viewScreen = FindObjectOfType<ViewScreen>();
+        portals = FindObjectsOfType<Portal>();
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        for (int i = 0; i < portals.Length; i++)
+        {
+            portals[i].cameraReSetting = SetCameraResetting;
+        }
     }
 
     private void Update()
     {
-        Debug.Log("mouse x : " + Input.mousePosition.x);
-        Debug.Log("mouse y : " + Input.mousePosition.y);
+        //Debug.Log("mouse x : " + Input.mousePosition.x);
+        //Debug.Log("mouse y : " + Input.mousePosition.y);
         //rayCamara.transform.position = playerPos.position + Vector3.up * 30;
         //rayCamara.transform.LookAt(playerPos.position);
         if (Input.GetKey(KeyCode.Space) || followBool == true)

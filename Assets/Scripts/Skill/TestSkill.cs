@@ -12,27 +12,26 @@ public class TestSkill : Skill
     //{
     //    playerInfo = GetComponent<PlayerInfo>();
     //}
-    private void Start()
+    private void Awake()
     {
-        //use Cone
-        skillInfo.angle = 20;
-        //use Immediate,NonTarget
-        skillInfo.radius = 6;
-        //use Projectile,NonTarget,Cone
-        skillInfo.range = 30;
-        //use Projectile,
-        skillInfo.length = 6;
+        skillInfo.type = SkillType.Skill;
+        skillInfo.angle = 20;//use Cone
+        skillInfo.radius = 6;//use Immediate,NonTarget
+        skillInfo.range = 30;//use Projectile,NonTarget,Cone
+        skillInfo.length = 6;//use Projectile,
         skillInfo.cooltime = 5;
         skillInfo.skillNum = 1;
-        skillInfo.skillType = SkillType.NonTarget;
+        skillInfo.skillType = SkillType.Immediate;
 
-        skillInfo.skillDamageInfo.attackType = AttackType.Shot;
-        skillInfo.skillDamageInfo.interval = 0;
-        skillInfo.skillDamageInfo.attackDamage = 0;
-        skillInfo.skillDamageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
-        skillInfo.skillDamageInfo.attackState = state.None;
-        skillInfo.skillDamageInfo.slowDownRate = 0;
-        skillInfo.skillDamageInfo.timer = 0;
+        skillInfo.hitBoxInfo.attackType = AttackType.Shot;
+        skillInfo.hitBoxInfo.interval = 1;
+
+        skillInfo.hitBoxInfo.damageInfo.attackState = state.None;
+        skillInfo.hitBoxInfo.damageInfo .attackDamage = 10;
+        skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
+        skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
+        skillInfo.hitBoxInfo.damageInfo.timer = 0;
+
     }
     private void Update()
     {
@@ -42,7 +41,7 @@ public class TestSkill : Skill
     protected override void SkillFire()
     {
         GameObject eff = PhotonNetwork.Instantiate("Bash", transform.position, Quaternion.identity);
-        eff.AddComponent<HitBox>().damageInfo = skillInfo.skillDamageInfo;
+        eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
 
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum);
     }
