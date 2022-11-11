@@ -16,6 +16,7 @@ public partial class GameMgr : Singleton<GameMgr>
         codeExample = FindObjectOfType<CodeExample>();
         followCam = FindObjectOfType<FollowCam>();
         uIMgr = FindObjectOfType<UIMgr>();
+        itemSpawner = FindObjectOfType<ItemSpawner>();
     }
 
     public GameObject PunFindObject(int viewID3)//뷰아이디를 넘겨받아 포톤상의 오브젝트를 찾는다.

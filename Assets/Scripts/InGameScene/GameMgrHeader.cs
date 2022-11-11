@@ -29,6 +29,9 @@ public partial class GameMgr : Singleton<GameMgr>
     [Tooltip("Game MGR randomItem")]
     [field: SerializeField]
     public RandomItem randomItem { get; private set; } = null;
+    [Tooltip("Game MGR itempSpawner")]
+    [field: SerializeField]
+    public ItemSpawner itemSpawner { get; private set; } = null;
     [Tooltip("Game MGR inventory")]
     [field: SerializeField]
     public Inventory inventory { get; private set; } = null;
