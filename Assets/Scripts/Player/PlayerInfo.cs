@@ -79,26 +79,26 @@ public struct DamageInfo
     }
 
     [PunRPC]
-    private void RPC_GetDamage(DamageInfo attackInfo)
+    private void RPC_GetDamage(state attackState,float attackDamage, float slowDownRate, float timer,int attackerViewID)
     {
         if (playerAlive == state.Die) return;
         if (playerUnbeatable == state.Unbeatable) return;
-        if (attackInfo.attackState == state.Stun)
+        if (attackState == state.Stun)
         {
             if (stunCoroutine != null) StopCoroutine(stunCoroutine);
-            stunCoroutine = StartCoroutine(Stun(attackInfo.timer));
+            stunCoroutine = StartCoroutine(Stun(timer));
         }
-        else if (attackInfo.attackState == state.Slow)
+        else if (attackState == state.Slow)
         {
             if (slowCoroutine != null) StopCoroutine(slowCoroutine);
-            slowCoroutine = StartCoroutine(Slow(attackInfo.slowDownRate, attackInfo.timer));
+            slowCoroutine = StartCoroutine(Slow(slowDownRate, timer));
         }
-        curHP -= attackInfo.attackDamage * ((100 - damageDecrease) / 100);
+        curHP -= attackDamage * ((100 - damageDecrease) / 100);
         if (onGetDamage != null) onGetDamage();
         if (curHP <= 0)
         {
             curHP = 0;
-            photonView.RPC("RPC_Die", RpcTarget.All, attackInfo.attackerViewID);
+            photonView.RPC("RPC_Die", RpcTarget.All, attackerViewID);
         }
     }
     [PunRPC]

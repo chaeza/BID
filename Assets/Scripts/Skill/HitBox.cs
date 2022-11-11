@@ -27,7 +27,11 @@ public class HitBox : MonoBehaviourPun
         if (hitBoxInfo.attackType != AttackType.Shot) return;
         if (other.gameObject.tag == "Player" && attackList.Contains(other.gameObject) == false)
         {
-            other.gameObject.GetPhotonView().RPC("RPC_GetDamage", RpcTarget.All,hitBoxInfo.damageInfo);
+            other.gameObject.GetPhotonView().RPC("RPC_GetDamage", RpcTarget.All,hitBoxInfo.damageInfo.attackState, 
+                hitBoxInfo.damageInfo.attackDamage, 
+                hitBoxInfo.damageInfo.slowDownRate,
+                hitBoxInfo.damageInfo.timer, 
+                hitBoxInfo.damageInfo.attackerViewID);
             attackList.Add(other.gameObject);
             if(hitBoxInfo.interval!=0)
             {
