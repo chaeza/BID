@@ -7,45 +7,29 @@ public class BlackHoleMove : MonoBehaviourPun
 {
     [SerializeField] private List<GameObject> blackHoleList = null;
     private float blackHoleTime = 10f;
-    private float time = 0;
+    private float masterTime = 0f;
     private int MasterRan;
-    private int ran = 0;
-
-    private void Start()
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-         //   photonView.RPC("BlackHolePos", RpcTarget.MasterClient, MasterRan);
-        }
-    }
 
     [PunRPC]
     public void BlackHolePos(int MasterRan)
     {
-        photonView.RPC("RandomBlackHole", RpcTarget.All, MasterRan);
+        blackHoleList[MasterRan].SetActive(true);
+        blackHoleList.Remove(blackHoleList[MasterRan]);
     }
-
-    [PunRPC]
-    public void RandomBlackHole()
-    {
-        if (blackHoleList.Count > 0)
-        {
-            MasterRan = Random.Range(0, blackHoleList.Count);
-            ran = MasterRan;
-        }
-    }
-
-
     private void Update()
     {
-        time += Time.deltaTime;
-
-        if (time >= blackHoleTime)
+        if (PhotonNetwork.IsMasterClient)
         {
-            RandomBlackHole();
-            blackHoleList[ran].SetActive(true);
-            blackHoleList.Remove(blackHoleList[ran]);
-            time = 0;
+            masterTime += Time.deltaTime;
+        }
+
+        if (masterTime >= blackHoleTime)
+        {
+            MasterRan = Random.Range(0, blackHoleList.Count);
+            photonView.RPC("BlackHolePos", RpcTarget.All, MasterRan);
+            masterTime = 0;
+            return;
         }
     }
+
 }
