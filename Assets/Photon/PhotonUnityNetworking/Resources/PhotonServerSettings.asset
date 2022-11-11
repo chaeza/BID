@@ -60,6 +60,8 @@ MonoBehaviour:
   - PunDestroyObject
   - Test_Die
   - LoadingState
+  - ReleasePool
+  - SetParentMiniMap
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
