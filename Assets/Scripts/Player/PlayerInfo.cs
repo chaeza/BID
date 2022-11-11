@@ -22,15 +22,13 @@ public enum state
 }
 public struct DamageInfo
 {
-    public AttackType attackType;
-    public float interval;
     public state attackState;
     public float attackDamage;
     public float slowDownRate;
     public float timer;
     public int attackerViewID;
 }
-public class PlayerInfo : MonoBehaviourPun
+    public class PlayerInfo : MonoBehaviourPun
 {
     [field: Header("PlayerInfo")]
     [field: SerializeField] public float maxHP { get; private set; } = 100;
