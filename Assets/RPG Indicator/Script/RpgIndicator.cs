@@ -76,12 +76,10 @@ namespace RPG_Indicator
         }
         public void ShowCone(float angle, float range, bool showRangeIndicator, IndicatorColor color, int style)
         {
-            Debug.Log(layermask + "---");
-
             MainIndicator.material = new Material(data[style].ConeIndicator);
             BasicSetup();
             MainIndicator.material.SetFloat("_Angle", angle);
-            MainIndicator.transform.localScale = new Vector3(range * 2, range * 2, 100);
+            MainIndicator.transform.localScale = new Vector3(range * 2, range * 2, 40);
             Range = range;
 
             if (showRangeIndicator) ShowRange(range, color, style);
@@ -98,7 +96,7 @@ namespace RPG_Indicator
         {
             MainIndicator.material = new Material(data[style].LineIndicator);
             BasicSetup();
-            MainIndicator.transform.localScale = new Vector3(length, (range * 2),100);
+            MainIndicator.transform.localScale = new Vector3(length, (range * 2),40);
             Range = range;
 
             if (showRangeIndicator) ShowRange(range, color, style);
@@ -114,7 +112,7 @@ namespace RPG_Indicator
         {
             MainIndicator.material = new Material(data[style].AreaIndicator);
             BasicSetup();
-            MainIndicator.transform.localScale = new Vector3(radius * 2, radius * 2, 100);
+            MainIndicator.transform.localScale = new Vector3(radius * 2, radius * 2, 40);
             Range = range;
 
             if (showRangeIndicator) ShowRange(range, color, style);
@@ -131,7 +129,7 @@ namespace RPG_Indicator
             HideRange();
             MainIndicator.material = new Material(data[style].RadiusIndicator);
             BasicSetup();
-            MainIndicator.transform.localScale = new Vector3(radius * 2, radius * 2, 100);
+            MainIndicator.transform.localScale = new Vector3(radius * 2, radius * 2, 40);
             Range = radius;
             if (showRangeIndicator) ShowRange(radius, color, style);
             ColorChange(color, style);
@@ -148,7 +146,7 @@ namespace RPG_Indicator
             ColorChange(color, style);
             RangeIndicator.scaleMode = DecalScaleMode.InheritFromHierarchy;
             RangeIndicator.enabled = true;
-            RangeIndicator.transform.localScale = new Vector3(range * 2, range * 2,100);
+            RangeIndicator.transform.localScale = new Vector3(range * 2, range * 2,40);
             Range = range;
             if (isPlayer)
             {

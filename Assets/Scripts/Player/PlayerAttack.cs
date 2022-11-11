@@ -20,6 +20,7 @@ public class PlayerAttack : MonoBehaviourPun
 
     private void Update()
     {
+        if (photonView.IsMine != true) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.A) Attack();
     }
 

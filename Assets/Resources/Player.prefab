@@ -353,6 +353,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc56bad7cf291e144811df1b214f7712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4535766667334637552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301099733012319383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 0
+    Name: isMove
+  - Type: 9
+    SynchronizeType: 0
+    Name: isAttack1
+  - Type: 9
+    SynchronizeType: 0
+    Name: isAttack2
+  - Type: 9
+    SynchronizeType: 0
+    Name: isAttack3
+  - Type: 9
+    SynchronizeType: 0
+    Name: isDie
+  - Type: 9
+    SynchronizeType: 0
+    Name: isBasicDash
+  - Type: 9
+    SynchronizeType: 0
+    Name: isSkill1
+  - Type: 9
+    SynchronizeType: 0
+    Name: isSkill2
+  - Type: 9
+    SynchronizeType: 0
+    Name: isKick
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!114 &6397321762844811121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +418,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: -347715755643669480}
+  - {fileID: 4535766667334637552}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

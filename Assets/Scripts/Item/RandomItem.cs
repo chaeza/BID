@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class RandomItem : MonoBehaviour
 {
-    private int itemNum = 1;//총 아이템 갯수
+    private int itemType = 5;//총 아이템 갯수
     private int itemRan = 0;//랜덤으로 뽑을 아이템 번호
     public void GetRandomitem(GameObject player)// 랜덤아이템 지급
     {
-        if (GameMgr.Instance.inventory.InvetoryCount(1) != true && GameMgr.Instance.inventory.InvetoryCount(2) != true && GameMgr.Instance.inventory.InvetoryCount(3) != true && GameMgr.Instance.inventory.InvetoryCount(4) != true)
+        if (GameMgr.Instance.inventory.InvetoryCount(0) != true && GameMgr.Instance.inventory.InvetoryCount(1) != true && GameMgr.Instance.inventory.InvetoryCount(2) != true && GameMgr.Instance.inventory.InvetoryCount(3) != true)
         {
             Debug.Log("인벤토리가 가득 찼습니다.");
             return;
         }
-        itemRan = Random.Range(0, itemNum);
+        itemRan = Random.Range(0, itemType);
         while (true)
         {
             if (itemRan == 0 && GameMgr.Instance.inventory.ContainInventory(0) == false)
             {
-                player.AddComponent<TestItem>().GetItem(GameMgr.Instance.inventory.AddInventory(itemRan));
+                player.AddComponent<TestItem>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
                 break;
             }
-            else itemRan = Random.Range(0, itemNum);//중복시 다시 랜덤
+            else itemRan = Random.Range(0, itemType);//중복시 다시 랜덤
         }
     }
 }
