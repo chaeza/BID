@@ -11,6 +11,7 @@ public partial class FollowCam : MonoBehaviour
     [SerializeField] private GameObject rayCamara;
     [SerializeField] private ViewScreen viewScreen;
     [SerializeField] private Vector2 mousePos;
+    private Portal[] portals;
     private Transform playerPos;
     private bool followBool = false;
     private float playerY;
@@ -26,14 +27,27 @@ public partial class FollowCam : MonoBehaviour
         playerY = playerPos.transform.position.y;
         transform.LookAt(playerPos.position + Vector3.up * 2);
     }
+    public void SetCameraResetting()
+    {
+        followBool = true;
+        Invoke("ReSetCameraResetting", 0.1f);
+    }
+
+    void ReSetCameraResetting() => followBool=false;
+
     private void Awake()
     {
         viewScreen = FindObjectOfType<ViewScreen>();
+        portals = FindObjectsOfType<Portal>();
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        for (int i = 0; i < portals.Length; i++)
+        {
+            portals[i].cameraReSetting = SetCameraResetting;
+        }
     }
 
     private void Update()

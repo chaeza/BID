@@ -15,7 +15,7 @@ public class BlackHoleMove : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            photonView.RPC("BlackHolePos", RpcTarget.MasterClient, MasterRan);
+         //   photonView.RPC("BlackHolePos", RpcTarget.MasterClient, MasterRan);
         }
     }
 

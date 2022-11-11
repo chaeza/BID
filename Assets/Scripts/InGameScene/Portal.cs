@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+public delegate void CameraReSetting();
+
 public struct PortalData
 {
     public bool isCenter;
@@ -25,12 +27,15 @@ public partial class Portal : MonoBehaviourPun
     //Delay 
     [SerializeField]
     private float transferTimer = 0;
-
+    
+    public CameraReSetting cameraReSetting;
 
     //Priority Queue for Transfer Player
     List<int> viewIDList = new List<int>();
     List<GameObject> playerList = new List<GameObject>();
     Queue<GameObject> launchPlayerList = new Queue<GameObject>();
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -75,7 +80,7 @@ public partial class Portal : MonoBehaviourPun
             if (portalData.isCenter == false)
             {
                 player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[0].gameObject.transform.position + Vector3.forward * 2;
-                Debug.Log(player.transform.position.x + " " + player.transform.position.y + " " + player.transform.position.z);
+                cameraReSetting();
             }
             else if (portalData.isCenter == true)
             {
@@ -86,7 +91,7 @@ public partial class Portal : MonoBehaviourPun
                     if (exit[ran].portalData.isDestoryed == false)
                     {
                         player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[ran].gameObject.transform.position + Vector3.forward * 2;
-                        Debug.Log(player.transform.position.x + " " + player.transform.position.y + " " + player.transform.position.z);
+                        cameraReSetting();
                         break;
                     }
                 }
