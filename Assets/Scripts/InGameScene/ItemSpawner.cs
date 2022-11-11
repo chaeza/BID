@@ -9,8 +9,7 @@ public class ItemSpawner : MonoBehaviourPun
     [SerializeField] private List<GameObject> itemAreaPos = null;
     [Header("스페셜 위치 좌표")]
     [SerializeField] private GameObject itemSpecialAreaPos = null;
-    [Header("다리 위치 좌표")]
-    [SerializeField] private GameObject[] itemBridgeAreadPos = null;
+
 /*    //아이템 프리팹
     [Header("아이템 프리팹")]
     [SerializeField] private GameObject itemPrefab;*/
