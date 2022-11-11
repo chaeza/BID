@@ -4,7 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 public struct SkillInfo
 {
-    public DamageInfo skillDamageInfo;
+    public SkillType type;
+    public HitBoxInfo hitBoxInfo;
     public SkillType skillType;
     public float range;
     public float radius;
@@ -12,9 +13,12 @@ public struct SkillInfo
     public float length;
     public int skillNum;
     public int cooltime;
+    public int itemNum;
 }
 public enum SkillType
 {
+    Skill,
+    Item,
     Buff,
     Passive,
     Immediate,
@@ -31,15 +35,52 @@ public class Skill : MonoBehaviourPun
     protected bool click;
 
     private bool isCanSkill = true;
+    private bool setRadius;
     private RaycastHit hit;
     private bool nullCheck;
     private bool nullCheckHit;
     private int mask;
 
-    private void Awake()
+    private void Start()
     {
         codeExample = FindObjectOfType<CodeExample>();
-        GameMgr.Instance.uIMgr.onResetCoolTime += ResetCoolTime;
+        if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType += UnClick;
+        if (skillInfo.type == SkillType.Skill)
+        {
+            GameMgr.Instance.uIMgr.onResetCoolTime += ResetCoolTime;
+            if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetSkillDescription += SkillRadius;
+        }
+        else if (skillInfo.type == SkillType.Item)
+        {
+            if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetItemDescription += ItemRadius;
+        }
+    }
+    protected void UnClick()
+    {
+        Debug.Log("UnClick");
+        click = false;
+    }
+    protected void ItemRadius(int skillNum)
+    {
+        Debug.Log(skillNum);
+        if (skillInfo.skillType==SkillType.Immediate&&skillNum == skillInfo.itemNum)
+        {
+            codeExample.Radius(skillInfo.radius);
+        }
+        else if(skillNum==5) codeExample.Interrupt();
+    }
+    protected void SkillRadius()
+    {
+        if (setRadius == false)
+        {
+            codeExample.Radius(skillInfo.radius);
+            setRadius = true;
+        }
+        else
+        {
+            setRadius = false;
+            codeExample.Interrupt();
+        }
     }
     protected void SkillUse()
     {
@@ -47,7 +88,6 @@ public class Skill : MonoBehaviourPun
         codeExample.Interrupt();
         if (skillInfo.skillType == SkillType.Immediate)
         {
-            codeExample.Radius(skillInfo.radius);
             if (isCanSkill == true)
             {
                 isCanSkill = false;
