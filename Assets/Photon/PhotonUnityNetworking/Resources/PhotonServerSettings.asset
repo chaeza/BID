@@ -66,6 +66,7 @@ MonoBehaviour:
   - RPC_BlackHolePos
   - RPC_RandomBlackHole
   - Timer
+  - SetName
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
