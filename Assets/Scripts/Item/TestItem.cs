@@ -47,7 +47,11 @@ public class TestItem : Skill
     {
         if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetItemDescription -= ItemRadius;
         if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType -= UnClick;
+
+        //
         Debug.Log("아이템사용");
+
+        //
         GameMgr.Instance.uIMgr.UseItem(itemNum);
         Destroy(GetComponent<TestItem>());
     }
