@@ -24,10 +24,10 @@ public class Projectile_Bash : Skill
         skillInfo.radius = 0;//use Immediate,NonTarget
         skillInfo.range = 20;//use Projectile,NonTarget,Cone
         skillInfo.length = 20;//use Projectile,
-        skillInfo.cooltime = 20;
+        skillInfo.cooltime = 2;
         skillInfo.skillNum = 6;
         skillInfo.skillType = SkillType.Projectile;
-
+        skillInfo.skillDirY = 0;
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
         skillInfo.hitBoxInfo.interval = 1;
 
@@ -55,8 +55,16 @@ public class Projectile_Bash : Skill
     {
         GameObject eff = PhotonNetwork.Instantiate("Bash", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
+        eff.transform.LookAt(desiredDir);
+        eff.transform.Rotate(0, 180, 0);
+        MyPosInfo myPosInfo;
+        myPosInfo.myPos = gameObject.transform;
+        myPosInfo.zPos = -3.5f;
+        myPosInfo.xPos = 0f;
+        myPosInfo.yPos = 0f;
+        eff.AddComponent<MyPos>().myPosInfo= myPosInfo;
         StartCoroutine(EndSkill(eff));
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum);
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -74,7 +82,6 @@ public class Projectile_Bash : Skill
     IEnumerator EndSkill(GameObject eff)
     {
         navMeshAgent.speed = 40f;
-
         dashAttack = true;
         yield return new WaitForSeconds(0.5f);
         dashAttack = false;

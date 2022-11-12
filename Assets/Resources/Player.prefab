@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: ObservedComponents.Array.data[1]
       value: 
       objectReference: {fileID: 7254708785536708024}
+    - target: {fileID: 2984988034079729152, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2984988034229991135, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_Name
       value: Player

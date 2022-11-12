@@ -53,15 +53,18 @@ public class BlackHole : MonoBehaviourPun
             {
                 if (collider.tag == "Player" || collider.tag == "MainPlayer")
                 {
+                    Debug.Log("DD");
                     collider.gameObject.SetActive(false);
                 }
                 else if (collider.tag == "Portal")
                 {
+                    Debug.Log("DD");
                     collider.gameObject.GetComponent<Portal>().portalData.isDestoryed = true;
                 }
                 else if (collider.tag == "Portal" || collider.tag == "Ground")
                 {
                     collider.gameObject.SetActive(false);
+                    Debug.Log("DD");
                 }
                 else
                     Debug.Log("¿‹¿Á");
