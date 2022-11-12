@@ -21,6 +21,26 @@ public class RandomItem : MonoBehaviour
                 player.AddComponent<TestItem>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
                 break;
             }
+            else if (itemRan == 1 && GameMgr.Instance.inventory.ContainInventory(1) == false)
+            {
+                player.AddComponent<Buff_BasicAttackUp>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
+                break;
+            }
+            else if (itemRan == 2 && GameMgr.Instance.inventory.ContainInventory(2) == false)
+            {
+                player.AddComponent<Buff_BasicAttackUp>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
+                break;
+            }
+            else if (itemRan == 3 && GameMgr.Instance.inventory.ContainInventory(3) == false)
+            {
+                player.AddComponent<Buff_BasicAttackUp>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
+                break;
+            }
+            else if (itemRan == 4 && GameMgr.Instance.inventory.ContainInventory(3) == false)
+            {
+                player.AddComponent<Buff_BasicAttackUp>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
+                break;
+            }
             else itemRan = Random.Range(0, itemType);//중복시 다시 랜덤
         }
     }

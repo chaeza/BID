@@ -27,7 +27,7 @@ public class TestSkill : Skill
         skillInfo.hitBoxInfo.interval = 1;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.None;
-        skillInfo.hitBoxInfo.damageInfo .attackDamage = 10;
+        skillInfo.hitBoxInfo.damageInfo.attackDamage = 10;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
         skillInfo.hitBoxInfo.damageInfo.timer = 0;

@@ -28,7 +28,7 @@ public struct DamageInfo
     public float timer;
     public int attackerViewID;
 }
-    public class PlayerInfo : MonoBehaviourPun
+public class PlayerInfo : MonoBehaviourPun
 {
     [field: Header("PlayerInfo")]
     [field: SerializeField] public float maxHP { get; private set; } = 100;
@@ -60,7 +60,7 @@ public struct DamageInfo
 
     private void Start()
     {
-        if (photonView.IsMine == true) 
+        if (photonView.IsMine == true)
         {
             gameObject.tag = "MainPlayer";
             GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
@@ -71,6 +71,11 @@ public struct DamageInfo
     {
         StartCoroutine(Stay(time));
     }
+    public void SetBasicAttackDamage(float value)
+    {
+        basicAttackDamage += value;
+    }
+
 
     [PunRPC]
     public void MySessionID(string ID)

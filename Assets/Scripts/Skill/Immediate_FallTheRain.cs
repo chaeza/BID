@@ -14,13 +14,13 @@ public class Immediate_FallTheRain : Skill
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.cooltime = 15;
         skillInfo.skillNum = 3;
-        skillInfo.skillType = SkillType.Immediate;
+        skillInfo.skillType = SkillType.NonTarget;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Continuous;
         skillInfo.hitBoxInfo.interval = 0;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.Slow;
-        skillInfo.hitBoxInfo.damageInfo.attackDamage = 5;
+        skillInfo.hitBoxInfo.damageInfo.attackDamage = 15;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 10;
         skillInfo.hitBoxInfo.damageInfo.timer = 1f;
@@ -33,7 +33,7 @@ public class Immediate_FallTheRain : Skill
     }
     protected override void SkillFire()
     {
-        GameObject eff = PhotonNetwork.Instantiate("Bash", transform.position, Quaternion.identity);
+        GameObject eff = PhotonNetwork.Instantiate("FallTheRainPrefab", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
 
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum);

@@ -47,6 +47,8 @@ public class ItemSpawner : MonoBehaviourPun
             itemCount++;
         }
 
+
+
         //큰지역 빈오브젝트 만큼 포문돌림
         for (int i = 0; i < itemAreaPos.Count; i++)
         {
@@ -91,6 +93,10 @@ public class ItemSpawner : MonoBehaviourPun
     [PunRPC]
     void ItemRespawn()
     {
+        itemAreaPos.Clear();
+
+        itemAreaPos.AddRange(GameObject.FindGameObjectsWithTag("SpawnArea"));
+
         GameObject obj;
 
         obj = itemQueue.Dequeue();
