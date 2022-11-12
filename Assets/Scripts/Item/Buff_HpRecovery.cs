@@ -51,6 +51,10 @@ public class Buff_HpRecovery : Skill
         if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType -= UnClick;
 
         GameObject eff = PhotonNetwork.Instantiate("HpRecovery", transform.position, Quaternion.identity);
+        MyPosInfo myPosInfo;
+        myPosInfo.myPos = gameObject.transform;
+        myPosInfo.yPos = 1;
+        eff.AddComponent<MyPos>().myPosInfo = myPosInfo;
         photonView.RPC("ChangeHP", RpcTarget.All, 30);
 
         GameMgr.Instance.uIMgr.UseItem(itemNum);
