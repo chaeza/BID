@@ -14,6 +14,7 @@ public class Projectile_EnergyShoot : Skill
         skillInfo.length = 8;//use Projectile,
         skillInfo.cooltime = 3;
         skillInfo.skillNum = 3;
+        skillInfo.skillDirY = 3;
         skillInfo.skillType = SkillType.Projectile;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
@@ -33,7 +34,7 @@ public class Projectile_EnergyShoot : Skill
     }
     protected override void SkillFire()
     {
-        GameObject eff = PhotonNetwork.Instantiate("EnergyBall", transform.position, Quaternion.identity);
+        GameObject eff = PhotonNetwork.Instantiate("EnergyBall", transform.position+Vector3.up*3, Quaternion.identity);
         eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
 
         eff.transform.LookAt(desiredDir);
@@ -49,9 +50,9 @@ public class Projectile_EnergyShoot : Skill
         while(true)
         {
             eff.transform.Translate(Vector3.forward);
-            yield return new WaitForSeconds(0.1f);
             i++;
             if (i == 30) break;
+            yield return new WaitForSeconds(0.02f);
         }
         GameMgr.Instance.DestroyTarget(eff,0.1f);
         yield return null;
