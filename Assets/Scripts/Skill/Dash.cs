@@ -20,8 +20,8 @@ public class Dash : Skill
     }
     protected override void SkillFire()
     {
-        photonView.RPC("SetChangeMoveSpeed", RpcTarget.All, 400f, 0.5f);
-        photonView.RPC("SetGhostEff", RpcTarget.All, 10, 0.05f);
+        gameObject.GetPhotonView().RPC("SetChangeMoveSpeed", RpcTarget.All, 300f, 0.5f);
+        gameObject.GetPhotonView().RPC("SetGhostEff", RpcTarget.All, 10, 0.05f);
 
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,1);
     }
