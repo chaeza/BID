@@ -49,9 +49,11 @@ public class Projectile_EnergyShoot : Skill
         while(true)
         {
             eff.transform.Translate(Vector3.forward);
+            yield return new WaitForSeconds(0.1f);
             i++;
             if (i == 30) break;
         }
+        GameMgr.Instance.DestroyTarget(eff,0.1f);
         yield return null;
     }
 
