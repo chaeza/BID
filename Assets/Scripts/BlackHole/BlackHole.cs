@@ -15,7 +15,6 @@ public class BlackHole : MonoBehaviourPun
 
     private void Update()
     {
-
         // save time
         time += Time.deltaTime;
         // Creates a sphere inside and returns an array of colliders that touched the sphere // x radius
