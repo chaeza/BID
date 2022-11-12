@@ -54,6 +54,8 @@ public class Buff_HpRecovery : Skill
         MyPosInfo myPosInfo;
         myPosInfo.myPos = gameObject.transform;
         myPosInfo.yPos = 1;
+        myPosInfo.xPos = 0;
+        myPosInfo.zPos = 0;
         eff.AddComponent<MyPos>().myPosInfo = myPosInfo;
         photonView.RPC("ChangeHP", RpcTarget.All, 30);
 

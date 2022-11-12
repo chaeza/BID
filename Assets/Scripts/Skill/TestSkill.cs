@@ -43,6 +43,6 @@ public class TestSkill : Skill
         GameObject eff = PhotonNetwork.Instantiate("HpRecovery", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
 
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum);
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }
 }

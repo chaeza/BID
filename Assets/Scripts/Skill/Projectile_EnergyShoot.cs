@@ -41,7 +41,7 @@ public class Projectile_EnergyShoot : Skill
         StartCoroutine(Projectile_EnergyShootTimer(eff));
 
 
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum);
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }
 
     IEnumerator Projectile_EnergyShootTimer(GameObject eff)
