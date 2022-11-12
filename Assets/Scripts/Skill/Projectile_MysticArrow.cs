@@ -5,13 +5,6 @@ using Photon.Pun;
 
 public class Projectile_MysticArrow : Skill
 {
-    [SerializeField] private GameObject Eff;
-
-    //PlayerInfo playerInfo;
-    //private void Awake()
-    //{
-    //    playerInfo = GetComponent<PlayerInfo>();
-    //}
     private void Awake()
     {
         skillInfo.type = SkillType.Skill;
@@ -20,7 +13,8 @@ public class Projectile_MysticArrow : Skill
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.length = 7;//use Projectile,
         skillInfo.cooltime = 3;
-        skillInfo.skillNum = 3;
+        skillInfo.skillNum = 4;
+        skillInfo.skillDirY = 3;
         skillInfo.skillType = SkillType.Projectile;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
@@ -42,17 +36,24 @@ public class Projectile_MysticArrow : Skill
         //
         GameObject eff = PhotonNetwork.Instantiate("MysticArrow", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
-
+        eff.transform.LookAt(desiredDir);
         StartCoroutine(DestroyObject(eff));
         //
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum);
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }
 
-    IEnumerator DestroyObject(GameObject obj)
+    IEnumerator DestroyObject(GameObject eff)
     {
-        
-        GameMgr.Instance.DestroyTarget(obj, 2);
-        yield break;
+        int i = 0;
+        while (true)
+        {
+            eff.transform.Translate(Vector3.forward);
+            i++;
+            if (i == 30) break;
+            yield return new WaitForSeconds(0.02f);
+        }
+        GameMgr.Instance.DestroyTarget(eff, 0.1f);
+        yield return null;
     }
 
     
