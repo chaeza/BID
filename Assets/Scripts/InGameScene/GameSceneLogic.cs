@@ -33,4 +33,9 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
         if (alivePlayerNum == 1)  GameMgr.Instance.uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
         
     }
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        AliveNumCheck();
+    }
+
 }

@@ -48,6 +48,6 @@ public class Immediate_BloodField : Skill
         eff.transform.Rotate(-90f, 0f, 0f);
 
         //
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum);
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }
 }
