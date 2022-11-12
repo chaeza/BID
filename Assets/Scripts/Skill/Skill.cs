@@ -4,9 +4,10 @@ using UnityEngine;
 using Photon.Pun;
 public struct SkillInfo
 {
-    public SkillType type;
     public HitBoxInfo hitBoxInfo;
     public SkillType skillType;
+    public SkillType type;
+    public float skillDirY;
     public float range;
     public float radius;
     public float angle;
@@ -63,11 +64,11 @@ public class Skill : MonoBehaviourPun
     protected void ItemRadius(int skillNum)
     {
         Debug.Log(skillNum);
-        if (skillInfo.skillType==SkillType.Immediate&&skillNum == skillInfo.itemNum)
+        if (skillInfo.skillType == SkillType.Immediate && skillNum == skillInfo.itemNum)
         {
             codeExample.Radius(skillInfo.radius);
         }
-        else if(skillNum==5) codeExample.Interrupt();
+        else if (skillNum == 5) codeExample.Interrupt();
     }
     protected void SkillRadius()
     {
@@ -146,8 +147,9 @@ public class Skill : MonoBehaviourPun
             if (nullCheckHit == true)
             {
                 clickPos = hit.point;
-                clickPos.y = transform.position.y;
-                desiredDir = hit.point;
+                //clickPos.y = transform.position.y;
+                clickPos.y = hit.point.y+skillInfo.skillDirY;
+                desiredDir = clickPos;
             }
             if (Vector3.Distance(clickPos, transform.position) > skillInfo.range) { Debug.Log("사정거리 밖"); return; }
             if (isCanSkill == true)
