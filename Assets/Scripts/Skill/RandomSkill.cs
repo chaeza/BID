@@ -14,7 +14,7 @@ public class RandomSkill : MonoBehaviour
         //Random skill number
         skillRan = Random.Range(1, skillType+1);
         skillRan = 3;
-        GameMgr.Instance.uIMgr.SetSkillIcon(skillRan);
+        GameMgr.Instance.uIMgr.SetSkillIcon(skillRan,0);
         if (skillRan == 1) player.AddComponent<TestSkill>();
         else if (skillRan == 2) player.AddComponent<Immediate_BloodField>();
         else if (skillRan == 3) player.AddComponent<Projectile_EnergyShoot>();

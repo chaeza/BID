@@ -13,14 +13,14 @@ public class UIMgr : MonoBehaviourPun
     [SerializeField] private GameObject[] itemIcon;
     [SerializeField] private GameObject skillIconP;
     [SerializeField] private GameObject itemIconP;
-    [SerializeField] private GameObject skillCoolTime;
-    [SerializeField] private TextMeshProUGUI skillCoolTimeText;
-    private GameObject skillUI;
-    private GameObject skillDescription;
+    private GameObject[] skillCoolTime = new GameObject[2];
+    private TextMeshProUGUI[] skillCoolTimeText = new TextMeshProUGUI[2];
+    private GameObject[] skillUI = new GameObject[2];
+    private GameObject[] skillDescription = new GameObject[2];
     private GameObject[] itemUI = new GameObject[4];
     private GameObject[] itemDescription = new GameObject[4];
-    private bool isCanSkillDescription = true;
-    private bool setSkillDescription;
+    private bool[] isCanSkillDescription = new bool[2] { true, true };
+    private bool[] setSkillDescription = new bool[2];
     private bool isCanItemDescription = true;
     private bool setItemDescription;
 
@@ -32,6 +32,7 @@ public class UIMgr : MonoBehaviourPun
     public delegate void OnSetSkillDescription();
     public event OnSetSkillDescription onSetSkillDescription;
     private Vector2 createPoint = new Vector2(130, 90);
+    private Vector2 dashCreatePoint = new Vector2(1500, 60);
     private Vector2[] itemCreatePoint = { new Vector2(720, 60), new Vector2(885, 60), new Vector2(1045, 60), new Vector2(1200, 60)};
 
     private void Update()
@@ -39,13 +40,13 @@ public class UIMgr : MonoBehaviourPun
 
         if (Input.mousePosition.x > 60 && Input.mousePosition.x < 180 && Input.mousePosition.y > 25 && Input.mousePosition.y < 180)
         {
-            isCanSkillDescription = true;
-            SetSkillDescription();
+            isCanSkillDescription[0] = true;
+            SetSkillDescription(0);
         }
         else
         {
-            isCanSkillDescription = false;
-            SetSkillDescription();
+            isCanSkillDescription[0] = false;
+            SetSkillDescription(0);
         }
         if (Input.mousePosition.x > 680 && Input.mousePosition.x < 760 && Input.mousePosition.y > 25 && Input.mousePosition.y < 155 && GameMgr.Instance.inventory.InvetoryCount(0) == false)
         {
@@ -71,6 +72,16 @@ public class UIMgr : MonoBehaviourPun
         {
             isCanItemDescription = false;
             SetItemDescription(5);
+        }
+        if (Input.mousePosition.x > 1450 && Input.mousePosition.x < 1550 && Input.mousePosition.y > 25 && Input.mousePosition.y < 155)
+        {
+            isCanSkillDescription[1] = true;
+            SetSkillDescription(1);
+        }
+        else
+        {
+            isCanSkillDescription[1] = false;
+            SetSkillDescription(1);
         }
     }
 
@@ -115,48 +126,49 @@ public class UIMgr : MonoBehaviourPun
         GameMgr.Instance.inventory.RemoveInventory(itemNum);
     }
 
-    public void SetSkillDescription()
+    public void SetSkillDescription(int num)
     {
-        if (isCanSkillDescription == true)
+        if (isCanSkillDescription[num] == true)
         {
-            if (setSkillDescription == false)
+            if (setSkillDescription[num] == false)
             {
                 Debug.Log("true");
-                setSkillDescription = true;
-                skillDescription.SetActive(true);
+                setSkillDescription[num] = true;
+                skillDescription[num].SetActive(true);
                 if (onSetSkillDescription != null) onSetSkillDescription();
             }
         }
-        else if (setSkillDescription == true)
+        else if (setSkillDescription[num] == true)
         {
             Debug.Log("False");
-            setSkillDescription = false;
-            skillDescription.SetActive(false);
+            setSkillDescription[num] = false;
+            skillDescription[num].SetActive(false);
             if (onSetSkillDescription != null) onSetSkillDescription();
         }
     }
     //  Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
-    public void SetSkillIcon(int skillNum)
+    public void SetSkillIcon(int skillNum,int num)
     {
-        skillUI = Instantiate(skillIcon[skillNum], createPoint, Quaternion.identity, GameObject.Find("Canvas").transform);
-        skillUI.transform.SetParent(skillIconP.transform);
-        skillDescription = skillUI.transform.GetChild(0).gameObject;
-        skillCoolTime = skillUI.transform.GetChild(1).gameObject;
-        skillCoolTimeText = skillCoolTime.GetComponent<TextMeshProUGUI>();
+        if(num == 1) skillUI[num] = Instantiate(skillIcon[skillNum], dashCreatePoint, Quaternion.identity, GameObject.Find("Canvas").transform);
+        else skillUI[num] = Instantiate(skillIcon[skillNum], createPoint, Quaternion.identity, GameObject.Find("Canvas").transform);
+        skillUI[num].transform.SetParent(skillIconP.transform);
+        skillDescription[num] = skillUI[num].transform.GetChild(0).gameObject;
+        skillCoolTime[num] = skillUI[num].transform.GetChild(1).gameObject;
+        skillCoolTimeText[num] = skillCoolTime[num].GetComponent<TextMeshProUGUI>();
     }
 
     //Object that called the skill cooldown to the UI manager, cooldown time
-    public void SkillCooltime(int time, int skillNum)
+    public void SkillCooltime(int time, int skillNum,int num)
     {
         // Change the color of the icon to be dimmed to give it an inactive feel.
-        skillUI.GetComponent<RawImage>().color = new Color(160 / 255f, 160 / 255f, 160 / 255f);
+        skillUI[num].GetComponent<RawImage>().color = new Color(160 / 255f, 160 / 255f, 160 / 255f);
         // Change the cool-time text to the max value of the cool-time.
-        skillCoolTimeText.text = time.ToString();
+        skillCoolTimeText[num].text = time.ToString();
         // Execute the cool-time coroutine and wait for the cool-time time.
-        StartCoroutine(SkillCooltime_Count(time, skillNum));
+        StartCoroutine(SkillCooltime_Count(time, skillNum,num));
 
     }
-    IEnumerator SkillCooltime_Count(int time, int skillNum)
+    IEnumerator SkillCooltime_Count(int time, int skillNum,int num)
     {
         // Store the received cooldown time in i
         for (int i = time - 1; i >= 0; --i)
@@ -164,16 +176,16 @@ public class UIMgr : MonoBehaviourPun
             // wait 1 second
             yield return new WaitForSeconds(1f);
             // Decrease cooldown text by -1
-            skillCoolTimeText.text = i.ToString();
+            skillCoolTimeText[num].text = i.ToString();
             yield return null;
         }
 
         // icon color original position
-        skillUI.GetComponent<RawImage>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f);
+        skillUI[num].GetComponent<RawImage>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f);
         // Call ResetCooltime to the object that called the saved UI manager to use the skill again
         if (onResetCoolTime != null) onResetCoolTime(skillNum);
         // instead of disabling text, just print nothing
-        skillCoolTimeText.text = " ";
+        skillCoolTimeText[num].text = " ";
         yield break;
     }
 }

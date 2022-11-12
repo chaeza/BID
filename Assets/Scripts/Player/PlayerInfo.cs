@@ -130,6 +130,12 @@ public struct DamageInfo
             curHP = maxHP;
     }
     [PunRPC]
+
+    private void SetChangeMoveSpeed(float value,float time)
+    {
+        if (slowCoroutine != null) StopCoroutine(slowCoroutine);
+        slowCoroutine=StartCoroutine(Slow(value, time));
+    }
     private void ChangeMoveSpeed(float value)
     {
         moveSpeed = value;
