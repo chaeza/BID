@@ -1931,17 +1931,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillIcon:
+  - {fileID: 4695253256746028096, guid: b4edcd4b8195f30458812ad5aaeb25e0, type: 3}
   - {fileID: 4695253256746028096, guid: 04bf7567fe39707428c32a7381f913ea, type: 3}
-  - {fileID: 4695253256746028096, guid: 04bf7567fe39707428c32a7381f913ea, type: 3}
+  - {fileID: 4695253256746028096, guid: 1e7e42725674aa343856b4761330aa3f, type: 3}
+  - {fileID: 4695253256746028096, guid: 1e7e42725674aa343856b4761330aa3f, type: 3}
   itemIcon:
-  - {fileID: 4695253256746028096, guid: eb17a19333f06da4e81c8ad3a132f1e8, type: 3}
-  - {fileID: 4695253256746028096, guid: f6ce94acbb9cfbe4cb6672c98f9c326c, type: 3}
-  - {fileID: 4695253256746028096, guid: b218af1091c06854b8b67658c5005a62, type: 3}
-  - {fileID: 4695253256746028096, guid: c9c6f2648c07c5d40a12889408034c1b, type: 3}
+  - {fileID: 4695253256746028096, guid: c0529ec34d47e7c4b85fcb5c91298334, type: 3}
+  - {fileID: 4695253256746028096, guid: 7fd2a8f849b16b24aacc82eb332d113a, type: 3}
+  - {fileID: 4695253256746028096, guid: 4d0ce255834eb1042afba811276e37d3, type: 3}
   skillIconP: {fileID: 4930380061875257290}
   itemIconP: {fileID: 1330391357489714280}
-  skillCoolTime: {fileID: 0}
-  skillCoolTimeText: {fileID: 0}
 --- !u!1 &3144517216745727697
 GameObject:
   m_ObjectHideFlags: 0

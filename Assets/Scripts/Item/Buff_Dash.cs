@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Buff_HpRecovery : Skill
+public class Buff_Dash : Skill
 {
     [SerializeField] private int itemNum = 0;
+    PlayerInfo playerInfo;
     public void GetItem(int itemType,int itemnum)//inventory order
     {
         if (itemNum == 0)
@@ -18,6 +19,7 @@ public class Buff_HpRecovery : Skill
     }
     private void Awake()
     {
+        playerInfo = GetComponent<PlayerInfo>();
         skillInfo.type = SkillType.Item;
         skillInfo.skillType = SkillType.Buff;
     }
@@ -34,15 +36,8 @@ public class Buff_HpRecovery : Skill
         if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetItemDescription -= ItemRadius;
         if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType -= UnClick;
 
-        GameObject eff = PhotonNetwork.Instantiate("HpRecovery", transform.position, Quaternion.identity);
-        GameMgr.Instance.DestroyTarget(eff, 1f);
-        MyPosInfo myPosInfo;
-        myPosInfo.myPos = gameObject.transform;
-        myPosInfo.yPos = 1;
-        myPosInfo.xPos = 0;
-        myPosInfo.zPos = 0;
-        eff.AddComponent<MyPos>().myPosInfo = myPosInfo;
-        gameObject.GetPhotonView().RPC("ChangeHP", RpcTarget.All, 30f);
+        gameObject.GetPhotonView().RPC("SetChangeMoveSpeed", RpcTarget.All, 300f, 0.5f);
+        gameObject.GetPhotonView().RPC("SetGhostEff", RpcTarget.All, 10, 0.05f);
 
         GameMgr.Instance.uIMgr.UseItem(itemNum);
         Destroy(GetComponent<Buff_HpRecovery>());
