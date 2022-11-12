@@ -137,7 +137,7 @@ public class PlayerMove : MonoBehaviourPun
         for(int i = 0; i<num; i++)
         {
             yield return new WaitForSeconds(time);
-            ghostEffect.CreateGhostEffectObject(Color.blue, 1f, 0.5f, 0.5f, 0.85f, 0.5f);
+            ghostEffect.CreateGhostEffectObject(Color.black, 1f, 0.5f, 0.5f, 0.85f, 0.5f);
         }
         yield break;
     }

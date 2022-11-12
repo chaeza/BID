@@ -11,11 +11,19 @@ public class PlayerAttack : MonoBehaviourPun
     private bool isAttack = true;
     private int motionNum;
     private AudioSource sound;
+    HitBoxInfo hitBoxInfo;
     private void Start()
     {
         //sound = GetComponent<AudioSource>();
         myAnimator = GetComponent<Animator>();
         playerInfo = GetComponent<PlayerInfo>();
+        hitBoxInfo.attackType = AttackType.Shot;
+        hitBoxInfo.interval = 0;
+        hitBoxInfo.damageInfo.attackState = state.None;
+        hitBoxInfo.damageInfo.attackDamage = playerInfo.basicAttackDamage;
+        hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
+        hitBoxInfo.damageInfo.slowDownRate = 0;
+        hitBoxInfo.damageInfo.timer = 0;
     }
 
     private void Update()
@@ -60,8 +68,14 @@ public class PlayerAttack : MonoBehaviourPun
     {
         playerInfo.StayPlayer(0.7f);
         yield return new WaitForSeconds(0.2f);
+        GameObject eff = PhotonNetwork.Instantiate("BasicAttackEff", transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        if (num == 0 || num == 1) eff.transform.Rotate(0, 0, -45);
+        eff.AddComponent<HitBox>().hitBoxInfo = hitBoxInfo;
+        GameMgr.Instance.DestroyTarget(eff, 1f);
+        yield return new WaitForSeconds(0.2f);
+        Destroy(GetComponent<SphereCollider>());
         //
-        yield return new WaitForSeconds(playerInfo.basicAttackSpeed-0.2f);
+        yield return new WaitForSeconds(playerInfo.basicAttackSpeed-0.4f);
         isAttack = true;
     }
 
