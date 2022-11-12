@@ -107,6 +107,7 @@ public struct DamageInfo
         playerAlive = state.Die;
         GameMgr.Instance.gameSceneLogic.AliveNumCheck();
     }
+    //테스트 죽음용   
     [PunRPC]
     private void Test_Die()
     {
