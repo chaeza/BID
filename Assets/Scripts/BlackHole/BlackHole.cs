@@ -64,7 +64,7 @@ public class BlackHole : MonoBehaviourPun
                 }
                 else
                 {
-                    Debug.Log("???");
+                
                     collider.gameObject.SetActive(false);
                 }
 

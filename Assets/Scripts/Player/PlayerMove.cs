@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviourPun
     public NavMeshAgent navMeshAgent { get; private set; } = null;
     private PlayerInfo playerInfo;
     private Animator myAnimator;
+    private GhostEffect ghostEffect;
     private float ratioX = 1.3206611570247933884297520661157f;
     private float ratioY = 1.2966942148760330578512396694215f;
 
@@ -24,6 +25,7 @@ public class PlayerMove : MonoBehaviourPun
 
     private void Start()
     {
+        ghostEffect=GetComponent<GhostEffect>();
         playerInfo = GetComponent<PlayerInfo>();
         myAnimator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -124,5 +126,19 @@ public class PlayerMove : MonoBehaviourPun
         navMeshAgent.updatePosition = false;
         isMove = false;
         desiredDir = Vector3.zero;
+    }
+    [PunRPC]
+    private void SetGhostEff(int num,float time)
+    {
+        StartCoroutine(ghostEffDelady(num, time));
+    }
+    IEnumerator ghostEffDelady(int num,float time)
+    {
+        for(int i = 0; i<num; i++)
+        {
+            yield return new WaitForSeconds(time);
+            ghostEffect.CreateGhostEffectObject(Color.blue, 1f, 0.5f, 0.5f, 0.85f, 0.5f);
+        }
+        yield break;
     }
 }

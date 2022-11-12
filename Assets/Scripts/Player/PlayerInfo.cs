@@ -112,6 +112,7 @@ public class PlayerInfo : MonoBehaviourPun
         playerAlive = state.Die;
         GameMgr.Instance.gameSceneLogic.AliveNumCheck();
     }
+    //테스트 죽음용   
     [PunRPC]
     private void Test_Die()
     {
@@ -134,6 +135,12 @@ public class PlayerInfo : MonoBehaviourPun
             curHP = maxHP;
     }
     [PunRPC]
+
+    private void SetChangeMoveSpeed(float value,float time)
+    {
+        if (slowCoroutine != null) StopCoroutine(slowCoroutine);
+        slowCoroutine=StartCoroutine(Slow(value, time));
+    }
     private void ChangeMoveSpeed(float value)
     {
         moveSpeed = value;

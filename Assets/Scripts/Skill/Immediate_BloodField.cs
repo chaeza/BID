@@ -20,7 +20,7 @@ public class Immediate_BloodField : Skill
         skillInfo.range = 0;//use Projectile,NonTarget,Cone
         skillInfo.length = 0;//use Projectile,
         skillInfo.cooltime = 20;
-        skillInfo.skillNum = 5;
+        skillInfo.skillNum = 2;
         skillInfo.skillType = SkillType.Immediate;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
@@ -48,6 +48,6 @@ public class Immediate_BloodField : Skill
         eff.transform.Rotate(-90f, 0f, 0f);
 
         //
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum);
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }
 }
