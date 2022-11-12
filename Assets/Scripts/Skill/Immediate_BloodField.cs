@@ -20,7 +20,7 @@ public class Immediate_BloodField : Skill
         skillInfo.range = 0;//use Projectile,NonTarget,Cone
         skillInfo.length = 0;//use Projectile,
         skillInfo.cooltime = 20;
-        skillInfo.skillNum = 5;
+        skillInfo.skillNum = 2;
         skillInfo.skillType = SkillType.Immediate;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
