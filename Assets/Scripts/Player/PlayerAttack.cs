@@ -34,7 +34,6 @@ public class PlayerAttack : MonoBehaviourPun
 
     public void Attack()
     {
-        GameMgr.Instance.randomItem.GetRandomitem(gameObject);
         //¸ð¼Ç 
         if (isAttack == true)
         {
