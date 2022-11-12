@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomSkill : MonoBehaviour
 {
     //total number of skills
-    private int skillType = 1;
+    private int skillType = 2;
     //skills random
     public int skillRan { get; private set; } = 0;
     //Distributing random skills
@@ -13,8 +13,10 @@ public class RandomSkill : MonoBehaviour
     {
         //Random skill number
         skillRan = Random.Range(1, skillType+1);
+        skillRan = 2;
         GameMgr.Instance.uIMgr.SetSkillIcon(skillRan);
         if (skillRan == 1) player.AddComponent<TestSkill>();
+        if (skillRan == 2) player.AddComponent<Immediate_BloodField>();
         else
            Debug.Log("Player didn't get any skill");
     }

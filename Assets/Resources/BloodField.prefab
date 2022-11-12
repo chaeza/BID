@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 114852571742433752}
   - component: {fileID: -1401547169695574215}
   - component: {fileID: -4381848157186658846}
+  - component: {fileID: -7561996467670569199}
   m_Layer: 0
   m_Name: BloodField
   m_TagString: Untagged
@@ -90,3 +91,16 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!65 &-7561996467670569199
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186968088654704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 28.89, y: 29.17, z: 4.12}
+  m_Center: {x: 0, y: 0, z: 0}
