@@ -6,6 +6,8 @@ public struct MyPosInfo
 {
     public Transform myPos;
     public float yPos;
+    public float zPos;
+    public float xPos;
 }
 public class MyPos : MonoBehaviour
 {
@@ -14,6 +16,6 @@ public class MyPos : MonoBehaviour
     void Update()
     {
         transform.position = myPosInfo.myPos.transform.position;
-        if (myPosInfo.yPos != 0) transform.Translate(0f,myPosInfo.yPos, 0f);
+        transform.Translate(myPosInfo.xPos, myPosInfo.yPos, myPosInfo.zPos);
     }
 }
