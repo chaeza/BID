@@ -38,7 +38,7 @@ public class BlackHole : MonoBehaviourPun
                 collider.gameObject.transform.position += dir * 0.8f * Time.deltaTime;
             }
 
-            if (dis <= 0.3f)
+          /*  if (dis <= 0.3f)
             {
                 collider.gameObject.transform.position += dir * 1f * Time.deltaTime;
             }
@@ -46,27 +46,25 @@ public class BlackHole : MonoBehaviourPun
             if (dis <= 0.05f)
             {
                 collider.gameObject.transform.position += dir * 1.2f * Time.deltaTime;
-            }
+            }*/
 
             if (time >= 10)
             {
                 if (collider.tag == "Player" || collider.tag == "MainPlayer")
                 {
-                    Debug.Log("DD");
+                    Debug.Log("플레이어 메인");
                     collider.gameObject.SetActive(false);
                 }
-                else if (collider.tag == "Portal")
+                else if (collider.tag == "SpawnArea") 
                 {
-                    Debug.Log("DD");
-                    collider.gameObject.GetComponent<Portal>().portalData.isDestoryed = true;
-                }
-                else if (collider.tag == "Portal" || collider.tag == "Ground")
-                {
-                    collider.gameObject.SetActive(false);
-                    Debug.Log("DD");
+                    collider.gameObject.SetActive(false);  
+                    collider.gameObject.tag = "DonotSpawn";
+                    Debug.Log("태그바뀜");
                 }
                 else
-                    Debug.Log("잔재");
+                {
+                    collider.gameObject.SetActive(false);
+                }
 
                 this.gameObject.SetActive(false);
             }

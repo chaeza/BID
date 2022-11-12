@@ -9,8 +9,8 @@ TagManager:
   - FxTemporaire
   - Bullet
   - MainPlayer
-  - PortalSystem
-  - Portal
+  - SpawnArea
+  - DonotSpawn
   layers:
   - Default
   - TransparentFX
