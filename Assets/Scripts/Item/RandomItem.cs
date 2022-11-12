@@ -36,7 +36,7 @@ public class RandomItem : MonoBehaviour
                 player.AddComponent<Buff_BasicAttackUp>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
                 break;
             }
-            else if (itemRan == 4 && GameMgr.Instance.inventory.ContainInventory(3) == false)
+            else if (itemRan == 4 && GameMgr.Instance.inventory.ContainInventory(4) == false)
             {
                 player.AddComponent<Buff_BasicAttackUp>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
                 break;

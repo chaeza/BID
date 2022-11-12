@@ -13,7 +13,7 @@ public class Immediate_FallTheRain : Skill
         skillInfo.radius = 6;//use Immediate,NonTarget
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.cooltime = 15;
-        skillInfo.skillNum = 3;
+        skillInfo.skillNum = 4;
         skillInfo.skillType = SkillType.NonTarget;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Continuous;
@@ -36,6 +36,6 @@ public class Immediate_FallTheRain : Skill
         GameObject eff = PhotonNetwork.Instantiate("FallTheRainPrefab", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
 
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum);
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }
 }

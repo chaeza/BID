@@ -109,10 +109,12 @@ public class ItemSpawner : MonoBehaviourPun
     [PunRPC]
     void ReleasePool(int viewID)
     {
+        Debug.Log("ReleasePool");
         Release(GameMgr.Instance.PunFindObject(viewID));
     }
     public void Release(GameObject obj)
     {   //큐로 다시 보낸다
+        Debug.Log("Release");
         obj.gameObject.SetActive(false);   //플레이어에 닿으면 false시키고 큐에 저장
         itemQueue.Enqueue(obj);
 

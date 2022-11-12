@@ -17,7 +17,6 @@ public class ItemBoxPool : MonoBehaviour
         {
             Debug.Log("¥Í¿Ω");
             GameMgr.Instance.randomItem.GetRandomitem(other.gameObject);
-            Debug.Log(other.gameObject);
             GameMgr.Instance.itemSpawner.photonView.RPC("ReleasePool", RpcTarget.All, gameObject.GetPhotonView().ViewID);
         }
         else

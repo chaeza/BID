@@ -6,7 +6,8 @@ using Photon.Pun;
 public class BlackHoleMove : MonoBehaviourPun
 {
     [SerializeField] private List<GameObject> blackHoleList = null;
-    private float blackHoleTime = 100f;
+    //private float blackHoleTime = 100f;
+    private float blackHoleTime = 10f;
     private float masterTime = 0f;
     private int MasterRan;
 
