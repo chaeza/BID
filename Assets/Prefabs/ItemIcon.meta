@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Skill/YeongKab.meta
+guid: 9c87642f96ce66a4a8a678c11a2390e0
+========
 guid: 39045c6f3782c444fabba0e1ef7453fb
+>>>>>>>> main:Assets/Prefabs/ItemIcon.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

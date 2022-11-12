@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Skill/Prejectile_WarOfWall_mgr.cs.meta
 guid: e475b72edfb9d604cb3aef6f86062e9b
+========
+guid: 805fbca65cca5be428bb48af0fd719ae
+>>>>>>>> main:Assets/Scripts/Skill/Projectile_MysticArrow.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
