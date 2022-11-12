@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 6e0ba280e4f191745959f13e2f737d07, type: 3}
+  m_Texture: {fileID: 2800000, guid: 2d9f7b1f2f8ba024fb340aebcf864461, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -300,6 +300,17 @@ PrefabInstance:
     - target: {fileID: 222768439808718709, guid: b15d600b78ec0df4582e70dfea94b5a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1169254995764124466, guid: b15d600b78ec0df4582e70dfea94b5a1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504380581952830757, guid: b15d600b78ec0df4582e70dfea94b5a1, type: 3}
+      propertyPath: m_text
+      value: "\uBE14\uB7EC\uB4DC\uD544\uB4DC\n\uC124\uBA85:  \uD53C\uB85C \uACF5\uACA9\uD560
+        \uC218\uB2E8\uC744 \uC5BB\uC5C8\uB2E4. \uD53C\uB97C \uB113\uAC8C \uD37C\uD2B8\uB824
+        \uACF5\uACA9\uD55C\uB2E4.\n\uC9C0\uC18D\uC2DC\uAC04:  10\n\uB370\uBBF8\uC9C0
+        : 10 / slow : 2\n\uCFE8\uD0C0\uC784 : 20\uCD08"
       objectReference: {fileID: 0}
     - target: {fileID: 6337932271021561982, guid: b15d600b78ec0df4582e70dfea94b5a1, type: 3}
       propertyPath: m_Name
