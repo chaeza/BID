@@ -9,7 +9,7 @@ using System.IO;
 using TMPro;
 using RPG_Indicator;
 
-
+public delegate void HPTransfer(float Hp);
 public enum state
 {
     None,
@@ -48,6 +48,9 @@ public struct DamageInfo
     public event OnChangeMoveSpeed onChangeMoveSpeed;
     public delegate void OnGetDamage();
     public event OnGetDamage onGetDamage;
+    public HPTransfer HPTransfer;
+
+
     // skill range picture
     public GameObject skilla;
     // skill range
@@ -100,6 +103,7 @@ public struct DamageInfo
             curHP = 0;
             photonView.RPC("RPC_Die", RpcTarget.All, attackerViewID);
         }
+        HPTransfer(curHP);
     }
     [PunRPC]
     private void RPC_Die(int attackerViewID)
@@ -117,8 +121,14 @@ public struct DamageInfo
 
     private void Update()
     {
+        //테스트 죽음용
         if (Input.GetKeyDown(KeyCode.U))
             gameObject.GetPhotonView().RPC("Test_Die", RpcTarget.All);
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            curHP -= 10;
+            HPTransfer(curHP);
+        }
 
     }
 
