@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 
 public class MiniMapRender : MonoBehaviourPun
@@ -11,7 +12,11 @@ public class MiniMapRender : MonoBehaviourPun
     private Vector2 tempVec;
     private float ratioX = 1.3206611570247933884297520661157f;
     private float ratioY = 1.2966942148760330578512396694215f;
-    
+    private Image renderImage;
+    private void Awake()
+    {
+        renderImage = GetComponent<Image>();
+    }
     public void SetTarget(GameObject player)
     {
         target = player;
@@ -24,7 +29,7 @@ public class MiniMapRender : MonoBehaviourPun
     }
     void Update()
     {
-        if (photonView.IsMine != true) return;
+        if (photonView.IsMine != true) renderImage.color = Color.red;
         tempVec.x = 546.6f - target.transform.position.x;
         tempVec.y = 507.6f - target.transform.position.z;
         if (target == null)
