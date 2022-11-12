@@ -7,8 +7,10 @@ using UnityEngine.AI;
 public class Projectile_Bash : Skill
 {
     [SerializeField] private GameObject Eff;
-    NavMeshAgent navMeshAgent;
+    private Animator anim;
+    private NavMeshAgent navMeshAgent;
     private bool dashAttack = false;
+    
 
     //PlayerInfo playerInfo;
     //private void Awake()
@@ -17,6 +19,7 @@ public class Projectile_Bash : Skill
     //}
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         skillInfo.type = SkillType.Skill;
@@ -53,6 +56,7 @@ public class Projectile_Bash : Skill
     }
     protected override void SkillFire()
     {
+        anim.SetTrigger("isBash");
         GameObject eff = PhotonNetwork.Instantiate("Bash", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
         eff.transform.LookAt(desiredDir);
@@ -62,21 +66,9 @@ public class Projectile_Bash : Skill
         myPosInfo.zPos = -3.5f;
         myPosInfo.xPos = 0f;
         myPosInfo.yPos = 0f;
-        eff.AddComponent<MyPos>().myPosInfo= myPosInfo;
+        eff.AddComponent<MyPos>().myPosInfo = myPosInfo;
         StartCoroutine(EndSkill(eff));
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            // shield effect
-            GameObject a = PhotonNetwork.Instantiate("WarofWall", transform.position, Quaternion.identity);
-
-            GameMgr.Instance.DestroyTarget(a, 6.2f);
-            // GameMgr.Instance.DestroyTarget(gameObject, 6.2f);
-        }
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum, 0);
     }
 
     IEnumerator EndSkill(GameObject eff)
@@ -86,7 +78,7 @@ public class Projectile_Bash : Skill
         yield return new WaitForSeconds(0.5f);
         dashAttack = false;
         navMeshAgent.speed = 10f;
-        Destroy(eff, 0f);
+        GameMgr.Instance.DestroyTarget(eff,0f);
     }
 
 }
