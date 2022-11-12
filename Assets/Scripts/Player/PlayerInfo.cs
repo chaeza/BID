@@ -106,7 +106,7 @@ public class PlayerInfo : MonoBehaviourPun
         if (curHP <= 0)
         {
             curHP = 0;
-            photonView.RPC("RPC_Die", RpcTarget.All, attackerViewID);
+            gameObject.GetPhotonView().RPC("RPC_Die", RpcTarget.All, attackerViewID);
         }
         HPTransfer(curHP);
     }
