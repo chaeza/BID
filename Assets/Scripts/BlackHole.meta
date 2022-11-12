@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Cube.prefab.meta
+guid: 3518c57a0e367624092e0d15af80e78f
+PrefabImporter:
+========
 guid: 18afc8dbebfa44144bb0526e3e01675a
 folderAsset: yes
 DefaultImporter:
+>>>>>>>> main:Assets/Scripts/BlackHole.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

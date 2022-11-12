@@ -69,6 +69,8 @@ MonoBehaviour:
   - SetName
   - SetChangeMoveSpeed
   - SetGhostEff
+  - ItemRespawn
+  - ReleasePool
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
