@@ -15,15 +15,12 @@ public struct PortalData
     public int potalTotalNum;
 }
 
-public partial class Portal : MonoBehaviourPun
-{
-    public Portal[] exit;
-    public PortalData portalData;
-}
 
 //portal move part
 public partial class Portal : MonoBehaviourPun
 {
+    public Portal[] exit;
+    public PortalData portalData;
     //Delay 
     [SerializeField]
     private float transferTimer = 0;

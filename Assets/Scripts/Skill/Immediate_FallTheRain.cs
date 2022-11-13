@@ -20,7 +20,7 @@ public class Immediate_FallTheRain : Skill
         skillInfo.hitBoxInfo.interval = 0.5f;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.Slow;
-        skillInfo.hitBoxInfo.damageInfo.attackDamage = 15;
+        skillInfo.hitBoxInfo.damageInfo.attackDamage = 5;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 10;
         skillInfo.hitBoxInfo.damageInfo.timer = 1f;
@@ -34,8 +34,9 @@ public class Immediate_FallTheRain : Skill
     protected override void SkillFire()
     {
         GameObject eff = PhotonNetwork.Instantiate("FallTheRainPrefab", desiredDir, Quaternion.identity);
-        eff.transform.Rotate(0, 90f, 0);
+        eff.transform.Rotate(-90, 0f, 0);
         eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
+        GameMgr.Instance.DestroyTarget(eff, 2f);
 
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }

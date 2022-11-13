@@ -34,11 +34,11 @@ public class Buff_Unbeatable : Skill
         if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetItemDescription -= ItemRadius;
         if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType -= UnClick;
 
-        GameObject eff = PhotonNetwork.Instantiate("HpRecovery", transform.position, Quaternion.identity);
+        GameObject eff = PhotonNetwork.Instantiate("Unbeatable", transform.position, Quaternion.identity);
         GameMgr.Instance.DestroyTarget(eff, 1f);
         MyPosInfo myPosInfo;
         myPosInfo.myPos = gameObject.transform;
-        myPosInfo.yPos = 1;
+        myPosInfo.yPos = 3;
         myPosInfo.xPos = 0;
         myPosInfo.zPos = 0;
         eff.AddComponent<MyPos>().myPosInfo = myPosInfo;

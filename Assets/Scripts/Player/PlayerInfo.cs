@@ -34,8 +34,8 @@ public class PlayerInfo : MonoBehaviourPun
     [field: Header("PlayerInfo")]
     [field: SerializeField] public float maxHP { get; private set; } = 100;
     [field: SerializeField] public float curHP { get; private set; } = 100;
-    [field: SerializeField] public float moveSpeed { get; private set; } = 10;
-    [field: SerializeField] public float basicMoveSpeed { get; private set; } = 10;
+    [field: SerializeField] public float moveSpeed { get; private set; } = 7;
+    [field: SerializeField] public float basicMoveSpeed { get; private set; } = 7;
     [field: SerializeField] public float basicAttackSpeed { get; private set; } = 1;
     [field: SerializeField] public float basicAttackDamage { get; private set; } = 10f;
     [field: SerializeField] public float damageDecrpease { get; private set; } = 0;

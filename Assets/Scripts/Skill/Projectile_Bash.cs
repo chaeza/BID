@@ -59,6 +59,7 @@ public class Projectile_Bash : Skill
         anim.SetTrigger("isBash");
         GameObject eff = PhotonNetwork.Instantiate("Bash", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
+        eff.AddComponent<Projectile_Bash_mgr>();
         eff.transform.LookAt(desiredDir);
         eff.transform.Rotate(0, 180, 0);
         MyPosInfo myPosInfo;

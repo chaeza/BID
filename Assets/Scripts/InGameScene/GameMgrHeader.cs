@@ -41,5 +41,8 @@ public partial class GameMgr : Singleton<GameMgr>
     [Tooltip("Game MGR resourceData")]
     [field: SerializeField]
     public ResourceData resourceData { get; private set; } = null;
-    
+    [Tooltip("Game MGR potalSystem")]
+    [field: SerializeField]
+    public PotalSystem potalSystem { get; private set; } = null;
+
 }

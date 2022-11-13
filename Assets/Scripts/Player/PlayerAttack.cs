@@ -19,11 +19,11 @@ public class PlayerAttack : MonoBehaviourPun
         playerInfo = GetComponent<PlayerInfo>();
         hitBoxInfo.attackType = AttackType.Shot;
         hitBoxInfo.interval = 0;
-        hitBoxInfo.damageInfo.attackState = state.Stun;
+        hitBoxInfo.damageInfo.attackState = state.None;
         hitBoxInfo.damageInfo.attackDamage = playerInfo.basicAttackDamage;
         hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         hitBoxInfo.damageInfo.slowDownRate = 0f;
-        hitBoxInfo.damageInfo.timer = 3f;
+        hitBoxInfo.damageInfo.timer = 0f;
     }
 
     private void Update()

@@ -13,7 +13,7 @@ public class Projectile_MysticArrow : Skill
         skillInfo.radius = 0;//use Immediate,NonTarget
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.length = 7;//use Projectile,
-        skillInfo.cooltime = 3;
+        skillInfo.cooltime = 6;
         skillInfo.skillNum = skillNum;
         skillInfo.skillDirY = 3;
         skillInfo.skillType = SkillType.Projectile;

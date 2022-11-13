@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 114905432709304106}
   - component: {fileID: -3442636811479237807}
   - component: {fileID: 4565410255798073056}
-  - component: {fileID: 7931357853189206699}
+  - component: {fileID: -2500278364535671507}
   m_Layer: 0
   m_Name: FallTheRainPrefab
   m_TagString: Untagged
@@ -112,16 +112,16 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!65 &7931357853189206699
-BoxCollider:
+--- !u!135 &-2500278364535671507
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410216619362548}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.5}
+  m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}

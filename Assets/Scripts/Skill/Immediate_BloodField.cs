@@ -27,7 +27,7 @@ public class Immediate_BloodField : Skill
         skillInfo.hitBoxInfo.interval = 0;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.Slow;
-        skillInfo.hitBoxInfo.damageInfo.attackDamage = 10;
+        skillInfo.hitBoxInfo.damageInfo.attackDamage = 30;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 50;
         skillInfo.hitBoxInfo.damageInfo.timer = 2;

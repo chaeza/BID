@@ -10,7 +10,7 @@ TagManager:
   - Bullet
   - MainPlayer
   - SpawnArea
-  - DonotSpawn
+  - ItemBlackHole
   layers:
   - Default
   - TransparentFX

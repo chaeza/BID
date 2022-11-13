@@ -5,23 +5,21 @@ using Photon.Pun;
 
 public class ItemBoxPool : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter(Collision other)
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "MainPlayer")
+        if(other.gameObject.tag == "MainPlayer")
         {
             Debug.Log("¥Í¿Ω");
             GameMgr.Instance.randomItem.GetRandomitem(other.gameObject);
             GameMgr.Instance.itemSpawner.photonView.RPC("ReleasePool", RpcTarget.All, gameObject.GetPhotonView().ViewID);
         }
-        else
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+       if (other.gameObject.tag == "ItemBlackHole")
         {
-            Debug.Log("æ»∏‘¿Ω");
+            Debug.Log("∂•ø°∂≥±¿");
+            GameMgr.Instance.itemSpawner.photonView.RPC("ReleasePool", RpcTarget.All, gameObject.GetPhotonView().ViewID);
         }
     }
 }

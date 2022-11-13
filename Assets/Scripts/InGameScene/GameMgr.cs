@@ -18,6 +18,7 @@ public partial class GameMgr : Singleton<GameMgr>
         uIMgr = FindObjectOfType<UIMgr>();
         itemSpawner = FindObjectOfType<ItemSpawner>();
         resourceData = Resources.Load<ResourceData>("ResourceData");
+        potalSystem = FindObjectOfType<PotalSystem>();
     }
 
     public GameObject PunFindObject(int viewID3)//뷰아이디를 넘겨받아 포톤상의 오브젝트를 찾는다.
