@@ -6,7 +6,8 @@ using Photon.Pun;
 public class BlackHole : MonoBehaviourPun
 {
     // Store nearby colliders.
-    private Collider[] colliders = null;
+    [SerializeField] GameObject[] gameObjects = null;
+    [SerializeField] Collider[] colliders = null;
     // variable to hold the time
     private float time;
     // Variable for direction

@@ -5,7 +5,7 @@ using Photon.Pun;
 
 public class Immediate_BloodField : Skill
 {
-    [SerializeField] private GameObject Eff;
+    public int skillNum;
 
     //PlayerInfo playerInfo;
     //private void Awake()
@@ -20,16 +20,16 @@ public class Immediate_BloodField : Skill
         skillInfo.range = 0;//use Projectile,NonTarget,Cone
         skillInfo.length = 0;//use Projectile,
         skillInfo.cooltime = 20;
-        skillInfo.skillNum = 2;
+        skillInfo.skillNum = skillNum;
         skillInfo.skillType = SkillType.Immediate;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
-        skillInfo.hitBoxInfo.interval = 1;
+        skillInfo.hitBoxInfo.interval = 0;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.Slow;
         skillInfo.hitBoxInfo.damageInfo.attackDamage = 10;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
-        skillInfo.hitBoxInfo.damageInfo.slowDownRate = 1;
+        skillInfo.hitBoxInfo.damageInfo.slowDownRate = 50;
         skillInfo.hitBoxInfo.damageInfo.timer = 2;
 
     }

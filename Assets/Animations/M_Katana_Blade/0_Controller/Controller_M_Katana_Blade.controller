@@ -110,7 +110,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.73214287
+  m_ExitTime: 0
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -247,12 +247,6 @@ AnimatorController:
   m_Name: Controller_M_Katana_Blade
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isMove
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 1
-    m_Controller: {fileID: 0}
   - m_Name: isAttack1
     m_Type: 9
     m_DefaultFloat: 0
@@ -303,6 +297,12 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: isBash
     m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: isMove
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -483,7 +483,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Jogging_8Way_verA_F
+  m_Name: Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -510,7 +510,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_5Combo_5
+  m_Name: AttackCombo3
   m_Speed: 1.25
   m_CycleOffset: 0
   m_Transitions:
@@ -2610,32 +2610,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102287553617796116
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Damage_Front_High_KnockDown
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 05cce434701f2b947a415009133b69de, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102287834025871488
 AnimatorState:
   serializedVersion: 6
@@ -2643,7 +2617,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle_ver_A
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -3112,7 +3086,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Run_Fast_ver_A
+  m_Name: Dash
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -3217,7 +3191,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Damage_Die
+  m_Name: Die
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -3704,32 +3678,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102408400696777438
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Damage_Front_Big_ver_D
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6424d7d8af5e9dd41bf2bd9525aec3c2, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102411211021343402
 AnimatorState:
   serializedVersion: 6
@@ -4179,7 +4127,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skill_H
+  m_Name: Skill2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -4934,7 +4882,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_5Combo_No3
+  m_Name: Kick
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -5247,7 +5195,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skill_A
+  m_Name: Skill1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -5586,7 +5534,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Jump_Attack_Combo_No4
+  m_Name: Skill_Bash
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -7296,32 +7244,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102838572358824280
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Damage_Front_Big_ver_B
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 540afbf51bfe6564b8bd85af0ec82b3e, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102838694549824284
 AnimatorState:
   serializedVersion: 6
@@ -8050,32 +7972,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102927064536932170
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Damage_Front_Down_StandUp
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: bf1b6ab6cf8c1594fa085163c00423b9, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102927096065462824
 AnimatorState:
   serializedVersion: 6
@@ -8291,7 +8187,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_3Combo_1
+  m_Name: AttackCombo1
   m_Speed: 1.25
   m_CycleOffset: 0
   m_Transitions:
@@ -8682,7 +8578,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_3Combo_2
+  m_Name: AttackCombo2
   m_Speed: 1.25
   m_CycleOffset: 0
   m_Transitions:
@@ -8871,7 +8767,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.875
+  m_ExitTime: 0
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -8960,7 +8856,7 @@ AnimatorStateMachine:
     m_Position: {x: 264, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102287834025871488}
-    m_Position: {x: -250, y: 110, z: 0}
+    m_Position: {x: -240, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102596288308796490}
     m_Position: {x: 264, y: 12, z: 0}
@@ -8998,20 +8894,8 @@ AnimatorStateMachine:
     m_State: {fileID: 1102318837065337370}
     m_Position: {x: 1200, y: 492, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102838572358824280}
-    m_Position: {x: 1200, y: 552, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 1102152580145543246}
     m_Position: {x: 1200, y: 612, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102408400696777438}
-    m_Position: {x: 1200, y: 672, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102927064536932170}
-    m_Position: {x: 1440, y: 888, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102287553617796116}
-    m_Position: {x: 1200, y: 804, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102030947940852034}
     m_Position: {x: 1200, y: 852, z: 0}
@@ -9095,7 +8979,7 @@ AnimatorStateMachine:
     m_Position: {x: 2256, y: 288, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102621037444605690}
-    m_Position: {x: 270, y: 460, z: 0}
+    m_Position: {x: 210, y: 510, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102733042471199338}
     m_Position: {x: 2256, y: 384, z: 0}
@@ -9638,7 +9522,7 @@ AnimatorStateMachine:
     m_Position: {x: -168, y: 828, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102323131027426094}
-    m_Position: {x: -310, y: 510, z: 0}
+    m_Position: {x: -340, y: 510, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102800504133341560}
     m_Position: {x: -468, y: 876, z: 0}
@@ -9935,7 +9819,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -330, y: 370, z: 0}
+  m_AnyStatePosition: {x: -210, y: 330, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 50, y: 160, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

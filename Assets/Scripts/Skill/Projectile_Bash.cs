@@ -6,11 +6,11 @@ using UnityEngine.AI;
 
 public class Projectile_Bash : Skill
 {
-    [SerializeField] private GameObject Eff;
+    public int skillNum;
     private Animator anim;
     private NavMeshAgent navMeshAgent;
     private bool dashAttack = false;
-    
+
 
     //PlayerInfo playerInfo;
     //private void Awake()
@@ -28,7 +28,7 @@ public class Projectile_Bash : Skill
         skillInfo.range = 20;//use Projectile,NonTarget,Cone
         skillInfo.length = 20;//use Projectile,
         skillInfo.cooltime = 2;
-        skillInfo.skillNum = 6;
+        skillInfo.skillNum = skillNum;
         skillInfo.skillType = SkillType.Projectile;
         skillInfo.skillDirY = 0;
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
