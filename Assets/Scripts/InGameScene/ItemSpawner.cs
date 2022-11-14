@@ -47,7 +47,7 @@ public class ItemSpawner : MonoBehaviourPun
         //스페셜 지역은 항상 4개의 아이템이 나온다
         for (int i = 0; i < 4; i++)
         {
-            GameObject box = PhotonNetwork.Instantiate("Cube", itemSpecialAreaPos.transform.position + RandomPos(itemSpecialAreaPos), Quaternion.identity);
+            GameObject box = PhotonNetwork.Instantiate("ItemBox", itemSpecialAreaPos.transform.position + RandomPos(itemSpecialAreaPos), Quaternion.identity);
             itemCount++;
         }
 
@@ -59,7 +59,7 @@ public class ItemSpawner : MonoBehaviourPun
             int item = Random.Range(1, 5);
             for (int j = 0; j < item; j++)
             {
-                GameObject box = PhotonNetwork.Instantiate("Cube", itemAreaPos[i].transform.position + RandomPos(itemAreaPos[i]), Quaternion.identity);
+                GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos[i].transform.position + RandomPos(itemAreaPos[i]), Quaternion.identity);
                 itemCount++;
                 if (itemCount > itemMaxCount)
                 {
@@ -77,7 +77,7 @@ public class ItemSpawner : MonoBehaviourPun
  
                 if (ran == 1)
                 {
-                    GameObject box = PhotonNetwork.Instantiate("Cube", itemAreaPos[check].transform.position + RandomPos(itemAreaPos[check]), Quaternion.identity);
+                    GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos[check].transform.position + RandomPos(itemAreaPos[check]), Quaternion.identity);
                     itemCount++;
                 }
                 check++;
@@ -97,16 +97,23 @@ public class ItemSpawner : MonoBehaviourPun
     [PunRPC]
     void ItemRespawn()
     {
-        itemAreaPos.Clear();
+        
+        if((itemMaxCount - itemCount) < 10)
+        {
+            return;
+        }
+        else
+        {
+            itemAreaPos.Clear();
 
-        itemAreaPos.AddRange(GameObject.FindGameObjectsWithTag("SpawnArea"));
-
-        GameObject obj;
-
-        obj = itemQueue.Dequeue();
-        int num = Random.Range(0, itemAreaPos.Count);
-        obj.transform.position = itemAreaPos[num].transform.position + RandomPos(itemAreaPos[num]);
-        obj.gameObject.SetActive(true);
+            itemAreaPos.AddRange(GameObject.FindGameObjectsWithTag("SpawnArea"));
+            GameObject obj;
+            obj = itemQueue.Dequeue();
+            int num = Random.Range(0, itemAreaPos.Count);
+            obj.transform.position = itemAreaPos[num].transform.position + RandomPos(itemAreaPos[num]);
+            obj.gameObject.SetActive(true);
+            itemCount++;
+        }
     }
 
 
@@ -121,7 +128,8 @@ public class ItemSpawner : MonoBehaviourPun
         Debug.Log("Release");
         obj.gameObject.SetActive(false);   //플레이어에 닿으면 false시키고 큐에 저장
         itemQueue.Enqueue(obj);
-
+        itemMaxCount--;
+        itemCount--;
         StartCoroutine(TenSec());    //x초 코루틴 실행
     }
 
