@@ -7,7 +7,7 @@ public class BlackHoleMove : MonoBehaviourPun
 {
     [SerializeField] private List<GameObject> blackHoleList = null;
     //private float blackHoleTime = 100f;
-    private float blackHoleTime = 10f;
+    private float blackHoleTime = 60f;
     private float masterTime = 0f;
     private int MasterRan;
 
@@ -24,7 +24,7 @@ public class BlackHoleMove : MonoBehaviourPun
             masterTime += Time.deltaTime;
         }
 
-        if (masterTime >= blackHoleTime)
+        if (masterTime >= blackHoleTime&& blackHoleList.Count>0)
         {
             MasterRan = Random.Range(0, blackHoleList.Count);
             photonView.RPC("BlackHolePos", RpcTarget.All, MasterRan);
