@@ -217,7 +217,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD68C\uBCF5\n\uC124\uBA85: \uCCB4\uB825\uC744 30 \uD68C\uBCF5 \uC2DC\uD0B5\uB2C8\uB2E4.\n"
+  m_text: 'Recovery
+
+    Restores 30 HP
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

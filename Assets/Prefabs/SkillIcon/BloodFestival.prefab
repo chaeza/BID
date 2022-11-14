@@ -66,10 +66,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBE14\uB7EC\uB4DC \uD544\uB4DC\n\uC124\uBA85: \uC8FC\uBCC0\uC5D0 \uD53C\uC758
-    \uC601\uC5ED\uC744 \uD3BC\uCCD0 \uC801\uC5D0\uAC8C \uB370\uBBF8\uC9C0\uB97C \uC8FC\uBA70
-    \uB454\uD654\uD0B5\uB2C8\uB2E4.\n3\uCD08\uAC04 50% \uB454\uD654 \uB370\uBBF8\uC9C0:
-    25\n\uCFE8\uD0C0\uC784 : 20\uCD08"
+  m_text: 'Blood Field
+
+    Spreads a realm of blood around the enemy, dealing damage
+    and slowing them by 50% for 3 seconds.
+
+    Damage: 25
+
+    CoolTime : 20sec'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

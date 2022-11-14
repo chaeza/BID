@@ -141,9 +141,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC5D0\uB108\uC9C0\uBCFC\n\uC124\uBA85: \uC77C\uC790\uB85C \uC5D0\uB108\uC9C0
-    \uAE30\uC6B4\uC744 \uB0A0\uB824 \uB370\uBBF8\uC9C0\uB97C \uC8FC\uBA70 \uB454\uD654\uC2DC\uD0B5\uB2C8\uB2E4.\n1\uCD08\uAC04
-    30\uD37C \uB454\uD654 \uB370\uBBF8\uC9C0: 5\n\uCFE8\uD0C0\uC784 : 3\uCD08"
+  m_text: 'Mystic Arrow
+
+    Fires energy in a straight line, dealing damage and
+    slowing it by 30% for 1 second.
+
+    Damage: 5
+
+    CoolTime : 2sec'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

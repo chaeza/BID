@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 2714119621698584659}
   - component: {fileID: 2461526899367872243}
   m_Layer: 5
-  m_Name: FallTheRain
+  m_Name: NonTarget_FallTheRain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -353,10 +353,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2E0\uBE44\uC758 \uD654\uC0B4\n\uC124\uBA85: 5\uCD08\uAC04 \uC9C0\uC815\uD55C
-    \uACF3\uC5D0 \uD654\uC0B4\uBE44\uB97C \uB0B4\uB9AC\uAC8C \uD558\uC5EC 0.5\uCD08
-    \uB9C8\uB2E4 \uB370\uBBF8\uC9C0\uC640 \uB454\uD654\uC2DC\uD0B5\uB2C8\uB2E4. \n30%
-    \uB454\uD654  \uB370\uBBF8\uC9C0: 5\n\uCFE8\uD0C0\uC784 : 15\uCD08"
+  m_text: 'FallTheRain
+
+    Makes a rain of arrows fall on the designated area for
+    5 seconds, dealing damage and slowing them every 0.5 seconds.
+
+    Damage : 5sec
+
+    CoolTime:
+    15sec'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
