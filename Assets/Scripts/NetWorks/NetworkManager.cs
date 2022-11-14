@@ -321,6 +321,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         if (readyCount == PhotonNetwork.PlayerList.Length && readyCount > 1)
         {
             PhotonNetwork.LoadLevel("LoadingScene");
+            PhotonNetwork.CurrentRoom.IsOpen = false;
         }
         else
         {
