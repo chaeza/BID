@@ -6,17 +6,15 @@ using UnityEngine.AI;
 
 public class Projectile_Bash : Skill
 {
-    public int skillNum;
+    public void SetSkillNum(int Num)
+    {
+        skillInfo.skillNum = Num;
+    }
+
     private Animator anim;
     private NavMeshAgent navMeshAgent;
     private bool dashAttack = false;
 
-
-    //PlayerInfo playerInfo;
-    //private void Awake()
-    //{
-    //    playerInfo = GetComponent<PlayerInfo>();
-    //}
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -28,7 +26,6 @@ public class Projectile_Bash : Skill
         skillInfo.range = 20;//use Projectile,NonTarget,Cone
         skillInfo.length = 20;//use Projectile,
         skillInfo.cooltime = 2;
-        skillInfo.skillNum = skillNum;
         skillInfo.skillType = SkillType.Projectile;
         skillInfo.skillDirY = 0;
         skillInfo.hitReturn = true;

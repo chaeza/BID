@@ -72,7 +72,12 @@ public class HitBox : MonoBehaviourPun
         timer += Time.deltaTime;
         if (timer >= skillInfo.hitBoxInfo.interval && other.gameObject.tag == "Player")
         {
-            other.gameObject.GetPhotonView().RPC("RPC_GetDamage", RpcTarget.All, skillInfo.hitBoxInfo.damageInfo);
+            other.gameObject.GetPhotonView().RPC("RPC_GetDamage", RpcTarget.AllBufferedViaServer,
+                skillInfo.hitBoxInfo.damageInfo.attackState,
+                skillInfo.hitBoxInfo.damageInfo.attackDamage,
+                skillInfo.hitBoxInfo.damageInfo.slowDownRate,
+                skillInfo.hitBoxInfo.damageInfo.timer,
+                skillInfo.hitBoxInfo.damageInfo.attackerViewID);
             timer = 0;
         }
     }

@@ -5,13 +5,10 @@ using Photon.Pun;
 
 public class Immediate_BloodField : Skill
 {
-    public int skillNum;
-
-    //PlayerInfo playerInfo;
-    //private void Awake()
-    //{
-    //    playerInfo = GetComponent<PlayerInfo>();
-    //}
+    public void SetSkillNum(int Num)
+    {
+        skillInfo.skillNum = Num;
+    }
     private void Awake()
     {
         skillInfo.type = SkillType.Skill;
@@ -20,7 +17,6 @@ public class Immediate_BloodField : Skill
         skillInfo.range = 0;//use Projectile,NonTarget,Cone
         skillInfo.length = 0;//use Projectile,
         skillInfo.cooltime = 20;
-        skillInfo.skillNum = skillNum;
         skillInfo.skillType = SkillType.Immediate;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;

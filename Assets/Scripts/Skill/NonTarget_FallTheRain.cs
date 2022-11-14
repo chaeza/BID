@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Immediate_FallTheRain : Skill
+public class NonTarget_FallTheRain : Skill
 {
-    public int skillNum;
+    public void SetSkillNum(int Num)
+    {
+        skillInfo.skillNum = Num;
+    }
     // Start is called before the first frame update
     private void Awake()
     {
@@ -13,7 +16,6 @@ public class Immediate_FallTheRain : Skill
         skillInfo.radius = 6;//use Immediate,NonTarget
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.cooltime = 15;
-        skillInfo.skillNum = skillNum;
         skillInfo.skillType = SkillType.NonTarget;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Continuous;

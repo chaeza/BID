@@ -192,6 +192,7 @@ public class Skill : MonoBehaviourPun
     {
         if (skillNum == skillInfo.skillNum)
         {
+            Debug.Log(skillInfo.skillNum);
             isCanSkill = true;
             Debug.Log("¸®¼Â");
         }
