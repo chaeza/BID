@@ -16,6 +16,7 @@ public class MiniMapRender : MonoBehaviourPun
     private void Awake()
     {
         renderImage = GetComponent<Image>();
+        if (photonView.IsMine != true) renderImage.color = Color.red;
     }
     public void SetTarget(GameObject player)
     {
@@ -29,7 +30,7 @@ public class MiniMapRender : MonoBehaviourPun
     }
     void Update()
     {
-        if (photonView.IsMine != true) renderImage.color = Color.red;
+        if (photonView.IsMine == false) return;
         tempVec.x = 546.6f - target.transform.position.x;
         tempVec.y = 507.6f - target.transform.position.z;
         if (target == null)
