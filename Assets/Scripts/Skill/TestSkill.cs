@@ -16,6 +16,7 @@ public class TestSkill : Skill
         skillInfo.cooltime = 5;
         skillInfo.skillNum = skillNum;
         skillInfo.skillType = SkillType.Immediate;
+        skillInfo.hitReturn = false;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
         skillInfo.hitBoxInfo.interval = 1;
@@ -35,7 +36,7 @@ public class TestSkill : Skill
     protected override void SkillFire()
     {
         GameObject eff = PhotonNetwork.Instantiate("HpRecovery", transform.position, Quaternion.identity);
-        eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
+        eff.AddComponent<HitBox>().skillInfo = skillInfo;
 
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }

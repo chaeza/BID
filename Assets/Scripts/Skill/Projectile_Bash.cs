@@ -31,6 +31,7 @@ public class Projectile_Bash : Skill
         skillInfo.skillNum = skillNum;
         skillInfo.skillType = SkillType.Projectile;
         skillInfo.skillDirY = 0;
+        skillInfo.hitReturn = true;
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
         skillInfo.hitBoxInfo.interval = 1;
 
@@ -54,12 +55,12 @@ public class Projectile_Bash : Skill
             navMeshAgent.SetDestination(desiredDir);
         }
     }
+    Coroutine dash;
     protected override void SkillFire()
     {
         anim.SetTrigger("isBash");
         GameObject eff = PhotonNetwork.Instantiate("Bash", transform.position, Quaternion.identity);
-        eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
-        eff.AddComponent<Projectile_Bash_mgr>();
+        eff.AddComponent<HitBox>().skillInfo = skillInfo;
         eff.transform.LookAt(desiredDir);
         eff.transform.Rotate(0, 180, 0);
         MyPosInfo myPosInfo;
@@ -68,17 +69,22 @@ public class Projectile_Bash : Skill
         myPosInfo.xPos = 0f;
         myPosInfo.yPos = 0f;
         eff.AddComponent<MyPos>().myPosInfo = myPosInfo;
-        StartCoroutine(EndSkill(eff));
+        dash= StartCoroutine(EndSkill(eff));
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum, 0);
     }
-
+    protected override void HitFire(GameObject attacker, GameObject hit)
+    {
+        StopCoroutine(dash);
+        GameObject a = PhotonNetwork.Instantiate("WarofWall", transform.position, Quaternion.identity);
+        GameMgr.Instance.DestroyTarget(a, 6f);
+    }
     IEnumerator EndSkill(GameObject eff)
     {
-        navMeshAgent.speed = 40f;
+        navMeshAgent.speed = 28f;
         dashAttack = true;
         yield return new WaitForSeconds(0.5f);
         dashAttack = false;
-        navMeshAgent.speed = 10f;
+        navMeshAgent.speed = 7f;
         GameMgr.Instance.DestroyTarget(eff,0f);
     }
 

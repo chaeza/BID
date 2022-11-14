@@ -15,28 +15,51 @@ public struct HitBoxInfo
     public float interval;
     public DamageInfo damageInfo;
 }
+public struct HitReturnInfo
+{
+    public SkillType type;
+    public int num;
+    public GameObject attacker;
+    public GameObject hit;
+}
 public class HitBox : MonoBehaviourPun
 {
-    public HitBoxInfo hitBoxInfo;
+    public SkillInfo skillInfo;
+    public HitReturnInfo hitReturnInfo;
+    private bool setHitReturnInfo;
     private List<GameObject> attackList = new List<GameObject>();
     private float timer;
     private int count;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hitBoxInfo.attackType != AttackType.Shot) return;
+        if (skillInfo.hitBoxInfo.attackType != AttackType.Shot) return;
         if (other.gameObject.tag == "Player" && attackList.Contains(other.gameObject) == false)
         {
-            other.gameObject.GetPhotonView().RPC("RPC_GetDamage", RpcTarget.AllBufferedViaServer,hitBoxInfo.damageInfo.attackState, 
-                hitBoxInfo.damageInfo.attackDamage, 
-                hitBoxInfo.damageInfo.slowDownRate,
-                hitBoxInfo.damageInfo.timer, 
-                hitBoxInfo.damageInfo.attackerViewID);
+            other.gameObject.GetPhotonView().RPC("RPC_GetDamage", RpcTarget.AllBufferedViaServer, 
+                skillInfo.hitBoxInfo.damageInfo.attackState,
+                skillInfo.hitBoxInfo.damageInfo.attackDamage,
+                skillInfo.hitBoxInfo.damageInfo.slowDownRate,
+                skillInfo.hitBoxInfo.damageInfo.timer,
+                skillInfo.hitBoxInfo.damageInfo.attackerViewID);
             attackList.Add(other.gameObject);
-            if(hitBoxInfo.interval!=0)
+            if(skillInfo.hitReturn==true)
+            {
+                if(setHitReturnInfo==false)
+                {
+                    setHitReturnInfo = true;
+                    hitReturnInfo.attacker = GameMgr.Instance.PunFindObject(skillInfo.hitBoxInfo.damageInfo.attackerViewID);
+                    hitReturnInfo.hit = other.gameObject;
+                    hitReturnInfo.type = skillInfo.type;
+                    if (skillInfo.type == SkillType.Skill) hitReturnInfo.num = skillInfo.skillNum;
+                    else if (skillInfo.type == SkillType.Item) hitReturnInfo.num = skillInfo.itemNum;
+                }
+                hitReturnInfo.attacker.SendMessage("HitReturn", hitReturnInfo, SendMessageOptions.DontRequireReceiver);
+            }
+            if(skillInfo.hitBoxInfo.interval!=0)
             {
                 count++;
-                if (count >= hitBoxInfo.interval) GameMgr.Instance.DestroyTarget(gameObject, 0f);
+                if (count >= skillInfo.hitBoxInfo.interval) GameMgr.Instance.DestroyTarget(gameObject, 0f);
             }
         }
     }
@@ -45,11 +68,11 @@ public class HitBox : MonoBehaviourPun
 
     private void OnTriggerStay(Collider other)
     {
-        if (hitBoxInfo.attackType != AttackType.Continuous) return;
+        if (skillInfo.hitBoxInfo.attackType != AttackType.Continuous) return;
         timer += Time.deltaTime;
-        if (timer >= hitBoxInfo.interval && other.gameObject.tag == "Player")
+        if (timer >= skillInfo.hitBoxInfo.interval && other.gameObject.tag == "Player")
         {
-            other.gameObject.GetPhotonView().RPC("RPC_GetDamage", RpcTarget.All,hitBoxInfo.damageInfo);
+            other.gameObject.GetPhotonView().RPC("RPC_GetDamage", RpcTarget.All, skillInfo.hitBoxInfo.damageInfo);
             timer = 0;
         }
     }
