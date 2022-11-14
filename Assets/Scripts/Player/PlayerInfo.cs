@@ -16,6 +16,7 @@ public enum state
     Die,
     Stay,
     Stun,
+    Silence,
     Unbeatable,//무적
     Slow,
     End
@@ -33,28 +34,25 @@ public class PlayerInfo : MonoBehaviourPun
     [field: Header("PlayerInfo")]
     [field: SerializeField] public float maxHP { get; private set; } = 100;
     [field: SerializeField] public float curHP { get; private set; } = 100;
-    [field: SerializeField] public float moveSpeed { get; private set; } = 10;
-    [field: SerializeField] public float basicMoveSpeed { get; private set; } = 10;
+    [field: SerializeField] public float moveSpeed { get; private set; } = 7;
+    [field: SerializeField] public float basicMoveSpeed { get; private set; } = 7;
     [field: SerializeField] public float basicAttackSpeed { get; private set; } = 1;
-    [field: SerializeField] public float basicAttackDamage { get; private set; } = 10;
-    [field: SerializeField] public float damageDecrease { get; private set; } = 0;
+    [field: SerializeField] public float basicAttackDamage { get; private set; } = 10f;
+    [field: SerializeField] public float damageDecrpease { get; private set; } = 0;
     [field: Header("PlayerState")]
     [field: SerializeField] public state playerUnbeatable { get; private set; }
     [field: SerializeField] public state playerStun { get; private set; }
+    [field: SerializeField] public state playerSlow { get; private set; }
     [field: SerializeField] public state playerStay { get; private set; }
     [field: SerializeField] public state playerAlive { get; private set; }
-
+    [field: SerializeField] public state playerSilence { get; private set; }
+    [SerializeField] GameObject stunEff;
     public delegate void OnChangeMoveSpeed();
     public event OnChangeMoveSpeed onChangeMoveSpeed;
     public delegate void OnGetDamage();
     public event OnGetDamage onGetDamage;
     public HPTransfer HPTransfer;
-
-
-    // skill range picture
-    public GameObject skilla;
-    // skill range
-    public RectTransform myskillRangerect = null;
+    private Animator myAnimator;
     private Coroutine slowCoroutine;
     private Coroutine stunCoroutine;
     private Coroutine unbeatableCoroutine;
@@ -67,6 +65,7 @@ public class PlayerInfo : MonoBehaviourPun
         {
             gameObject.tag = "MainPlayer";
             GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+            myAnimator = GetComponent<Animator>();
         }
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
     }
@@ -94,47 +93,28 @@ public class PlayerInfo : MonoBehaviourPun
         if (attackState == state.Stun)
         {
             if (stunCoroutine != null) StopCoroutine(stunCoroutine);
-            stunCoroutine = StartCoroutine(Stun(timer));
+            stunCoroutine = StartCoroutine(RPC_GetDamage_Stun(timer));
         }
         else if (attackState == state.Slow)
         {
             if (slowCoroutine != null) StopCoroutine(slowCoroutine);
             slowCoroutine = StartCoroutine(Slow(slowDownRate, timer));
         }
-        curHP -= attackDamage * ((100 - damageDecrease) / 100);
+        curHP -= attackDamage * ((100 - damageDecrpease) / 100);
         if (onGetDamage != null) onGetDamage();
         if (curHP <= 0)
         {
             curHP = 0;
-            photonView.RPC("RPC_Die", RpcTarget.All, attackerViewID);
+            gameObject.GetPhotonView().RPC("RPC_Die", RpcTarget.All, attackerViewID);
         }
         HPTransfer(curHP);
     }
     [PunRPC]
-    private void RPC_Die(int attackerViewID)
+    private void RPC_Die(int attackerViewID2)
     {
         playerAlive = state.Die;
-        GameMgr.Instance.gameSceneLogic.AliveNumCheck();
-    }
-    //테스트 죽음용   
-    [PunRPC]
-    private void Test_Die()
-    {
-        playerAlive = state.Die;
-        GameMgr.Instance.gameSceneLogic.AliveNumCheck();
-    }
-
-    private void Update()
-    {
-        //테스트 죽음용
-        if (Input.GetKeyDown(KeyCode.U))
-            gameObject.GetPhotonView().RPC("Test_Die", RpcTarget.All);
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            curHP -= 10;
-            HPTransfer(curHP);
-        }
-
+        if(photonView.IsMine) myAnimator.SetTrigger("isDie");
+       // GameMgr.Instance.gameSceneLogic.AliveNumCheck();
     }
 
     [PunRPC]
@@ -145,7 +125,6 @@ public class PlayerInfo : MonoBehaviourPun
             curHP = maxHP;
     }
     [PunRPC]
-
     private void SetChangeMoveSpeed(float value,float time)
     {
         if (slowCoroutine != null) StopCoroutine(slowCoroutine);
@@ -166,7 +145,7 @@ public class PlayerInfo : MonoBehaviourPun
     [PunRPC]
     private void SetDamageDecrpease(float value, float time)
     {
-        StartCoroutine(DamageDecrease(value, time));
+        StartCoroutine(DamageDecrpease(value, time));
     }
     #region playerStateChange
     IEnumerator Slow(float slowDownRate, float time)
@@ -182,25 +161,31 @@ public class PlayerInfo : MonoBehaviourPun
     {
         playerStay = state.Stay;
         yield return new WaitForSeconds(time);
-        playerStay = state.None;
+        if(playerStay==state.Stay) playerStay = state.None;
         yield break;
     }
-    IEnumerator Stun(float time)
+    IEnumerator RPC_GetDamage_Stun(float time)
     {
+        stunEff.SetActive(true);
         playerStun = state.Stun;
         yield return new WaitForSeconds(time);
-        playerStun = state.None;
+        if (playerStun == state.Stun) playerStun = state.None;
+        stunEff.SetActive(false);
         yield break;
     }
-    IEnumerator DamageDecrease(float value, float time)
+    IEnumerator DamageDecrpease(float value, float time)
     {
-        damageDecrease += value;
+        damageDecrpease += value;
         yield return new WaitForSeconds(time);
-        damageDecrease -= value;
+        damageDecrpease -= value;
         yield break;
     }
     IEnumerator Unbeatable(float time)
     {
+        if(moveSpeed<basicMoveSpeed) ChangeMoveSpeed(basicMoveSpeed);
+        playerSilence = state.None;
+        playerStun = state.None;
+        stunEff.SetActive(false);
         playerUnbeatable = state.Unbeatable;
         yield return new WaitForSeconds(time);
         playerUnbeatable = state.None;

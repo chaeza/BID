@@ -22,19 +22,19 @@ public class PlayerAttack : MonoBehaviourPun
         hitBoxInfo.damageInfo.attackState = state.None;
         hitBoxInfo.damageInfo.attackDamage = playerInfo.basicAttackDamage;
         hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
-        hitBoxInfo.damageInfo.slowDownRate = 0;
-        hitBoxInfo.damageInfo.timer = 0;
+        hitBoxInfo.damageInfo.slowDownRate = 0f;
+        hitBoxInfo.damageInfo.timer = 0f;
     }
 
     private void Update()
     {
         if (photonView.IsMine != true) return;
+        if (playerInfo.playerAlive == state.Die || playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.A) Attack();
     }
 
     public void Attack()
     {
-        GameMgr.Instance.randomItem.GetRandomitem(gameObject);
         //¸ð¼Ç 
         if (isAttack == true)
         {
@@ -68,8 +68,8 @@ public class PlayerAttack : MonoBehaviourPun
     {
         playerInfo.StayPlayer(0.7f);
         yield return new WaitForSeconds(0.2f);
-        GameObject eff = PhotonNetwork.Instantiate("BasicAttackEff", transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-        if (num == 0 || num == 1) eff.transform.Rotate(0, 0, -45);
+        GameObject eff = PhotonNetwork.Instantiate("BasicAttackEff", transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        if (num == 0 || num == 1) eff.transform.Rotate(0, 0, -30);
         eff.AddComponent<HitBox>().hitBoxInfo = hitBoxInfo;
         GameMgr.Instance.DestroyTarget(eff, 1f);
         yield return new WaitForSeconds(0.2f);

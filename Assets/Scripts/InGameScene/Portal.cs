@@ -15,19 +15,16 @@ public struct PortalData
     public int potalTotalNum;
 }
 
-public partial class Portal : MonoBehaviourPun
-{
-    public Portal[] exit;
-    public PortalData portalData;
-}
 
 //portal move part
 public partial class Portal : MonoBehaviourPun
 {
+    public Portal[] exit;
+    public PortalData portalData;
     //Delay 
     [SerializeField]
     private float transferTimer = 0;
-    
+
     public CameraReSetting cameraReSetting;
 
     //Priority Queue for Transfer Player
@@ -35,7 +32,6 @@ public partial class Portal : MonoBehaviourPun
     List<GameObject> playerList = new List<GameObject>();
     Queue<GameObject> launchPlayerList = new Queue<GameObject>();
 
-    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -79,7 +75,7 @@ public partial class Portal : MonoBehaviourPun
             player.GetComponent<PlayerMove>().navMeshAgent.enabled = false;
             if (portalData.isCenter == false)
             {
-                player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[0].gameObject.transform.position + Vector3.forward * 2;
+                player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[0].gameObject.transform.position + Vector3.forward * 5;
                 cameraReSetting();
             }
             else if (portalData.isCenter == true)
@@ -90,7 +86,12 @@ public partial class Portal : MonoBehaviourPun
                     ran = Random.Range(0, portalData.potalTotalNum);
                     if (exit[ran].portalData.isDestoryed == false)
                     {
-                        player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[ran].gameObject.transform.position + Vector3.forward * 2;
+                        if (ran == 0 || ran == 1 || ran == 2)
+                            player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[ran].gameObject.transform.position - Vector3.right * 5;
+                        else if (ran == 3 || ran == 4 || ran == 5)
+                            player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[ran].gameObject.transform.position + Vector3.right * 5;
+                        else if (ran == 6)
+                            player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[ran].gameObject.transform.position + Vector3.forward * 5;
                         cameraReSetting();
                         break;
                     }

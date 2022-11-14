@@ -135,7 +135,7 @@ public class UIMgr : MonoBehaviourPun
                 Debug.Log("true");
                 setSkillDescription[num] = true;
                 skillDescription[num].SetActive(true);
-                if (onSetSkillDescription != null) onSetSkillDescription();
+                if (onSetSkillDescription != null&&num==0) onSetSkillDescription();
             }
         }
         else if (setSkillDescription[num] == true)
@@ -143,7 +143,7 @@ public class UIMgr : MonoBehaviourPun
             Debug.Log("False");
             setSkillDescription[num] = false;
             skillDescription[num].SetActive(false);
-            if (onSetSkillDescription != null) onSetSkillDescription();
+            if (onSetSkillDescription != null && num == 0) onSetSkillDescription();
         }
     }
     //  Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);

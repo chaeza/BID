@@ -40,6 +40,6 @@ public class Buff_Dash : Skill
         gameObject.GetPhotonView().RPC("SetGhostEff", RpcTarget.All, 10, 0.05f);
 
         GameMgr.Instance.uIMgr.UseItem(itemNum);
-        Destroy(GetComponent<Buff_HpRecovery>());
+        Destroy(GetComponent<Buff_Dash>());
     }
 }

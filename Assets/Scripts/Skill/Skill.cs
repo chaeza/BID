@@ -34,6 +34,8 @@ public class Skill : MonoBehaviourPun
     protected Vector3 clickPos;
     protected Vector3 desiredDir;
     protected bool click;
+    protected PlayerInfo playerInfo;
+
 
     private bool isCanSkill = true;
     private bool setRadius;
@@ -45,15 +47,19 @@ public class Skill : MonoBehaviourPun
     private void Start()
     {
         codeExample = FindObjectOfType<CodeExample>();
-        if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType += UnClick;
-        if (skillInfo.type == SkillType.Skill)
+        playerInfo = GetComponent<PlayerInfo>();
+        if (photonView.IsMine == true)
         {
-            GameMgr.Instance.uIMgr.onResetCoolTime += ResetCoolTime;
-            if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetSkillDescription += SkillRadius;
-        }
-        else if (skillInfo.type == SkillType.Item)
-        {
-            if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetItemDescription += ItemRadius;
+            if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType += UnClick;
+            if (skillInfo.type == SkillType.Skill)
+            {
+                GameMgr.Instance.uIMgr.onResetCoolTime += ResetCoolTime;
+                if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetSkillDescription += SkillRadius;
+            }
+            else if (skillInfo.type == SkillType.Item)
+            {
+                if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetItemDescription += ItemRadius;
+            }
         }
     }
     protected void UnClick()
@@ -86,6 +92,8 @@ public class Skill : MonoBehaviourPun
     protected void SkillUse()
     {
         if (isCanSkill == false) return;
+        if (playerInfo.playerAlive == state.Die || playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay) return;
+        if (playerInfo.playerSilence == state.Silence) return;
         codeExample.Interrupt();
         if (skillInfo.skillType == SkillType.Immediate)
         {
@@ -138,6 +146,8 @@ public class Skill : MonoBehaviourPun
     protected void SkillClick(Vector3 mousePos)
     {
         codeExample.Interrupt();
+        if (playerInfo.playerAlive == state.Die || playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay) return;
+        if (playerInfo.playerSilence == state.Silence) return;
         if (click == true)
         {
             click = false;
@@ -147,9 +157,10 @@ public class Skill : MonoBehaviourPun
             if (nullCheckHit == true)
             {
                 clickPos = hit.point;
-                //clickPos.y = transform.position.y;
                 clickPos.y = hit.point.y+skillInfo.skillDirY;
                 desiredDir = clickPos;
+                clickPos.y = transform.position.y;
+
             }
             if (Vector3.Distance(clickPos, transform.position) > skillInfo.range) { Debug.Log("사정거리 밖"); return; }
             if (isCanSkill == true)
