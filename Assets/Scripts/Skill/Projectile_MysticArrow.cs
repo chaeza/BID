@@ -5,7 +5,10 @@ using Photon.Pun;
 
 public class Projectile_MysticArrow : Skill
 {
-    public int skillNum;
+    public void SetSkillNum(int Num)
+    {
+        skillInfo.skillNum = Num;
+    }
     private void Awake()
     {
         skillInfo.type = SkillType.Skill;
@@ -14,7 +17,6 @@ public class Projectile_MysticArrow : Skill
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.length = 7;//use Projectile,
         skillInfo.cooltime = 6;
-        skillInfo.skillNum = skillNum;
         skillInfo.skillDirY = 3;
         skillInfo.skillType = SkillType.Projectile;
 

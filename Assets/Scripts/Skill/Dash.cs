@@ -13,7 +13,6 @@ public class Dash : Skill
         skillInfo.skillNum = 0;
         skillInfo.skillType = SkillType.Buff;
         GameMgr.Instance.uIMgr.SetSkillIcon(0, 1);
-        GameMgr.Instance.uIMgr.onResetCoolTime -= ResetCoolTime;
     }
     private void Update()
     {
