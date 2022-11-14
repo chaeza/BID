@@ -33,7 +33,7 @@ public class Immediate_FallTheRain : Skill
     }
     protected override void SkillFire()
     {
-        GameObject eff = PhotonNetwork.Instantiate("FallTheRainPrefab", transform.position, Quaternion.identity);
+        GameObject eff = PhotonNetwork.Instantiate("FallTheRainPrefab", transform.position, new Quaternion(90,0,0,1));
         eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
 
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
