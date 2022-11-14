@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Item/Buff_HpRecovery.cs.meta
+guid: 01013727f681b9c4cb47a66c32b5af2f
+========
+guid: 53bd4b4e6c0891045804953b84fb6dbe
+>>>>>>>> main:Assets/Scripts/Skill/Immediate_BloodField.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

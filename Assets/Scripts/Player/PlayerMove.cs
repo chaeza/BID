@@ -22,15 +22,16 @@ public class PlayerMove : MonoBehaviourPun
     private bool nullCheck;
     private bool nullCheckHit;
     private int mask;
+    private int count;
 
     private void Start()
     {
-        ghostEffect=GetComponent<GhostEffect>();
+       ghostEffect=GetComponent<GhostEffect>();
         playerInfo = GetComponent<PlayerInfo>();
         myAnimator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = playerInfo.moveSpeed;
-        playerInfo.onChangeMoveSpeed += myChangeSpeed;
+        if(photonView.IsMine==true) playerInfo.onChangeMoveSpeed += myChangeSpeed;
         MoveStop();
     }
     private void myChangeSpeed()
@@ -42,11 +43,16 @@ public class PlayerMove : MonoBehaviourPun
     private void Update()
     {
         if (photonView.IsMine == false) return;
-        if (playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay)
+        if (playerInfo.playerAlive == state.Die || playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay)
         {
-            MoveStop();
+            if (count == 0)
+            {
+                count++;
+                MoveStop();
+            }
             return;
         }
+        else if (count != 0) count = 0;
         if (GameMgr.Instance.playerInput.inputKey2 == KeyCode.Mouse1)
         {
             if (Input.mousePosition.x > 1623 && Input.mousePosition.x < 1867 & Input.mousePosition.y > 15 && Input.mousePosition.y < 260)

@@ -29,6 +29,10 @@ public class ItemSpawner : MonoBehaviourPun
         if (PhotonNetwork.IsMasterClient)
             RandomBigAreaItemSpawn();
     }
+    public void RemoveItemList(GameObject Pos)
+    {
+        itemAreaPos.Remove(Pos);
+    }
     public Vector3 RandomPos(GameObject spot)
     {
         int posX = Random.Range(-(int)spot.transform.localScale.x / 2, (int)spot.transform.localScale.x / 2);

@@ -5,13 +5,7 @@ using Photon.Pun;
 
 public class TestSkill : Skill
 {
-    [SerializeField] private GameObject Eff;
-
-    //PlayerInfo playerInfo;
-    //private void Awake()
-    //{
-    //    playerInfo = GetComponent<PlayerInfo>();
-    //}
+    public int skillNum;
     private void Awake()
     {
         skillInfo.type = SkillType.Skill;
@@ -20,7 +14,7 @@ public class TestSkill : Skill
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.length = 6;//use Projectile,
         skillInfo.cooltime = 5;
-        skillInfo.skillNum = 1;
+        skillInfo.skillNum = skillNum;
         skillInfo.skillType = SkillType.Immediate;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
