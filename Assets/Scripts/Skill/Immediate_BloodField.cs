@@ -23,10 +23,10 @@ public class Immediate_BloodField : Skill
         skillInfo.hitBoxInfo.interval = 0;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.Slow;
-        skillInfo.hitBoxInfo.damageInfo.attackDamage = 30;
+        skillInfo.hitBoxInfo.damageInfo.attackDamage = 25;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 50;
-        skillInfo.hitBoxInfo.damageInfo.timer = 2;
+        skillInfo.hitBoxInfo.damageInfo.timer = 3;
 
     }
     private void Update()
@@ -37,13 +37,23 @@ public class Immediate_BloodField : Skill
     protected override void SkillFire()
     {
         //
+        playerInfo.StayPlayer(0.5f);
+        animator.SetTrigger("isSkill1");
+        StartCoroutine(SkillFire_Delay(0.5f));
+        //
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum, 0);
+    }
+    IEnumerator SkillFire_Delay(float time)
+    {
+
+        yield return new WaitForSeconds(time);
         GameObject eff = PhotonNetwork.Instantiate("BloodField", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
-
         eff.transform.position = gameObject.transform.position + new Vector3(0f, 2f, 0f);
         eff.transform.Rotate(-90f, 0f, 0f);
-
-        //
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
+        GameMgr.Instance.DestroyTarget(eff, 5f);
+        yield return new WaitForSeconds(0.5f);
+        skillInfo.hitBoxInfo.canCollider = true;
+        eff.GetComponent<HitBox>().skillInfo = skillInfo;
     }
 }

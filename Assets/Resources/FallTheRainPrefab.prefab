@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4895235025381292}
   - component: {fileID: 114059358737166250}
-  - component: {fileID: 114905432709304106}
   - component: {fileID: -3442636811479237807}
   - component: {fileID: 4565410255798073056}
   - component: {fileID: -2500278364535671507}
@@ -53,26 +52,10 @@ MonoBehaviour:
   - {fileID: 1971576535191328, guid: 22bfc0c86e7869d4fa657df449675b7f, type: 3}
   m_movePos: {fileID: 0}
   m_startDelay: 0
-  m_makeCount: 40
-  m_makeDelay: 0.075
-  m_randomPos: {x: 10, y: 0, z: 10}
-  m_randomRot: {x: 0, y: 0, z: 0}
---- !u!114 &114905432709304106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1410216619362548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d90f358e0f0235242a422a856b10775e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_makeObjs:
-  - {fileID: 1990974247886904, guid: 9e2fa6dd9499726468aa22176b1c27b9, type: 3}
-  m_movePos: {fileID: 0}
-  m_randomRotationValue: {x: 0, y: 0, z: 0}
+  m_makeCount: 50
+  m_makeDelay: 0.1
+  m_randomPos: {x: 8, y: 0, z: 8}
+  m_randomRot: {x: 0, y: 0, z: 8}
 --- !u!114 &-3442636811479237807
 MonoBehaviour:
   m_ObjectHideFlags: 0

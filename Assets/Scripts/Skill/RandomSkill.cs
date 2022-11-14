@@ -13,13 +13,12 @@ public class RandomSkill : MonoBehaviour
     {
         //Random skill number
         skillRan = Random.Range(1, skillType+1);
-        skillRan = 1;
         GameMgr.Instance.uIMgr.SetSkillIcon(skillRan,0);
         if (skillRan == 1) player.AddComponent<Immediate_BloodField>().SetSkillNum(skillRan);
         else if (skillRan == 2) player.AddComponent<Projectile_Bash>().SetSkillNum(skillRan);
         else if (skillRan == 3) player.AddComponent<NonTarget_FallTheRain>().SetSkillNum(skillRan);
         else if (skillRan == 4) player.AddComponent<Projectile_MysticArrow>().SetSkillNum(skillRan);
-        else if (skillRan == 5) player.AddComponent<Projectile_EnergyShoot>().SetSkillNum(skillRan);
+        else if (skillRan == 5) player.AddComponent<Projectile_SwordStab>().SetSkillNum(skillRan);
         else
             Debug.Log("Player didn't get any skill");
     }

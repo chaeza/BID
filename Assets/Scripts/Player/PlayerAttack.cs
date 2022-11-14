@@ -74,12 +74,13 @@ public class PlayerAttack : MonoBehaviourPun
     {
         playerInfo.StayPlayer(0.7f);
         yield return new WaitForSeconds(0.2f);
-        GameObject eff = PhotonNetwork.Instantiate("BasicAttackEff", transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        GameObject eff = PhotonNetwork.Instantiate("BasicAttackEff", transform.position + new Vector3(0, 3, 0), Quaternion.identity);
         if (num == 0 || num == 1) eff.transform.Rotate(0, 0, -30);
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
         GameMgr.Instance.DestroyTarget(eff, 1f);
-        yield return new WaitForSeconds(0.2f);
-        Destroy(GetComponent<SphereCollider>());
+        yield return new WaitForSeconds(0.5f);
+        skillInfo.hitBoxInfo.canCollider = true;
+        eff.GetComponent<HitBox>().skillInfo = skillInfo;
         //
         yield return new WaitForSeconds(playerInfo.basicAttackSpeed-0.4f);
         isAttack = true;

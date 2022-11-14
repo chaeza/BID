@@ -16,18 +16,18 @@ public class Projectile_MysticArrow : Skill
         skillInfo.radius = 0;//use Immediate,NonTarget
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.length = 7;//use Projectile,
-        skillInfo.cooltime = 6;
+        skillInfo.cooltime = 2;
         skillInfo.skillDirY = 3;
         skillInfo.skillType = SkillType.Projectile;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
         skillInfo.hitBoxInfo.interval = 1;
 
-        skillInfo.hitBoxInfo.damageInfo.attackState = state.None;
-        skillInfo.hitBoxInfo.damageInfo.attackDamage = 15;
+        skillInfo.hitBoxInfo.damageInfo.attackState = state.Slow;
+        skillInfo.hitBoxInfo.damageInfo.attackDamage = 5;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
-        skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
-        skillInfo.hitBoxInfo.damageInfo.timer = 0;
+        skillInfo.hitBoxInfo.damageInfo.slowDownRate = 30;
+        skillInfo.hitBoxInfo.damageInfo.timer = 1;
     }
     private void Update()
     {
@@ -37,14 +37,21 @@ public class Projectile_MysticArrow : Skill
     protected override void SkillFire()
     {
         //
+        playerInfo.StayPlayer(0.2f);
+        animator.SetTrigger("isAttack1");
+        StartCoroutine(SkillFire_Delay(0.2f));
+        transform.LookAt(desiredDir);
+        //
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
+    }
+    IEnumerator SkillFire_Delay(float time)
+    {
+        yield return new WaitForSeconds(time);
         GameObject eff = PhotonNetwork.Instantiate("MysticArrow", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
         eff.transform.LookAt(desiredDir);
         StartCoroutine(DestroyObject(eff));
-        //
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }
-
     IEnumerator DestroyObject(GameObject eff)
     {
         int i = 0;

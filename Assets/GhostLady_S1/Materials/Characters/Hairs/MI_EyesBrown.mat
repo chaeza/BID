@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MI_EyesBrown
-  m_Shader: {fileID: 4800000, guid: 083ba83dd0dcbf047a4394a5b56ba4b1, type: 3}
+  m_Shader: {fileID: 4800000, guid: 6928876b52e876949b6c67adce9521a8, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ADD_PRECOMPUTED_VELOCITY
@@ -115,6 +115,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 8f0069172d360474185c49544e625516, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NormalTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -170,6 +174,7 @@ Material:
     - _CurvatureV1: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _Distortion: 0
     - _DitherBoost: 4.8
     - _DitherBoosts: 2.4
     - _DoubleSidedEnable: 1
