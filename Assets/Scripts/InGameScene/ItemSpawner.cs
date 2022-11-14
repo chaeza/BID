@@ -56,7 +56,7 @@ public class ItemSpawner : MonoBehaviourPun
         //큰지역 빈오브젝트 만큼 포문돌림
         for (int i = 0; i < itemAreaPos.Count; i++)
         {
-            int item = Random.Range(1, 5);
+            int item = Random.Range(1, 4);
             for (int j = 0; j < item; j++)
             {
                 GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos[i].transform.position + RandomPos(itemAreaPos[i]), Quaternion.identity);
@@ -135,7 +135,7 @@ public class ItemSpawner : MonoBehaviourPun
 
     IEnumerator TenSec()
     {
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(45f);
 
         if (PhotonNetwork.IsMasterClient)
         {
