@@ -36,6 +36,7 @@ public class Skill : MonoBehaviourPun
     protected Vector3 desiredDir;
     protected bool click;
     protected PlayerInfo playerInfo;
+    protected Animator animator;
 
 
     private bool isCanSkill = true;

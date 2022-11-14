@@ -79,7 +79,7 @@ public class PlayerAttack : MonoBehaviourPun
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
         GameMgr.Instance.DestroyTarget(eff, 1f);
         yield return new WaitForSeconds(0.2f);
-        Destroy(GetComponent<SphereCollider>());
+        Destroy(eff.GetComponent<SphereCollider>());
         //
         yield return new WaitForSeconds(playerInfo.basicAttackSpeed-0.4f);
         isAttack = true;

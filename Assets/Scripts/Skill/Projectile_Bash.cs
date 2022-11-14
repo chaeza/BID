@@ -11,13 +11,11 @@ public class Projectile_Bash : Skill
         skillInfo.skillNum = Num;
     }
 
-    private Animator anim;
     private NavMeshAgent navMeshAgent;
     private bool dashAttack = false;
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         skillInfo.type = SkillType.Skill;
@@ -32,11 +30,11 @@ public class Projectile_Bash : Skill
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
         skillInfo.hitBoxInfo.interval = 1;
 
-        skillInfo.hitBoxInfo.damageInfo.attackState = state.None;
+        skillInfo.hitBoxInfo.damageInfo.attackState = state.Stun;
         skillInfo.hitBoxInfo.damageInfo.attackDamage = 10;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
-        skillInfo.hitBoxInfo.damageInfo.timer = 0;
+        skillInfo.hitBoxInfo.damageInfo.timer = 2;
     }
     private void Update()
     {
@@ -55,7 +53,7 @@ public class Projectile_Bash : Skill
     Coroutine dash;
     protected override void SkillFire()
     {
-        anim.SetTrigger("isBash");
+        animator.SetTrigger("isBash");
         GameObject eff = PhotonNetwork.Instantiate("Bash", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
         eff.transform.LookAt(desiredDir);
@@ -77,11 +75,10 @@ public class Projectile_Bash : Skill
     }
     IEnumerator EndSkill(GameObject eff)
     {
-        navMeshAgent.speed = 28f;
+        gameObject.GetPhotonView().RPC("SetChangeMoveSpeed", RpcTarget.All, 210f, 0.5f);
         dashAttack = true;
         yield return new WaitForSeconds(0.5f);
         dashAttack = false;
-        navMeshAgent.speed = 7f;
         GameMgr.Instance.DestroyTarget(eff,0f);
     }
 

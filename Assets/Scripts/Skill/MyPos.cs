@@ -13,6 +13,11 @@ public class MyPos : MonoBehaviour
 {
     public MyPosInfo myPosInfo;
 
+    private void Start()
+    {
+        transform.position = myPosInfo.myPos.transform.position;
+        transform.Translate(myPosInfo.xPos, myPosInfo.yPos, myPosInfo.zPos);
+    }
     void Update()
     {
         transform.position = myPosInfo.myPos.transform.position;
