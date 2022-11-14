@@ -134,7 +134,7 @@ public class PlayerInfo : MonoBehaviourPun
         if (slowCoroutine != null) StopCoroutine(slowCoroutine);
         slowCoroutine=StartCoroutine(Slow(value, time));
     }
-    private void ChangeMoveSpeed(float value)
+    public void ChangeMoveSpeed(float value)
     {
         moveSpeed = value;
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();

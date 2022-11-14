@@ -11,13 +11,11 @@ public class Projectile_Bash : Skill
         skillInfo.skillNum = Num;
     }
 
-    private Animator anim;
     private NavMeshAgent navMeshAgent;
     private bool dashAttack = false;
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         skillInfo.type = SkillType.Skill;
@@ -32,11 +30,11 @@ public class Projectile_Bash : Skill
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
         skillInfo.hitBoxInfo.interval = 1;
 
-        skillInfo.hitBoxInfo.damageInfo.attackState = state.None;
+        skillInfo.hitBoxInfo.damageInfo.attackState = state.Stun;
         skillInfo.hitBoxInfo.damageInfo.attackDamage = 10;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
-        skillInfo.hitBoxInfo.damageInfo.timer = 0;
+        skillInfo.hitBoxInfo.damageInfo.timer = 2f;
     }
     private void Update()
     {
@@ -55,7 +53,8 @@ public class Projectile_Bash : Skill
     Coroutine dash;
     protected override void SkillFire()
     {
-        anim.SetTrigger("isBash");
+        playerInfo.StayPlayer(1f);
+        animator.SetTrigger("isBash");
         GameObject eff = PhotonNetwork.Instantiate("Bash", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
         eff.transform.LookAt(desiredDir);
@@ -72,14 +71,15 @@ public class Projectile_Bash : Skill
     protected override void HitFire(GameObject attacker, GameObject hit)
     {
         StopCoroutine(dash);
+        playerInfo.StayPlayer(0f);
         GameObject a = PhotonNetwork.Instantiate("WarofWall", transform.position, Quaternion.identity);
-        GameMgr.Instance.DestroyTarget(a, 6f);
+        GameMgr.Instance.DestroyTarget(a, 5f);
     }
     IEnumerator EndSkill(GameObject eff)
     {
-        navMeshAgent.speed = 28f;
+        navMeshAgent.speed = 14f;
         dashAttack = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         dashAttack = false;
         navMeshAgent.speed = 7f;
         GameMgr.Instance.DestroyTarget(eff,0f);

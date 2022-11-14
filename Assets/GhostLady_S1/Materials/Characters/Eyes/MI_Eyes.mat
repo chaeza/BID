@@ -24,6 +24,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _AlphaMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BC:
         m_Texture: {fileID: 2800000, guid: d34cc7c882306a3498929aa6e378faeb, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -121,6 +125,7 @@ Material:
     - _Cutoff: 0.5
     - _DarkMode: 0
     - _DetailNormalMapScale: 1
+    - _DitherBoosts: 9.5
     - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 10
@@ -136,6 +141,7 @@ Material:
     - _Metallic: 0.435
     - _Mode: 3
     - _OcclusionStrength: 1
+    - _OpacityBoots: 0.5
     - _Parallax: 0.02
     - _ReceivesSSR: 1
     - _RenderQueueType: 1
@@ -183,5 +189,6 @@ Material:
     - _EmissiveColor2: {r: 0, g: 0, b: 0, a: 0}
     - _EmissiveColor3: {r: 0, g: 0, b: 0, a: 0}
     - _EmissiveColor4: {r: 0, g: 0, b: 0, a: 0}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
     - _VTInfoBlock: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
