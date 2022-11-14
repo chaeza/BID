@@ -42,7 +42,7 @@ public class Immediate_BloodField : Skill
     {
         //
         GameObject eff = PhotonNetwork.Instantiate("BloodField", transform.position, Quaternion.identity);
-        eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
+        eff.AddComponent<HitBox>().skillInfo = skillInfo;
 
         eff.transform.position = gameObject.transform.position + new Vector3(0f, 2f, 0f);
         eff.transform.Rotate(-90f, 0f, 0f);

@@ -5,7 +5,6 @@ using Photon.Pun;
 
 public class Immediate_FallTheRain : Skill
 {
-    [SerializeField] private GameObject Eff;
     public int skillNum;
     // Start is called before the first frame update
     private void Awake()
@@ -14,14 +13,14 @@ public class Immediate_FallTheRain : Skill
         skillInfo.radius = 6;//use Immediate,NonTarget
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.cooltime = 15;
-        skillInfo.skillNum = 4;
+        skillInfo.skillNum = skillNum;
         skillInfo.skillType = SkillType.NonTarget;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Continuous;
-        skillInfo.hitBoxInfo.interval = 0;
+        skillInfo.hitBoxInfo.interval = 0.5f;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.Slow;
-        skillInfo.hitBoxInfo.damageInfo.attackDamage = 15;
+        skillInfo.hitBoxInfo.damageInfo.attackDamage = 5;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 10;
         skillInfo.hitBoxInfo.damageInfo.timer = 1f;
@@ -34,8 +33,10 @@ public class Immediate_FallTheRain : Skill
     }
     protected override void SkillFire()
     {
-        GameObject eff = PhotonNetwork.Instantiate("FallTheRainPrefab", transform.position, new Quaternion(90,0,0,1));
-        eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
+        GameObject eff = PhotonNetwork.Instantiate("FallTheRainPrefab", desiredDir, Quaternion.identity);
+        eff.transform.Rotate(-90, 0f, 0);
+        eff.AddComponent<HitBox>().skillInfo = skillInfo;
+        GameMgr.Instance.DestroyTarget(eff, 2f);
 
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }

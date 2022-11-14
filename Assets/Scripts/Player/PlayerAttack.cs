@@ -11,19 +11,25 @@ public class PlayerAttack : MonoBehaviourPun
     private bool isAttack = true;
     private int motionNum;
     private AudioSource sound;
-    HitBoxInfo hitBoxInfo;
+    protected SkillInfo skillInfo;
     private void Start()
     {
         //sound = GetComponent<AudioSource>();
         myAnimator = GetComponent<Animator>();
         playerInfo = GetComponent<PlayerInfo>();
-        hitBoxInfo.attackType = AttackType.Shot;
-        hitBoxInfo.interval = 0;
-        hitBoxInfo.damageInfo.attackState = state.None;
-        hitBoxInfo.damageInfo.attackDamage = playerInfo.basicAttackDamage;
-        hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
-        hitBoxInfo.damageInfo.slowDownRate = 0f;
-        hitBoxInfo.damageInfo.timer = 0f;
+        
+        skillInfo.type = SkillType.Skill;
+        skillInfo.skillType = SkillType.Passive;
+        skillInfo.hitReturn = false;
+
+        skillInfo.hitBoxInfo.attackType = AttackType.Shot;
+        skillInfo.hitBoxInfo.interval = 1;
+
+        skillInfo.hitBoxInfo.damageInfo.attackState = state.None;
+        skillInfo.hitBoxInfo.damageInfo.attackDamage = 10;
+        skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
+        skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
+        skillInfo.hitBoxInfo.damageInfo.timer = 0;
     }
 
     private void Update()
@@ -70,7 +76,7 @@ public class PlayerAttack : MonoBehaviourPun
         yield return new WaitForSeconds(0.2f);
         GameObject eff = PhotonNetwork.Instantiate("BasicAttackEff", transform.position + new Vector3(0, 2, 0), Quaternion.identity);
         if (num == 0 || num == 1) eff.transform.Rotate(0, 0, -30);
-        eff.AddComponent<HitBox>().hitBoxInfo = hitBoxInfo;
+        eff.AddComponent<HitBox>().skillInfo = skillInfo;
         GameMgr.Instance.DestroyTarget(eff, 1f);
         yield return new WaitForSeconds(0.2f);
         Destroy(GetComponent<SphereCollider>());
