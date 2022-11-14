@@ -49,9 +49,11 @@ public class Immediate_BloodField : Skill
         yield return new WaitForSeconds(time);
         GameObject eff = PhotonNetwork.Instantiate("BloodField", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
-        Destroy(eff.GetComponent<SphereCollider>(), 1f);
         eff.transform.position = gameObject.transform.position + new Vector3(0f, 2f, 0f);
         eff.transform.Rotate(-90f, 0f, 0f);
         GameMgr.Instance.DestroyTarget(eff, 5f);
+        yield return new WaitForSeconds(0.5f);
+        skillInfo.hitBoxInfo.canCollider = true;
+        eff.GetComponent<HitBox>().skillInfo = skillInfo;
     }
 }

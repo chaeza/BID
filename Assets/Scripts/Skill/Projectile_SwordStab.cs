@@ -22,7 +22,7 @@ public class Projectile_SwordStab : Skill
         skillInfo.skillType = SkillType.Projectile;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
-        skillInfo.hitBoxInfo.interval = 1;
+        skillInfo.hitBoxInfo.interval = 0;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.Stun;
         skillInfo.hitBoxInfo.damageInfo.attackDamage = 10;
@@ -44,7 +44,7 @@ public class Projectile_SwordStab : Skill
         StartCoroutine(SkillFire_Delay(0.2f));
 
 
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum, 0);
     }
     IEnumerator SkillFire_Delay(float time)
     {
@@ -55,10 +55,10 @@ public class Projectile_SwordStab : Skill
         eff.transform.LookAt(desiredDir);
         StartCoroutine(Projectile_EnergyShootTimer(eff));
     }
-        IEnumerator Projectile_EnergyShootTimer(GameObject eff)
+    IEnumerator Projectile_EnergyShootTimer(GameObject eff)
     {
         int i = 0;
-        while(true)
+        while (true)
         {
             if (eff == null) break;
             eff.transform.Translate(Vector3.forward);
@@ -66,7 +66,7 @@ public class Projectile_SwordStab : Skill
             if (i == 15) break;
             yield return new WaitForSeconds(0.02f);
         }
-        GameMgr.Instance.DestroyTarget(eff,0.1f);
+        GameMgr.Instance.DestroyTarget(eff, 0.5f);
         yield return null;
     }
 

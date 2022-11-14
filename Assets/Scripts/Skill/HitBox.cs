@@ -14,6 +14,7 @@ public struct HitBoxInfo
     public AttackType attackType;
     public float interval;
     public DamageInfo damageInfo;
+    public bool canCollider;
 }
 public struct HitReturnInfo
 {
@@ -34,6 +35,7 @@ public class HitBox : MonoBehaviourPun
     private void OnTriggerEnter(Collider other)
     {
         if (skillInfo.hitBoxInfo.attackType != AttackType.Shot) return;
+        if (skillInfo.hitBoxInfo.canCollider == true) return;
         if (other.gameObject.tag == "Player" && attackList.Contains(other.gameObject) == false)
         {
             other.gameObject.GetPhotonView().RPC("RPC_GetDamage", RpcTarget.AllBufferedViaServer, 
@@ -69,6 +71,7 @@ public class HitBox : MonoBehaviourPun
     private void OnTriggerStay(Collider other)
     {
         if (skillInfo.hitBoxInfo.attackType != AttackType.Continuous) return;
+        if (skillInfo.hitBoxInfo.canCollider == true) return;
         timer += Time.deltaTime;
         if (timer >= skillInfo.hitBoxInfo.interval && other.gameObject.tag == "Player")
         {
