@@ -71,7 +71,7 @@ public class PlayerInfo : MonoBehaviourPun
     }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.I)) GameMgr.Instance.gameSceneLogic.AliveNumCheck();
+        if (Input.GetKeyDown(KeyCode.I)) GameMgr.Instance.gameSceneLogic.AliveNumCheck();
     }
     public void StayPlayer(float time)
     {

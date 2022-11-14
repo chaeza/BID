@@ -168,6 +168,8 @@ public class UIMgr : MonoBehaviourPun
     {
         if (num == 1) skillUI[num] = Instantiate(skillIcon[skillNum], dashCreatePoint, Quaternion.identity, GameObject.Find("Canvas").transform);
         else skillUI[num] = Instantiate(skillIcon[skillNum], createPoint, Quaternion.identity, GameObject.Find("Canvas").transform);
+        if (skillUI[num] == null)
+            Debug.LogError("널인데요??");
         skillUI[num].transform.SetParent(skillIconP.transform);
         skillDescription[num] = skillUI[num].transform.GetChild(0).gameObject;
         skillCoolTime[num] = skillUI[num].transform.GetChild(1).gameObject;

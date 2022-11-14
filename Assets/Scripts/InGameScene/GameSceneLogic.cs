@@ -37,7 +37,7 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
                 winner = i;
             }
         }
-        if (alivePlayerNum == 1)
+        if (alivePlayerNum == 1&&PhotonNetwork.IsMasterClient)
             uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
 
         //        GameMgr.Instance.uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
@@ -52,10 +52,11 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
     {
         //API ½ÂÀÚ
         //  StartCoroutine(processRequestBetting_Zera_DeclareWinner());
-        photonView.RPC("EndGame", RpcTarget.All);
+        //photonView.RPC("EndGame", RpcTarget.All);
+        EndGame();
     }
 
-    [PunRPC]
+    //[PunRPC]
     public void EndGame()
     {
         StartCoroutine(endTimer());
