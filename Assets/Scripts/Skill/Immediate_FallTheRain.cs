@@ -6,6 +6,7 @@ using Photon.Pun;
 public class Immediate_FallTheRain : Skill
 {
     [SerializeField] private GameObject Eff;
+    public int skillNum;
     // Start is called before the first frame update
     private void Awake()
     {
