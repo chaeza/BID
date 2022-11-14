@@ -9,6 +9,7 @@ public partial class GameMgr : Singleton<GameMgr>
 {
     private void Awake()
     {
+        gameSceneLogic = gameObject.AddComponent<GameSceneLogic>();
         playerInput = gameObject.AddComponent<PlayerInput>();
         randomSkill = gameObject.AddComponent<RandomSkill>();
         randomItem = gameObject.AddComponent<RandomItem>();
@@ -19,7 +20,6 @@ public partial class GameMgr : Singleton<GameMgr>
         itemSpawner = FindObjectOfType<ItemSpawner>();
         resourceData = Resources.Load<ResourceData>("ResourceData");
         potalSystem = FindObjectOfType<PotalSystem>();
-        gameSceneLogic = gameObject.AddComponent<GameSceneLogic>();
     }
 
     public GameObject PunFindObject(int viewID3)//뷰아이디를 넘겨받아 포톤상의 오브젝트를 찾는다.

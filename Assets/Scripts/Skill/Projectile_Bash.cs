@@ -21,9 +21,9 @@ public class Projectile_Bash : Skill
         skillInfo.type = SkillType.Skill;
         skillInfo.angle = 0;//use Cone
         skillInfo.radius = 0;//use Immediate,NonTarget
-        skillInfo.range = 20;//use Projectile,NonTarget,Cone
+        skillInfo.range = 18;//use Projectile,NonTarget,Cone
         skillInfo.length = 20;//use Projectile,
-        skillInfo.cooltime = 2;
+        skillInfo.cooltime = 20;
         skillInfo.skillType = SkillType.Projectile;
         skillInfo.skillDirY = 0;
         skillInfo.hitReturn = true;
