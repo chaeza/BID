@@ -36,7 +36,7 @@ public class Projectile_MysticArrow : Skill
     {
         //
         GameObject eff = PhotonNetwork.Instantiate("MysticArrow", transform.position, Quaternion.identity);
-        eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
+        eff.AddComponent<HitBox>().skillInfo = skillInfo;
         eff.transform.LookAt(desiredDir);
         StartCoroutine(DestroyObject(eff));
         //
@@ -48,6 +48,7 @@ public class Projectile_MysticArrow : Skill
         int i = 0;
         while (true)
         {
+            if (eff == null) break;
             eff.transform.Translate(Vector3.forward);
             i++;
             if (i == 30) break;

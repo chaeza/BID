@@ -114,7 +114,7 @@ public class ItemSpawner : MonoBehaviourPun
     void ReleasePool(int viewID)
     {
         Debug.Log("ReleasePool");
-        Release(GameMgr.Instance.PunFindObject(viewID));
+        if(GameMgr.Instance.PunFindObject(viewID)!=null) Release(GameMgr.Instance.PunFindObject(viewID));
     }
     public void Release(GameObject obj)
     {   //큐로 다시 보낸다

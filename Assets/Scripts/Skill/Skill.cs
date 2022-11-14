@@ -7,6 +7,7 @@ public struct SkillInfo
     public HitBoxInfo hitBoxInfo;
     public SkillType skillType;
     public SkillType type;
+    public bool hitReturn;
     public float skillDirY;
     public float range;
     public float radius;
@@ -61,6 +62,15 @@ public class Skill : MonoBehaviourPun
                 if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetItemDescription += ItemRadius;
             }
         }
+    }
+    protected void HitReturn(HitReturnInfo hitReturnInfo)
+    {
+        if (hitReturnInfo.type == SkillType.Skill)
+            if (skillInfo.type != hitReturnInfo.type && skillInfo.skillNum != hitReturnInfo.num) return;
+        else if (hitReturnInfo.type == SkillType.Item)
+            if (skillInfo.type != hitReturnInfo.type && skillInfo.itemNum != hitReturnInfo.num) return;
+        HitFire(hitReturnInfo.attacker, hitReturnInfo.hit);
+
     }
     protected void UnClick()
     {
@@ -171,6 +181,10 @@ public class Skill : MonoBehaviourPun
         }
     }
     protected virtual void SkillFire()
+    {
+        Debug.Log("기존스킬발사");
+    }
+    protected virtual void HitFire(GameObject attacker,GameObject hit)
     {
         Debug.Log("기존스킬발사");
     }

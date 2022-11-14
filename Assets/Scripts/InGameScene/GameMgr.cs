@@ -29,11 +29,13 @@ public partial class GameMgr : Singleton<GameMgr>
         {
             if (viewObject[i].ViewID == viewID3) find = viewObject[i].gameObject;
         }
-        return find;
+        if (find != null) return find;
+        else return null;
     }
     public void DestroyTarget(GameObject desObject, float time)
     {
-        photonView.RPC("PunDestroyObject", RpcTarget.All, desObject.GetPhotonView().ViewID, time);
+        if (desObject != null) photonView.RPC("PunDestroyObject", RpcTarget.All, desObject.GetPhotonView().ViewID, time);
+        else Debug.Log("null");
     }
     [PunRPC]
     public void PunDestroyObject(int viewid, float time)

@@ -13,6 +13,7 @@ public class Dash : Skill
         skillInfo.skillNum = 0;
         skillInfo.skillType = SkillType.Buff;
         GameMgr.Instance.uIMgr.SetSkillIcon(0, 1);
+        GameMgr.Instance.uIMgr.onResetCoolTime -= ResetCoolTime;
     }
     private void Update()
     {
@@ -20,6 +21,7 @@ public class Dash : Skill
     }
     protected override void SkillFire()
     {
+        gameObject.GetPhotonView().RPC("SetChangeMoveSpeed", RpcTarget.All, 300f, 0.5f);
         gameObject.GetPhotonView().RPC("SetGhostEff", RpcTarget.All, 10, 0.05f);
 
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,1);

@@ -35,7 +35,7 @@ public class Immediate_FallTheRain : Skill
     {
         GameObject eff = PhotonNetwork.Instantiate("FallTheRainPrefab", desiredDir, Quaternion.identity);
         eff.transform.Rotate(-90, 0f, 0);
-        eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
+        eff.AddComponent<HitBox>().skillInfo = skillInfo;
         GameMgr.Instance.DestroyTarget(eff, 2f);
 
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);

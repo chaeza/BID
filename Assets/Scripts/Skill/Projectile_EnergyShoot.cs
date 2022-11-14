@@ -36,7 +36,7 @@ public class Projectile_EnergyShoot : Skill
     protected override void SkillFire()
     {
         GameObject eff = PhotonNetwork.Instantiate("EnergyBall", transform.position+Vector3.up*3, Quaternion.identity);
-        eff.AddComponent<HitBox>().hitBoxInfo = skillInfo.hitBoxInfo;
+        eff.AddComponent<HitBox>().skillInfo = skillInfo;
 
         eff.transform.LookAt(desiredDir);
         StartCoroutine(Projectile_EnergyShootTimer(eff));
