@@ -20,11 +20,10 @@ public class LodingSync : MonoBehaviourPunCallbacks
 
     void Start()
     {
-
-        photonView.StartCoroutine(LoadAsynSceneCoroutine());
-
-        PhotonNetwork.CurrentRoom.IsOpen = false;
-
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.StartCoroutine(LoadAsynSceneCoroutine());
+        }
         // else photonView.StartCoroutine(PlayerSceneCoroutine());
     }
 
