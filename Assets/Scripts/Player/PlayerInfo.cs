@@ -69,6 +69,23 @@ public class PlayerInfo : MonoBehaviourPun
         }
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
     }
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.I)) GameMgr.Instance.gameSceneLogic.AliveNumCheck();
+    }
+    public void EndGame(string nickName)
+    {
+        if (nickName == PhotonNetwork.NickName)
+        {
+            GameMgr.Instance.uIMgr.winLogo.SetActive(true);
+        }
+        else
+        {
+            GameMgr.Instance.uIMgr.loseLogo.SetActive(true);
+
+        }
+    }
+
     public void StayPlayer(float time)
     {
         StartCoroutine(Stay(time));
