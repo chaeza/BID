@@ -13,8 +13,12 @@ public class UIMgr : MonoBehaviourPun
     [SerializeField] private GameObject[] itemIcon;
     [SerializeField] private GameObject skillIconP;
     [SerializeField] private GameObject itemIconP;
-    private GameObject[] skillCoolTime = new GameObject[2];
+    [Header("Ending Images")]
+    public GameObject winLogo;
+    public GameObject loseLogo;
+
     private TextMeshProUGUI[] skillCoolTimeText = new TextMeshProUGUI[2];
+    private GameObject[] skillCoolTime = new GameObject[2];
     private GameObject[] skillUI = new GameObject[2];
     private GameObject[] skillDescription = new GameObject[2];
     private GameObject[] itemUI = new GameObject[4];
@@ -33,7 +37,7 @@ public class UIMgr : MonoBehaviourPun
     public event OnSetSkillDescription onSetSkillDescription;
     private Vector2 createPoint = new Vector2(130, 90);
     private Vector2 dashCreatePoint = new Vector2(1500, 60);
-    private Vector2[] itemCreatePoint = { new Vector2(720, 60), new Vector2(885, 60), new Vector2(1045, 60), new Vector2(1200, 60)};
+    private Vector2[] itemCreatePoint = { new Vector2(720, 60), new Vector2(885, 60), new Vector2(1045, 60), new Vector2(1200, 60) };
 
     private void Update()
     {
@@ -84,8 +88,13 @@ public class UIMgr : MonoBehaviourPun
             SetSkillDescription(1);
         }
     }
-
-
+    public void EndGame(string winnerNickName)
+    {
+        if (winnerNickName == PhotonNetwork.NickName)
+            winLogo.SetActive(true);
+        else
+            loseLogo.SetActive(true);
+    }
 
     public void SetItemDescription(int itemNum)
     {
@@ -104,9 +113,9 @@ public class UIMgr : MonoBehaviourPun
         {
             Debug.Log("False");
             setItemDescription = false;
-            if(itemNum==5)
+            if (itemNum == 5)
             {
-                if(itemDescription[0]!=null) itemDescription[0].SetActive(false);
+                if (itemDescription[0] != null) itemDescription[0].SetActive(false);
                 if (itemDescription[1] != null) itemDescription[1].SetActive(false);
                 if (itemDescription[2] != null) itemDescription[2].SetActive(false);
                 if (itemDescription[3] != null) itemDescription[3].SetActive(false);
@@ -114,7 +123,7 @@ public class UIMgr : MonoBehaviourPun
             }
         }
     }
-    public void SetItemIcon(int itemType,int itemNum)
+    public void SetItemIcon(int itemType, int itemNum)
     {
         itemUI[itemNum] = Instantiate(itemIcon[itemType], itemCreatePoint[itemNum], Quaternion.identity, GameObject.Find("Canvas").transform);
         itemUI[itemNum].transform.SetParent(itemIconP.transform);
@@ -135,7 +144,7 @@ public class UIMgr : MonoBehaviourPun
                 Debug.Log("true");
                 setSkillDescription[num] = true;
                 skillDescription[num].SetActive(true);
-                if (onSetSkillDescription != null&&num==0) onSetSkillDescription();
+                if (onSetSkillDescription != null && num == 0) onSetSkillDescription();
             }
         }
         else if (setSkillDescription[num] == true)
@@ -147,9 +156,9 @@ public class UIMgr : MonoBehaviourPun
         }
     }
     //  Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
-    public void SetSkillIcon(int skillNum,int num)
+    public void SetSkillIcon(int skillNum, int num)
     {
-        if(num == 1) skillUI[num] = Instantiate(skillIcon[skillNum], dashCreatePoint, Quaternion.identity, GameObject.Find("Canvas").transform);
+        if (num == 1) skillUI[num] = Instantiate(skillIcon[skillNum], dashCreatePoint, Quaternion.identity, GameObject.Find("Canvas").transform);
         else skillUI[num] = Instantiate(skillIcon[skillNum], createPoint, Quaternion.identity, GameObject.Find("Canvas").transform);
         skillUI[num].transform.SetParent(skillIconP.transform);
         skillDescription[num] = skillUI[num].transform.GetChild(0).gameObject;
@@ -158,17 +167,17 @@ public class UIMgr : MonoBehaviourPun
     }
 
     //Object that called the skill cooldown to the UI manager, cooldown time
-    public void SkillCooltime(int time, int skillNum,int num)
+    public void SkillCooltime(int time, int skillNum, int num)
     {
         // Change the color of the icon to be dimmed to give it an inactive feel.
         skillUI[num].GetComponent<RawImage>().color = new Color(160 / 255f, 160 / 255f, 160 / 255f);
         // Change the cool-time text to the max value of the cool-time.
         skillCoolTimeText[num].text = time.ToString();
         // Execute the cool-time coroutine and wait for the cool-time time.
-        StartCoroutine(SkillCooltime_Count(time, skillNum,num));
+        StartCoroutine(SkillCooltime_Count(time, skillNum, num));
 
     }
-    IEnumerator SkillCooltime_Count(int time, int skillNum,int num)
+    IEnumerator SkillCooltime_Count(int time, int skillNum, int num)
     {
         // Store the received cooldown time in i
         for (int i = time - 1; i >= 0; --i)
