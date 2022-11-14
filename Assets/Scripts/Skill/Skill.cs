@@ -50,6 +50,7 @@ public class Skill : MonoBehaviourPun
     {
         codeExample = FindObjectOfType<CodeExample>();
         playerInfo = GetComponent<PlayerInfo>();
+        animator = GetComponent<Animator>();
         if (photonView.IsMine == true)
         {
             if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType += UnClick;

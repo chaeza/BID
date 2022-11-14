@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2714119621698584659}
   - component: {fileID: 2461526899367872243}
   m_Layer: 5
-  m_Name: Projectile_EnergyShoot
+  m_Name: Projectile_SwordStab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ef11967aee057814ea255748e9699734, type: 3}
+  m_Texture: {fileID: 2800000, guid: 35a458e2a7ff3c64e9742d408cf3d50f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -353,9 +353,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB300\uC26C\n\uC124\uBA85: \uC77C\uC815\uC2DC\uAC04\uB3D9\uC548 \uC774\uB3D9\uC18D\uB3C4\uB97C
-    3\uBC30 \uC62C\uB9BD\uB2C8\uB2E4.\n\uC9C0\uC18D\uC2DC\uAC04: 0.5\uCD08\n\uCFE8\uD0C0\uC784
-    : 5\uCD08"
+  m_text: "\uBC30\uC26C\n\uC124\uBA85: \uAC80\uACA9\uC744 \uC77C\uC790\uB85C \uBED7\uC5B4
+    \uB370\uBBF8\uC9C0\uB97C \uC8FC\uBA70 \uC7A0\uC2DC \uAE30\uC808 \uC2DC\uD0B5\uB2C8\uB2E4.\n
+    0.5\uCD08 \uAE30\uC808 \uB370\uBBF8\uC9C0: 10\n\uCFE8\uD0C0\uC784 : 5\uCD08"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

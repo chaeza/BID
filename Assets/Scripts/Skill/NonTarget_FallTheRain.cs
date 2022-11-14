@@ -35,11 +35,20 @@ public class NonTarget_FallTheRain : Skill
     }
     protected override void SkillFire()
     {
+        playerInfo.StayPlayer(0.5f);
+        animator.SetTrigger("isSkill2");
+        transform.LookAt(desiredDir);
+        StartCoroutine(SkillFire_Delay(0.5f));
+        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
+    }
+    IEnumerator SkillFire_Delay(float time)
+    {
+
+        yield return new WaitForSeconds(time);
         GameObject eff = PhotonNetwork.Instantiate("FallTheRainPrefab", desiredDir, Quaternion.identity);
         eff.transform.Rotate(-90, 0f, 0);
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
         GameMgr.Instance.DestroyTarget(eff, 5f);
 
-        if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }
 }

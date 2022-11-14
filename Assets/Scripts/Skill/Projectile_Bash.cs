@@ -34,7 +34,7 @@ public class Projectile_Bash : Skill
         skillInfo.hitBoxInfo.damageInfo.attackDamage = 10;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
-        skillInfo.hitBoxInfo.damageInfo.timer = 2;
+        skillInfo.hitBoxInfo.damageInfo.timer = 2f;
     }
     private void Update()
     {
@@ -53,6 +53,7 @@ public class Projectile_Bash : Skill
     Coroutine dash;
     protected override void SkillFire()
     {
+        playerInfo.StayPlayer(1f);
         animator.SetTrigger("isBash");
         GameObject eff = PhotonNetwork.Instantiate("Bash", transform.position, Quaternion.identity);
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
@@ -70,15 +71,17 @@ public class Projectile_Bash : Skill
     protected override void HitFire(GameObject attacker, GameObject hit)
     {
         StopCoroutine(dash);
+        playerInfo.StayPlayer(0f);
         GameObject a = PhotonNetwork.Instantiate("WarofWall", transform.position, Quaternion.identity);
-        GameMgr.Instance.DestroyTarget(a, 6f);
+        GameMgr.Instance.DestroyTarget(a, 5f);
     }
     IEnumerator EndSkill(GameObject eff)
     {
-        gameObject.GetPhotonView().RPC("SetChangeMoveSpeed", RpcTarget.All, 210f, 0.5f);
+        navMeshAgent.speed = 14f;
         dashAttack = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         dashAttack = false;
+        navMeshAgent.speed = 7f;
         GameMgr.Instance.DestroyTarget(eff,0f);
     }
 

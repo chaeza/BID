@@ -52,9 +52,9 @@ MonoBehaviour:
   - {fileID: 1971576535191328, guid: 22bfc0c86e7869d4fa657df449675b7f, type: 3}
   m_movePos: {fileID: 0}
   m_startDelay: 0
-  m_makeCount: 20
-  m_makeDelay: 0.075
-  m_randomPos: {x: 8, y: 0, z: 10}
+  m_makeCount: 50
+  m_makeDelay: 0.1
+  m_randomPos: {x: 8, y: 0, z: 8}
   m_randomRot: {x: 0, y: 0, z: 8}
 --- !u!114 &-3442636811479237807
 MonoBehaviour:
