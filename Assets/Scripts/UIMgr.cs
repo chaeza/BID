@@ -88,8 +88,13 @@ public class UIMgr : MonoBehaviourPun
             SetSkillDescription(1);
         }
     }
-
-
+    public void EndGame(string winnerNickName)
+    {
+        if (winnerNickName == PhotonNetwork.NickName)
+            winLogo.SetActive(true);
+        else
+            loseLogo.SetActive(true);
+    }
 
     public void SetItemDescription(int itemNum)
     {

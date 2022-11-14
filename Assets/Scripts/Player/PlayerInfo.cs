@@ -48,8 +48,8 @@ public class PlayerInfo : MonoBehaviourPun
     [field: SerializeField] public state playerSilence { get; private set; }
     [SerializeField] GameObject stunEff;
     public delegate void OnChangeMoveSpeed();
-    public event OnChangeMoveSpeed onChangeMoveSpeed;
     public delegate void OnGetDamage();
+    public event OnChangeMoveSpeed onChangeMoveSpeed;
     public event OnGetDamage onGetDamage;
     public HPTransfer HPTransfer;
     private Animator myAnimator;
@@ -73,19 +73,6 @@ public class PlayerInfo : MonoBehaviourPun
     {
         if (Input.GetKey(KeyCode.I)) GameMgr.Instance.gameSceneLogic.AliveNumCheck();
     }
-    public void EndGame(string nickName)
-    {
-        if (nickName == PhotonNetwork.NickName)
-        {
-            GameMgr.Instance.uIMgr.winLogo.SetActive(true);
-        }
-        else
-        {
-            GameMgr.Instance.uIMgr.loseLogo.SetActive(true);
-
-        }
-    }
-
     public void StayPlayer(float time)
     {
         StartCoroutine(Stay(time));

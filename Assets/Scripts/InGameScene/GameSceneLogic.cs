@@ -15,6 +15,10 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
     PlayerInfo[] AliveNum;
     //This function for Checking alive Player.
     //It is called when someone is Die Or LeftGame 
+    public void Awake()
+    {
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+    }
     public void AliveNumCheck()
     {
         AliveNum = FindObjectsOfType<PlayerInfo>();
@@ -30,7 +34,11 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
             }
         }
         Debug.Log("살아남은 플레이어 수 = " + alivePlayerNum);
-        if (alivePlayerNum == 1)  GameMgr.Instance.uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
+        Debug.Log("살아남은 플레이어 번호 =  " + winner);
+
+        if (alivePlayerNum == 1)
+           GameMgr.Instance.uIMgr.EndGame(PhotonNetwork.PlayerList[winner].NickName);
+            //gameObject.GetPhotonView().RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
         
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
