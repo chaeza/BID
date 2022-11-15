@@ -8,15 +8,17 @@ public class MiniMapRender : MonoBehaviourPun
 {
     // player position
     [SerializeField] private GameObject target;
+    [SerializeField] private Sprite enemyImage;
     // position correction
     private Vector2 tempVec;
-    private float ratioX = 1.3206611570247933884297520661157f;
-    private float ratioY = 1.2966942148760330578512396694215f;
+    private float ratioX = 0.95579179156193233307773371987649f;
+    private float ratioY = 1.0684259301023901980965346433155f;
     private Image renderImage;
+    
     private void Awake()
     {
         renderImage = GetComponent<Image>();
-        if (photonView.IsMine != true) renderImage.color = Color.red;
+        if (photonView.IsMine != true) renderImage.sprite = enemyImage;
     }
     public void SetTarget(GameObject player)
     {
@@ -31,8 +33,8 @@ public class MiniMapRender : MonoBehaviourPun
     void Update()
     {
         if (photonView.IsMine == false) return;
-        tempVec.x = 546.6f - target.transform.position.x;
-        tempVec.y = 507.6f - target.transform.position.z;
+        tempVec.x = 502.4f - target.transform.position.x;
+        tempVec.y = 472.1f - target.transform.position.z;
         if (target == null)
             return;
         else

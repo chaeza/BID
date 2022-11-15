@@ -10,8 +10,8 @@ public class PlayerMove : MonoBehaviourPun
     private PlayerInfo playerInfo;
     private Animator myAnimator;
     private GhostEffect ghostEffect;
-    private float ratioX = 1.3206611570247933884297520661157f;
-    private float ratioY = 1.2966942148760330578512396694215f;
+    private float ratioX = 0.95579179156193233307773371987649f;
+    private float ratioY = 1.0684259301023901980965346433155f;
 
     private RaycastHit hit;
     private Vector3 clickPos = Vector3.one;
@@ -113,7 +113,7 @@ public class PlayerMove : MonoBehaviourPun
         hitPos.y = mousePos.y - 15.24192f;
         mask = 1 << LayerMask.NameToLayer("Ground");
 
-        nullCheck = Physics.Raycast(new Vector3(547.5f - hitPos.x * ratioX, 1000, 508.59f - hitPos.y * ratioY), Vector3.down, out hit, 9999, mask);
+        nullCheck = Physics.Raycast(new Vector3(502.4f - hitPos.x * ratioX, 1000, 472.1f - hitPos.y * ratioY), Vector3.down, out hit, 9999, mask);
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
         if (nullCheckHit == true)
         {

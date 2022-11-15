@@ -48,7 +48,7 @@ public class NonTarget_BloodAttack : Skill
         //eff.transform.Rotate(0, -90f, 0);
         eff.transform.LookAt(attacker.transform);
         eff.transform.Rotate(new Vector3(0, 180f, 0));
-        StartCoroutine(BloodAbsorptionMotion(attacker, eff));
+        StartCoroutine(BloodAbsorptionMotion(eff));
         attacker.GetPhotonView().RPC("ChangeHP", RpcTarget.All, 10f);
 
     }
@@ -63,7 +63,7 @@ public class NonTarget_BloodAttack : Skill
 
     }
 
-    IEnumerator BloodAbsorptionMotion(GameObject attacker, GameObject eff)
+    IEnumerator BloodAbsorptionMotion(GameObject eff)
     {
         int i = 0;
         while (true)
