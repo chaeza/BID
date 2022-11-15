@@ -53,7 +53,7 @@ public class Immediate_BloodField : Skill
         eff.transform.Rotate(-90f, 0f, 0f);
         GameMgr.Instance.DestroyTarget(eff, 5f);
         yield return new WaitForSeconds(0.5f);
-        skillInfo.hitBoxInfo.canCollider = true;
         eff.GetComponent<HitBox>().skillInfo = skillInfo;
+        eff.GetComponent<HitBox>().DestroyHitBox(0.5f);
     }
 }

@@ -10,9 +10,11 @@ public class UIMgr : MonoBehaviourPun
 {   // Save the object that called the skill cooldown
     [Header("스킬 Icon")]
     [SerializeField] private GameObject[] skillIcon;
+    [SerializeField] private GameObject skillSilenceIcon;
     [SerializeField] private GameObject[] itemIcon;
     [SerializeField] private GameObject skillIconP;
     [SerializeField] private GameObject itemIconP;
+    [SerializeField] private GameObject silenceIconP;
     [Header("Ending Images")]
     public GameObject winLogo;
     public GameObject loseLogo;
@@ -23,6 +25,7 @@ public class UIMgr : MonoBehaviourPun
     private GameObject[] skillDescription = new GameObject[2];
     private GameObject[] itemUI = new GameObject[4];
     private GameObject[] itemDescription = new GameObject[4];
+    private GameObject[] skillSilence = new GameObject[2];
     private bool[] isCanSkillDescription = new bool[2] { true, true };
     private bool[] setSkillDescription = new bool[2];
     private bool isCanItemDescription = true;
@@ -39,6 +42,13 @@ public class UIMgr : MonoBehaviourPun
     private Vector2 dashCreatePoint = new Vector2(1500, 60);
     private Vector2[] itemCreatePoint = { new Vector2(720, 60), new Vector2(885, 60), new Vector2(1045, 60), new Vector2(1200, 60) };
 
+    private void Awake()
+    {
+        skillSilence[0] = Instantiate(skillSilenceIcon, createPoint, Quaternion.identity, GameObject.Find("Canvas").transform);
+        skillSilence[1] = Instantiate(skillSilenceIcon, dashCreatePoint, Quaternion.identity, GameObject.Find("Canvas").transform);
+        skillSilence[0].transform.SetParent(silenceIconP.transform);
+        skillSilence[1].transform.SetParent(silenceIconP.transform);
+    }
     private void Update()
     {
 
@@ -103,7 +113,11 @@ public class UIMgr : MonoBehaviourPun
         Debug.Log("엔딩화면 딜레이 ");
         GameMgr.Instance.gameSceneLogic.WinnerEndGame();
     }
-
+    public void SetSilence(bool set)
+    {
+        skillSilence[0].SetActive(set);
+        skillSilence[1].SetActive(set);
+    }
     public void SetItemDescription(int itemNum)
     {
         if (isCanItemDescription == true)

@@ -55,6 +55,7 @@ public class PlayerInfo : MonoBehaviourPun
     private Animator myAnimator;
     private Coroutine slowCoroutine;
     private Coroutine stunCoroutine;
+    private Coroutine silenceCoroutine;
     private Coroutine unbeatableCoroutine;
     private string sessionID;
 
@@ -103,6 +104,14 @@ public class PlayerInfo : MonoBehaviourPun
         {
             if (slowCoroutine != null) StopCoroutine(slowCoroutine);
             slowCoroutine = StartCoroutine(Slow(slowDownRate, timer));
+        }
+        else if (attackState == state.Silence)
+        {
+            if (photonView.IsMine)
+            {
+                if (silenceCoroutine != null) StopCoroutine(silenceCoroutine);
+                silenceCoroutine = StartCoroutine(Silence(timer));
+            }
         }
         curHP -= attackDamage * ((100 - damageDecrpease) / 100);
         if (onGetDamage != null) onGetDamage();
@@ -168,6 +177,19 @@ public class PlayerInfo : MonoBehaviourPun
         if(playerStay==state.Stay) playerStay = state.None;
         yield break;
     }
+    IEnumerator Silence(float time)
+    {
+        GameMgr.Instance.uIMgr.SetSilence(true);
+        playerSilence = state.Silence;
+        yield return new WaitForSeconds(time);
+        if (playerSilence == state.Silence)
+        {
+            playerSilence = state.None;
+            GameMgr.Instance.uIMgr.SetSilence(false);
+
+        }       
+        yield break;
+    }
     IEnumerator RPC_GetDamage_Stun(float time)
     {
         stunEff.SetActive(true);
@@ -188,6 +210,7 @@ public class PlayerInfo : MonoBehaviourPun
     {
         if(moveSpeed<basicMoveSpeed) ChangeMoveSpeed(basicMoveSpeed);
         playerSilence = state.None;
+        GameMgr.Instance.uIMgr.SetSilence(false);
         playerStun = state.None;
         stunEff.SetActive(false);
         playerUnbeatable = state.Unbeatable;
