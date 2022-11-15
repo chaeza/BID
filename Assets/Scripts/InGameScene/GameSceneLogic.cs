@@ -19,7 +19,7 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
     //It is called when someone is Die Or LeftGame 
     public void Awake()
     {
-        PhotonNetwork.AutomaticallySyncScene = false;
+    //    PhotonNetwork.AutomaticallySyncScene = false;
 
         GameMgr.Instance.GameState = true;
         GameMgr.Instance.GameSceneSetting(gameObject);
