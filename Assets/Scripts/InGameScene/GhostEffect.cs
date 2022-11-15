@@ -84,6 +84,14 @@ public class GhostEffect : MonoBehaviour
             {
                 m_SkinnedMeshRendererList = new List<SkinnedMeshRenderer>();
                 gameObject.GetComponentsInChildren(m_SkinnedMeshRendererList);
+                for(int i=0; i<m_SkinnedMeshRendererList.Count;i++)
+                {
+                    if (m_SkinnedMeshRendererList[i].name == "Cloak") m_SkinnedMeshRendererList.Remove(m_SkinnedMeshRendererList[i]);
+                    if (m_SkinnedMeshRendererList[i].name == "Hair4HoodA_0") m_SkinnedMeshRendererList.Remove(m_SkinnedMeshRendererList[i]);
+                    if (m_SkinnedMeshRendererList[i].name == "Hair4HoodA_inFront") m_SkinnedMeshRendererList.Remove(m_SkinnedMeshRendererList[i]);
+                    if (m_SkinnedMeshRendererList[i].name == "Hair4HoodA_outFrontA") m_SkinnedMeshRendererList.Remove(m_SkinnedMeshRendererList[i]);
+                    if (m_SkinnedMeshRendererList[i].name == "Hair4HoodA_outFrontB") m_SkinnedMeshRendererList.Remove(m_SkinnedMeshRendererList[i]);
+                }
             }
             return m_SkinnedMeshRendererList;
         }

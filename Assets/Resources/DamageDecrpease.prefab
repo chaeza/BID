@@ -4982,7 +4982,7 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
-  m_UseLocal: 0
+  m_UseLocal: 1
 --- !u!1 &6031542175610977170
 GameObject:
   m_ObjectHideFlags: 0

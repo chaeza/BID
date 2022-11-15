@@ -35,8 +35,8 @@ public class ItemSpawner : MonoBehaviourPun
     }
     public Vector3 RandomPos(GameObject spot)
     {
-        int posX = Random.Range(-(int)spot.transform.localScale.x / 2, (int)spot.transform.localScale.x / 2);
-        int posY = Random.Range(-(int)spot.transform.localScale.y / 2, (int)spot.transform.localScale.y / 2);
+        int posX = Random.Range(-(int)spot.transform.localScale.x / 2, (int)(spot.transform.localScale.x / 2)+1);
+        int posY = Random.Range(-(int)spot.transform.localScale.y / 2, (int)(spot.transform.localScale.y / 2)+1);
      //   Debug.Log(posX);
      //   Debug.Log(posY);
 

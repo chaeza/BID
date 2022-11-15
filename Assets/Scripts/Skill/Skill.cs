@@ -105,7 +105,7 @@ public class Skill : MonoBehaviourPun
     {
         if (isCanSkill == false) return;
         if (playerInfo.playerAlive == state.Die || playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay) return;
-        if (playerInfo.playerSilence == state.Silence) return;
+        if (skillInfo.type==SkillType.Skill&& playerInfo.playerSilence == state.Silence) return;
         codeExample.Interrupt();
         if (skillInfo.skillType == SkillType.Immediate)
         {

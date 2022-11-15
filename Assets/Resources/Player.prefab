@@ -586,9 +586,25 @@ PrefabInstance:
       propertyPath: ObservedComponents.Array.data[1]
       value: 
       objectReference: {fileID: 7254708785536708024}
+    - target: {fileID: 2984988034229990979, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984988034229990993, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2984988034229991135, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984988034229991319, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984988034229991357, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034230282815, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_RootOrder
@@ -636,83 +652,87 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493633, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.x
-      value: -0.35870987
+      value: -0.35871297
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493633, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.y
-      value: -0.1025714
+      value: -0.102589324
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493633, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.z
-      value: -0.00033217296
+      value: -0.00044541433
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493633, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Extent.x
-      value: 0.14220417
+      value: 0.14220107
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493633, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Extent.y
-      value: 0.027826007
+      value: 0.02780807
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493633, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Extent.z
-      value: 0.057671126
+      value: 0.05755789
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493635, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.x
-      value: -0.43403354
+      value: -0.43403378
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493635, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.y
-      value: 0.021965586
+      value: 0.02188474
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493635, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.z
-      value: -0.0070821047
+      value: -0.0072871
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493635, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Extent.x
-      value: 0.19816193
+      value: 0.19816169
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493635, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Extent.y
-      value: 0.09775535
+      value: 0.097836204
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493635, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Extent.z
-      value: 0.10202996
+      value: 0.10223496
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493637, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.x
-      value: -0.4360674
+      value: -0.43606344
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493637, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.y
-      value: 0.019151554
+      value: 0.019130908
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493637, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.z
-      value: -0.0077022836
+      value: -0.007681936
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493637, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Extent.x
-      value: 0.18632734
+      value: 0.1863313
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493637, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Extent.y
-      value: 0.09714672
+      value: 0.09716736
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493637, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Extent.z
-      value: 0.09899892
+      value: 0.09897858
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984988034241493741, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493741, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.x
-      value: 0.20543605
+      value: 0.20292741
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493741, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.y
-      value: 0.106018245
+      value: 0.08462036
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493741, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Center.z
@@ -720,11 +740,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493741, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Extent.x
-      value: 0.7705903
+      value: 0.76808167
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034241493741, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AABB.m_Extent.y
-      value: 0.2772558
+      value: 0.25585794
       objectReference: {fileID: 0}
     - target: {fileID: 3649459186966430767, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -768,47 +788,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeLayers.Array.data[0].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[0].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[1].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[2].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[3].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[4].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[5].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[6].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[7].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[8].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[9].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[10].SynchronizeType
@@ -887,18 +907,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed5aec1c1ad891f4eab1bbf5d1a54cb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3802259214480357291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8301099733012319383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf601a90715c114e960d1ec4b400ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8301099733012549751 stripped
