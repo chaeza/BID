@@ -15,11 +15,13 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
     private int alivePlayerNum;
     PlayerInfo[] AliveNum;
     public int playerNumCount;
+
+
     //This function for Checking alive Player.
     //It is called when someone is Die Or LeftGame 
     public void Awake()
     {
-    //    PhotonNetwork.AutomaticallySyncScene = false;
+        //    PhotonNetwork.AutomaticallySyncScene = false;
 
         GameMgr.Instance.GameState = true;
         GameMgr.Instance.GameSceneSetting(gameObject);
@@ -33,7 +35,7 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
             PhotonNetwork.CurrentRoom.IsOpen = false;
     }
 
-    public void PunDes(GameObject desObject, float time )
+    public void PunDes(GameObject desObject, float time)
     {
         gameObject.GetPhotonView().RPC("PunDestroyObject", RpcTarget.All, desObject.GetPhotonView().ViewID, time);
     }
@@ -71,38 +73,61 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
         }
         if (alivePlayerNum == 1)
         {
-            if (PhotonNetwork.PlayerList[winner].NickName == PhotonNetwork.NickName) GameMgr.Instance.uIMgr.EndGame(true);
-            else GameMgr.Instance.uIMgr.EndGame(false);
-            WinnerEndGame();
+            Player[] sortedPlayers = PhotonNetwork.PlayerList;
+            //승자
+            if (sortedPlayers[winner].NickName == PhotonNetwork.NickName)
+            {
+                GameMgr.Instance.uIMgr.EndGame(true);
+
+                WinnerEndGame();
+            }
+
+
+            else
+            {
+                GameMgr.Instance.uIMgr.EndGame(false);
+
+                StartCoroutine(AliveNumCheck_EndTimer());
+            }
         }
     }
+
+    public void WinnerEndGame()
+    {
+        //API 승자
+        StartCoroutine(processRequestBetting_Zera_DeclareWinner());
+    }
+
+
+    IEnumerator AliveNumCheck_EndTimer()
+    {
+        yield return new WaitForSeconds(1);
+        EndGame();
+    }
+
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
+        StartCoroutine(OnPlayerLeftRoom_EndTimer());
+    }
+    IEnumerator OnPlayerLeftRoom_EndTimer()
+    {
+        yield return new WaitForSeconds(1);
         AliveNumCheck();
     }
-    public void WinnerEndGame()
+
+    public void EndGame()
     {
         //API 승자
         //  StartCoroutine(processRequestBetting_Zera_DeclareWinner());
         //photonView.RPC("EndGame", RpcTarget.All);
         //  EndGame();
-        StartCoroutine(endTimer());
-    }
-
-    //[PunRPC]
-    public void EndGame()
-    {
-        StartCoroutine(endTimer());
-    }
-
-    IEnumerator endTimer()
-    {
         GameMgr.Instance.GameState = false;
-        yield return new WaitForSeconds(2);
-        PhotonNetwork.LoadLevel("TitleScene");
+        PhotonNetwork.AutomaticallySyncScene = false;
         PhotonNetwork.LeaveRoom();
-        GameMgr.Instance.GameSceneSettingInitializing();
+        PhotonNetwork.Disconnect();
+        PhotonNetwork.LoadLevel("TitleScene");
     }
+
 
     //ESC나가기 버튼
     public void OnClick_LeaveGame()
@@ -112,5 +137,175 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("TitleScene");
         GameMgr.Instance.GameSceneSettingInitializing();
     }
+
+
+
+
+
+
+
+
+
+
+
+    List<string> sessionIDs = new List<string>();
+    string NewBets;
+    [PunRPC]
+    public void RPC_All_SessionID(string ID)
+    {
+        sessionIDs.Add(ID);
+        if (sessionIDs.Count >= PhotonNetwork.PlayerList.Length && PhotonNetwork.IsMasterClient)
+            //API 베팅
+            StartCoroutine(processRequestBetting_Zera());
+    }
+
+    [PunRPC]
+    public void Get_NewBets(string ID)
+    {
+        NewBets = ID;
+    }
+
+
+
+
+
+
+
+    #region API
+    [Header("[등록된 프로젝트에서 획득가능한 API 키]")]
+    string API_KEY = "2tiQsCeKJphmdTcLIbPX0P";
+
+
+    [Header("[Betting Backend Base URL]")]
+    [SerializeField] string FullAppsProductionURL = "https://odin-api.browseosiris.com";
+    [SerializeField] string FullAppsStagingURL = "https://odin-api-sat.browseosiris.com";
+
+    string getBaseURL()
+    {
+        // 프로덕션 단계라면
+        //return FullAppsProductionURL;
+
+        // 스테이징 단계(개발)라면
+        return FullAppsStagingURL;
+    }
+
+    //---------------
+    // ZERA 베팅
+    public void OnClick_Betting_Zera()//클릭시
+    {
+        StartCoroutine(processRequestBetting_Zera()); //게임 시작시 실행 
+    }
+    IEnumerator processRequestBetting_Zera()
+    {
+        Res_Initialize resBettingPlaceBet = null;
+        Req_Initialize reqBettingPlaceBet = new Req_Initialize();
+        //
+        reqBettingPlaceBet.players_session_id = new string[PhotonNetwork.PlayerList.Length];
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+            reqBettingPlaceBet.players_session_id[i] = sessionIDs[i];
+        }
+        Debug.Log("***********베팅완료**********");
+        for (int i = 0; i < 4; i++)
+        {
+            Debug.Log(reqBettingPlaceBet.players_session_id[i]);
+        }
+        Debug.Log("*****************************");
+        reqBettingPlaceBet.bet_id = GameMgr.Instance.bets_ID;// resSettigns.data.bets[0]._id;
+        Debug.Log(reqBettingPlaceBet.bet_id);
+        Debug.Log("*****************************");
+        yield return requestCoinPlaceBet(reqBettingPlaceBet, (response) =>
+        {
+            if (response != null)
+            {
+                Debug.Log("## CoinPlaceBet : " + response.message);
+                resBettingPlaceBet = response;
+                NewBets = response.data.betting_id;
+                photonView.RPC("Get_NewBets", RpcTarget.All, NewBets);
+                Debug.Log("^^^^^^배팅아이디 : " + NewBets);
+            }
+        });
+    }
+    delegate void resCallback_BettingPlaceBet(Res_Initialize response);
+    IEnumerator requestCoinPlaceBet(Req_Initialize req, resCallback_BettingPlaceBet callback)
+    {
+        string url = getBaseURL() + "/v1/betting/" + "zera" + "/place-bet";
+
+        string reqJsonData = JsonUtility.ToJson(req);
+        Debug.Log(reqJsonData);
+
+
+        UnityWebRequest www = UnityWebRequest.Post(url, reqJsonData);
+        byte[] buff = System.Text.Encoding.UTF8.GetBytes(reqJsonData);
+        www.uploadHandler = new UploadHandlerRaw(buff);
+        www.SetRequestHeader("api-key", API_KEY);
+        www.SetRequestHeader("Content-Type", "application/json");
+        yield return www.SendWebRequest();
+
+        // Debug.Log(www.downloadHandler.text);
+
+        Res_Initialize res = JsonUtility.FromJson<Res_Initialize>(www.downloadHandler.text);
+        callback(res);
+
+        Debug.Log("돈 냈음");
+    }
+
+
+    //---------------
+    // ZERA 베팅-승자
+    public void OnClick_Betting_Zera_DeclareWinner()
+    {
+        StartCoroutine(processRequestBetting_Zera_DeclareWinner());
+
+    }
+    IEnumerator processRequestBetting_Zera_DeclareWinner()
+    {
+        Res_BettingWinner resBettingDeclareWinner = null;
+        Req_BettingWinner reqBettingDeclareWinner = new Req_BettingWinner();
+        reqBettingDeclareWinner.betting_id = NewBets;// resSettigns.data.bets[0]._id;
+        reqBettingDeclareWinner.winner_player_id = GameMgr.Instance.user_ID;
+
+        Debug.Log("^^^^^^배팅아이디 : " + NewBets);
+        yield return requestCoinDeclareWinner(reqBettingDeclareWinner, (response) =>
+        {
+            if (response != null)
+            {
+                Debug.Log("## CoinDeclareWinner : " + response.message);
+                resBettingDeclareWinner = response;
+            }
+        });
+    }
+    delegate void resCallback_BettingDeclareWinner(Res_BettingWinner response);
+    IEnumerator requestCoinDeclareWinner(Req_BettingWinner req, resCallback_BettingDeclareWinner callback)
+    {
+        string url = getBaseURL() + "/v1/betting/" + "zera" + "/declare-winner";
+
+        string reqJsonData = JsonUtility.ToJson(req);
+        Debug.Log(reqJsonData);
+
+
+        UnityWebRequest www = UnityWebRequest.Post(url, reqJsonData);
+        byte[] buff = System.Text.Encoding.UTF8.GetBytes(reqJsonData);
+        www.uploadHandler = new UploadHandlerRaw(buff);
+        www.SetRequestHeader("api-key", API_KEY);
+        www.SetRequestHeader("Content-Type", "application/json");
+        yield return www.SendWebRequest();
+
+        Debug.Log(www.downloadHandler.text);
+
+        Res_BettingWinner res = JsonUtility.FromJson<Res_BettingWinner>(www.downloadHandler.text);
+        callback(res);
+        Debug.Log("^^^^^^배팅아이디 : " + NewBets);
+        Debug.Log("돈 가져와");
+        EndGame();
+    }
+
+    #endregion
+
+
+
+
+
+
 
 }

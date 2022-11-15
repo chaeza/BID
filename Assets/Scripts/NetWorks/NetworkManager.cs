@@ -91,10 +91,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         //마스터 서버 접속 요청
         PhotonNetwork.ConnectUsingSettings(); //Photon.Pun 내부 클래스
+        Debug.Log(PhotonNetwork.NetworkClientState+"*********************");
     }
 
     public override void OnConnectedToMaster()
     {
+        Debug.Log(PhotonNetwork.NetworkClientState + "*********************");
+
         //API 유저 프로필 , SessionID 가져오기
         StartCoroutine(processRequestGetUserInfo());
 
