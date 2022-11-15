@@ -10,7 +10,7 @@ public class LodingSync : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Slider slider;
     [SerializeField] private string SceneName;
-    [SerializeField] private float time;
+    private float time;
 
     private void Awake()
     {
