@@ -16,6 +16,7 @@ public class Dash : Skill
     }
     private void Update()
     {
+        if (GameMgr.Instance.GameState == false) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.F) SkillUse();
     }
     protected override void SkillFire()

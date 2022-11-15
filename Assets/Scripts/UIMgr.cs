@@ -51,7 +51,7 @@ public class UIMgr : MonoBehaviourPun
     }
     private void Update()
     {
-
+        if (GameMgr.Instance.GameState == false) return;
         if (Input.mousePosition.x > 60 && Input.mousePosition.x < 180 && Input.mousePosition.y > 25 && Input.mousePosition.y < 180)
         {
             isCanSkillDescription[0] = true;
@@ -98,14 +98,13 @@ public class UIMgr : MonoBehaviourPun
             SetSkillDescription(1);
         }
     }
-    [PunRPC]
-    public void EndGame(string winnerNickName)
+
+    public void EndGame(bool win)
     {
-        if (winnerNickName == PhotonNetwork.NickName)
+        if (win==true)
             winLogo.SetActive(true);
         else
             loseLogo.SetActive(true);
-        StartCoroutine(EndGame_Delay());
     }
     IEnumerator EndGame_Delay()
     {
