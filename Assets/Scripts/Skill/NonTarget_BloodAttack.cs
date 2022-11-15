@@ -5,6 +5,7 @@ using Photon.Pun;
 
 public class NonTarget_BloodAttack : Skill
 {
+    public float a = 0.05f;
     public void SetSkillNum(int Num)
     {
         skillInfo.skillNum = Num;
@@ -47,6 +48,7 @@ public class NonTarget_BloodAttack : Skill
         GameObject eff = PhotonNetwork.Instantiate("BloodAbsorption", hit.transform.position, Quaternion.identity);
         //eff.transform.Rotate(0, -90f, 0);
         eff.transform.LookAt(attacker.transform);
+        eff.transform.Rotate(new Vector3(0, 180f, 0));
         StartCoroutine(BloodAbsorptionMotion(attacker, eff));
         attacker.GetPhotonView().RPC("ChangeHP", RpcTarget.All, 10f);
 
@@ -64,14 +66,15 @@ public class NonTarget_BloodAttack : Skill
 
     IEnumerator BloodAbsorptionMotion(GameObject attacker, GameObject eff)
     {
-
+        int i = 0;
         while (true)
         {
             if (eff == null) break;
-            eff.transform.Translate(Vector3.forward * Time.deltaTime * 10f);
+            eff.transform.Translate(Vector3.back);
+            i++;
             //eff.GetComponentInChildren<Transform>().localScale = new Vector3()
-            if (eff.transform.position == attacker.transform.position) break;
-            yield return new WaitForSeconds(0.02f);
+            if (i == 20) break;
+            yield return new WaitForSeconds(a);
         }
         GameMgr.Instance.DestroyTarget(eff, 0.1f);
         yield return null;
