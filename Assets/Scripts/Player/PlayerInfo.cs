@@ -66,6 +66,7 @@ public class PlayerInfo : MonoBehaviourPun
         {
             gameObject.tag = "MainPlayer";
             GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+            GetComponent<Dash>();
             myAnimator = GetComponent<Animator>();
         }
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
@@ -136,9 +137,9 @@ public class PlayerInfo : MonoBehaviourPun
         curHP += hp;
         if (curHP >= maxHP)
             curHP = maxHP;
+        HPTransfer(curHP);  
     }
-    [PunRPC]
-    private void SetChangeMoveSpeed(float value,float time)
+    public void SetChangeMoveSpeed(float value,float time)
     {
         if (slowCoroutine != null) StopCoroutine(slowCoroutine);
         slowCoroutine=StartCoroutine(Slow(value, time));

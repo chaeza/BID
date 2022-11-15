@@ -70,6 +70,8 @@ public class Projectile_Bash : Skill
     }
     protected override void HitFire(GameObject attacker, GameObject hit)
     {
+        dashAttack = false;
+        navMeshAgent.speed = playerInfo.basicMoveSpeed;
         StopCoroutine(dash);
         playerInfo.StayPlayer(0f);
         GameObject a = PhotonNetwork.Instantiate("WarofWall", transform.position, Quaternion.identity);
@@ -81,7 +83,7 @@ public class Projectile_Bash : Skill
         dashAttack = true;
         yield return new WaitForSeconds(1f);
         dashAttack = false;
-        navMeshAgent.speed = 7f;
+        navMeshAgent.speed = playerInfo.basicMoveSpeed;
         GameMgr.Instance.DestroyTarget(eff,0f);
     }
 
