@@ -219,9 +219,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Recovery
 
-    Restores 30 HP
-
-'
+    Restores 30 HP'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2714119621698584659}
   - component: {fileID: 2461526899367872243}
   m_Layer: 5
-  m_Name: DamageDecrpease
+  m_Name: IceBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: eadd3c46036c2b844b0867f63d4100d5, type: 3}
+  m_Texture: {fileID: 2800000, guid: 27ca32c1f6077cc42bbae4a7a36f20fb, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -217,11 +217,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Shield
+  m_text: 'IceBall
 
-    Reduces damage received by 50%.
+    Freezes enemies hit by ice for 2 seconds
 
-    Duration: 5sec'
+    Duration: 2sec'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
