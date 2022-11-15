@@ -1943,8 +1943,11 @@ MonoBehaviour:
   - {fileID: 4695253256746028096, guid: 4d0ce255834eb1042afba811276e37d3, type: 3}
   - {fileID: 4695253256746028096, guid: b8dca28c8d6215145ab76580cf03f273, type: 3}
   - {fileID: 4695253256746028096, guid: 38565fa696e2a5e4b9f5291682ca80f3, type: 3}
+  - {fileID: 1858714725665292, guid: 66350ddd4d4e87e4096c33ea704b9a69, type: 3}
   skillIconP: {fileID: 4930380061875257290}
   itemIconP: {fileID: 1330391357489714280}
+  winLogo: {fileID: 4200809670345317406}
+  loseLogo: {fileID: 3802047255156628183}
 --- !u!1 &3144517216745727697
 GameObject:
   m_ObjectHideFlags: 0

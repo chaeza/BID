@@ -222,9 +222,7 @@ MonoBehaviour:
     Removes all status ailments and takes no damage for a
     certain period of time.
 
-    Duration: 1sec
-
-'
+    Duration: 1sec'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

@@ -10,9 +10,9 @@ public class ItemSpawner : MonoBehaviourPun
     [Header("스페셜 위치 좌표")]
     [SerializeField] private GameObject itemSpecialAreaPos = null;
 
-/*    //아이템 프리팹
-    [Header("아이템 프리팹")]
-    [SerializeField] private GameObject itemPrefab;*/
+    /*    //아이템 프리팹
+        [Header("아이템 프리팹")]
+        [SerializeField] private GameObject itemPrefab;*/
     //아이템 개수
     [Header("아이템 개수")]
     [SerializeField] private int itemMaxCount = 0;
@@ -37,10 +37,10 @@ public class ItemSpawner : MonoBehaviourPun
     {
         int posX = Random.Range(-(int)spot.transform.localScale.x / 2, (int)spot.transform.localScale.x / 2);
         int posY = Random.Range(-(int)spot.transform.localScale.y / 2, (int)spot.transform.localScale.y / 2);
-     //   Debug.Log(posX);
-     //   Debug.Log(posY);
+        //   Debug.Log(posX);
+        //   Debug.Log(posY);
 
-        return new Vector3(posX,0, posY);
+        return new Vector3(posX, 0, posY);
     }
     public void RandomBigAreaItemSpawn()
     {
@@ -54,51 +54,52 @@ public class ItemSpawner : MonoBehaviourPun
 
 
         //큰지역 빈오브젝트 만큼 포문돌림
-        for (int i = 0; i < itemAreaPos.Count; i++)
+        for (int i = 0; i < 7; i++)
         {
-            int item = Random.Range(1, 4);
-            for (int j = 0; j < item; j++)
+            if (itemCount == itemMaxCount)
             {
-                GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos[i].transform.position + RandomPos(itemAreaPos[i]), Quaternion.identity);
-                itemCount++;
-                if (itemCount > itemMaxCount)
+                break;
+            }
+            else
+            {
+                int item = Random.Range(1, 4);
+                for (int j = 0; j < item; j++)
                 {
-                    break;
+                    GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos[i].transform.position + RandomPos(itemAreaPos[i]), Quaternion.identity);
+                    itemCount++;
+                    if (itemCount == itemMaxCount)
+                    {
+                        break;
+                    }
                 }
             }
         }
-        if (itemCount < itemMaxCount)
+
+        for (int i = 7; i < itemAreaPos.Count; i++)
         {
-            int check = 0;
-            //다리 위치에 놓을 아이템
-            while (true)
-            {             
-                int ran = Random.Range(0, 2);
- 
-                if (ran == 1)
-                {
-                    GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos[check].transform.position + RandomPos(itemAreaPos[check]), Quaternion.identity);
-                    itemCount++;
-                }
-                check++;
-                if (check == itemAreaPos.Count-1)
-                {
-                    check = 0;
-                }
+            int ran = Random.Range(7, itemAreaPos.Count);
+
+            if (itemCount == itemMaxCount)
+            {
+                break;
+            }
+            else
+            {
+                GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos[i].transform.position + RandomPos(itemAreaPos[i]), Quaternion.identity);
+                itemCount++;
                 if (itemCount == itemMaxCount)
                 {
                     break;
                 }
-                Debug.Log(itemCount);
             }
-
         }
+        Debug.Log(itemCount);
     }
     [PunRPC]
     void ItemRespawn()
     {
-        
-        if((itemMaxCount - itemCount) < 10)
+
+        if ((itemMaxCount - itemCount) < 10)
         {
             return;
         }
@@ -121,7 +122,7 @@ public class ItemSpawner : MonoBehaviourPun
     void ReleasePool(int viewID)
     {
         Debug.Log("ReleasePool");
-        if(GameMgr.Instance.PunFindObject(viewID)!=null) Release(GameMgr.Instance.PunFindObject(viewID));
+        if (GameMgr.Instance.PunFindObject(viewID) != null) Release(GameMgr.Instance.PunFindObject(viewID));
     }
     public void Release(GameObject obj)
     {   //큐로 다시 보낸다
