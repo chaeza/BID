@@ -48,7 +48,7 @@ public class RandomItem : MonoBehaviour
             }
             else if (itemRan == 6 && GameMgr.Instance.inventory.ContainInventory(6) == false)
             {
-                player.AddComponent<Immediate_IceBall>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
+                player.AddComponent<Buff_IceBall>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
                 break;
             }
             else itemRan = Random.Range(0, itemType);//중복시 다시 랜덤

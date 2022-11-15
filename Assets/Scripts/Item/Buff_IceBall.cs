@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-public class Immediate_IceBall : Skill
+public class Buff_IceBall : Skill
 {
     [SerializeField] private int itemNum = 0;
     public void GetItem(int itemType, int itemnum)//inventory order
@@ -19,15 +19,15 @@ public class Immediate_IceBall : Skill
     {
         skillInfo.type = SkillType.Item;
         skillInfo.cooltime = 0;
-        skillInfo.skillType = SkillType.Immediate;
+        skillInfo.skillType = SkillType.Buff;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
-        skillInfo.hitBoxInfo.interval = 0;
+        skillInfo.hitBoxInfo.interval = 1;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.Stun;
         skillInfo.hitBoxInfo.damageInfo.attackDamage = 0;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
-        skillInfo.hitBoxInfo.damageInfo.slowDownRate = 100;
+        skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
         skillInfo.hitBoxInfo.damageInfo.timer = 2f;
     }
     private void Update()
@@ -43,26 +43,12 @@ public class Immediate_IceBall : Skill
     {
         if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetItemDescription -= ItemRadius;
         if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType -= UnClick;
-        Vector3 y = new Vector3(0, 2, 0);
-        //
-        GameObject iceBall = PhotonNetwork.Instantiate("IceBall", transform.position + y, Quaternion.identity);
+        
+        GameObject iceBall = PhotonNetwork.Instantiate("IceBall", transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        iceBall.AddComponent<HitBox>().skillInfo = skillInfo;
         //
         GameMgr.Instance.uIMgr.UseItem(itemNum);
-        
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            StartCoroutine("Ice", other);
-            other.gameObject.transform.GetChild(9).gameObject.SetActive(false);
+        Destroy(GetComponent<Buff_IceBall>());
 
-            Destroy(GetComponent<Immediate_IceBall>());
-        }
-    }
-    IEnumerator Ice(GameObject other)
-    {
-        other.gameObject.transform.GetChild(9).gameObject.SetActive(true);
-        yield return new WaitForSeconds(2);
     }
 }
