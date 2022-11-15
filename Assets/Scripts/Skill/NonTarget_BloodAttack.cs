@@ -5,7 +5,6 @@ using Photon.Pun;
 
 public class NonTarget_BloodAttack : Skill
 {
-    public float a = 0.05f;
     public void SetSkillNum(int Num)
     {
         skillInfo.skillNum = Num;
@@ -14,8 +13,8 @@ public class NonTarget_BloodAttack : Skill
     private void Awake()
     {
         skillInfo.type = SkillType.Skill;
-        skillInfo.radius = 3;//use Immediate,NonTarget
-        skillInfo.range = 15;//use Projectile,NonTarget,Cone
+        skillInfo.radius = 5;//use Immediate,NonTarget
+        skillInfo.range = 20;//use Projectile,NonTarget,Cone
         skillInfo.cooltime = 15;
         skillInfo.skillType = SkillType.NonTarget;
         skillInfo.hitReturn = true;
@@ -73,8 +72,8 @@ public class NonTarget_BloodAttack : Skill
             eff.transform.Translate(Vector3.back);
             i++;
             //eff.GetComponentInChildren<Transform>().localScale = new Vector3()
-            if (i == 20) break;
-            yield return new WaitForSeconds(a);
+            if (i == 18) break;
+            yield return new WaitForSeconds(0.05f);
         }
         GameMgr.Instance.DestroyTarget(eff, 0.1f);
         yield return null;
