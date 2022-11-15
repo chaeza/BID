@@ -17,15 +17,16 @@ public class NonTarget_BloodAttack : Skill
         skillInfo.range = 15;//use Projectile,NonTarget,Cone
         skillInfo.cooltime = 15;
         skillInfo.skillType = SkillType.NonTarget;
+        skillInfo.hitReturn = true;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
-        skillInfo.hitBoxInfo.interval = 0.5f;
+        skillInfo.hitBoxInfo.interval = 0f;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.None;
         skillInfo.hitBoxInfo.damageInfo.attackDamage = 10;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
-        skillInfo.hitBoxInfo.damageInfo.timer = 1f;
+        skillInfo.hitBoxInfo.damageInfo.timer = 0f;
     }
 
     private void Update()
@@ -41,6 +42,15 @@ public class NonTarget_BloodAttack : Skill
         StartCoroutine(SkillFire_Delay(0.5f));
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum, 0);
     }
+    protected override void HitFire(GameObject attacker, GameObject hit)
+    {
+        GameObject eff = PhotonNetwork.Instantiate("BloodAbsorption", hit.transform.position, Quaternion.identity);
+        //eff.transform.Rotate(0, -90f, 0);
+        eff.transform.LookAt(attacker.transform);
+        StartCoroutine(BloodAbsorptionMotion(attacker, eff));
+        attacker.GetPhotonView().RPC("ChangeHP", RpcTarget.All, 10f);
+
+    }
     IEnumerator SkillFire_Delay(float time)
     {
 
@@ -50,5 +60,20 @@ public class NonTarget_BloodAttack : Skill
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
         GameMgr.Instance.DestroyTarget(eff, 1f);
 
+    }
+
+    IEnumerator BloodAbsorptionMotion(GameObject attacker, GameObject eff)
+    {
+
+        while (true)
+        {
+            if (eff == null) break;
+            eff.transform.Translate(Vector3.forward * Time.deltaTime * 10f);
+            //eff.GetComponentInChildren<Transform>().localScale = new Vector3()
+            if (eff.transform.position == attacker.transform.position) break;
+            yield return new WaitForSeconds(0.02f);
+        }
+        GameMgr.Instance.DestroyTarget(eff, 0.1f);
+        yield return null;
     }
 }
