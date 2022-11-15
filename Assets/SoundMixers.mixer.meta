@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/etc/(Opt)Effect_62.meta
+guid: 8dacea4a52c79cd48bd65b2cf1d4ce4c
+folderAsset: yes
+DefaultImporter:
+========
 guid: 7889d188354f8dd4a84713ea1dc5fb27
 NativeFormatImporter:
+>>>>>>>> main:Assets/SoundMixers.mixer.meta
   externalObjects: {}
   mainObjectFileID: 24100000
   userData: 
