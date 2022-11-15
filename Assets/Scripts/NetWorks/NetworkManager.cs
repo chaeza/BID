@@ -18,7 +18,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [SerializeField] TextMeshProUGUI UserID_Disconnect;
     [SerializeField] TextMeshProUGUI UserID_Lobby;
     //API 데이터 전달 포스트맨
-    [SerializeField] GameObject Postman;
+    [SerializeField] GameObject gameMgr;
 
     public AudioSource audioSource;
     public InputField nickNameInput;
@@ -56,13 +56,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         //    DontDestroyOnLoad(this);
         ClearLobby();
         photonView.StartCoroutine(AutoSyncDelay());
-        if (FindObjectOfType<TitleToGameScene>() == null)
+        if (FindObjectOfType<GameMgr>() == null)
         {
-            postman = Instantiate(Postman);
+            postman = Instantiate(gameMgr);
         }
         else
         {
-            postman = FindObjectOfType<TitleToGameScene>().gameObject;
+            postman = FindObjectOfType<GameMgr>().gameObject;
         }
         Screen.SetResolution(1920, 1080, false);
         PhotonNetwork.SendRate = 300;

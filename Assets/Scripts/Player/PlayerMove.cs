@@ -42,6 +42,7 @@ public class PlayerMove : MonoBehaviourPun
 
     private void Update()
     {
+        if (GameMgr.Instance.GameState == false) return;
         if (photonView.IsMine == false) return;
         if (playerInfo.playerAlive == state.Die || playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay)
         {

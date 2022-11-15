@@ -14,19 +14,44 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
 {
     private int alivePlayerNum;
     PlayerInfo[] AliveNum;
-    UIMgr uIMgr;
     public int playerNumCount;
     //This function for Checking alive Player.
     //It is called when someone is Die Or LeftGame 
     public void Awake()
     {
-        uIMgr = FindObjectOfType<UIMgr>();
+    //    PhotonNetwork.AutomaticallySyncScene = false;
+
+        GameMgr.Instance.GameState = true;
+        GameMgr.Instance.GameSceneSetting(gameObject);
+        GameMgr.Instance.del_DestroyTarget = PunDes;
+        GameMgr.Instance.del_PunFindObject = PunFindObject;
     }
-    public void PlayerCheck()
+    public void PlayerCheck2()
     {
         playerNumCount++;
         if (playerNumCount == PhotonNetwork.CurrentRoom.PlayerCount && PhotonNetwork.IsMasterClient)
             PhotonNetwork.CurrentRoom.IsOpen = false;
+    }
+
+    public void PunDes(GameObject desObject, float time )
+    {
+        gameObject.GetPhotonView().RPC("PunDestroyObject", RpcTarget.All, desObject.GetPhotonView().ViewID, time);
+    }
+    [PunRPC]
+    public void PunDestroyObject(int viewid, float time)
+    {
+        Destroy(PunFindObject(viewid), time);
+    }
+    public GameObject PunFindObject(int viewID3)//뷰아이디를 넘겨받아 포톤상의 오브젝트를 찾는다.
+    {
+        GameObject find = null;
+        PhotonView[] viewObject = FindObjectsOfType<PhotonView>();
+        for (int i = 0; i < viewObject.Length; i++)
+        {
+            if (viewObject[i].ViewID == viewID3) find = viewObject[i].gameObject;
+        }
+        if (find != null) return find;
+        else return null;
     }
 
 
@@ -44,12 +69,12 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
                 winner = i;
             }
         }
-        if (alivePlayerNum == 1 && PhotonNetwork.IsMasterClient)
-            uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
-
-        //        GameMgr.Instance.uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
-        // GameMgr.Instance.uIMgr.EndGame(PhotonNetwork.PlayerList[winner].NickName);
-
+        if (alivePlayerNum == 1)
+        {
+            if (PhotonNetwork.PlayerList[winner].NickName == PhotonNetwork.NickName) GameMgr.Instance.uIMgr.EndGame(true);
+            else GameMgr.Instance.uIMgr.EndGame(false);
+            WinnerEndGame();
+        }
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
@@ -60,7 +85,8 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
         //API 승자
         //  StartCoroutine(processRequestBetting_Zera_DeclareWinner());
         //photonView.RPC("EndGame", RpcTarget.All);
-        EndGame();
+        //  EndGame();
+        StartCoroutine(endTimer());
     }
 
     //[PunRPC]
@@ -71,17 +97,20 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
 
     IEnumerator endTimer()
     {
+        GameMgr.Instance.GameState = false;
         yield return new WaitForSeconds(2);
         PhotonNetwork.LoadLevel("TitleScene");
         PhotonNetwork.LeaveRoom();
+        GameMgr.Instance.GameSceneSettingInitializing();
     }
 
     //ESC나가기 버튼
     public void OnClick_LeaveGame()
     {
+        GameMgr.Instance.GameState = false;
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel("TitleScene");
-
+        GameMgr.Instance.GameSceneSettingInitializing();
     }
 
 }

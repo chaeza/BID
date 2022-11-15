@@ -128,7 +128,7 @@ public class PlayerInfo : MonoBehaviourPun
     {
         playerAlive = state.Die;
         if(photonView.IsMine) myAnimator.SetTrigger("isDie");
-       // GameMgr.Instance.gameSceneLogic.AliveNumCheck();
+        GameMgr.Instance.gameSceneLogic.AliveNumCheck();
     }
 
     [PunRPC]

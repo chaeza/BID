@@ -38,6 +38,7 @@ public class Projectile_Bash : Skill
     }
     private void Update()
     {
+        if (GameMgr.Instance.GameState == false) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.D) SkillUse();
         else if (GameMgr.Instance.playerInput.inputKey == KeyCode.Mouse0) SkillClick(Input.mousePosition);
 
