@@ -66,7 +66,7 @@ public class PlayerInfo : MonoBehaviourPun
         {
             gameObject.tag = "MainPlayer";
             GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
-            GetComponent<Dash>();
+            gameObject.AddComponent<Dash>();
             myAnimator = GetComponent<Animator>();
         }
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
