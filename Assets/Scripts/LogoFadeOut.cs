@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class LogoFadeOut : MonoBehaviour
 {
     [SerializeField] private RawImage logoImage;
+
+
     [SerializeField] private bool fadeout = false;
     [SerializeField] private bool fadein = true;
     [SerializeField] private bool isPlaying = false;

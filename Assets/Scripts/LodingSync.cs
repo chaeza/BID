@@ -10,25 +10,20 @@ public class LodingSync : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Slider slider;
     [SerializeField] private string SceneName;
-    [SerializeField] private float time;
+    private float time;
 
     private void Awake()
     {
-
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     void Start()
     {
-
         if (PhotonNetwork.IsMasterClient)
-        {
             photonView.StartCoroutine(LoadAsynSceneCoroutine());
 
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-        }
-
-        // else photonView.StartCoroutine(PlayerSceneCoroutine());
+        else
+            photonView.StartCoroutine(PlayerSceneCoroutine());
     }
 
     private void Update()
@@ -38,23 +33,23 @@ public class LodingSync : MonoBehaviourPunCallbacks
 
     IEnumerator LoadAsynSceneCoroutine()
     {
+
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneName);
 
         operation.allowSceneActivation = false;
 
         while (!operation.isDone)
         {
-            slider.value = time / 3f;
-            photonView.RPC("LoadingState", RpcTarget.All, slider.value);
-            if (time > 3) operation.allowSceneActivation = true;
+            slider.value = time / 5f;
 
-            yield return new WaitForFixedUpdate();
+            if (time > 5)
+            {
+                operation.allowSceneActivation = true;
+            }
+
+            yield return null;
         }
-    }
-    [PunRPC]
-    public void LoadingState(float sldierVlaue)
-    {
-        slider.value = sldierVlaue;
+
     }
 
     IEnumerator PlayerSceneCoroutine()
