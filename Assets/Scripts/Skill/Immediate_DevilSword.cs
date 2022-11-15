@@ -52,8 +52,6 @@ public class Immediate_DevilSword : Skill
         eff.transform.position = gameObject.transform.position + new Vector3(0f, 2f, 0f);
         eff.transform.Rotate(-180f, 0f, 0f);
         GameMgr.Instance.DestroyTarget(eff, 5f);
-        yield return new WaitForSeconds(0.5f);
-        skillInfo.hitBoxInfo.canCollider = true;
-        eff.GetComponent<HitBox>().skillInfo = skillInfo;
+        eff.GetComponent<HitBox>().DestroyHitBox(0.5f);
     }
 }

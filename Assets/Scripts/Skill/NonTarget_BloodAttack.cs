@@ -48,7 +48,7 @@ public class NonTarget_BloodAttack : Skill
         GameObject eff = PhotonNetwork.Instantiate("BloodAttack", desiredDir, Quaternion.identity);
         eff.transform.Rotate(-90, 0f, 0);
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
-        GameMgr.Instance.DestroyTarget(eff, 5f);
+        GameMgr.Instance.DestroyTarget(eff, 1f);
 
     }
 }
