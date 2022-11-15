@@ -48,8 +48,8 @@ public class PlayerInfo : MonoBehaviourPun
     [field: SerializeField] public state playerSilence { get; private set; }
     [SerializeField] GameObject stunEff;
     public delegate void OnChangeMoveSpeed();
-    public event OnChangeMoveSpeed onChangeMoveSpeed;
     public delegate void OnGetDamage();
+    public event OnChangeMoveSpeed onChangeMoveSpeed;
     public event OnGetDamage onGetDamage;
     public HPTransfer HPTransfer;
     private Animator myAnimator;
@@ -68,6 +68,10 @@ public class PlayerInfo : MonoBehaviourPun
             myAnimator = GetComponent<Animator>();
         }
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I)) GameMgr.Instance.gameSceneLogic.AliveNumCheck();
     }
     public void StayPlayer(float time)
     {
@@ -130,7 +134,7 @@ public class PlayerInfo : MonoBehaviourPun
         if (slowCoroutine != null) StopCoroutine(slowCoroutine);
         slowCoroutine=StartCoroutine(Slow(value, time));
     }
-    private void ChangeMoveSpeed(float value)
+    public void ChangeMoveSpeed(float value)
     {
         moveSpeed = value;
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();

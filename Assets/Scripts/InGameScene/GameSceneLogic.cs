@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -13,12 +14,26 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
 {
     private int alivePlayerNum;
     PlayerInfo[] AliveNum;
+    UIMgr uIMgr;
+    public int playerNumCount;
     //This function for Checking alive Player.
     //It is called when someone is Die Or LeftGame 
+    public void Awake()
+    {
+        uIMgr = FindObjectOfType<UIMgr>();
+    }
+    public void PlayerCheck()
+    {
+        playerNumCount++;
+        if (playerNumCount == PhotonNetwork.CurrentRoom.PlayerCount && PhotonNetwork.IsMasterClient)
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+    }
+
+
     public void AliveNumCheck()
     {
         AliveNum = FindObjectsOfType<PlayerInfo>();
-        alivePlayerNum = 0; 
+        alivePlayerNum = 0;
         int winner = 0;
         //상태가 Die가 아니라면 살아있는 것이기 때문에 살아남은 인원 카운트 가능 
         for (int i = 0; i < AliveNum.Length; i++)
@@ -29,13 +44,44 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
                 winner = i;
             }
         }
-        Debug.Log("살아남은 플레이어 수 = " + alivePlayerNum);
-        if (alivePlayerNum == 1)  GameMgr.Instance.uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
-        
+        if (alivePlayerNum == 1 && PhotonNetwork.IsMasterClient)
+            uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
+
+        //        GameMgr.Instance.uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
+        // GameMgr.Instance.uIMgr.EndGame(PhotonNetwork.PlayerList[winner].NickName);
+
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         AliveNumCheck();
+    }
+    public void WinnerEndGame()
+    {
+        //API 승자
+        //  StartCoroutine(processRequestBetting_Zera_DeclareWinner());
+        //photonView.RPC("EndGame", RpcTarget.All);
+        EndGame();
+    }
+
+    //[PunRPC]
+    public void EndGame()
+    {
+        StartCoroutine(endTimer());
+    }
+
+    IEnumerator endTimer()
+    {
+        yield return new WaitForSeconds(2);
+        PhotonNetwork.LoadLevel("TitleScene");
+        PhotonNetwork.LeaveRoom();
+    }
+
+    //ESC나가기 버튼
+    public void OnClick_LeaveGame()
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel("TitleScene");
+
     }
 
 }

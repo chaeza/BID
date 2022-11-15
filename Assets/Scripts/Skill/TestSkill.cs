@@ -5,7 +5,10 @@ using Photon.Pun;
 
 public class TestSkill : Skill
 {
-    public int skillNum;
+    public void SetSkillNum(int Num)
+    {
+        skillInfo.skillNum = Num;
+    }
     private void Awake()
     {
         skillInfo.type = SkillType.Skill;
@@ -14,7 +17,6 @@ public class TestSkill : Skill
         skillInfo.range = 30;//use Projectile,NonTarget,Cone
         skillInfo.length = 6;//use Projectile,
         skillInfo.cooltime = 5;
-        skillInfo.skillNum = skillNum;
         skillInfo.skillType = SkillType.Immediate;
         skillInfo.hitReturn = false;
 

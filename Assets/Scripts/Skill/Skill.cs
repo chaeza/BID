@@ -36,6 +36,7 @@ public class Skill : MonoBehaviourPun
     protected Vector3 desiredDir;
     protected bool click;
     protected PlayerInfo playerInfo;
+    protected Animator animator;
 
 
     private bool isCanSkill = true;
@@ -49,6 +50,7 @@ public class Skill : MonoBehaviourPun
     {
         codeExample = FindObjectOfType<CodeExample>();
         playerInfo = GetComponent<PlayerInfo>();
+        animator = GetComponent<Animator>();
         if (photonView.IsMine == true)
         {
             if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType += UnClick;
@@ -192,6 +194,7 @@ public class Skill : MonoBehaviourPun
     {
         if (skillNum == skillInfo.skillNum)
         {
+            Debug.Log(skillInfo.skillNum);
             isCanSkill = true;
             Debug.Log("¸®¼Â");
         }

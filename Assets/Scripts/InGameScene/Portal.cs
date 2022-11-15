@@ -95,6 +95,8 @@ public partial class Portal : MonoBehaviourPun
                         cameraReSetting();
                         break;
                     }
+                    else
+                        Debug.Log("파괴된 오브젝트");
                 }
             }
             player.GetComponent<PlayerMove>().navMeshAgent.enabled = true;
