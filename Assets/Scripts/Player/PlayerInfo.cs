@@ -48,13 +48,14 @@ public class PlayerInfo : MonoBehaviourPun
     [field: SerializeField] public state playerSilence { get; private set; }
     [SerializeField] GameObject stunEff;
     public delegate void OnChangeMoveSpeed();
-    public event OnChangeMoveSpeed onChangeMoveSpeed;
     public delegate void OnGetDamage();
+    public event OnChangeMoveSpeed onChangeMoveSpeed;
     public event OnGetDamage onGetDamage;
     public HPTransfer HPTransfer;
     private Animator myAnimator;
     private Coroutine slowCoroutine;
     private Coroutine stunCoroutine;
+    private Coroutine silenceCoroutine;
     private Coroutine unbeatableCoroutine;
     private string sessionID;
 
@@ -65,9 +66,14 @@ public class PlayerInfo : MonoBehaviourPun
         {
             gameObject.tag = "MainPlayer";
             GameMgr.Instance.randomSkill.GetRandomSkill(gameObject);
+            gameObject.AddComponent<Dash>();
             myAnimator = GetComponent<Animator>();
         }
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I)) GameMgr.Instance.gameSceneLogic.AliveNumCheck();
     }
     public void StayPlayer(float time)
     {
@@ -100,6 +106,14 @@ public class PlayerInfo : MonoBehaviourPun
             if (slowCoroutine != null) StopCoroutine(slowCoroutine);
             slowCoroutine = StartCoroutine(Slow(slowDownRate, timer));
         }
+        else if (attackState == state.Silence)
+        {
+            if (photonView.IsMine)
+            {
+                if (silenceCoroutine != null) StopCoroutine(silenceCoroutine);
+                silenceCoroutine = StartCoroutine(Silence(timer));
+            }
+        }
         curHP -= attackDamage * ((100 - damageDecrpease) / 100);
         if (onGetDamage != null) onGetDamage();
         if (curHP <= 0)
@@ -123,14 +137,14 @@ public class PlayerInfo : MonoBehaviourPun
         curHP += hp;
         if (curHP >= maxHP)
             curHP = maxHP;
+        HPTransfer(curHP);  
     }
-    [PunRPC]
-    private void SetChangeMoveSpeed(float value,float time)
+    public void SetChangeMoveSpeed(float value,float time)
     {
         if (slowCoroutine != null) StopCoroutine(slowCoroutine);
         slowCoroutine=StartCoroutine(Slow(value, time));
     }
-    private void ChangeMoveSpeed(float value)
+    public void ChangeMoveSpeed(float value)
     {
         moveSpeed = value;
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
@@ -164,6 +178,19 @@ public class PlayerInfo : MonoBehaviourPun
         if(playerStay==state.Stay) playerStay = state.None;
         yield break;
     }
+    IEnumerator Silence(float time)
+    {
+        GameMgr.Instance.uIMgr.SetSilence(true);
+        playerSilence = state.Silence;
+        yield return new WaitForSeconds(time);
+        if (playerSilence == state.Silence)
+        {
+            playerSilence = state.None;
+            GameMgr.Instance.uIMgr.SetSilence(false);
+
+        }       
+        yield break;
+    }
     IEnumerator RPC_GetDamage_Stun(float time)
     {
         stunEff.SetActive(true);
@@ -184,6 +211,7 @@ public class PlayerInfo : MonoBehaviourPun
     {
         if(moveSpeed<basicMoveSpeed) ChangeMoveSpeed(basicMoveSpeed);
         playerSilence = state.None;
+        GameMgr.Instance.uIMgr.SetSilence(false);
         playerStun = state.None;
         stunEff.SetActive(false);
         playerUnbeatable = state.Unbeatable;

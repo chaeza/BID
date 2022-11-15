@@ -11,6 +11,8 @@ TagManager:
   - MainPlayer
   - SpawnArea
   - ItemBlackHole
+  - Portal
+  - PortalSystem
   layers:
   - Default
   - TransparentFX

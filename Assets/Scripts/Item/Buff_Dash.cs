@@ -36,7 +36,8 @@ public class Buff_Dash : Skill
         if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetItemDescription -= ItemRadius;
         if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType -= UnClick;
 
-        gameObject.GetPhotonView().RPC("SetChangeMoveSpeed", RpcTarget.All, 300f, 0.5f);
+        animator.SetTrigger("isBasicDash");
+        playerInfo.SetChangeMoveSpeed(300f, 0.5f);
         gameObject.GetPhotonView().RPC("SetGhostEff", RpcTarget.All, 10, 0.05f);
 
         GameMgr.Instance.uIMgr.UseItem(itemNum);

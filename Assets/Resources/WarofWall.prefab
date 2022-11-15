@@ -50,7 +50,7 @@ MonoBehaviour:
   m_makeObjs:
   - {fileID: 1356378541309022, guid: f9c223304b3a5fb448525f98d27e1cf5, type: 3}
   m_movePos: {fileID: 0}
-  m_interval: 7
+  m_interval: 10
   m_makeCount: 10
   m_makeDelay: 0
   m_startDelay: 0

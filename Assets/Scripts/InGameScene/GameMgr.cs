@@ -9,6 +9,7 @@ public partial class GameMgr : Singleton<GameMgr>
 {
     private void Awake()
     {
+        gameSceneLogic = gameObject.AddComponent<GameSceneLogic>();
         playerInput = gameObject.AddComponent<PlayerInput>();
         randomSkill = gameObject.AddComponent<RandomSkill>();
         randomItem = gameObject.AddComponent<RandomItem>();

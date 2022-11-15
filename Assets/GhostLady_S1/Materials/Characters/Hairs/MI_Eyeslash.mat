@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MI_Eyeslash
-  m_Shader: {fileID: 4800000, guid: 083ba83dd0dcbf047a4394a5b56ba4b1, type: 3}
+  m_Shader: {fileID: 4800000, guid: 76ef10b4704ef8f49b84eb4b12893fbc, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ADD_PRECOMPUTED_VELOCITY
@@ -29,6 +29,10 @@ Material:
     m_TexEnvs:
     - _Alpha:
         m_Texture: {fileID: 2800000, guid: 198178d3b1160db4e8292c3252fb9e32, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlphaMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BC:
@@ -256,6 +260,7 @@ Material:
     - _EmissiveColor4: {r: 0, g: 0, b: 0, a: 0}
     - _FlowTangent: {r: 1, g: 1, b: 0, a: 0.003921569}
     - _RootColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0}
     - _TangentA: {r: 0, g: 0.1543091, b: 0.5568628, a: 0.003921569}
     - _TangentB: {r: 0, g: 0.7781801, b: 1, a: 0.003921569}
     - _TangentC: {r: 0, g: 0.1543091, b: 0.5568628, a: 0.003921569}
