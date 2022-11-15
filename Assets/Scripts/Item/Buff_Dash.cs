@@ -25,6 +25,7 @@ public class Buff_Dash : Skill
     }
     private void Update()
     {
+        if (GameMgr.Instance.GameState == false) return;
         if (itemNum == 0 && GameMgr.Instance.playerInput.inputKey == KeyCode.Q) SkillUse();
         else if (itemNum == 1 && GameMgr.Instance.playerInput.inputKey == KeyCode.W) SkillUse();
         else if (itemNum == 2 && GameMgr.Instance.playerInput.inputKey == KeyCode.E) SkillUse();

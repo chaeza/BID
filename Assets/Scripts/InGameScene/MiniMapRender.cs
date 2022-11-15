@@ -30,6 +30,7 @@ public class MiniMapRender : MonoBehaviourPun
     }
     void Update()
     {
+        if (GameMgr.Instance.GameState == false) return;
         if (photonView.IsMine == false) return;
         tempVec.x = 546.6f - target.transform.position.x;
         tempVec.y = 507.6f - target.transform.position.z;
