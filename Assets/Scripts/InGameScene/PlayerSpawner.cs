@@ -18,17 +18,6 @@ public class PlayerSpawner : MonoBehaviourPunCallbacks
         Player[] playerList = PhotonNetwork.PlayerList;
 
 
-        //지우지 마시오!
-        /* if (PhotonNetwork.IsMasterClient)
-         {
-             for (int i = 0; i < playerList.Length; i++)
-             {
-                 randomSpawnPoint.Add(spawnPoint[RandomArrangeList()]);
-             }
-          //   photonView.RPC("RandomSpawnPointDistrubuter", RpcTarget.MasterClient, randomSpawnPoint);
-         }*/
-
-
         Debug.Log(playerList.Length + "vvvvvvvvvvvv");
         for (int i = 0; i < playerList.Length; i++)
         {
@@ -40,6 +29,8 @@ public class PlayerSpawner : MonoBehaviourPunCallbacks
         GameMgr.Instance.followCam.SetPlayerPos(player.transform);
         GameMgr.Instance.codeExample.PlayerIndicator = player.GetComponentInChildren<RpgIndicator>();
         miniMapRender.GetComponent<MiniMapRender>().SetTarget(player);
+
+        //GameMgr.Instance.gameSceneLogic.gameObject.GetPhotonView().RPC("PlayerCheck", RpcTarget.All);
     }
 
     [PunRPC]

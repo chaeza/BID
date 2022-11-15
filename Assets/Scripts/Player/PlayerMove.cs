@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviourPun
 
     private void Start()
     {
-       ghostEffect=GetComponent<GhostEffect>();
+        ghostEffect = GetComponent<GhostEffect>();
         playerInfo = GetComponent<PlayerInfo>();
         myAnimator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -143,7 +143,8 @@ public class PlayerMove : MonoBehaviourPun
         for(int i = 0; i<num; i++)
         {
             yield return new WaitForSeconds(time);
-            ghostEffect.CreateGhostEffectObject(Color.black, 1f, 0.5f, 0.5f, 0.85f, 0.5f);
+            ghostEffect.CreateGhostEffectObject(Color.black, 1f, 0.7f, 0.5f, 0.85f, 0.5f);
+            yield return null;
         }
         yield break;
     }

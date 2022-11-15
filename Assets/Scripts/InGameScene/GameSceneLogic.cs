@@ -15,14 +15,21 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
     private int alivePlayerNum;
     PlayerInfo[] AliveNum;
     UIMgr uIMgr;
+    public int playerNumCount;
     //This function for Checking alive Player.
     //It is called when someone is Die Or LeftGame 
     public void Awake()
     {
-        if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.CurrentRoom.IsOpen = false;
         uIMgr = FindObjectOfType<UIMgr>();
     }
+    public void PlayerCheck()
+    {
+        playerNumCount++;
+        if (playerNumCount == PhotonNetwork.CurrentRoom.PlayerCount && PhotonNetwork.IsMasterClient)
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+    }
+
+
     public void AliveNumCheck()
     {
         AliveNum = FindObjectsOfType<PlayerInfo>();
@@ -37,7 +44,7 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
                 winner = i;
             }
         }
-        if (alivePlayerNum == 1&&PhotonNetwork.IsMasterClient)
+        if (alivePlayerNum == 1 && PhotonNetwork.IsMasterClient)
             uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
 
         //        GameMgr.Instance.uIMgr.photonView.RPC("EndGame", RpcTarget.All, PhotonNetwork.PlayerList[winner].NickName);
