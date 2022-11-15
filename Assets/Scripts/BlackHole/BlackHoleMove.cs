@@ -19,6 +19,7 @@ public class BlackHoleMove : MonoBehaviourPun
     }
     private void Update()
     {
+        if (GameMgr.Instance.GameState == false) return;
         if (PhotonNetwork.IsMasterClient)
         {
             masterTime += Time.deltaTime;

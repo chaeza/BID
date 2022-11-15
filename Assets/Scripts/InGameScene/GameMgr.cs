@@ -4,12 +4,28 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-
+public delegate void Del_DestroyTarget(GameObject obj, float time);
+public delegate GameObject Del_PunFindObject(int viewID);
 public partial class GameMgr : Singleton<GameMgr>
 {
+    public Del_DestroyTarget del_DestroyTarget;
+    public Del_PunFindObject del_PunFindObject;
+    public bool GameState = false;
+
+
     private void Awake()
     {
-        gameSceneLogic = gameObject.AddComponent<GameSceneLogic>();
+        GameSceneSettingInitializing();
+        DontDestroyOnLoad(gameObject);
+    }
+    public void RoomInfoSetting()
+    {
+        //기존 포스트맨 역할
+    }
+
+    public void GameSceneSetting(GameObject gameScenManager)
+    {
+        gameSceneLogic = FindObjectOfType<GameSceneLogic>();
         playerInput = gameObject.AddComponent<PlayerInput>();
         randomSkill = gameObject.AddComponent<RandomSkill>();
         randomItem = gameObject.AddComponent<RandomItem>();
@@ -18,29 +34,36 @@ public partial class GameMgr : Singleton<GameMgr>
         followCam = FindObjectOfType<FollowCam>();
         uIMgr = FindObjectOfType<UIMgr>();
         itemSpawner = FindObjectOfType<ItemSpawner>();
-        resourceData = Resources.Load<ResourceData>("ResourceData");
         potalSystem = FindObjectOfType<PotalSystem>();
     }
 
-    public GameObject PunFindObject(int viewID3)//뷰아이디를 넘겨받아 포톤상의 오브젝트를 찾는다.
+    public void GameSceneSettingInitializing()
     {
-        GameObject find = null;
-        PhotonView[] viewObject = FindObjectsOfType<PhotonView>();
-        for (int i = 0; i < viewObject.Length; i++)
-        {
-            if (viewObject[i].ViewID == viewID3) find = viewObject[i].gameObject;
-        }
-        if (find != null) return find;
-        else return null;
+        gameSceneLogic = null;
+        playerInput = null;
+        randomSkill = null;
+        randomItem = null;
+        inventory = null;
+        codeExample = null;
+        followCam = null;
+        uIMgr = null;
+        itemSpawner = null;
+        potalSystem = null;
+
+        if (gameObject.GetComponent<PhotonView>() != null)
+            Destroy(gameObject.GetComponent<PhotonView>());
     }
+
+
     public void DestroyTarget(GameObject desObject, float time)
     {
-        if (desObject != null) photonView.RPC("PunDestroyObject", RpcTarget.All, desObject.GetPhotonView().ViewID, time);
+        if (desObject != null) del_DestroyTarget(desObject, time);//gameObject.GetPhotonView().RPC("PunDestroyObject", RpcTarget.All, desObject.GetPhotonView().ViewID, time);
         else Debug.Log("null");
     }
-    [PunRPC]
-    public void PunDestroyObject(int viewid, float time)
+
+    public GameObject PunFindObject(int viewID)
     {
-        Destroy(PunFindObject(viewid), time);
+        return del_PunFindObject(viewID);
     }
+
 }
