@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomItem : MonoBehaviour
 {
-    private int itemType = 5;//총 아이템 갯수
+    private int itemType = 7;//총 아이템 갯수
     private int itemRan = 0;//랜덤으로 뽑을 아이템 번호
     public void GetRandomitem(GameObject player)// 랜덤아이템 지급
     {
@@ -39,6 +39,16 @@ public class RandomItem : MonoBehaviour
             else if (itemRan == 4 && GameMgr.Instance.inventory.ContainInventory(4) == false)
             {
                 player.AddComponent<Buff_Unbeatable>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
+                break;
+            }
+            else if (itemRan == 5 && GameMgr.Instance.inventory.ContainInventory(5) == false)
+            {
+                player.AddComponent<Buff_BasicMoveSpeedUp>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
+                break;
+            }
+            else if (itemRan == 6 && GameMgr.Instance.inventory.ContainInventory(6) == false)
+            {
+                player.AddComponent<Immediate_IceBall>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
                 break;
             }
             else itemRan = Random.Range(0, itemType);//중복시 다시 랜덤

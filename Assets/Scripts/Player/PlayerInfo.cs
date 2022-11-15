@@ -81,6 +81,11 @@ public class PlayerInfo : MonoBehaviourPun
     {
         basicAttackDamage += value;
     }
+    public void SetBasicMoveSpeed(float value)
+    {
+        basicMoveSpeed += value;
+        ChangeMoveSpeed(basicMoveSpeed);
+    }
 
 
     [PunRPC]
