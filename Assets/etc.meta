@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/etc.meta
 guid: 97863d8ec9cb71d4c82b034f7d3e9049
+========
+guid: 5de38c2816ac50a469f7117591c287ad
+>>>>>>>> main:Assets/Scripts/Sound.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
