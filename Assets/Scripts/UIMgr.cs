@@ -23,7 +23,8 @@ public class UIMgr : MonoBehaviourPun
     public GameObject TAB;
     [SerializeField] private Text[] playerNameText;
     [SerializeField] private Text[] playerKillText;
-    private int[] KillCount= new int[5];
+    [SerializeField] private Text[] playerInfoText;
+    private int[] KillCount = new int[5];
 
     private TextMeshProUGUI[] skillCoolTimeText = new TextMeshProUGUI[2];
     private GameObject[] skillCoolTime = new GameObject[2];
@@ -44,9 +45,9 @@ public class UIMgr : MonoBehaviourPun
     public event OnSetItemDescription onSetItemDescription;
     public delegate void OnSetSkillDescription();
     public event OnSetSkillDescription onSetSkillDescription;
-    private Vector2 createPoint = new Vector2(130, 90);
-    private Vector2 dashCreatePoint = new Vector2(1500, 60);
-    private Vector2[] itemCreatePoint = { new Vector2(720, 60), new Vector2(885, 60), new Vector2(1045, 60), new Vector2(1200, 60) };
+    private Vector2 createPoint = new Vector2(130, 98);
+    private Vector2 dashCreatePoint = new Vector2(360, 98);
+    private Vector2[] itemCreatePoint = { new Vector2(728, 63), new Vector2(888, 63), new Vector2(1046, 63), new Vector2(1207, 63) };
 
     private void Awake()
     {
@@ -110,7 +111,7 @@ public class UIMgr : MonoBehaviourPun
             isCanItemDescription = false;
             SetItemDescription(5);
         }
-        if (Input.mousePosition.x > 1450 && Input.mousePosition.x < 1550 && Input.mousePosition.y > 25 && Input.mousePosition.y < 155)
+        if (Input.mousePosition.x > 292 && Input.mousePosition.x < 404 && Input.mousePosition.y > 15 && Input.mousePosition.y < 186)
         {
             isCanSkillDescription[1] = true;
             SetSkillDescription(1);
@@ -121,8 +122,33 @@ public class UIMgr : MonoBehaviourPun
             SetSkillDescription(1);
         }
     }
+    string infoName;
+    public void PlayInfoChange(int infoNum, float infoValue)
+    {
+        if (infoNum == 0)
+        {
+            infoName = "AttackPower ";
+        }
+        else if (infoNum == 1)
+        {
+            infoName = "AttackRange ";
+        }
+        else if (infoNum == 1)
+        {
+            infoName = "AttackSpeed ";
+        }
+        else if (infoNum == 1)
+        {
+            infoName = "MoveSpeed ";
+        }
+        else if (infoNum == 1)
+        {
+            infoName = "DamageDecrease ";
+        }
+        playerInfoText[infoNum].text = infoName + infoNum.ToString();
+    }
 
-    public void TabUpDate(int PlayerNum,state alive)
+    public void TabUpDate(int PlayerNum, state alive)
     {
 
         if (alive == state.None)

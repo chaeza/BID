@@ -25,8 +25,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject logInPanel;
     public GameObject lobbyPanel;
     public GameObject[] readyButton;
-    public RawImage[] lobbyTorchlightOn;
-    public Image[] lobbyTorchlightOff;
+    public GameObject[] lobbyTorchlightOn;
+    public Text[] lobbyTorchlightOff;
 
     [Header("LobbyNickNameScene")]
     public Button lobbyButton;
@@ -137,12 +137,20 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         //조인랜덤룸으로 생성방 우선 참가로직 
         PhotonNetwork.JoinRandomRoom();
-
         //기존 커넥트 버튼 오프 
         logInPanel.SetActive(false);
+        StartCoroutine(PannelOn());
+    }
+
+    IEnumerator PannelOn()
+    {
+        yield return new WaitForSeconds(10f);
+
         //로비패널 온 
         lobbyPanel.SetActive(true);
     }
+
+
     [SerializeField] LogoFadeOut logoFadeOut;
 
     IEnumerator DoorPos()
@@ -253,7 +261,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             nickName[i].text = " ";
             lobbyTorchlightOn[i].gameObject.SetActive(false);
-            lobbyTorchlightOff[i].gameObject.SetActive(true);
+            lobbyTorchlightOff[i].gameObject.SetActive(false);
             //soulEff[i].SetActive(false);
             readyButton[i].GetComponent<Image>().color = Color.gray;
             readyButton[i].GetComponent<Button>().interactable = false;
@@ -272,7 +280,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             nickName[i].text = sortedPlayers[i].NickName;
             lobbyTorchlightOn[i].gameObject.SetActive(true);
-            lobbyTorchlightOff[i].gameObject.SetActive(false);
+            lobbyTorchlightOff[i].gameObject.SetActive(true);
             // soulEff[i].SetActive(true);
             //자신의 버튼만 활성화 하기 
             if (sortedPlayers[i].NickName == PhotonNetwork.NickName)
