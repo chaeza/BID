@@ -76,7 +76,8 @@ public partial class Portal : MonoBehaviourPun
             if (portalData.isCenter == false)
             {
                 player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[0].gameObject.transform.position + Vector3.forward * 5;
-                cameraReSetting();
+                if (player.gameObject.GetPhotonView().IsMine)
+                    cameraReSetting();
             }
             else if (portalData.isCenter == true)
             {
