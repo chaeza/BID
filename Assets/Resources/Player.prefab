@@ -732,6 +732,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1694025840, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_Acceleration
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1434519640949579015, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1032,6 +1036,14 @@ PrefabInstance:
       propertyPath: stunEff
       value: 
       objectReference: {fileID: 152826882362701708}
+    - target: {fileID: 9072364218321787594, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: <moveSpeed>k__BackingField
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072364218321787594, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: <basicMoveSpeed>k__BackingField
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1694025839, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
     - {fileID: 1694025838, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}

@@ -44225,6 +44225,14 @@ MonoBehaviour:
   silenceIconP: {fileID: 2373900542242315400}
   winLogo: {fileID: 4200809670345317406}
   loseLogo: {fileID: 3802047255156628183}
+  ESC: {fileID: 1639730064}
+  TAB: {fileID: 8059701659401882599}
+  PlayerName:
+  - {fileID: 5244007404096213301}
+  - {fileID: 958710304}
+  - {fileID: 1448572829}
+  - {fileID: 652283451}
+  - {fileID: 217349108}
 --- !u!1 &3144517216745727697
 GameObject:
   m_ObjectHideFlags: 0
