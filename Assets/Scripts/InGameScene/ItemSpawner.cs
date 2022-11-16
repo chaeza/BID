@@ -27,11 +27,15 @@ public class ItemSpawner : MonoBehaviourPun
 
     private void Start()
     {
-        /*itemSpwanPos = FindObjectsOfType<SpawnArea_Ver2>();*/
-        for(int i = 0; i < itemAreaPos.Count; i++)
+        for (int i = 0; i < itemAreaPos.Count; i++)
         {
             newSpawnArea.Add(itemAreaPos[i]);
         }
+        for(int i =0; i < itemAreaPos2.Count; i++)
+        {
+            newSpawnArea.Add(itemAreaPos2[i]);
+        }
+
         if (PhotonNetwork.IsMasterClient)
             RandomItemSpawn(itemMaxCount);
     }
@@ -56,11 +60,11 @@ public class ItemSpawner : MonoBehaviourPun
             }
         }
     }
-    public void RemoveItemList(SpawnArea_Ver2 Pos)
+    public void RemoveItemList(GameObject Pos)
     {
-        itemAreaPos.Remove(Pos);
+        newSpawnArea.Remove(Pos.GetComponent<SpawnArea_Ver2>());
     }
-    /*[PunRPC]
+    [PunRPC]
     void ItemRespawn()
     {
 
@@ -70,18 +74,17 @@ public class ItemSpawner : MonoBehaviourPun
         }
         else
         {
-            itemAreaPos.Clear();
-            itemAreaPos2.Clear();
-            itemAreaPos.AddRange(GameObject.FindGameObjectsWithTag("SpawnArea"));
+            newSpawnArea.Clear();
+            newSpawnArea.AddRange(FindObjectsOfType<SpawnArea_Ver2>());
             GameObject obj;
             obj = itemQueue.Dequeue();
             int num = Random.Range(0, itemAreaPos.Count);
-            randomItemPos = Random.Range(0, itemSpwanPos.Length + 1);
-            obj.transform.position = itemSpwanPos[randomItemPos].getRandomPos();
+            randomItemPos = Random.Range(0, newSpawnArea.Count + 1);
+            obj.transform.position = newSpawnArea[randomItemPos].getRandomPos();
             obj.gameObject.SetActive(true);
             itemCount++;
         }
-    }*/
+    }
 
 
     [PunRPC]

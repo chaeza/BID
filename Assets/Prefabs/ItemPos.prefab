@@ -153,7 +153,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 5695708835256646487}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 22
-  height: 8
+  height: 6
 --- !u!114 &7807621574310069276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +240,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 6305780014777984047}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -325,7 +327,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 6094871958676177121}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -392,7 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 22
-  height: 8
+  height: 6
 --- !u!114 &3872561626618492724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,7 +414,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 3095794281550145584}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -540,7 +544,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3093197067306865772}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 409.66312, y: 93.46304, z: 358.80502}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -635,7 +639,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 5668439698195242971}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -807,7 +812,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 4823077711008725070}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -893,7 +899,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 7658407805935992062}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1065,7 +1072,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 8302202456428831600}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1304,7 +1312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 22
-  height: 8
+  height: 6
 --- !u!114 &7405633286123225719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,7 +1331,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 2897441374564621766}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1390,7 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 22
-  height: 8
+  height: 6
 --- !u!114 &5299864103132544972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1409,7 +1418,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 3380543052201343603}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1581,7 +1591,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 2283245962203544029}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1753,7 +1764,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1592871032446499091}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1839,7 +1851,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 3854029142348306274}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
