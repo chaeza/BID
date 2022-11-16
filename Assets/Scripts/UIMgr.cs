@@ -23,7 +23,7 @@ public class UIMgr : MonoBehaviourPun
     public GameObject TAB;
     [SerializeField] private Text[] playerNameText;
     [SerializeField] private Text[] playerKillText;
-    private int 
+    private int[] KillCount= new int[5];
 
     private TextMeshProUGUI[] skillCoolTimeText = new TextMeshProUGUI[2];
     private GameObject[] skillCoolTime = new GameObject[2];
@@ -129,7 +129,10 @@ public class UIMgr : MonoBehaviourPun
             playerNameText[PlayerNum].text = PhotonNetwork.PlayerList[PlayerNum].NickName;
         else playerNameText[PlayerNum].color = Color.red;
     }
+    public void KillUpDate(int Num)
+    {
 
+    }
     public void EndGame(bool win)
     {
         if (win == true)
