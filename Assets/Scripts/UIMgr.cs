@@ -8,7 +8,7 @@ using Photon.Pun;
 
 public class UIMgr : MonoBehaviourPun
 {   // Save the object that called the skill cooldown
-    [Header("스킬 Icon")]
+    [Header("Skill Icon")]
     [SerializeField] private GameObject[] skillIcon;
     [SerializeField] private GameObject skillSilenceIcon;
     [SerializeField] private GameObject[] itemIcon;
@@ -18,6 +18,9 @@ public class UIMgr : MonoBehaviourPun
     [Header("Ending Images")]
     public GameObject winLogo;
     public GameObject loseLogo;
+    [Header("Game UI")]
+    public GameObject ESC;
+    public GameObject TAB;
 
     private TextMeshProUGUI[] skillCoolTimeText = new TextMeshProUGUI[2];
     private GameObject[] skillCoolTime = new GameObject[2];
@@ -52,6 +55,23 @@ public class UIMgr : MonoBehaviourPun
     private void Update()
     {
         if (GameMgr.Instance.GameState == false) return;
+        if (GameMgr.Instance.playerInput.Esc == KeyCode.Escape)
+        {
+            ESC.SetActive(true);
+        }
+        else if (ESC.activeSelf == true)
+        {
+            ESC.SetActive(false);
+        }
+        if (GameMgr.Instance.playerInput.inputKey == KeyCode.Tab)
+        {
+            TAB.SetActive(true);
+
+        }
+        else if (TAB.activeSelf == true)
+        {
+            TAB.SetActive(false);
+        }
         if (Input.mousePosition.x > 60 && Input.mousePosition.x < 180 && Input.mousePosition.y > 25 && Input.mousePosition.y < 180)
         {
             isCanSkillDescription[0] = true;
@@ -99,18 +119,24 @@ public class UIMgr : MonoBehaviourPun
         }
     }
 
+    //public void TabUpDate(int PlayerNum)
+    //{
+    //    PhotonNetwork.PlayerList[PlayerNum]
+
+    //}
+
     public void EndGame(bool win)
     {
-        if (win==true)
+        if (win == true)
             winLogo.SetActive(true);
-        else if(win==false)
+        else if (win == false)
             loseLogo.SetActive(true);
     }
     IEnumerator EndGame_Delay()
     {
         yield return new WaitForSeconds(4f);
         Debug.Log("엔딩화면 딜레이 ");
-       // GameMgr.Instance.gameSceneLogic.WinnerEndGame();
+        // GameMgr.Instance.gameSceneLogic.WinnerEndGame();
     }
     public void SetSilence(bool set)
     {

@@ -60,6 +60,7 @@ public class PlayerInfo : MonoBehaviourPun
     
     [SerializeField]
     private string sessionID;
+    [SerializeField] private int myplayerNum;
 
 
     private void Start()
@@ -90,9 +91,10 @@ public class PlayerInfo : MonoBehaviourPun
 
 
     [PunRPC]
-    public void MySessionID(string ID)
+    public void MySessionID(string ID, int playerNum)
     {
         sessionID = ID;
+        myplayerNum = playerNum;
     }
 
     [PunRPC]
