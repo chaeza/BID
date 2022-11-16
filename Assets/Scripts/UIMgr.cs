@@ -44,9 +44,9 @@ public class UIMgr : MonoBehaviourPun
     public event OnSetItemDescription onSetItemDescription;
     public delegate void OnSetSkillDescription();
     public event OnSetSkillDescription onSetSkillDescription;
-    private Vector2 createPoint = new Vector2(130, 90);
-    private Vector2 dashCreatePoint = new Vector2(1500, 60);
-    private Vector2[] itemCreatePoint = { new Vector2(720, 60), new Vector2(885, 60), new Vector2(1045, 60), new Vector2(1200, 60) };
+    private Vector2 createPoint = new Vector2(130, 98);
+    private Vector2 dashCreatePoint = new Vector2(360, 98);
+    private Vector2[] itemCreatePoint = { new Vector2(728, 63), new Vector2(888, 63), new Vector2(1041, 63), new Vector2(1207, 63) };
 
     private void Awake()
     {
@@ -110,7 +110,7 @@ public class UIMgr : MonoBehaviourPun
             isCanItemDescription = false;
             SetItemDescription(5);
         }
-        if (Input.mousePosition.x > 1450 && Input.mousePosition.x < 1550 && Input.mousePosition.y > 25 && Input.mousePosition.y < 155)
+        if (Input.mousePosition.x > 292 && Input.mousePosition.x < 404 && Input.mousePosition.y > 15 && Input.mousePosition.y < 186)
         {
             isCanSkillDescription[1] = true;
             SetSkillDescription(1);

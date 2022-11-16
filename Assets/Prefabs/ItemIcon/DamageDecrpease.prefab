@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 300, y: 62.00003}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 85, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2714119621698584659
 CanvasRenderer:
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: eadd3c46036c2b844b0867f63d4100d5, type: 3}
+  m_Texture: {fileID: 2800000, guid: 61b3b6c016f70424aada932f5ba8cb00, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
