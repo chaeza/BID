@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Buff_DamageDecrpease : Skill
+public class Buff_DamageDecrease : Skill
 {
     [SerializeField] private int itemNum = 0;
     public void GetItem(int itemType,int itemnum)//inventory order
@@ -47,6 +47,6 @@ public class Buff_DamageDecrpease : Skill
         gameObject.GetPhotonView().RPC("SetDamageDecrease", RpcTarget.AllBufferedViaServer, 50f,5f);
 
         GameMgr.Instance.uIMgr.UseItem(itemNum);
-        Destroy(GetComponent<Buff_DamageDecrpease>());
+        Destroy(GetComponent<Buff_DamageDecrease>());
     }
 }

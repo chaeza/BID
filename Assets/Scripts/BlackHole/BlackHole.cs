@@ -49,7 +49,6 @@ public class BlackHole : MonoBehaviourPun
 
     private void BlackHoleCheck(int Num)
     {
-
         // Run the loop to control the objects in the collider array.
 
         if (Num == 1) foreach (BlackHolePos1 collider in collider1)
@@ -240,12 +239,14 @@ public class BlackHole : MonoBehaviourPun
         else if (Num == 6) foreach (BlackHolePos6 collider in collider6)
             {
                 // measure distance
+                // 블랙홀과 배열에 들어온 콜라이더의 거리 확인
                 float dis = Vector3.Distance(this.transform.position, collider.transform.position);
 
                 if (time > 6)
                 {
                     dir = this.transform.position - collider.transform.position;
 
+                    // 블랙홀 위치로 이동
                     collider.gameObject.transform.position += dir * 0.8f * Time.deltaTime;
                 }
                 if (time >= 10)

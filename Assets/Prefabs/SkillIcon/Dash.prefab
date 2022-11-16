@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 300, y: 62.00003}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 114, y: 172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2714119621698584659
 CanvasRenderer:
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: d389efd8010ea8b43a70d8746106ec1f, type: 3}
+  m_Texture: {fileID: 2800000, guid: 0a1e1edc7656d9b42b1c27875cb1fcdb, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -353,8 +353,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Dash\n Increases movement speed by 3 times for a certain amount of time.\nDuration:
-    0.5sec\nCoolTime : 5sec"
+  m_text: 'Dash
+
+    Increases movement speed by 3 times for a certain amount of
+    time.
+
+    Duration: 0.5sec
+
+    CoolTime : 5sec'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
