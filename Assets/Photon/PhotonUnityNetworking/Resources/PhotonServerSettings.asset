@@ -71,6 +71,7 @@ MonoBehaviour:
   - SetGhostEff
   - ItemRespawn
   - ReleasePool
+  - SetDamageDecrease
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

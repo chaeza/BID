@@ -137,11 +137,13 @@ public class PlayerMove : MonoBehaviourPun
         isMove = false;
         desiredDir = Vector3.zero;
     }
+    Coroutine ghostEff;
     [PunRPC]
     private void SetGhostEff(float time)
     {
         trailEff.SetActive(true);
-        StartCoroutine(ghostEffDelady(time));
+        if (ghostEff != null) StopCoroutine(ghostEff);
+        ghostEff= StartCoroutine(ghostEffDelady(time));
     }
     IEnumerator ghostEffDelady(float time)
     {    

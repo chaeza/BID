@@ -35,7 +35,7 @@ public class Buff_DamageDecrpease : Skill
         if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetItemDescription -= ItemRadius;
         if (skillInfo.skillType != SkillType.Buff && skillInfo.skillType != SkillType.Passive) GameMgr.Instance.codeExample.onChangeSkillType -= UnClick;
 
-        GameObject eff1 = PhotonNetwork.Instantiate("DamageDecrpease", transform.position, Quaternion.identity);
+        GameObject eff1 = PhotonNetwork.Instantiate("DamageDecrease", transform.position, Quaternion.identity);
 
         GameMgr.Instance.DestroyTarget(eff1, 5f);
         MyPosInfo myPosInfo;
@@ -44,7 +44,7 @@ public class Buff_DamageDecrpease : Skill
         myPosInfo.xPos = 0;
         myPosInfo.zPos = 0;        
         eff1.AddComponent<MyPos>().myPosInfo = myPosInfo;
-        gameObject.GetPhotonView().RPC("SetDamageDecrpease", RpcTarget.AllBufferedViaServer, 50f,5f);
+        gameObject.GetPhotonView().RPC("SetDamageDecrease", RpcTarget.AllBufferedViaServer, 50f,5f);
 
         GameMgr.Instance.uIMgr.UseItem(itemNum);
         Destroy(GetComponent<Buff_DamageDecrpease>());
