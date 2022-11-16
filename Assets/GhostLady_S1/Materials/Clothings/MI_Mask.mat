@@ -130,7 +130,7 @@ Material:
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
-    - _BlendColorPower01: 0
+    - _BlendColorPower01: 0.641
     - _BlendColorPower02: 0
     - _BlendColorPower03: 0
     - _BlendColorPower04: 0
@@ -146,7 +146,7 @@ Material:
     - _Cutoff: 0.5
     - _DarkMode: 0
     - _DetailNormalMapScale: 1
-    - _DirtBoots: 0
+    - _DirtBoots: 1.56
     - _DirtRoughness: 0
     - _DirtRoughness_Power: 0
     - _DitherBoosts: 1
@@ -213,7 +213,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
-    - _BlendColor01: {r: 1, g: 1, b: 1, a: 0}
+    - _BlendColor01: {r: 0.990566, g: 0.9485137, b: 0.9485137, a: 0}
     - _BlendColor02: {r: 1, g: 1, b: 1, a: 0}
     - _BlendColor03: {r: 1, g: 1, b: 1, a: 0}
     - _BlendColor04: {r: 1, g: 1, b: 1, a: 0}
