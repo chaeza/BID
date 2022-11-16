@@ -133,15 +133,15 @@ public class UIMgr : MonoBehaviourPun
         {
             infoName = "AttackRange ";
         }
-        else if (infoNum == 1)
+        else if (infoNum == 2)
         {
             infoName = "AttackSpeed ";
         }
-        else if (infoNum == 1)
+        else if (infoNum == 3)
         {
             infoName = "MoveSpeed ";
         }
-        else if (infoNum == 1)
+        else if (infoNum == 4)
         {
             infoName = "DamageDecrease ";
         }
