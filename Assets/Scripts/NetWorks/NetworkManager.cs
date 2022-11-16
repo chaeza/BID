@@ -129,7 +129,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // 닉네임 밑에 커넥트 버튼 클릭시 
     public void OnClick_Connected()
     {
-
         StartCoroutine(DoorPos());
 
         if (string.IsNullOrEmpty(PhotonNetwork.NickName) == true)

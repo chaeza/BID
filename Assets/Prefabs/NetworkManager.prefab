@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7219718838939840572
+--- !u!1 &7755344478515764665
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7219718838939840546}
-  - component: {fileID: 7219718838939840547}
-  - component: {fileID: 7219718838939840545}
+  - component: {fileID: 7755344477918049614}
+  - component: {fileID: 7755344477918049612}
+  - component: {fileID: 7755344477918049613}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7219718838939840546
+--- !u!4 &7755344477918049614
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7219718838939840572}
+  m_GameObject: {fileID: 7755344478515764665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 384.7297, y: 38.96561, z: 354.7239}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7219718838939840547
+--- !u!114 &7755344477918049612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7219718838939840572}
+  m_GameObject: {fileID: 7755344478515764665}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d400e980ff41a384f93745e9bcd8e7e5, type: 3}
@@ -56,7 +56,7 @@ MonoBehaviour:
   Balance_Lobby: {fileID: 0}
   UserID_Disconnect: {fileID: 0}
   UserID_Lobby: {fileID: 0}
-  gameMgr: {fileID: 0}
+  gameMgr: {fileID: 5774251957282747267, guid: 789e584628da0fb46b59c0b5f8342acc, type: 3}
   audioSource: {fileID: 0}
   nickNameInput: {fileID: 0}
   logInPanel: {fileID: 0}
@@ -79,18 +79,24 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  lobbyButton: {fileID: 0}
+  lobbyInsertImage: {fileID: 0}
+  lobbyGameLogo: {fileID: 0}
+  lobbyleftDoor: {fileID: 0}
+  lobbyRightDoor: {fileID: 0}
+  lobbyDarkHole: {fileID: 0}
   myReadyState: 0
   selectedBettingID: 
   API_KEY: 2tiQsCeKJphmdTcLIbPX0P
   FullAppsProductionURL: https://odin-api.browseosiris.com
   FullAppsStagingURL: https://odin-api-sat.browseosiris.com
---- !u!114 &7219718838939840545
+--- !u!114 &7755344477918049613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7219718838939840572}
+  m_GameObject: {fileID: 7755344478515764665}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
