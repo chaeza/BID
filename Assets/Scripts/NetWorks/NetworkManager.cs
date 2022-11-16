@@ -11,7 +11,7 @@ using Photon.Pun;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] Button btnConnect = null;
-    [SerializeField] TextMeshProUGUI[] nickName = null;
+    [SerializeField] Text[] nickName = null;
     //API Balance & UserID
     [SerializeField] TextMeshProUGUI Balance_Disconnect;
     [SerializeField] TextMeshProUGUI Balance_Lobby;
@@ -150,7 +150,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
        // lobbyButton.gameObject.GetComponent<RawImage>().enabled = false;
         lobbyButton.gameObject.SetActive(false);
         lobbyInsertImage.gameObject.SetActive(false);
-        lobbyGameLogo.gameObject.SetActive(false);
+       // lobbyGameLogo.gameObject.SetActive(false);
 
         //yield return new WaitForSeconds(0.8f);
 
