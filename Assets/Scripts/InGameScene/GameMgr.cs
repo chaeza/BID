@@ -12,6 +12,13 @@ public partial class GameMgr : Singleton<GameMgr>
     public Del_PunFindObject del_PunFindObject;
     public bool GameState = false;
 
+    public string user_ID;
+    public string session_ID;
+    public string bets_ID;
+
+    public string[] all_Session_ID = new string[4];
+    List<string> all_Sessions = new List<string>();
+
 
     private void Awake()
     {
@@ -22,7 +29,6 @@ public partial class GameMgr : Singleton<GameMgr>
     {
         //기존 포스트맨 역할
     }
-
     public void GameSceneSetting(GameObject gameScenManager)
     {
         gameSceneLogic = FindObjectOfType<GameSceneLogic>();
@@ -36,7 +42,6 @@ public partial class GameMgr : Singleton<GameMgr>
         itemSpawner = FindObjectOfType<ItemSpawner>();
         potalSystem = FindObjectOfType<PotalSystem>();
     }
-
     public void GameSceneSettingInitializing()
     {
         gameSceneLogic = null;
@@ -53,8 +58,6 @@ public partial class GameMgr : Singleton<GameMgr>
         if (gameObject.GetComponent<PhotonView>() != null)
             Destroy(gameObject.GetComponent<PhotonView>());
     }
-
-
     public void DestroyTarget(GameObject desObject, float time)
     {
         if (desObject != null) del_DestroyTarget(desObject, time);//gameObject.GetPhotonView().RPC("PunDestroyObject", RpcTarget.All, desObject.GetPhotonView().ViewID, time);
@@ -66,4 +69,17 @@ public partial class GameMgr : Singleton<GameMgr>
         return del_PunFindObject(viewID);
     }
 
+
+    public void User_ID(string ID)
+    {
+        user_ID = ID;
+    }
+    public void Session_ID(string ID)
+    {
+        session_ID = ID;
+    }
+    public void Bets_ID(string ID)
+    {
+        bets_ID = ID;
+    }
 }

@@ -99,10 +99,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         //마스터 서버 접속 요청
         PhotonNetwork.ConnectUsingSettings(); //Photon.Pun 내부 클래스
+        Debug.Log(PhotonNetwork.NetworkClientState+"*********************");
     }
 
     public override void OnConnectedToMaster()
     {
+        Debug.Log(PhotonNetwork.NetworkClientState + "*********************");
+
         //API 유저 프로필 , SessionID 가져오기
         StartCoroutine(processRequestGetUserInfo());
 
@@ -143,8 +146,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     IEnumerator DoorPos()
     {
        // lobbyButton.gameObject.GetComponent<RawImage>().enabled = false;
-
-
         lobbyButton.gameObject.SetActive(false);
         lobbyInsertImage.gameObject.SetActive(false);
         lobbyGameLogo.gameObject.SetActive(false);
@@ -421,9 +422,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                 Debug.Log("## " + response.ToString());
                 res_UserProfile = response;
                 Debug.Log(res_UserProfile.userProfile.username);
+                btnConnect.interactable = true;
             }
         });
-        btnConnect.interactable = true;
+  
     }
     delegate void resCallback_GetUserInfo(Res_UserProfile response);
     IEnumerator requestGetUserInfo(resCallback_GetUserInfo callback)
