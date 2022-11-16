@@ -147,8 +147,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     IEnumerator DoorPos()
     {
        // lobbyButton.gameObject.GetComponent<RawImage>().enabled = false;
-
-
         lobbyButton.gameObject.SetActive(false);
         lobbyInsertImage.gameObject.SetActive(false);
         lobbyGameLogo.gameObject.SetActive(false);
