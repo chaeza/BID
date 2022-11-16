@@ -39,7 +39,7 @@ public class Buff_Dash : Skill
 
         animator.SetTrigger("isBasicDash");
         playerInfo.SetChangeMoveSpeed(300f, 0.5f);
-        gameObject.GetPhotonView().RPC("SetGhostEff", RpcTarget.All, 10, 0.05f);
+       // gameObject.GetPhotonView().RPC("SetGhostEff", RpcTarget.All, 10, 0.05f);
 
         GameMgr.Instance.uIMgr.UseItem(itemNum);
         Destroy(GetComponent<Buff_Dash>());
