@@ -52,17 +52,6 @@ public class BlackHole : MonoBehaviourPun
 
                     collider.gameObject.transform.position += dir * 0.8f * Time.deltaTime;
                 }
-
-                /*  if (dis <= 0.3f)
-                  {
-                      collider.gameObject.transform.position += dir * 1f * Time.deltaTime;
-                  }
-
-                  if (dis <= 0.05f)
-                  {
-                      collider.gameObject.transform.position += dir * 1.2f * Time.deltaTime;
-                  }*/
-
                 if (time >= 10)
                 {
                     if (collider.tag == "Player" || collider.tag == "MainPlayer")
@@ -78,6 +67,7 @@ public class BlackHole : MonoBehaviourPun
                     else if (collider.tag == "Portal")
                     {
                         collider.GetComponent<Portal>().portalData.isDestoryed = true;
+                        collider.gameObject.SetActive(false);
                     }
                     else
                     {
@@ -98,16 +88,6 @@ public class BlackHole : MonoBehaviourPun
                     collider.gameObject.transform.position += dir * 0.8f * Time.deltaTime;
                 }
 
-                /*  if (dis <= 0.3f)
-                  {
-                      collider.gameObject.transform.position += dir * 1f * Time.deltaTime;
-                  }
-
-                  if (dis <= 0.05f)
-                  {
-                      collider.gameObject.transform.position += dir * 1.2f * Time.deltaTime;
-                  }*/
-
                 if (time >= 10)
                 {
                     if (collider.tag == "Player" || collider.tag == "MainPlayer")
@@ -123,6 +103,7 @@ public class BlackHole : MonoBehaviourPun
                     else if (collider.tag == "Portal")
                     {
                         collider.GetComponent<Portal>().portalData.isDestoryed = true;
+                        collider.gameObject.SetActive(false);
                     }
                     else
                     {
@@ -143,16 +124,6 @@ public class BlackHole : MonoBehaviourPun
                     collider.gameObject.transform.position += dir * 0.8f * Time.deltaTime;
                 }
 
-                /*  if (dis <= 0.3f)
-                  {
-                      collider.gameObject.transform.position += dir * 1f * Time.deltaTime;
-                  }
-
-                  if (dis <= 0.05f)
-                  {
-                      collider.gameObject.transform.position += dir * 1.2f * Time.deltaTime;
-                  }*/
-
                 if (time >= 10)
                 {
                     if (collider.tag == "Player" || collider.tag == "MainPlayer")
@@ -168,6 +139,7 @@ public class BlackHole : MonoBehaviourPun
                     else if (collider.tag == "Portal")
                     {
                         collider.GetComponent<Portal>().portalData.isDestoryed = true;
+                        collider.gameObject.SetActive(false);
                     }
                     else
                     {
@@ -188,16 +160,6 @@ public class BlackHole : MonoBehaviourPun
                     collider.gameObject.transform.position += dir * 0.8f * Time.deltaTime;
                 }
 
-                /*  if (dis <= 0.3f)
-                  {
-                      collider.gameObject.transform.position += dir * 1f * Time.deltaTime;
-                  }
-
-                  if (dis <= 0.05f)
-                  {
-                      collider.gameObject.transform.position += dir * 1.2f * Time.deltaTime;
-                  }*/
-
                 if (time >= 10)
                 {
                     if (collider.tag == "Player" || collider.tag == "MainPlayer")
@@ -213,6 +175,7 @@ public class BlackHole : MonoBehaviourPun
                     else if (collider.tag == "Portal")
                     {
                         collider.GetComponent<Portal>().portalData.isDestoryed = true;
+                        collider.gameObject.SetActive(false);
                     }
                     else
                     {
@@ -233,16 +196,6 @@ public class BlackHole : MonoBehaviourPun
                     collider.gameObject.transform.position += dir * 0.8f * Time.deltaTime;
                 }
 
-                /*  if (dis <= 0.3f)
-                  {
-                      collider.gameObject.transform.position += dir * 1f * Time.deltaTime;
-                  }
-
-                  if (dis <= 0.05f)
-                  {
-                      collider.gameObject.transform.position += dir * 1.2f * Time.deltaTime;
-                  }*/
-
                 if (time >= 10)
                 {
                     if (collider.tag == "Player" || collider.tag == "MainPlayer")
@@ -258,6 +211,7 @@ public class BlackHole : MonoBehaviourPun
                     else if (collider.tag == "Portal")
                     {
                         collider.GetComponent<Portal>().portalData.isDestoryed = true;
+                        collider.gameObject.SetActive(false);
                     }
                     else
                     {
@@ -278,17 +232,6 @@ public class BlackHole : MonoBehaviourPun
 
                     collider.gameObject.transform.position += dir * 0.8f * Time.deltaTime;
                 }
-
-                /*  if (dis <= 0.3f)
-                  {
-                      collider.gameObject.transform.position += dir * 1f * Time.deltaTime;
-                  }
-
-                  if (dis <= 0.05f)
-                  {
-                      collider.gameObject.transform.position += dir * 1.2f * Time.deltaTime;
-                  }*/
-
                 if (time >= 10)
                 {
                     if (collider.tag == "Player" || collider.tag == "MainPlayer")
@@ -304,6 +247,7 @@ public class BlackHole : MonoBehaviourPun
                     else if (collider.tag == "Portal")
                     {
                         collider.GetComponent<Portal>().portalData.isDestoryed = true;
+                        collider.gameObject.SetActive(false);
                     }
                     else
                     {
