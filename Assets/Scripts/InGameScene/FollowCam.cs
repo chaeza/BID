@@ -8,7 +8,6 @@ public partial class FollowCam : MonoBehaviour
     [SerializeField] private float distanceFromPlayerY;
     [SerializeField] private float distanceFromPlayerX;
     [SerializeField] private float cameraSpeed;
-    [SerializeField] private GameObject rayCamara;
     [SerializeField] private ViewScreen viewScreen;
     [SerializeField] private Vector2 mousePos;
     private Portal[] portals;
