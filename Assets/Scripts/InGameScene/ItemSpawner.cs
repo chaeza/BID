@@ -12,6 +12,8 @@ public class ItemSpawner : MonoBehaviourPun
     [Header("스페셜 위치 좌표")]
     [SerializeField] private SpawnArea_Ver2 itemSpecialAreaPos = null;
 
+    [Header("아이템들모음")]
+    [SerializeField] private GameObject items = null;
     //SpawnArea_Ver2[] itemSpwanPos;
     //아이템 개수
     [Header("아이템 개수")]
@@ -27,6 +29,10 @@ public class ItemSpawner : MonoBehaviourPun
 
     private void Start()
     {
+        newSpawnArea = new List<SpawnArea_Ver2>(itemMaxCount);
+        if (PhotonNetwork.IsMasterClient) 
+        { RandomItemSpawn(itemMaxCount); }
+            
         for (int i = 0; i < itemAreaPos.Count; i++)
         {
             newSpawnArea.Add(itemAreaPos[i]);
@@ -36,14 +42,16 @@ public class ItemSpawner : MonoBehaviourPun
             newSpawnArea.Add(itemAreaPos2[i]);
         }
 
-        if (PhotonNetwork.IsMasterClient)
-            RandomItemSpawn(itemMaxCount);
+        
     }
     public void RandomItemSpawn(int value)
     {
         for(int i=0; i < 4; i++)
         {
+            Debug.Log("생성됨");
             GameObject box = PhotonNetwork.Instantiate("ItemBox", itemSpecialAreaPos.getRandomPos(), Quaternion.identity);
+            box.transform.SetParent(items.transform);
+            Debug.Log("위치함");
         }
         for (int i = 4; i < value; i++)
         {
@@ -52,11 +60,13 @@ public class ItemSpawner : MonoBehaviourPun
             {
                 randomItemPos = Random.Range(0, itemAreaPos.Count);
                 GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos[randomItemPos].getRandomPos(), Quaternion.identity);
+                box.transform.SetParent(items.transform);
             }
             else
             {
                 randomItemPos = Random.Range(0, itemAreaPos2.Count);
                 GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos2[randomItemPos].getRandomPos(), Quaternion.identity);
+                box.transform.SetParent(items.transform);
             }
         }
     }
