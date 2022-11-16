@@ -46,8 +46,8 @@ public class UIMgr : MonoBehaviourPun
     public event OnSetItemDescription onSetItemDescription;
     public delegate void OnSetSkillDescription();
     public event OnSetSkillDescription onSetSkillDescription;
-    private Vector2 createPoint = new Vector2(130, 78);
-    private Vector2 dashCreatePoint = new Vector2(360, 78);
+    private Vector2 createPoint = new Vector2(143, 78);
+    private Vector2 dashCreatePoint = new Vector2(347, 78);
     private Vector2[] itemCreatePoint = { new Vector2(728, 63), new Vector2(888, 63), new Vector2(1046, 63), new Vector2(1207, 63) };
 
     private void Awake()
