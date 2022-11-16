@@ -8,23 +8,29 @@ public class CineMachine : MonoBehaviour
     //virtual Camera
     [Header("가상 카메라")]
     [SerializeField] private CinemachineVirtualCamera sceneCam1= null;
-    [SerializeField] private CinemachineVirtualCamera sceneCam2 = null;
+    //[SerializeField] private CinemachineVirtualCamera sceneCam2 = null;
 
     //virtual Camera's track * 2
     [Header("트랙")]
     [SerializeField] private CinemachineDollyCart dollyCart = null;
-    [SerializeField] private CinemachineDollyCart dollyCart2 = null;
+    //[SerializeField] private CinemachineDollyCart dollyCart2 = null;
 
     private Coroutine coroutine = null;
 
+    public Camera cam;
+
     private void Awake()
     {
-        sceneCam2.enabled = false;
+        //sceneCam2.enabled = false;
+        
+    }
+    public void OnStartBtnClick()
+    {
         coroutine = StartCoroutine("Cut1");
     }
     private IEnumerator Cut1()
     {
-        sceneCam2.enabled = false;
+        //sceneCam2.enabled = false;
         sceneCam1.enabled = true;
 
         Debug.Log(sceneCam1);
@@ -32,19 +38,19 @@ public class CineMachine : MonoBehaviour
         
         //sceneCam1.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition = 0 ;
         dollyCart.m_Position = 0f;
-        while (true)
-        {
-            dollyCart.m_Speed = 15;
+        dollyCart.m_Speed = 10;
+        Debug.Log("출발");
             if (dollyCart.m_Position >= dollyCart.m_Path.PathLength)
             {
 
-                coroutine = StartCoroutine("Cut2");
+                //coroutine = StartCoroutine("Cut2");
                 yield break;
             }
-             yield return null;
-        }
+             
+ 
+        yield return null;
     }
-    private IEnumerator Cut2() 
+    /*private IEnumerator Cut2() 
     {
         sceneCam1.enabled = false;
         sceneCam2.enabled = true;
@@ -61,5 +67,5 @@ public class CineMachine : MonoBehaviour
             }
              yield return null;
         }
-    }
+    }*/
 }

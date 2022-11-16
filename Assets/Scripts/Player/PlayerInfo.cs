@@ -121,7 +121,7 @@ public class PlayerInfo : MonoBehaviourPun
     {
         sessionID = ID;
         myPlayerNum = playerNum;
-        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum,state.None);
+        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.None);
     }
 
     [PunRPC]
@@ -147,9 +147,9 @@ public class PlayerInfo : MonoBehaviourPun
                 silenceCoroutine = StartCoroutine(Silence(timer));
             }
         }
-        if(damageDecrease<100)
-        curHP -= attackDamage * ((100 - damageDecrease) / 100);
-     
+        if (damageDecrease < 100)
+            curHP -= attackDamage * ((100 - damageDecrease) / 100);
+
         if (onGetDamage != null) onGetDamage();
         if (curHP <= 0)
         {
@@ -164,8 +164,17 @@ public class PlayerInfo : MonoBehaviourPun
         playerAlive = state.Die;
         if (photonView.IsMine) myAnimator.SetTrigger("isDie");
         GameMgr.Instance.gameSceneLogic.AliveNumCheck();
-        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum,state.Die);
-        if (gameObject.GetPhotonView().ViewID == attackerViewID2) return;
+        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
+        if (gameObject.GetPhotonView().ViewID == attackerViewID2)
+        {
+            GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
+            return;
+        }
+        else
+        {
+            if (GameMgr.Instance.PunFindObject(attackerViewID2).GetPhotonView().IsMine == true) GameMgr.Instance.uIMgr.KillUpDate(myPlayerNum);
+            GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

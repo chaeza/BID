@@ -128,10 +128,11 @@ public class UIMgr : MonoBehaviourPun
         if (alive == state.None)
             playerNameText[PlayerNum].text = PhotonNetwork.PlayerList[PlayerNum].NickName;
         else playerNameText[PlayerNum].color = Color.red;
+        playerKillText[PlayerNum].text = $"KILL : {KillCount[PlayerNum]}";
     }
     public void KillUpDate(int Num)
     {
-
+        KillCount[Num]++;
     }
     public void EndGame(bool win)
     {

@@ -21,6 +21,8 @@ public class BlackHole : MonoBehaviourPun
     private BlackHolePos5[] collider5 = null;
     private BlackHolePos6[] collider6 = null;
     
+
+
     // variable to hold the time
     private float time;
     // Variable for direction
