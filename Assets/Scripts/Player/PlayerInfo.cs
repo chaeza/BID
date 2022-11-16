@@ -73,6 +73,7 @@ public class PlayerInfo : MonoBehaviourPun
 
     [SerializeField]
     private string sessionID;
+    [SerializeField] private int myPlayerNum;
 
 
     private void Start()
@@ -96,26 +97,31 @@ public class PlayerInfo : MonoBehaviourPun
     {
         StartCoroutine(Stay(time));
     }
-    public void SetBasicAttackDamage(float value)
-    {
-        basicAttackDamage += value;
-    }
     public void PlayInfoChange(ChangeableInfo info, float infoValue)
     {
         if (info == ChangeableInfo.basicAttackRange) basicAttackRange += infoValue;
+        else if (info == ChangeableInfo.basicAttackSpeed) basicAttackSpeed += infoValue;
+        else if (info == ChangeableInfo.damageDecrease) damageDecrease += infoValue;
+        else if (info == ChangeableInfo.basicAttackDamage) basicAttackDamage += infoValue;
         else if (info == ChangeableInfo.moveSpeed)
         {
             moveSpeed += infoValue;
             ChangeMoveSpeed(moveSpeed);
         }
-        else if (info == ChangeableInfo.damageDecrease) damageDecrease += infoValue;
+        else if (info == ChangeableInfo.basicMoveSpeed)
+        {
+            basicMoveSpeed += infoValue;
+            ChangeMoveSpeed(basicMoveSpeed);
+        }
     }
 
 
     [PunRPC]
-    public void MySessionID(string ID)
+    public void MySessionID(string ID, int playerNum)
     {
         sessionID = ID;
+        myPlayerNum = playerNum;
+        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum,state.None);
     }
 
     [PunRPC]
@@ -158,16 +164,17 @@ public class PlayerInfo : MonoBehaviourPun
         playerAlive = state.Die;
         if (photonView.IsMine) myAnimator.SetTrigger("isDie");
         GameMgr.Instance.gameSceneLogic.AliveNumCheck();
+        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum,state.Die);
+        if (gameObject.GetPhotonView().ViewID == attackerViewID2) return;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "ItemBlackHole")
+        {
+            gameObject.GetPhotonView().RPC("RPC_Die", RpcTarget.All, gameObject.GetPhotonView().ViewID);
+        }
     }
 
-    [PunRPC]
-    private void ChangeHP(float hp)
-    {
-        curHP += hp;
-        if (curHP >= maxHP)
-            curHP = maxHP;
-        HPTransfer(curHP);
-    }
     public void SetChangeMoveSpeed(float value, float time)
     {
         if (slowCoroutine != null) StopCoroutine(slowCoroutine);
@@ -177,6 +184,15 @@ public class PlayerInfo : MonoBehaviourPun
     {
         moveSpeed = value;
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
+    }
+
+    [PunRPC]
+    private void ChangeHP(float hp)
+    {
+        curHP += hp;
+        if (curHP >= maxHP)
+            curHP = maxHP;
+        HPTransfer(curHP);
     }
     [PunRPC]
     private void SetUnbeatable(float time)
