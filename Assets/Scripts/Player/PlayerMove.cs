@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class PlayerMove : MonoBehaviourPun
 {
     public NavMeshAgent navMeshAgent { get; private set; } = null;
+    public GameObject trailEff;
     private PlayerInfo playerInfo;
     private Animator myAnimator;
     private GhostEffect ghostEffect;
@@ -31,7 +32,7 @@ public class PlayerMove : MonoBehaviourPun
         myAnimator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = playerInfo.moveSpeed;
-        if(photonView.IsMine==true) playerInfo.onChangeMoveSpeed += myChangeSpeed;
+        if (photonView.IsMine == true) playerInfo.onChangeMoveSpeed += myChangeSpeed;
         MoveStop();
     }
     private void myChangeSpeed()
@@ -98,8 +99,8 @@ public class PlayerMove : MonoBehaviourPun
     }
     public void Move(Vector3 mousePos)
     {
-       /* Ray ray = Camera.main.ScreenPointToRay(mousePos);
-        Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);*/
+        /* Ray ray = Camera.main.ScreenPointToRay(mousePos);
+         Debug.DrawRay(ray.origin, ray.direction * 200f, Color.red, 999f);*/
         mask = 1 << LayerMask.NameToLayer("Ground");
         nullCheck = Physics.Raycast(Camera.main.ScreenPointToRay(mousePos), out hit, 9999, mask);
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
@@ -137,18 +138,15 @@ public class PlayerMove : MonoBehaviourPun
         desiredDir = Vector3.zero;
     }
     [PunRPC]
-    private void SetGhostEff(int num,float time)
+    private void SetGhostEff(float time)
     {
-        StartCoroutine(ghostEffDelady(num, time));
+        trailEff.SetActive(true);
+        StartCoroutine(ghostEffDelady(time));
     }
-    IEnumerator ghostEffDelady(int num,float time)
-    {
-        for(int i = 0; i<num; i++)
-        {
-            yield return new WaitForSeconds(time);
-            ghostEffect.CreateGhostEffectObject(Color.black, 1f, 0.7f, 0.5f, 0.85f, 0.5f);
-            yield return null;
-        }
-        yield break;
+    IEnumerator ghostEffDelady(float time)
+    {    
+        yield return new WaitForSeconds(time);
+        Debug.Log("트레일 삭제");
+        trailEff.SetActive(false);
     }
 }

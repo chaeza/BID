@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 77514a945247bd14a8b6dc15d4a00f93
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Deogon Princess
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: fc8d85f5467b6a147b66ba59bda07e1d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
