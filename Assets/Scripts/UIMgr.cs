@@ -21,6 +21,7 @@ public class UIMgr : MonoBehaviourPun
     [Header("Game UI")]
     public GameObject ESC;
     public GameObject TAB;
+    [SerializeField] private Text[] PlayerName;
 
     private TextMeshProUGUI[] skillCoolTimeText = new TextMeshProUGUI[2];
     private GameObject[] skillCoolTime = new GameObject[2];
@@ -119,11 +120,13 @@ public class UIMgr : MonoBehaviourPun
         }
     }
 
-    //public void TabUpDate(int PlayerNum)
-    //{
-    //    PhotonNetwork.PlayerList[PlayerNum]
+    public void TabUpDate(int PlayerNum,state alive)
+    {
 
-    //}
+        if (alive == state.None)
+            PlayerName[PlayerNum].text = PhotonNetwork.PlayerList[PlayerNum].NickName;
+        else PlayerName[PlayerNum].color = Color.red;
+    }
 
     public void EndGame(bool win)
     {

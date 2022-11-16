@@ -60,7 +60,7 @@ public class PlayerInfo : MonoBehaviourPun
     
     [SerializeField]
     private string sessionID;
-    [SerializeField] private int myplayerNum;
+    [SerializeField] private int myPlayerNum;
 
 
     private void Start()
@@ -94,7 +94,8 @@ public class PlayerInfo : MonoBehaviourPun
     public void MySessionID(string ID, int playerNum)
     {
         sessionID = ID;
-        myplayerNum = playerNum;
+        myPlayerNum = playerNum;
+        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum,state.None);
     }
 
     [PunRPC]
@@ -135,6 +136,7 @@ public class PlayerInfo : MonoBehaviourPun
         playerAlive = state.Die;
         if(photonView.IsMine) myAnimator.SetTrigger("isDie");
         GameMgr.Instance.gameSceneLogic.AliveNumCheck();
+        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum,state.Die);
     }
 
     [PunRPC]
