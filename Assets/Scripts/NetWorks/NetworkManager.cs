@@ -116,6 +116,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         logInPanel.SetActive(true);
+        lobbyButton.interactable = false;
         btnConnect.interactable = false;
         lobbyPanel.SetActive(false);
     }
@@ -422,6 +423,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                 Debug.Log("## " + response.ToString());
                 res_UserProfile = response;
                 Debug.Log(res_UserProfile.userProfile.username);
+                lobbyButton.interactable = true;
                 btnConnect.interactable = true;
             }
         });

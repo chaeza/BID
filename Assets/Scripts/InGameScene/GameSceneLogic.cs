@@ -61,10 +61,11 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
     {
         AliveNum = FindObjectsOfType<PlayerInfo>();
         alivePlayerNum = 0;
-        int winner = 0;
+        int winner = -1;
         //상태가 Die가 아니라면 살아있는 것이기 때문에 살아남은 인원 카운트 가능 
         for (int i = 0; i < AliveNum.Length; i++)
         {
+            Debug.Log("");
             if (AliveNum[i].playerAlive != state.Die)
             {
                 alivePlayerNum++;
@@ -73,9 +74,9 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
         }
         if (alivePlayerNum == 1)
         {
-            Player[] sortedPlayers = PhotonNetwork.PlayerList;
+           
             //승자
-            if (sortedPlayers[winner].NickName == PhotonNetwork.NickName)
+            if (AliveNum[winner].gameObject.GetPhotonView().IsMine)
             {
                 GameMgr.Instance.uIMgr.EndGame(true);
 
