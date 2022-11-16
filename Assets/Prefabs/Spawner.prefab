@@ -86,9 +86,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   itemSpecialAreaPos: {fileID: 0}
-  itemMaxCount: 30
+  itemMaxCount: 20
 --- !u!114 &101756186
 MonoBehaviour:
   m_ObjectHideFlags: 0
