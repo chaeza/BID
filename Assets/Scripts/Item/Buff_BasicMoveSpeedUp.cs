@@ -43,7 +43,7 @@ public class Buff_BasicMoveSpeedUp : Skill
         myPosInfo.xPos = 0;
         myPosInfo.zPos = 0;
         eff1.AddComponent<MyPos>().myPosInfo = myPosInfo;
-        playerInfo.SetBasicMoveSpeed(0.2f);
+       // playerInfo.SetBasicMoveSpeed(0.2f);
 
         GameMgr.Instance.uIMgr.UseItem(itemNum);
         Destroy(GetComponent<Buff_BasicMoveSpeedUp>());
