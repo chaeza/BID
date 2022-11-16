@@ -141,14 +141,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'BloodAttack
-
-    Description:
-
-    Sprays blood to attack the enemy, dealing
-    10 damage and recovering 10 HP.
-
-    CoolDown : 15 seconds'
+  m_text: "OverPhysical\nDescription: \r\nif you click your skill, strengthen one
+    of the three.\nRange300%,MoveSpeed200% and DamageDcrease 20%\nCoolDown : 1 seconds"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

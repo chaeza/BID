@@ -134,9 +134,10 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
     public void OnClick_LeaveGame()
     {
         GameMgr.Instance.GameState = false;
+        PhotonNetwork.AutomaticallySyncScene = false;
         PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
         PhotonNetwork.LoadLevel("TitleScene");
-        GameMgr.Instance.GameSceneSettingInitializing();
     }
 
 

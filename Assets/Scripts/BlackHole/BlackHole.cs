@@ -6,6 +6,13 @@ using Photon.Pun;
 public class BlackHole : MonoBehaviourPun
 {
     [SerializeField] private int blackHolePos;
+    // Minimap black hole location
+    [SerializeField] private GameObject miniMapBlackHolePos1;
+    [SerializeField] private GameObject miniMapBlackHolePos2;
+    [SerializeField] private GameObject miniMapBlackHolePos3;
+    [SerializeField] private GameObject miniMapBlackHolePos4;
+    [SerializeField] private GameObject miniMapBlackHolePos5;
+    [SerializeField] private GameObject miniMapBlackHolePos6;
     // Store nearby colliders.
     private BlackHolePos1[] collider1 = null;
     private BlackHolePos2[] collider2 = null;
@@ -13,10 +20,12 @@ public class BlackHole : MonoBehaviourPun
     private BlackHolePos4[] collider4 = null;
     private BlackHolePos5[] collider5 = null;
     private BlackHolePos6[] collider6 = null;
+    
     // variable to hold the time
     private float time;
     // Variable for direction
     private Vector3 dir;
+    
     private void Start()
     {
         if (blackHolePos == 1) collider1 = FindObjectsOfType<BlackHolePos1>();
@@ -74,6 +83,7 @@ public class BlackHole : MonoBehaviourPun
                         collider.gameObject.SetActive(false);
                     }
                     this.gameObject.SetActive(false);
+                    miniMapBlackHolePos1.SetActive(true);
                 }
             }
         else if (Num == 2) foreach (BlackHolePos2 collider in collider2)
@@ -110,6 +120,7 @@ public class BlackHole : MonoBehaviourPun
                         collider.gameObject.SetActive(false);
                     }
                     this.gameObject.SetActive(false);
+                    miniMapBlackHolePos2.SetActive(true);
                 }
             }
         else if (Num == 3) foreach (BlackHolePos3 collider in collider3)
@@ -146,6 +157,7 @@ public class BlackHole : MonoBehaviourPun
                         collider.gameObject.SetActive(false);
                     }
                     this.gameObject.SetActive(false);
+                    miniMapBlackHolePos3.SetActive(true);
                 }
             }
         else if (Num == 4) foreach (BlackHolePos4 collider in collider4)
@@ -182,6 +194,7 @@ public class BlackHole : MonoBehaviourPun
                         collider.gameObject.SetActive(false);
                     }
                     this.gameObject.SetActive(false);
+                    miniMapBlackHolePos4.SetActive(true);
                 }
             }
         else if (Num == 5) foreach (BlackHolePos5 collider in collider5)
@@ -219,6 +232,7 @@ public class BlackHole : MonoBehaviourPun
                     }
 
                     this.gameObject.SetActive(false);
+                    miniMapBlackHolePos5.SetActive(true);
                 }
             }
         else if (Num == 6) foreach (BlackHolePos6 collider in collider6)
@@ -254,6 +268,7 @@ public class BlackHole : MonoBehaviourPun
                         collider.gameObject.SetActive(false);
                     }
                     this.gameObject.SetActive(false);
+                    miniMapBlackHolePos6.SetActive(true);
                 }
             }
     }

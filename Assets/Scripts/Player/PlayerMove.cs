@@ -43,8 +43,8 @@ public class PlayerMove : MonoBehaviourPun
 
     private void Update()
     {
-        Debug.Log("X = " + Input.mousePosition.x);
-        Debug.Log("Y = " + Input.mousePosition.y);
+        //Debug.Log("X = " + Input.mousePosition.x);
+        //Debug.Log("Y = " + Input.mousePosition.y);
         if (GameMgr.Instance.GameState == false) return;
         if (photonView.IsMine == false) return;
         if (playerInfo.playerAlive == state.Die || playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay)
@@ -137,11 +137,13 @@ public class PlayerMove : MonoBehaviourPun
         isMove = false;
         desiredDir = Vector3.zero;
     }
+    Coroutine ghostEff;
     [PunRPC]
     private void SetGhostEff(float time)
     {
         trailEff.SetActive(true);
-        StartCoroutine(ghostEffDelady(time));
+        if (ghostEff != null) StopCoroutine(ghostEff);
+        ghostEff= StartCoroutine(ghostEffDelady(time));
     }
     IEnumerator ghostEffDelady(float time)
     {    

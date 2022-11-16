@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomSkill : MonoBehaviour
 {
     //total number of skills
-    private int skillType = 7;
+    private int skillType = 8;
     //skills random
     public int skillRan { get; private set; } = 0;
     //Distributing random skills
@@ -13,6 +13,7 @@ public class RandomSkill : MonoBehaviour
     {
         //Random skill number
         skillRan = Random.Range(1, skillType+1);
+        skillRan = 8;
         GameMgr.Instance.uIMgr.SetSkillIcon(skillRan,0);
         if (skillRan == 1) player.AddComponent<Immediate_BloodField>().SetSkillNum(skillRan);
         else if (skillRan == 2) player.AddComponent<Projectile_Bash>().SetSkillNum(skillRan);
@@ -21,6 +22,7 @@ public class RandomSkill : MonoBehaviour
         else if (skillRan == 5) player.AddComponent<Projectile_SwordStab>().SetSkillNum(skillRan);
         else if (skillRan == 6) player.AddComponent<Immediate_DevilSword>().SetSkillNum(skillRan);
         else if (skillRan == 7) player.AddComponent<NonTarget_BloodAttack>().SetSkillNum(skillRan);
+        else if (skillRan == 8) player.AddComponent<Buff_OverPhysical>().SetSkillNum(skillRan);
         else
             Debug.Log("Player didn't get any skill");
     }
