@@ -8,23 +8,23 @@ public class CineMachine : MonoBehaviour
     //virtual Camera
     [Header("가상 카메라")]
     [SerializeField] private CinemachineVirtualCamera sceneCam1= null;
-    [SerializeField] private CinemachineVirtualCamera sceneCam2 = null;
+    //[SerializeField] private CinemachineVirtualCamera sceneCam2 = null;
 
     //virtual Camera's track * 2
     [Header("트랙")]
     [SerializeField] private CinemachineDollyCart dollyCart = null;
-    [SerializeField] private CinemachineDollyCart dollyCart2 = null;
+    //[SerializeField] private CinemachineDollyCart dollyCart2 = null;
 
     private Coroutine coroutine = null;
 
     private void Awake()
     {
-        sceneCam2.enabled = false;
+        //sceneCam2.enabled = false;
         coroutine = StartCoroutine("Cut1");
     }
     private IEnumerator Cut1()
     {
-        sceneCam2.enabled = false;
+        //sceneCam2.enabled = false;
         sceneCam1.enabled = true;
 
         Debug.Log(sceneCam1);
@@ -44,7 +44,7 @@ public class CineMachine : MonoBehaviour
              yield return null;
         }
     }
-    private IEnumerator Cut2() 
+    /*private IEnumerator Cut2() 
     {
         sceneCam1.enabled = false;
         sceneCam2.enabled = true;
@@ -61,5 +61,5 @@ public class CineMachine : MonoBehaviour
             }
              yield return null;
         }
-    }
+    }*/
 }
