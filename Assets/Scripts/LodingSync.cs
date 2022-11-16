@@ -10,6 +10,8 @@ public class LodingSync : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Slider slider;
     [SerializeField] private string SceneName;
+
+    private int playersStart = 0;
     private float time;
 
     private void Awake()
@@ -19,10 +21,10 @@ public class LodingSync : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        if (PhotonNetwork.IsMasterClient)
-            photonView.StartCoroutine(LoadAsynSceneCoroutine());
+        //if (PhotonNetwork.IsMasterClient)
+        //    photonView.StartCoroutine(LoadAsynSceneCoroutine());
 
-        else
+        //else
             photonView.StartCoroutine(PlayerSceneCoroutine());
     }
 
