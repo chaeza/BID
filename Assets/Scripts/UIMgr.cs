@@ -21,7 +21,9 @@ public class UIMgr : MonoBehaviourPun
     [Header("Game UI")]
     public GameObject ESC;
     public GameObject TAB;
-    [SerializeField] private Text[] PlayerName;
+    [SerializeField] private Text[] playerNameText;
+    [SerializeField] private Text[] playerKillText;
+    private int 
 
     private TextMeshProUGUI[] skillCoolTimeText = new TextMeshProUGUI[2];
     private GameObject[] skillCoolTime = new GameObject[2];
@@ -124,8 +126,8 @@ public class UIMgr : MonoBehaviourPun
     {
 
         if (alive == state.None)
-            PlayerName[PlayerNum].text = PhotonNetwork.PlayerList[PlayerNum].NickName;
-        else PlayerName[PlayerNum].color = Color.red;
+            playerNameText[PlayerNum].text = PhotonNetwork.PlayerList[PlayerNum].NickName;
+        else playerNameText[PlayerNum].color = Color.red;
     }
 
     public void EndGame(bool win)
