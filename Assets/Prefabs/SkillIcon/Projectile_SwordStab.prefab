@@ -353,7 +353,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'bash
+  m_text: 'SwordStab
 
     Description: Spreads the sword in a straight line, dealing
     damage and temporarily stunning it.

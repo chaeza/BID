@@ -218,7 +218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'sacred duel
+  m_text: 'Sacred Duel
 
     Description: Pushes with the shield, moves forward at
     twice the movement speed, and builds a wall in a circle around the enemy when

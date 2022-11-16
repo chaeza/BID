@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'energy ball
+  m_text: 'Energy Ball
 
     Description: Throws energy in a straight line, dealing
     damage and slowing down.
