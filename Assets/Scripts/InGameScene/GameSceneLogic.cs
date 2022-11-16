@@ -206,7 +206,7 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
             reqBettingPlaceBet.players_session_id[i] = sessionIDs[i];
         }
         Debug.Log("***********베팅완료**********");
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
         {
             Debug.Log(reqBettingPlaceBet.players_session_id[i]);
         }
