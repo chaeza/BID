@@ -145,7 +145,7 @@ public class PlayerMove : MonoBehaviourPun
     }
     IEnumerator ghostEffDelady(float time)
     {    
-        yield return new WaitForSeconds(time*4);
+        yield return new WaitForSeconds(time);
         Debug.Log("트레일 삭제");
         trailEff.SetActive(false);
     }
