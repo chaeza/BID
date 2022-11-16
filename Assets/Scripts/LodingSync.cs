@@ -10,8 +10,6 @@ public class LodingSync : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Slider slider;
     [SerializeField] private string SceneName;
-
-    private int playersStart = 0;
     private float time;
 
     private void Awake()
