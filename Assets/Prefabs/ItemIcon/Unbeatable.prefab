@@ -217,9 +217,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBB34\uC801\n\uC124\uBA85:  \uC0C1\uD0DC\uC774\uC0C1\uC744 \uC804\uBD80\uD574\uC81C\uD558\uACE0
-    \uC77C\uC815 \uC2DC\uAC04 \uB3D9\uC548 \uB370\uBBF8\uC9C0\uB97C \uBC1B\uC9C0\uC54A\uC2B5\uB2C8\uB2E4.\n\uC9C0\uC18D\uC2DC\uAC04:
-    1\uCD08\n"
+  m_text: 'Unbeatable
+
+    Removes all status ailments and takes no damage for a
+    certain period of time.
+
+    Duration: 1sec'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

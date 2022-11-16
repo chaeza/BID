@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LoadingText : MonoBehaviour
 {
     public Text[] text;
-    public RawImage[] image;
+    //public RawImage[] image;
 
     int ran;
     int imageRan;
@@ -14,10 +14,10 @@ public class LoadingText : MonoBehaviour
     private void Start()
     {
         ran = Random.Range(0, text.Length);
-        imageRan = Random.Range(0, image.Length);
+      //  imageRan = Random.Range(0, image.Length);
 
         text[ran].gameObject.SetActive(true);
-        image[imageRan].gameObject.SetActive(true);
+       // image[imageRan].gameObject.SetActive(true);
 
 
     }
