@@ -186,6 +186,8 @@ public class PlayerInfo : MonoBehaviourPun
         GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
         if (gameObject.GetPhotonView().ViewID == attackerViewID2)
         {
+            curHP = 0;
+            HPTransfer(curHP);
             GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
             return;
         }
@@ -210,7 +212,7 @@ public class PlayerInfo : MonoBehaviourPun
     }
     public void ChangeMoveSpeed(float value)
     {
-        GameMgr.Instance.uIMgr.PlayInfoChange(3, basicAttackSpeed);
+        GameMgr.Instance.uIMgr.PlayInfoChange(3, basicMoveSpeed);
         moveSpeed = value;
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
     }
