@@ -23,7 +23,8 @@ public class UIMgr : MonoBehaviourPun
     public GameObject TAB;
     [SerializeField] private Text[] playerNameText;
     [SerializeField] private Text[] playerKillText;
-    private int[] KillCount= new int[5];
+    [SerializeField] private Text[] playerInfoText;
+    private int[] KillCount = new int[5];
 
     private TextMeshProUGUI[] skillCoolTimeText = new TextMeshProUGUI[2];
     private GameObject[] skillCoolTime = new GameObject[2];
@@ -46,7 +47,7 @@ public class UIMgr : MonoBehaviourPun
     public event OnSetSkillDescription onSetSkillDescription;
     private Vector2 createPoint = new Vector2(130, 98);
     private Vector2 dashCreatePoint = new Vector2(360, 98);
-    private Vector2[] itemCreatePoint = { new Vector2(728, 63), new Vector2(888, 63), new Vector2(1041, 63), new Vector2(1207, 63) };
+    private Vector2[] itemCreatePoint = { new Vector2(728, 63), new Vector2(888, 63), new Vector2(1046, 63), new Vector2(1207, 63) };
 
     private void Awake()
     {
@@ -121,8 +122,33 @@ public class UIMgr : MonoBehaviourPun
             SetSkillDescription(1);
         }
     }
+    string infoName;
+    public void PlayInfoChange(int infoNum, float infoValue)
+    {
+        if (infoNum == 0)
+        {
+            infoName = "AttackPower ";
+        }
+        else if (infoNum == 1)
+        {
+            infoName = "AttackRange ";
+        }
+        else if (infoNum == 1)
+        {
+            infoName = "AttackSpeed ";
+        }
+        else if (infoNum == 1)
+        {
+            infoName = "MoveSpeed ";
+        }
+        else if (infoNum == 1)
+        {
+            infoName = "DamageDecrease ";
+        }
+        playerInfoText[infoNum].text = infoName + infoNum.ToString();
+    }
 
-    public void TabUpDate(int PlayerNum,state alive)
+    public void TabUpDate(int PlayerNum, state alive)
     {
 
         if (alive == state.None)

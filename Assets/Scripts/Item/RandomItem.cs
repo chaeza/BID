@@ -18,7 +18,7 @@ public class RandomItem : MonoBehaviour
         {
             if (itemRan == 0 && GameMgr.Instance.inventory.ContainInventory(0) == false)
             {
-                player.AddComponent<Buff_DamageDecrpease>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
+                player.AddComponent<Buff_DamageDecrease>().GetItem(itemRan, GameMgr.Instance.inventory.AddInventory(itemRan));
                 break;
             }
             else if (itemRan == 1 && GameMgr.Instance.inventory.ContainInventory(1) == false)
