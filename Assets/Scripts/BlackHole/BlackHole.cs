@@ -205,7 +205,7 @@ public class BlackHole : MonoBehaviourPun
                     }
                     else if (collider.tag == "SpawnArea")
                     {
-                        GameMgr.Instance.itemSpawner.RemoveItemList(collider.gameObject);
+                        //GameMgr.Instance.itemSpawner.RemoveItemList(collider.gameObject);
                         collider.gameObject.SetActive(false);
                     }
                     else if (collider.tag == "Portal")
