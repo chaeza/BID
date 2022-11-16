@@ -17,9 +17,15 @@ public class CineMachine : MonoBehaviour
 
     private Coroutine coroutine = null;
 
+    public Camera cam;
+
     private void Awake()
     {
         //sceneCam2.enabled = false;
+        
+    }
+    public void OnStartBtnClick()
+    {
         coroutine = StartCoroutine("Cut1");
     }
     private IEnumerator Cut1()
@@ -32,17 +38,17 @@ public class CineMachine : MonoBehaviour
         
         //sceneCam1.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition = 0 ;
         dollyCart.m_Position = 0f;
-        while (true)
-        {
-            dollyCart.m_Speed = 15;
+        dollyCart.m_Speed = 10;
+        Debug.Log("Ãâ¹ß");
             if (dollyCart.m_Position >= dollyCart.m_Path.PathLength)
             {
 
-                coroutine = StartCoroutine("Cut2");
+                //coroutine = StartCoroutine("Cut2");
                 yield break;
             }
-             yield return null;
-        }
+             
+ 
+        yield return null;
     }
     /*private IEnumerator Cut2() 
     {
