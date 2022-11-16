@@ -37,7 +37,7 @@ public class Buff_BasicAttackUp : Skill
 
         //
         Debug.Log("아이템사용");
-        playerInfo.SetBasicAttackDamage(2f);
+        playerInfo.PlayInfoChange(ChangeableInfo.basicAttackDamage, 2f);
         GameObject eff = PhotonNetwork.Instantiate("BasicAttackDamageEff", transform.position, Quaternion.identity);
         //
         GameMgr.Instance.uIMgr.UseItem(itemNum);
