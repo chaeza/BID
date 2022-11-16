@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class LogoFadeOut : MonoBehaviour
 {
     [SerializeField] private RawImage logoImage;
+    [SerializeField] private RawImage darkHole;
+
     [SerializeField] private bool fadeout = false;
     [SerializeField] private bool fadein = true;
     [SerializeField] private bool isPlaying = false;
@@ -15,20 +17,39 @@ public class LogoFadeOut : MonoBehaviour
     private void Start()
     {
         //페이드아웃을 원할 때
-        if (fadeout == true && isPlaying == false) StartCoroutine(FadeOut());
-           if (fadeout == false && fadein == true) StartCoroutine(FadeIn());
+        if (fadeout == true && isPlaying == false) StartCoroutine(FadeOut(logoImage));
+           if (fadeout == false && fadein == true) StartCoroutine(FadeIn(logoImage));
     }
 
-    IEnumerator FadeOut()
+    public void DarkHoleFadeOut()
     {
-        logoImage.gameObject.SetActive(true);
+        Debug.Log(" 사ㅣㄹ해");
+        StartCoroutine(DarkHole());
+
+    }
+        IEnumerator DarkHole()
+    {
+        Color tempColor = darkHole.color;
+        for (int i = 90; i > 0; i--)
+        {
+            yield return new WaitForSeconds(0.01f);
+            tempColor.a -= 0.01f;
+            darkHole.color = tempColor;
+            //yield return null;
+        }
+        darkHole.gameObject.SetActive(false);
+    }
+    IEnumerator FadeOut(RawImage ri)
+    {
+        
+        ri.gameObject.SetActive(true);
         isPlaying = true;
-        Color tempColor = logoImage.color;
+        Color tempColor = ri.color;
         tempColor.a = 0f;
         while (tempColor.a < 1f)
         {
             tempColor.a += Time.deltaTime / fadeTime;
-            logoImage.color = tempColor;
+            ri.color = tempColor;
 
             if (tempColor.a >= 1f) tempColor.a = 1f;
 
@@ -38,24 +59,24 @@ public class LogoFadeOut : MonoBehaviour
 
      
     }
-    IEnumerator FadeIn()
+    IEnumerator FadeIn(RawImage ri)
     {
-        Color tempColor = logoImage.color;
+        Color tempColor = ri.color;
         while (tempColor.a > 0f)
         {
             tempColor.a -= Time.deltaTime / fadeTime;
-            logoImage.color = tempColor;
+            ri.color = tempColor;
 
             if (tempColor.a <= 0f)
             {
                 tempColor.a = 0f;
-                logoImage.color = tempColor;
+                ri.color = tempColor;
             }
 
             yield return null;
         }
 
-        logoImage.gameObject.SetActive(false);
+        ri.gameObject.SetActive(false);
         fadein = false;
         isPlaying = false;
     }

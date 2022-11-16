@@ -25,9 +25,19 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject logInPanel;
     public GameObject lobbyPanel;
     public GameObject[] readyButton;
-    public Image[] lobbyTorchlightOn;
+    public RawImage[] lobbyTorchlightOn;
     public Image[] lobbyTorchlightOff;
-  //  public RawImage brokenWindow;
+
+    [Header("LobbyNickNameScene")]
+    public Button lobbyButton;
+    public RawImage lobbyInsertImage;
+    public RawImage lobbyGameLogo;
+    public RawImage lobbyleftDoor;
+    public RawImage lobbyRightDoor;
+    public RawImage lobbyDarkHole;
+
+    private bool lobbyLogin = false;
+
 
     private GameObject postman;
 
@@ -38,7 +48,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private int readyCount = 0;
     private int myButtonNum = 0;
     [Header("내상태")]
-   public ReadyState myReadyState = ReadyState.None;
+    public ReadyState myReadyState = ReadyState.None;
     //This is 
     public enum ReadyState
     {
@@ -76,14 +86,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-     //   brokenWindow.gameObject.SetActive(false);
         audioSource.gameObject.SetActive(false);
-      //  StartCoroutine(broken());
         for (int i = 0; i < readyButton.Length; i++)
         {
             lobbyTorchlightOn[i].gameObject.SetActive(false);
             lobbyTorchlightOff[i].gameObject.SetActive(false);
-          //  soulEff[i].SetActive(false);
+            //  soulEff[i].SetActive(false);
             readyButton[i].GetComponent<Image>().color = Color.gray;
             readyButton[i].GetComponent<Button>().interactable = false;
         }
@@ -91,10 +99,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         //마스터 서버 접속 요청
         PhotonNetwork.ConnectUsingSettings(); //Photon.Pun 내부 클래스
+        Debug.Log(PhotonNetwork.NetworkClientState+"*********************");
     }
 
     public override void OnConnectedToMaster()
     {
+        Debug.Log(PhotonNetwork.NetworkClientState + "*********************");
+
         //API 유저 프로필 , SessionID 가져오기
         StartCoroutine(processRequestGetUserInfo());
 
@@ -105,6 +116,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         logInPanel.SetActive(true);
+        lobbyButton.interactable = false;
         btnConnect.interactable = false;
         lobbyPanel.SetActive(false);
     }
@@ -118,6 +130,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // 닉네임 밑에 커넥트 버튼 클릭시 
     public void OnClick_Connected()
     {
+        StartCoroutine(DoorPos());
+
         if (string.IsNullOrEmpty(PhotonNetwork.NickName) == true)
             return;
 
@@ -129,6 +143,43 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         //로비패널 온 
         lobbyPanel.SetActive(true);
     }
+    [SerializeField] LogoFadeOut logoFadeOut;
+
+    IEnumerator DoorPos()
+    {
+       // lobbyButton.gameObject.GetComponent<RawImage>().enabled = false;
+        lobbyButton.gameObject.SetActive(false);
+        lobbyInsertImage.gameObject.SetActive(false);
+        lobbyGameLogo.gameObject.SetActive(false);
+
+        //yield return new WaitForSeconds(0.8f);
+
+        float time = 2f;
+        while (time > 0)
+        {
+            if (time > 1f)
+            {
+                lobbyleftDoor.transform.position += Vector3.left * Time.deltaTime * 50f;
+                lobbyRightDoor.transform.position += Vector3.right * Time.deltaTime * 50f;
+            }
+            else
+            {
+                lobbyleftDoor.transform.position += Vector3.left * Time.deltaTime * 800f;
+                lobbyRightDoor.transform.position += Vector3.right * Time.deltaTime * 800f;
+            }
+            time -= Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+          
+        }
+        logoFadeOut.DarkHoleFadeOut();
+        lobbyleftDoor.gameObject.SetActive(false);
+        lobbyRightDoor.gameObject.SetActive(false);
+        lobbyLogin = true;
+    }
+
+
+
+
     //입장할 방이 없으면 새로운 방 생성
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
@@ -260,7 +311,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         // 마스터일때만 해당 함수 실행 가능
         if (PhotonNetwork.IsMasterClient)
         {
-            if (readyCount == PhotonNetwork.PlayerList.Length && readyCount>1)
+            if (readyCount == PhotonNetwork.PlayerList.Length && readyCount > 1)
             {
                 Debug.Log("시작");
                 //5명 레디 완료시 2초후 게임 실행 코루틴 
@@ -380,9 +431,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                 Debug.Log("## " + response.ToString());
                 res_UserProfile = response;
                 Debug.Log(res_UserProfile.userProfile.username);
+                lobbyButton.interactable = true;
+                btnConnect.interactable = true;
             }
         });
-        btnConnect.interactable = true;
+  
     }
     delegate void resCallback_GetUserInfo(Res_UserProfile response);
     IEnumerator requestGetUserInfo(resCallback_GetUserInfo callback)

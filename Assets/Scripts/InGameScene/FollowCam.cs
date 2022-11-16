@@ -15,8 +15,8 @@ public partial class FollowCam : MonoBehaviour
     private Transform playerPos;
     private bool followBool = false;
     private float playerY;
-    private float ratioX = 1.3206611570247933884297520661157f;
-    private float ratioY = 1.2966942148760330578512396694215f;
+    private float ratioX = 0.96588348396132983594601426304165f;
+    private float ratioY = 1.0797068659017167862159843860718f;
     private Vector3 forwardDir = new Vector3(0.64f, 0, -6.7784f).normalized;
     private Vector3 rightDir = new Vector3(-5.5936f, 0, -0.26f).normalized;
 
@@ -52,10 +52,6 @@ public partial class FollowCam : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log("mouse x : " + Input.mousePosition.x);
-        //Debug.Log("mouse y : " + Input.mousePosition.y);
-        //rayCamara.transform.position = playerPos.position + Vector3.up * 30;
-        //rayCamara.transform.LookAt(playerPos.position);
         if (GameMgr.Instance.GameState == false) return;
 
         if (Input.GetKey(KeyCode.Space) || followBool == true)
@@ -63,11 +59,11 @@ public partial class FollowCam : MonoBehaviour
             transform.position = new Vector3(playerPos.position.x, playerY, playerPos.position.z) + Vector3.forward * distanceFromPlayerZ + Vector3.up * distanceFromPlayerY + Vector3.right * distanceFromPlayerX;
         }
         // Click on the mini map
-        if (Input.GetKey(KeyCode.Mouse0) && Input.mousePosition.x > 1653 && Input.mousePosition.x < 1837 & Input.mousePosition.y > 32 && Input.mousePosition.y < 243)
+        if (Input.GetKey(KeyCode.Mouse0) && Input.mousePosition.x > 1632 && Input.mousePosition.x < 1873 & Input.mousePosition.y > 12 && Input.mousePosition.y < 254)
         {
-            mousePos.x = Input.mousePosition.x - 1623.024f;
-            mousePos.y = Input.mousePosition.y - 15.24192f;
-            transform.position = new Vector3(547.5f - mousePos.x * ratioX + distanceFromPlayerX, transform.position.y, 508.59f - mousePos.y * ratioY + distanceFromPlayerZ);
+            mousePos.x = Input.mousePosition.x - 1632.106f;
+            mousePos.y = Input.mousePosition.y - 12.89964f;
+            transform.position = new Vector3(502.4f - mousePos.x * ratioX + distanceFromPlayerX, transform.position.y, 472.1f - mousePos.y * ratioY + distanceFromPlayerZ);
         }
         if (Input.GetKey(KeyCode.Y) && followBool == false) followBool = true;
         else if (GameMgr.Instance.playerInput.yKey == KeyCode.Y && followBool == true) followBool = false;

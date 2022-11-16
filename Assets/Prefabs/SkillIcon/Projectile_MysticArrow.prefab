@@ -141,14 +141,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mystic Arrow
+  m_text: 'Energy Ball
 
-    Fires energy in a straight line, dealing damage and
-    slowing it by 30% for 1 second.
+    Description: Throws energy in a straight line, dealing
+    damage and slowing down.
 
-    Damage: 5
+    30% slowdown for 1 second Damage: 5
 
-    CoolTime : 2sec'
+    Cooldown:
+    3 seconds'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

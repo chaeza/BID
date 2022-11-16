@@ -218,9 +218,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\rSacred duel\nPushes with the shield and moves forward at twice the movement
-    speed. When hitting an enemy with the shield, a wall is built around it in a
-    circle.\nDamage: 10   \nCoolTime : 20sec"
+  m_text: 'Sacred Duel
+
+    Description: Pushes with the shield, moves forward at
+    twice the movement speed, and builds a wall in a circle around the enemy when
+    hitting an enemy with the shield.
+
+    Stun damage for 2 seconds when hit: 10
+
+    Cooldown:
+    20 seconds'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

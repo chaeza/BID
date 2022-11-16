@@ -57,11 +57,18 @@ public class PlayerInfo : MonoBehaviourPun
     private Coroutine stunCoroutine;
     private Coroutine silenceCoroutine;
     private Coroutine unbeatableCoroutine;
+    
+    [SerializeField]
     private string sessionID;
 
 
     private void Start()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            GameMgr.Instance.gameSceneLogic.gameObject.GetPhotonView().RPC("RPC_All_SessionID", RpcTarget.All, sessionID);
+        }
+
         if (photonView.IsMine == true)
         {
             gameObject.tag = "MainPlayer";
@@ -71,10 +78,7 @@ public class PlayerInfo : MonoBehaviourPun
         }
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I)) GameMgr.Instance.gameSceneLogic.AliveNumCheck();
-    }
+   
     public void StayPlayer(float time)
     {
         StartCoroutine(Stay(time));

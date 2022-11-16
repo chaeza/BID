@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 2714119621698584659}
   - component: {fileID: 2461526899367872243}
   m_Layer: 5
-  m_Name: NonTarget_FallTheRain
+  m_Name: FallTheRain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,13 +355,13 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'FallTheRain
 
-    Makes a rain of arrows fall on the designated area for
-    5 seconds, dealing damage and slowing them every 0.5 seconds.
+    Description: Makes arrows rain down on a designated area
+    for 5 seconds, dealing damage and slowing down every 0.5 seconds.
 
-    Damage : 5sec
+    30% Slow
+    Damage: 5
 
-    CoolTime:
-    15sec'
+    Cooldown: 15 seconds'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

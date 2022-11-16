@@ -24,6 +24,8 @@ public class PlayerSpawner : MonoBehaviourPunCallbacks
             if (playerList[i].NickName == PhotonNetwork.NickName) spawnPointNum = i;
         }
         GameObject player = PhotonNetwork.Instantiate("Player", spawnPoint[spawnPointNum].transform.position, Quaternion.identity);
+        player.GetPhotonView().RPC("MySessionID", RpcTarget.All, GameMgr.Instance.session_ID, spawnPointNum);
+
         GameObject miniMapRender = PhotonNetwork.Instantiate("MiniMapRender",Vector3.zero, Quaternion.identity);
         miniMapRender.GetPhotonView().RPC("SetParentMiniMap", RpcTarget.All);
         GameMgr.Instance.followCam.SetPlayerPos(player.transform);

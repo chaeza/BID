@@ -103,14 +103,14 @@ public class UIMgr : MonoBehaviourPun
     {
         if (win==true)
             winLogo.SetActive(true);
-        else
+        else if(win==false)
             loseLogo.SetActive(true);
     }
     IEnumerator EndGame_Delay()
     {
         yield return new WaitForSeconds(4f);
         Debug.Log("엔딩화면 딜레이 ");
-        GameMgr.Instance.gameSceneLogic.WinnerEndGame();
+       // GameMgr.Instance.gameSceneLogic.WinnerEndGame();
     }
     public void SetSilence(bool set)
     {
