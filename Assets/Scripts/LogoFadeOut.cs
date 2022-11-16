@@ -8,7 +8,6 @@ public class LogoFadeOut : MonoBehaviour
     [SerializeField] private RawImage logoImage;
     [SerializeField] private RawImage darkHole;
 
-
     [SerializeField] private bool fadeout = false;
     [SerializeField] private bool fadein = true;
     [SerializeField] private bool isPlaying = false;
@@ -31,13 +30,14 @@ public class LogoFadeOut : MonoBehaviour
         IEnumerator DarkHole()
     {
         Color tempColor = darkHole.color;
-        for(int i=100; i>0;i++)
+        for (int i = 90; i > 0; i--)
         {
             yield return new WaitForSeconds(0.01f);
             tempColor.a -= 0.01f;
             darkHole.color = tempColor;
-            yield return null;
+            //yield return null;
         }
+        darkHole.gameObject.SetActive(false);
     }
     IEnumerator FadeOut(RawImage ri)
     {
