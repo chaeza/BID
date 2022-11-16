@@ -422,9 +422,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                 Debug.Log("## " + response.ToString());
                 res_UserProfile = response;
                 Debug.Log(res_UserProfile.userProfile.username);
+                btnConnect.interactable = true;
             }
         });
-        btnConnect.interactable = true;
+  
     }
     delegate void resCallback_GetUserInfo(Res_UserProfile response);
     IEnumerator requestGetUserInfo(resCallback_GetUserInfo callback)
