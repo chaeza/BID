@@ -42,8 +42,8 @@ public class PlayerMove : MonoBehaviourPun
 
     private void Update()
     {
-        Debug.Log("X = " + Input.mousePosition.x);
-        Debug.Log("Y = " + Input.mousePosition.y);
+        //Debug.Log("X = " + Input.mousePosition.x);
+        //Debug.Log("Y = " + Input.mousePosition.y);
         if (GameMgr.Instance.GameState == false) return;
         if (photonView.IsMine == false) return;
         if (playerInfo.playerAlive == state.Die || playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay)
