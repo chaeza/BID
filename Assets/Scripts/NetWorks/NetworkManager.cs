@@ -143,6 +143,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         //로비패널 온 
         lobbyPanel.SetActive(true);
     }
+    [SerializeField] LogoFadeOut logoFadeOut;
 
     IEnumerator DoorPos()
     {
@@ -156,15 +157,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         float time = 2f;
         while (time > 0)
         {
-            lobbyleftDoor.transform.position += Vector3.left * Time.deltaTime * 50f;
-            lobbyRightDoor.transform.position += Vector3.right * Time.deltaTime * 50f;
+            if (time > 1f)
+            {
+                lobbyleftDoor.transform.position += Vector3.left * Time.deltaTime * 50f;
+                lobbyRightDoor.transform.position += Vector3.right * Time.deltaTime * 50f;
+            }
+            else
+            {
+                lobbyleftDoor.transform.position += Vector3.left * Time.deltaTime * 800f;
+                lobbyRightDoor.transform.position += Vector3.right * Time.deltaTime * 800f;
+            }
             time -= Time.deltaTime;
             yield return new WaitForFixedUpdate();
           
         }
-
+        logoFadeOut.DarkHoleFadeOut();
         lobbyleftDoor.gameObject.SetActive(false);
-        lobbyDarkHole.gameObject.SetActive(false);
         lobbyRightDoor.gameObject.SetActive(false);
         lobbyLogin = true;
     }
