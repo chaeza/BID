@@ -99,14 +99,30 @@ public class PlayerInfo : MonoBehaviourPun
     }
     public void PlayInfoChange(ChangeableInfo info, float infoValue)
     {
-        if (info == ChangeableInfo.basicAttackRange) basicAttackRange += infoValue;
-        else if (info == ChangeableInfo.basicAttackSpeed) basicAttackSpeed += infoValue;
-        else if (info == ChangeableInfo.damageDecrease) damageDecrease += infoValue;
-        else if (info == ChangeableInfo.basicAttackDamage) basicAttackDamage += infoValue;
+        if (info == ChangeableInfo.basicAttackDamage)
+        {
+            basicAttackDamage += infoValue;
+            GameMgr.Instance.uIMgr.PlayInfoChange(0, basicAttackDamage);
+        }
+        else if (info == ChangeableInfo.basicAttackRange)
+        {
+            basicAttackRange += infoValue;
+            GameMgr.Instance.uIMgr.PlayInfoChange(1, basicAttackRange);
+        }
+        else if (info == ChangeableInfo.basicAttackSpeed)
+        {
+            basicAttackSpeed += infoValue;
+            GameMgr.Instance.uIMgr.PlayInfoChange(2, basicAttackSpeed);
+        }
         else if (info == ChangeableInfo.moveSpeed)
         {
             moveSpeed += infoValue;
             ChangeMoveSpeed(moveSpeed);
+        }
+        else if (info == ChangeableInfo.damageDecrease)
+        {
+            damageDecrease += infoValue;
+            GameMgr.Instance.uIMgr.PlayInfoChange(4, damageDecrease);
         }
         else if (info == ChangeableInfo.basicMoveSpeed)
         {
@@ -121,7 +137,7 @@ public class PlayerInfo : MonoBehaviourPun
     {
         sessionID = ID;
         myPlayerNum = playerNum;
-        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum,state.None);
+        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.None);
     }
 
     [PunRPC]
@@ -136,8 +152,11 @@ public class PlayerInfo : MonoBehaviourPun
         }
         else if (attackState == state.Slow)
         {
-            if (slowCoroutine != null) StopCoroutine(slowCoroutine);
-            slowCoroutine = StartCoroutine(Slow(slowDownRate, timer));
+            if (photonView.IsMine == true)
+            {
+                if (slowCoroutine != null) StopCoroutine(slowCoroutine);
+                slowCoroutine = StartCoroutine(Slow(slowDownRate, timer));
+            }
         }
         else if (attackState == state.Silence)
         {
@@ -147,9 +166,9 @@ public class PlayerInfo : MonoBehaviourPun
                 silenceCoroutine = StartCoroutine(Silence(timer));
             }
         }
-        if(damageDecrease<100)
-        curHP -= attackDamage * ((100 - damageDecrease) / 100);
-     
+        if (damageDecrease < 100)
+            curHP -= attackDamage * ((100 - damageDecrease) / 100);
+
         if (onGetDamage != null) onGetDamage();
         if (curHP <= 0)
         {
@@ -164,8 +183,17 @@ public class PlayerInfo : MonoBehaviourPun
         playerAlive = state.Die;
         if (photonView.IsMine) myAnimator.SetTrigger("isDie");
         GameMgr.Instance.gameSceneLogic.AliveNumCheck();
-        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum,state.Die);
-        if (gameObject.GetPhotonView().ViewID == attackerViewID2) return;
+        GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
+        if (gameObject.GetPhotonView().ViewID == attackerViewID2)
+        {
+            GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
+            return;
+        }
+        else
+        {
+            if (GameMgr.Instance.PunFindObject(attackerViewID2).GetPhotonView().IsMine == true) GameMgr.Instance.uIMgr.KillUpDate(myPlayerNum);
+            GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -182,6 +210,7 @@ public class PlayerInfo : MonoBehaviourPun
     }
     public void ChangeMoveSpeed(float value)
     {
+        GameMgr.Instance.uIMgr.PlayInfoChange(3, basicAttackSpeed);
         moveSpeed = value;
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
     }

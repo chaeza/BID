@@ -12,4 +12,8 @@ public partial class GameSceneManager : MonoBehaviour
     {
         GameMgr.Instance.GameSceneSetting(gameObject);
     }
+    public void OnClickExit()
+    {
+        gameSceneLogic.OnClick_LeaveGame();
+    }
 }

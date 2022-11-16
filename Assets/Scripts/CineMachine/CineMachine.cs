@@ -7,7 +7,7 @@ public class CineMachine : MonoBehaviour
 {
     //virtual Camera
     [Header("가상 카메라")]
-    [SerializeField] private CinemachineVirtualCamera sceneCam1= null;
+    [SerializeField] private CinemachineVirtualCamera sceneCam1 = null;
     //[SerializeField] private CinemachineVirtualCamera sceneCam2 = null;
 
     //virtual Camera's track * 2
@@ -16,13 +16,11 @@ public class CineMachine : MonoBehaviour
     //[SerializeField] private CinemachineDollyCart dollyCart2 = null;
 
     private Coroutine coroutine = null;
-
-    public Camera cam;
+    private NetworkManager networkManager;
 
     private void Awake()
     {
-        //sceneCam2.enabled = false;
-        
+        //sceneCam2.enabled = false;    
     }
     public void OnStartBtnClick()
     {
@@ -33,21 +31,20 @@ public class CineMachine : MonoBehaviour
         //sceneCam2.enabled = false;
         sceneCam1.enabled = true;
 
-        Debug.Log(sceneCam1);
         //Initialize the cart position to 0
-        
+
         //sceneCam1.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition = 0 ;
         dollyCart.m_Position = 0f;
-        dollyCart.m_Speed = 10;
+        dollyCart.m_Speed = 13;
         Debug.Log("출발");
-            if (dollyCart.m_Position >= dollyCart.m_Path.PathLength)
-            {
+        if (dollyCart.m_Position >= dollyCart.m_Path.PathLength - 0.5f)
+        {
+            Debug.Log("도착");
+            //coroutine = StartCoroutine("Cut2");
+            yield break;
+        }
 
-                //coroutine = StartCoroutine("Cut2");
-                yield break;
-            }
-             
- 
+
         yield return null;
     }
     /*private IEnumerator Cut2() 
