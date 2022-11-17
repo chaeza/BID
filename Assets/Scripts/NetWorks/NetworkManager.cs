@@ -144,11 +144,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     IEnumerator PannelOn()
     {
-        yield return new WaitForSeconds(5f);
-
-        //로비패널 온 
+        yield return new WaitForSeconds(9.5f);
         lobbyPanel.SetActive(true);
         logoFadeOut.LobbyFadeIn(lobbyPanel);
+
+        //로비패널 온 
     }
 
 

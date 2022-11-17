@@ -36,7 +36,7 @@ public class CineMachine : MonoBehaviour
         //sceneCam1.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition = 0 ;
         yield return new WaitForSeconds(2f);
         dollyCart.m_Position = 0f;
-        dollyCart.m_Speed = 30f;
+        dollyCart.m_Speed = 17f;
         Debug.Log("Ãâ¹ß");
         if (dollyCart.m_Position >= dollyCart.m_Path.PathLength - 0.5f)
         {
