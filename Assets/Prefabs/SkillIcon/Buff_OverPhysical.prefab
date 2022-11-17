@@ -355,9 +355,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'OverPhysical
 
-    if you click your skill, strengthen one of the three.
+    If you click your skill, strengthen one of the three.
 
-    Range300%,MoveSpeed200%
+    Range200%,MoveSpeed200%
     and DamageDcrease 20%
 
     CoolDown : 1 seconds'
