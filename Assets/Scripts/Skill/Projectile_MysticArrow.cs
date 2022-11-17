@@ -19,6 +19,7 @@ public class Projectile_MysticArrow : Skill
         skillInfo.cooltime = 2;
         skillInfo.skillDirY = 3;
         skillInfo.skillType = SkillType.Projectile;
+        skillInfo.hitReturn = true;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
         skillInfo.hitBoxInfo.interval = 1;
