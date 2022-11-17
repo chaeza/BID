@@ -43,8 +43,8 @@ public class PlayerMove : MonoBehaviourPun
 
     private void Update()
     {
-        Debug.Log("X = " + Input.mousePosition.x);
-        Debug.Log("Y = " + Input.mousePosition.y);
+      //Debug.Log("X = " + Input.mousePosition.x);
+      //Debug.Log("Y = " + Input.mousePosition.y);
         if (GameMgr.Instance.GameState == false) return;
         if (photonView.IsMine == false) return;
         if (playerInfo.playerAlive == state.Die || playerInfo.playerStun == state.Stun || playerInfo.playerStay == state.Stay)
@@ -83,6 +83,8 @@ public class PlayerMove : MonoBehaviourPun
             if (Vector3.Distance(desiredDir, transform.position) > 0.5f)
             {
                 myAnimator.SetBool("isMove", true);
+                navMeshAgent.updatePosition = true;
+                navMeshAgent.updateRotation = true;
                 isClick = false;
                 navMeshAgent.SetDestination(desiredDir);
             }
@@ -103,6 +105,7 @@ public class PlayerMove : MonoBehaviourPun
         nullCheckHit = (nullCheck) ? hit.transform.gameObject.CompareTag("Ground") : false;
         if (nullCheckHit == true)
         {
+
             desiredDir = hit.point;
             isMove = true;
         }
@@ -128,6 +131,8 @@ public class PlayerMove : MonoBehaviourPun
         myAnimator.SetBool("isMove", false);
         Debug.Log("stop");
         navMeshAgent.ResetPath();
+        navMeshAgent.updatePosition = false;
+        navMeshAgent.updateRotation = false;
         navMeshAgent.velocity = Vector3.zero;
         isMove = false;
         desiredDir = Vector3.zero;

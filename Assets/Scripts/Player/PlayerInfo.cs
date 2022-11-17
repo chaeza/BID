@@ -65,11 +65,13 @@ public class PlayerInfo : MonoBehaviourPun
     public event OnChangeMoveSpeed onChangeMoveSpeed;
     public event OnGetDamage onGetDamage;
     public HPTransfer HPTransfer;
+    private int miniMapViewID;
     private Animator myAnimator;
     private Coroutine slowCoroutine;
     private Coroutine stunCoroutine;
     private Coroutine silenceCoroutine;
     private Coroutine unbeatableCoroutine;
+
 
     [SerializeField]
     private string sessionID;
@@ -181,22 +183,34 @@ public class PlayerInfo : MonoBehaviourPun
     private void RPC_Die(int attackerViewID2)
     {
         playerAlive = state.Die;
+        curHP = 0;
+        HPTransfer(curHP);
         if (photonView.IsMine) myAnimator.SetTrigger("isDie");
         GameMgr.Instance.gameSceneLogic.AliveNumCheck();
         GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
+        if (GameMgr.Instance.PunFindObject(miniMapViewID) != null)
+            GameMgr.Instance.PunFindObject(miniMapViewID).SetActive(false);
         if (gameObject.GetPhotonView().ViewID == attackerViewID2)
         {
-            curHP = 0;
-            HPTransfer(curHP);
             GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
             return;
         }
         else
         {
-            if (GameMgr.Instance.PunFindObject(attackerViewID2).GetPhotonView().IsMine == true) GameMgr.Instance.uIMgr.KillUpDate(myPlayerNum);
+            // if (photonView.IsMine == true)
+            //     GameMgr.Instance.gameSceneLogic.gameObject.GetPhotonView().RPC("KillCount", RpcTarget.All, GameMgr.Instance.PunFindObject(attackerViewID2).GetComponent<PlayerInfo>().myPlayerNum);
+
+            GameMgr.Instance.uIMgr.KillUpDate(GameMgr.Instance.PunFindObject(attackerViewID2).GetComponent<PlayerInfo>().myPlayerNum);
             GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
         }
     }
+    [PunRPC]
+    public void MyMiniMapRender(int viewID)
+    {
+        miniMapViewID = viewID;
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "ItemBlackHole")
