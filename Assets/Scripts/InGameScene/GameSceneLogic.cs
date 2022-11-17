@@ -55,7 +55,12 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
         if (find != null) return find;
         else return null;
     }
-
+    [PunRPC]
+    public void GameStartFadeIn()
+    {
+        GameMgr.Instance.uIMgr.SetBlackUI();
+        GameMgr.Instance.playerInput.gameStartFaidIn = true;
+    }
 
     public void AliveNumCheck()
     {
@@ -74,7 +79,7 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
         }
         if (alivePlayerNum == 1)
         {
-           
+
             //½ÂÀÚ
             if (AliveNum[winner].gameObject.GetPhotonView().IsMine)
             {
@@ -250,6 +255,7 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
         callback(res);
 
         Debug.Log("µ· ³ÂÀ½");
+        GameMgr.Instance.gameSceneLogic.gameObject.GetPhotonView().RPC("GameStartFadeIn", RpcTarget.All);
     }
 
 

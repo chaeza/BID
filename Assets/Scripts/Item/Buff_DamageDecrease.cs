@@ -44,7 +44,7 @@ public class Buff_DamageDecrease : Skill
         myPosInfo.xPos = 0;
         myPosInfo.zPos = 0;        
         eff1.AddComponent<MyPos>().myPosInfo = myPosInfo;
-        gameObject.GetPhotonView().RPC("SetDamageDecrease", RpcTarget.AllBufferedViaServer, 50f,5f);
+        playerInfo.SetDamageDecrease(50f, 5f);
 
         GameMgr.Instance.uIMgr.UseItem(itemNum);
         Destroy(GetComponent<Buff_DamageDecrease>());

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -14,9 +15,11 @@ public class PlayerInput : MonoBehaviour
     public KeyCode yKey { get; private set; }
     public KeyCode Esc { get; private set; }
     private bool escDown;
+    public bool gameStartFaidIn;
     void Update()
     {
         if (GameMgr.Instance.GameState == false) return;
+        if (gameStartFaidIn == false) return;
         if (Input.GetKeyDown(KeyCode.Y)) yKey = KeyCode.Y;
         else yKey = KeyCode.Alpha0;
 
