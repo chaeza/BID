@@ -22,16 +22,16 @@ public class SpawnArea_Ver2 : MonoBehaviour
 	// 에디터에서만 동작하도록
 #if UNITY_EDITOR
 	// 기즈모를 그릴 때 호출되는 함수
-	private void OnDrawGizmos()
-	{
-		drawCube(Color.yellow);
-	}
+	//private void OnDrawGizmos()
+	//{
+	//	drawCube(Color.yellow);
+	//}
 
-	// 기즈모가 선택이 되었을 때 호출되는 함수
-	void OnDrawGizmosSelected()
-	{
-		drawCube(Color.green);
-	}
+	//// 기즈모가 선택이 되었을 때 호출되는 함수
+	//void OnDrawGizmosSelected()
+	//{
+	//	drawCube(Color.green);
+	//}
 
 	//
 	// 지정된 색상으로 큐브 1개 그리기
