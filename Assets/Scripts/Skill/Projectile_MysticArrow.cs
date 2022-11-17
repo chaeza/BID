@@ -19,12 +19,13 @@ public class Projectile_MysticArrow : Skill
         skillInfo.cooltime = 2;
         skillInfo.skillDirY = 3;
         skillInfo.skillType = SkillType.Projectile;
+        skillInfo.hitReturn = true;
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
         skillInfo.hitBoxInfo.interval = 1;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.Slow;
-        skillInfo.hitBoxInfo.damageInfo.attackDamage = 5;
+        skillInfo.hitBoxInfo.damageInfo.attackDamage = 10;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 30;
         skillInfo.hitBoxInfo.damageInfo.timer = 1;
@@ -44,6 +45,11 @@ public class Projectile_MysticArrow : Skill
         transform.LookAt(desiredDir);
         //
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
+    }
+    protected override void HitFire(GameObject attacker, GameObject hit)
+    {
+        GameObject eff = PhotonNetwork.Instantiate("MysticArrow_Boom", hit.transform.position+new Vector3(0,2,0), Quaternion.identity);
+        GameMgr.Instance.DestroyTarget(eff, 1f);
     }
     IEnumerator SkillFire_Delay(float time)
     {
