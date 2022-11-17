@@ -26,6 +26,7 @@ public class UIMgr : MonoBehaviourPun
     [SerializeField] private Text[] playerInfoText;
     private int[] KillCount = new int[5];
 
+    [SerializeField] private GameObject blackUI;
     private TextMeshProUGUI[] skillCoolTimeText = new TextMeshProUGUI[2];
     private GameObject[] skillCoolTime = new GameObject[2];
     private GameObject[] skillUI = new GameObject[2];
@@ -45,12 +46,14 @@ public class UIMgr : MonoBehaviourPun
     public event OnSetItemDescription onSetItemDescription;
     public delegate void OnSetSkillDescription();
     public event OnSetSkillDescription onSetSkillDescription;
-    private Vector2 createPoint = new Vector2(130, 98);
-    private Vector2 dashCreatePoint = new Vector2(360, 98);
+    private Vector2 createPoint = new Vector2(143, 78);
+    private Vector2 dashCreatePoint = new Vector2(347, 78);
     private Vector2[] itemCreatePoint = { new Vector2(728, 63), new Vector2(888, 63), new Vector2(1046, 63), new Vector2(1207, 63) };
 
     private void Awake()
     {
+        SetBlackUI();
+        blackUI.SetActive(true);
         skillSilence[0] = Instantiate(skillSilenceIcon, createPoint, Quaternion.identity, GameObject.Find("Canvas").transform);
         skillSilence[1] = Instantiate(skillSilenceIcon, dashCreatePoint, Quaternion.identity, GameObject.Find("Canvas").transform);
         skillSilence[0].transform.SetParent(silenceIconP.transform);
@@ -123,29 +126,49 @@ public class UIMgr : MonoBehaviourPun
         }
     }
     string infoName;
+    RawImage c1;
+     Color c2;
+    public void SetBlackUI()
+    {
+        c1= blackUI.GetComponent<RawImage>();
+        c2 = c1.color;
+        StartCoroutine(SetBlackUI_FadeIn());
+    }
+    IEnumerator SetBlackUI_FadeIn()
+    {
+        for(int i = 0; i<100;i++)
+        {
+
+            yield return new WaitForSeconds(0.01f);
+            c2.a -= 0.01f;
+            c1.color = c2;
+        }
+        blackUI.SetActive(false);
+
+    }
     public void PlayInfoChange(int infoNum, float infoValue)
     {
         if (infoNum == 0)
         {
-            infoName = "AttackPower ";
+            infoName = "AttackPower : ";
         }
         else if (infoNum == 1)
         {
-            infoName = "AttackRange ";
+            infoName = "AttackRange : ";
         }
         else if (infoNum == 2)
         {
-            infoName = "AttackSpeed ";
+            infoName = "AttackSpeed : ";
         }
         else if (infoNum == 3)
         {
-            infoName = "MoveSpeed ";
+            infoName = "MoveSpeed : ";
         }
         else if (infoNum == 4)
         {
-            infoName = "DamageDecrease ";
+            infoName = "DamageDecrease : ";
         }
-        playerInfoText[infoNum].text = infoName + infoNum.ToString();
+        playerInfoText[infoNum].text = infoName + infoValue;
     }
 
     public void TabUpDate(int PlayerNum, state alive)

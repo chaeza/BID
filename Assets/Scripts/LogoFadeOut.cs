@@ -27,17 +27,62 @@ public class LogoFadeOut : MonoBehaviour
         StartCoroutine(DarkHole());
 
     }
-        IEnumerator DarkHole()
+    IEnumerator DarkHole()
     {
         Color tempColor = darkHole.color;
         for (int i = 90; i > 0; i--)
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.02f);
             tempColor.a -= 0.01f;
             darkHole.color = tempColor;
             //yield return null;
         }
         darkHole.gameObject.SetActive(false);
+    }
+    Image[] lobby;
+    Text[] lobbyText;
+    RawImage rawImage;
+    public void LobbyFadeIn(GameObject obj)
+    {
+        rawImage= obj.GetComponentInChildren<RawImage>();
+        lobby = obj.GetComponentsInChildren<Image>();
+        lobbyText = obj.GetComponentsInChildren<Text>();
+        StartCoroutine(Lobby(obj));
+
+    }
+    IEnumerator Lobby(GameObject obj)
+    {
+
+        Color[] color1 = new Color[lobby.Length];
+        Color[] color2 = new Color[lobbyText.Length];
+        Color color3 = new Color();
+
+        for(int i = 0; i<color1.Length;i++)
+        {
+            color1[i] = lobby[i].color;
+            color2[i] = lobbyText[i].color;
+            color3 = rawImage.color;
+            color1[i].a =0f;
+            color2[i].a =0f;
+            color3.a =0f;
+            lobby[i].color = color1[i];
+            lobbyText[i].color = color2[i];
+            rawImage.color = color3;
+
+        }
+        for (int i = 100; i > 0; i--)
+        {
+            yield return new WaitForSeconds(0.02f);
+            for (int j = 0; j < color1.Length; j++)
+            {
+                color1[j].a += 0.01f;
+                color2[j].a += 0.01f;
+                color3.a += 0.01f;
+                lobby[j].color = color1[j];
+                lobbyText[j].color = color2[j];
+                rawImage.color = color3;
+            }
+        }
     }
     IEnumerator FadeOut(RawImage ri)
     {

@@ -39,6 +39,12 @@ public class Buff_BasicAttackUp : Skill
         Debug.Log("아이템사용");
         playerInfo.PlayInfoChange(ChangeableInfo.basicAttackDamage, 2f);
         GameObject eff = PhotonNetwork.Instantiate("BasicAttackDamageEff", transform.position, Quaternion.identity);
+        MyPosInfo myPosInfo;
+        myPosInfo.myPos = gameObject.transform;
+        myPosInfo.yPos = 3;
+        myPosInfo.xPos = 0;
+        myPosInfo.zPos = 0;
+        eff.AddComponent<MyPos>().myPosInfo = myPosInfo;
         //
         GameMgr.Instance.uIMgr.UseItem(itemNum);
         Destroy(GetComponent<Buff_BasicAttackUp>());
