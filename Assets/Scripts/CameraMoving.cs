@@ -42,7 +42,7 @@ public class CameraMoving : MonoBehaviour
 
     IEnumerator Skip()
     {
-        yield return new WaitForSeconds(16.6f);
+        yield return new WaitForSeconds(16f);
         text.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
         intro = true;
