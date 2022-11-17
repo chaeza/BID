@@ -16,8 +16,28 @@ PrefabInstance:
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1694025840, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1694025840, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_Acceleration
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1694025840, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1694025840, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: avoidancePriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1694025840, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_ObstacleAvoidanceType
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984988034079729153, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_Constraints
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 2984988034229991135, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_Name

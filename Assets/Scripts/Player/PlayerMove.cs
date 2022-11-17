@@ -83,9 +83,6 @@ public class PlayerMove : MonoBehaviourPun
             if (Vector3.Distance(desiredDir, transform.position) > 0.5f)
             {
                 myAnimator.SetBool("isMove", true);
-                navMeshAgent.isStopped = false;
-                navMeshAgent.updateRotation = true;
-                navMeshAgent.updatePosition = true;
                 isClick = false;
                 navMeshAgent.SetDestination(desiredDir);
             }
@@ -130,10 +127,8 @@ public class PlayerMove : MonoBehaviourPun
     {
         myAnimator.SetBool("isMove", false);
         Debug.Log("stop");
-        navMeshAgent.isStopped = true;
+        navMeshAgent.ResetPath();
         navMeshAgent.velocity = Vector3.zero;
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updatePosition = false;
         isMove = false;
         desiredDir = Vector3.zero;
     }
