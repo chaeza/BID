@@ -27,6 +27,7 @@ public class UIMgr : MonoBehaviourPun
     private int[] KillCount = new int[5];
 
     [SerializeField] private GameObject blackUI;
+    [SerializeField] private Image HPUI;
     private TextMeshProUGUI[] skillCoolTimeText = new TextMeshProUGUI[2];
     private GameObject[] skillCoolTime = new GameObject[2];
     private GameObject[] skillUI = new GameObject[2];
@@ -38,6 +39,7 @@ public class UIMgr : MonoBehaviourPun
     private bool[] setSkillDescription = new bool[2];
     private bool isCanItemDescription = true;
     private bool setItemDescription;
+    
 
 
     public delegate void OnResetCoolTime(int skillNum);
@@ -133,6 +135,10 @@ public class UIMgr : MonoBehaviourPun
         c1= blackUI.GetComponent<RawImage>();
         c2 = c1.color;
         StartCoroutine(SetBlackUI_FadeIn());
+    }
+    public void SetHPUI(float value)
+    {
+        HPUI.fillAmount= value/100;
     }
     IEnumerator SetBlackUI_FadeIn()
     {

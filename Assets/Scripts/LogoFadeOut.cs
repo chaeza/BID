@@ -72,7 +72,7 @@ public class LogoFadeOut : MonoBehaviour
         }
         for (int i = 100; i > 0; i--)
         {
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.015f);
             for (int j = 0; j < color1.Length; j++)
             {
                 color1[j].a += 0.01f;

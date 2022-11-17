@@ -64,7 +64,7 @@ public partial class FollowCam : MonoBehaviour
             mousePos.y = Input.mousePosition.y - 12.89964f;
             transform.position = new Vector3(502.4f - mousePos.x * ratioX + distanceFromPlayerX, transform.position.y, 472.1f - mousePos.y * ratioY + distanceFromPlayerZ);
         }
-        if (Input.GetKey(KeyCode.Y) && followBool == false) followBool = true;
+        if (GameMgr.Instance.playerInput.yKey == KeyCode.Y && followBool == false) followBool = true;
         else if (GameMgr.Instance.playerInput.yKey == KeyCode.Y && followBool == true) followBool = false;
         if (followBool == false)
         {
