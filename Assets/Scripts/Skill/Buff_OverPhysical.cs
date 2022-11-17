@@ -45,10 +45,10 @@ public class Buff_OverPhysical : Skill
             playerInfo.PlayInfoChange(ChangeableInfo.basicAttackRange, -lastOPstate[0]);
             playerInfo.PlayInfoChange(ChangeableInfo.basicMoveSpeed, -lastOPstate[1]);
             playerInfo.PlayInfoChange(ChangeableInfo.damageDecrease, -lastOPstate[2]);
-            playerInfo.PlayInfoChange(ChangeableInfo.basicAttackRange, 2);
+            playerInfo.PlayInfoChange(ChangeableInfo.basicAttackRange, 1);
             playerInfo.PlayInfoChange(ChangeableInfo.basicMoveSpeed, 0);
             playerInfo.PlayInfoChange(ChangeableInfo.damageDecrease, 0);
-            lastOPstate[0] = 2;
+            lastOPstate[0] = 1;
             lastOPstate[1] = 0;
             lastOPstate[2] = 0;
             nowEff.AddComponent<MyPos>().myPosInfo = myPosInfo;

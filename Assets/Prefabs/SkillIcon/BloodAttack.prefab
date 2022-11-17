@@ -141,8 +141,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "OverPhysical\nDescription: \r\nif you click your skill, strengthen one
-    of the three.\nRange300%,MoveSpeed200% and DamageDcrease 20%\nCoolDown : 1 seconds"
+  m_text: 'BloodAttack
+
+    Sprinkle blood to attack enemies.
+
+    Attacks the enemy,
+    dealing 15 damage and absorbing 15 HP.
+
+    Cooldown: 15 seconds'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

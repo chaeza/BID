@@ -23,7 +23,7 @@ public class NonTarget_BloodAttack : Skill
         skillInfo.hitBoxInfo.interval = 0f;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.None;
-        skillInfo.hitBoxInfo.damageInfo.attackDamage = 10;
+        skillInfo.hitBoxInfo.damageInfo.attackDamage = 15;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
         skillInfo.hitBoxInfo.damageInfo.timer = 0f;
@@ -49,7 +49,7 @@ public class NonTarget_BloodAttack : Skill
         eff.transform.LookAt(attacker.transform);
         eff.transform.Rotate(new Vector3(0, 180f, 0));
         StartCoroutine(BloodAbsorptionMotion(attacker, eff));
-        attacker.GetPhotonView().RPC("ChangeHP", RpcTarget.All, 10f);
+        attacker.GetPhotonView().RPC("ChangeHP", RpcTarget.All, 15f);
 
     }
     IEnumerator SkillFire_Delay(float time)

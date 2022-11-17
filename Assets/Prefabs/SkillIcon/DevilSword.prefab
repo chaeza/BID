@@ -143,7 +143,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'DevilSword
 
-    Description: A blade of darkness slashes nearby opponents.
+    A blade of darkness slashes nearby opponents.
 
     Enemies
     hit take 30 damage.

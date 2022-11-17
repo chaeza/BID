@@ -353,9 +353,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB300\uC26C\n\uC124\uBA85: \uC77C\uC815\uC2DC\uAC04\uB3D9\uC548 \uC774\uB3D9\uC18D\uB3C4\uB97C
-    3\uBC30 \uC62C\uB9BD\uB2C8\uB2E4.\n\uC9C0\uC18D\uC2DC\uAC04: 0.5\uCD08\n\uCFE8\uD0C0\uC784
-    : 5\uCD08"
+  m_text: 'OverPhysical
+
+    If you click your skill, strengthen one of the three.
+
+    Range200%,MoveSpeed200%
+    and DamageDcrease 20%
+
+    CoolDown : 1 seconds'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
