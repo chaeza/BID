@@ -29,6 +29,7 @@ public class CameraMoving : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space))
             {
+
                 if (Time.timeScale == 1.0f)
                     Time.timeScale = 3.0f;
                 else
