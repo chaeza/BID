@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1694025840, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1694025840, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2984988034229991135, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -54,6 +62,18 @@ PrefabInstance:
     - target: {fileID: 2984988034230282815, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[10].Name
+      value: isUpperAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[10].Type
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7618632432494235506, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_AnchorMax.x

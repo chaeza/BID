@@ -23,17 +23,17 @@ public class PlayerInput : MonoBehaviour
         else yKey = KeyCode.Alpha0;
 
         #region Emotion & Feel Eff
-        //이모션 및 감정표현 왼쪽 Ctrl, Shift 키
-        if (Input.GetKey(KeyCode.LeftControl)) emotionKey1 = KeyCode.LeftControl;
-        else if (Input.GetKey(KeyCode.LeftShift)) emotionKey1 = KeyCode.LeftShift;
-        else emotionKey1 = KeyCode.Alpha0;
-        //감정표현 키 T
-        if (Input.GetKey(KeyCode.Alpha1)) emotionKey2 = KeyCode.Alpha1;
-        else if(Input.GetKey(KeyCode.Alpha2)) emotionKey2 = KeyCode.Alpha2;
-        else if(Input.GetKey(KeyCode.Alpha3)) emotionKey2 = KeyCode.Alpha3;
-        else if(Input.GetKey(KeyCode.Alpha4)) emotionKey2 = KeyCode.Alpha4;
-        //else if () 로 이모션 추가 
-        else emotionKey2 = KeyCode.Alpha0;
+        ////이모션 및 감정표현 왼쪽 Ctrl, Shift 키
+        //if (Input.GetKey(KeyCode.LeftControl)) emotionKey1 = KeyCode.LeftControl;
+        //else if (Input.GetKey(KeyCode.LeftShift)) emotionKey1 = KeyCode.LeftShift;
+        //else emotionKey1 = KeyCode.Alpha0;
+        ////감정표현 키 T
+        //if (Input.GetKey(KeyCode.Alpha1)) emotionKey2 = KeyCode.Alpha1;
+        //else if(Input.GetKey(KeyCode.Alpha2)) emotionKey2 = KeyCode.Alpha2;
+        //else if(Input.GetKey(KeyCode.Alpha3)) emotionKey2 = KeyCode.Alpha3;
+        //else if(Input.GetKey(KeyCode.Alpha4)) emotionKey2 = KeyCode.Alpha4;
+        ////else if () 로 이모션 추가 
+        //else emotionKey2 = KeyCode.Alpha0;
         #endregion
 
         if (Input.GetKey(KeyCode.Mouse1)) inputKey2 = KeyCode.Mouse1;

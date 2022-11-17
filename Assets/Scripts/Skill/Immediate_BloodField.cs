@@ -39,7 +39,7 @@ public class Immediate_BloodField : Skill
     {
         //
         playerInfo.StayPlayer(0.5f);
-        animator.SetTrigger("isSkill1");
+        animator.SetTrigger("isSkill2");
         StartCoroutine(SkillFire_Delay(0.5f));
         //
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum, 0);
