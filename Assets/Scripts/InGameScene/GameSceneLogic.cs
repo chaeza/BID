@@ -28,12 +28,6 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
         GameMgr.Instance.del_DestroyTarget = PunDes;
         GameMgr.Instance.del_PunFindObject = PunFindObject;
     }
-    public void PlayerCheck2()
-    {
-        playerNumCount++;
-        if (playerNumCount == PhotonNetwork.CurrentRoom.PlayerCount && PhotonNetwork.IsMasterClient)
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-    }
 
     public void PunDes(GameObject desObject, float time)
     {
@@ -255,6 +249,7 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
         callback(res);
 
         Debug.Log("µ· ³ÂÀ½");
+        PhotonNetwork.CurrentRoom.IsOpen = false;
         GameMgr.Instance.gameSceneLogic.gameObject.GetPhotonView().RPC("GameStartFadeIn", RpcTarget.All);
     }
 
