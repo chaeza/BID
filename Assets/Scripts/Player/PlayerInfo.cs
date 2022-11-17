@@ -186,6 +186,8 @@ public class PlayerInfo : MonoBehaviourPun
         GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
         if (gameObject.GetPhotonView().ViewID == attackerViewID2)
         {
+            curHP = 0;
+            HPTransfer(curHP);
             GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
             return;
         }
@@ -210,8 +212,8 @@ public class PlayerInfo : MonoBehaviourPun
     }
     public void ChangeMoveSpeed(float value)
     {
-        GameMgr.Instance.uIMgr.PlayInfoChange(3, basicAttackSpeed);
         moveSpeed = value;
+        GameMgr.Instance.uIMgr.PlayInfoChange(3, moveSpeed);
         if (onChangeMoveSpeed != null) onChangeMoveSpeed();
     }
 
@@ -230,8 +232,7 @@ public class PlayerInfo : MonoBehaviourPun
         unbeatableCoroutine = StartCoroutine(Unbeatable(time));
 
     }
-    [PunRPC]
-    private void SetDamageDecrease(float value, float time)
+    public void SetDamageDecrease(float value, float time)
     {
         StartCoroutine(DamageDecrease(value, time));
     }
@@ -276,9 +277,9 @@ public class PlayerInfo : MonoBehaviourPun
     }
     IEnumerator DamageDecrease(float value, float time)
     {
-        damageDecrease += value;
+        PlayInfoChange(ChangeableInfo.damageDecrease, value);
         yield return new WaitForSeconds(time);
-        damageDecrease -= value;
+        PlayInfoChange(ChangeableInfo.damageDecrease, -value);
         yield break;
     }
     IEnumerator Unbeatable(float time)

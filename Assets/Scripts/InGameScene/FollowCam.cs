@@ -8,7 +8,6 @@ public partial class FollowCam : MonoBehaviour
     [SerializeField] private float distanceFromPlayerY;
     [SerializeField] private float distanceFromPlayerX;
     [SerializeField] private float cameraSpeed;
-    [SerializeField] private GameObject rayCamara;
     [SerializeField] private ViewScreen viewScreen;
     [SerializeField] private Vector2 mousePos;
     private Portal[] portals;
@@ -70,22 +69,22 @@ public partial class FollowCam : MonoBehaviour
         if (followBool == false)
         {
             // 오른쪽
-            if (Input.mousePosition.x >= 1890 && viewScreen.transform.localPosition.x <= 90)
+            if (Input.mousePosition.x >= 1909 && viewScreen.transform.localPosition.x <= 90)
             {
                 transform.position = transform.position + rightDir * cameraSpeed;
             }
             // 왼쪽
-            else if (Input.mousePosition.x <= 10 && viewScreen.transform.localPosition.x >= -90)
+            else if (Input.mousePosition.x <= 5 && viewScreen.transform.localPosition.x >= -90)
             {
                 transform.position = transform.position - rightDir * cameraSpeed;
             }
             // 위쪽
-            if (Input.mousePosition.y >= 1050 && viewScreen.transform.localPosition.y <= 103)
+            if (Input.mousePosition.y >= 1079 && viewScreen.transform.localPosition.y <= 103)
             {
                 transform.position = transform.position + forwardDir * cameraSpeed;
             }
             // 아래쪽
-            else if (Input.mousePosition.y <= 5 && viewScreen.transform.localPosition.y >= -103)
+            else if (Input.mousePosition.y <= 3 && viewScreen.transform.localPosition.y >= -103)
             {
                 transform.position = transform.position - forwardDir * cameraSpeed;
             }
