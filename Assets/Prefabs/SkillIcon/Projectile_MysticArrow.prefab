@@ -143,13 +143,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Energy Ball
 
-    Description: Throws energy in a straight line, dealing
-    damage and slowing down.
+    Throws energy in a straight line, dealing damage and
+    slowing down.
 
     30% slowdown for 1 second Damage: 5
 
-    Cooldown:
-    3 seconds'
+    Cooldown: 3 seconds'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}

@@ -66,9 +66,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Blood Field\r\nDescription: Spreads an area of \u200B\u200Bblood around
-    you that damages and slows enemies.\r\n50% slow for 3 seconds Damage: 25\r\nCooldown:
-    20 seconds"
+  m_text: "Blood Field\r\nSpreads an area of \u200B\u200Bblood around you that damages
+    and slows enemies.\r\n50% slow for 3 seconds Damage: 25\r\nCooldown: 20 seconds"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
