@@ -30,6 +30,7 @@ public class PlayerSpawner : MonoBehaviourPunCallbacks
         GameMgr.Instance.followCam.SetPlayerPos(player.transform);
         GameMgr.Instance.codeExample.PlayerIndicator = player.GetComponentInChildren<RpgIndicator>();
         miniMapRender.GetComponent<MiniMapRender>().SetTarget(player);
+        player.GetPhotonView().RPC("MyMiniMapRender",RpcTarget.All, miniMapRender.gameObject.GetPhotonView().ViewID);
 
       //  GameMgr.Instance.gameSceneLogic.gameObject.GetPhotonView().RPC("PlayerCheck2", RpcTarget.All);
     }

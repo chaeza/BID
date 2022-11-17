@@ -82,6 +82,7 @@ public partial class Portal : MonoBehaviourPun
             else if (portalData.isCenter == true)
             {
                 int ran = 0;
+                int i = 0;
                 while (true)
                 {
                     ran = Random.Range(0, portalData.potalTotalNum);
@@ -98,6 +99,9 @@ public partial class Portal : MonoBehaviourPun
                     }
                     else
                         Debug.Log("파괴된 오브젝트");
+
+                    i++;
+                    if (i > portalData.potalTotalNum) break;
                 }
             }
             player.GetComponent<PlayerMove>().navMeshAgent.enabled = true;
