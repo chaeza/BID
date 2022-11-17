@@ -29,7 +29,6 @@ public class ItemSpawner : MonoBehaviourPun
 
     private void Start()
     {
-        items = Instantiate(items, Vector3.up * 10000, Quaternion.identity);
         newSpawnArea = new List<SpawnArea_Ver2>(itemMaxCount);
         if (PhotonNetwork.IsMasterClient)
         { RandomItemSpawn(itemMaxCount); }
@@ -51,8 +50,6 @@ public class ItemSpawner : MonoBehaviourPun
         {
             Debug.Log("생성됨");
             GameObject box = PhotonNetwork.Instantiate("ItemBox", itemSpecialAreaPos.getRandomPos(), Quaternion.identity);
-
-            box.transform.SetParent(items.transform);
             Debug.Log("위치함");
         }
         for (int i = 4; i < value; i++)
@@ -62,31 +59,14 @@ public class ItemSpawner : MonoBehaviourPun
             {
                 randomItemPos = Random.Range(0, itemAreaPos.Count);
                 GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos[randomItemPos].getRandomPos(), Quaternion.identity);
-                box.transform.SetParent(items.transform);
             }
             else
             {
                 randomItemPos = Random.Range(0, itemAreaPos2.Count);
                 GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos2[randomItemPos].getRandomPos(), Quaternion.identity);
-                box.transform.SetParent(items.transform);
             }
         }
-        gameObject.GetPhotonView().RPC("SortItmes", RpcTarget.All);
     }
-
-    [PunRPC]
-    public void SortItmes()
-    {
-        
-        ItemBoxPool[] boxesScript = FindObjectsOfType<ItemBoxPool>();
-        GameObject[] boxes = new GameObject[boxesScript.Length];
-        for( int i = 0; i < boxesScript.Length; i++ )
-        {
-            boxes[i] = boxesScript[i].gameObject;
-            boxes[i].transform.SetParent(items.transform);
-        }
-    }
-
 
 
 
