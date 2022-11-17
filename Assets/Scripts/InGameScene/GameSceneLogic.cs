@@ -12,6 +12,7 @@ using UnityEngine.UI;
 
 public class GameSceneLogic : MonoBehaviourPunCallbacks
 {
+
     private int alivePlayerNum;
     PlayerInfo[] AliveNum;
     public int playerNumCount;

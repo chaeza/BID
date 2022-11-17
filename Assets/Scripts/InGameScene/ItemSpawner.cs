@@ -13,11 +13,11 @@ public class ItemSpawner : MonoBehaviourPun
     [SerializeField] private SpawnArea_Ver2 itemSpecialAreaPos = null;
 
     [Header("아이템들모음")]
-    [SerializeField] private GameObject items = null;
+    [SerializeField] private GameObject items;
     //SpawnArea_Ver2[] itemSpwanPos;
     //아이템 개수
     [Header("아이템 개수")]
-    [SerializeField] private int itemMaxCount = 0;
+    public int itemMaxCount = 0;
 
     //아이템 풀을 담을 큐
     Queue<GameObject> itemQueue = new Queue<GameObject>();
@@ -29,34 +29,36 @@ public class ItemSpawner : MonoBehaviourPun
 
     private void Start()
     {
+        items = Instantiate(items, Vector3.up * 10000, Quaternion.identity);
         newSpawnArea = new List<SpawnArea_Ver2>(itemMaxCount);
-        if (PhotonNetwork.IsMasterClient) 
+        if (PhotonNetwork.IsMasterClient)
         { RandomItemSpawn(itemMaxCount); }
-            
+
         for (int i = 0; i < itemAreaPos.Count; i++)
         {
             newSpawnArea.Add(itemAreaPos[i]);
         }
-        for(int i =0; i < itemAreaPos2.Count; i++)
+        for (int i = 0; i < itemAreaPos2.Count; i++)
         {
             newSpawnArea.Add(itemAreaPos2[i]);
         }
 
-        
+
     }
     public void RandomItemSpawn(int value)
     {
-        for(int i=0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             Debug.Log("생성됨");
             GameObject box = PhotonNetwork.Instantiate("ItemBox", itemSpecialAreaPos.getRandomPos(), Quaternion.identity);
+
             box.transform.SetParent(items.transform);
             Debug.Log("위치함");
         }
         for (int i = 4; i < value; i++)
         {
             int ran = Random.Range(0, 4);
-            if(ran ==0 || ran == 1 || ran ==2)
+            if (ran == 0 || ran == 1 || ran == 2)
             {
                 randomItemPos = Random.Range(0, itemAreaPos.Count);
                 GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos[randomItemPos].getRandomPos(), Quaternion.identity);
@@ -69,7 +71,25 @@ public class ItemSpawner : MonoBehaviourPun
                 box.transform.SetParent(items.transform);
             }
         }
+        gameObject.GetPhotonView().RPC("SortItmes", RpcTarget.All);
     }
+
+    [PunRPC]
+    public void SortItmes()
+    {
+        
+        ItemBoxPool[] boxesScript = FindObjectsOfType<ItemBoxPool>();
+        GameObject[] boxes = new GameObject[boxesScript.Length];
+        for( int i = 0; i < boxesScript.Length; i++ )
+        {
+            boxes[i] = boxesScript[i].gameObject;
+            boxes[i].transform.SetParent(items.transform);
+        }
+    }
+
+
+
+
     public void RemoveItemList(GameObject Pos)
     {
         newSpawnArea.Remove(Pos.GetComponent<SpawnArea_Ver2>());
