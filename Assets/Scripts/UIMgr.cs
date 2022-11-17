@@ -179,11 +179,13 @@ public class UIMgr : MonoBehaviourPun
 
     public void TabUpDate(int PlayerNum, state alive)
     {
-
         if (alive == state.None)
             playerNameText[PlayerNum].text = PhotonNetwork.PlayerList[PlayerNum].NickName;
         else playerNameText[PlayerNum].color = Color.red;
-        playerKillText[PlayerNum].text = $"KILL : {KillCount[PlayerNum]}";
+        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        {
+            playerKillText[i].text = $"KILL : {KillCount[i]/PhotonNetwork.PlayerList.Length}";
+        }
     }
     public void KillUpDate(int Num)
     {
