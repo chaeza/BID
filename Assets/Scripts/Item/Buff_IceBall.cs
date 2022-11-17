@@ -23,6 +23,7 @@ public class Buff_IceBall : Skill
 
         skillInfo.hitBoxInfo.attackType = AttackType.Shot;
         skillInfo.hitBoxInfo.interval = 1;
+        skillInfo.hitReturn = true;
 
         skillInfo.hitBoxInfo.damageInfo.attackState = state.Stun;
         skillInfo.hitBoxInfo.damageInfo.attackDamage = 0;
@@ -38,7 +39,11 @@ public class Buff_IceBall : Skill
         else if (itemNum == 3 && GameMgr.Instance.playerInput.inputKey == KeyCode.R) SkillUse();
         else if (GameMgr.Instance.playerInput.inputKey == KeyCode.Mouse0) SkillClick(Input.mousePosition);
     }
-
+    protected override void HitFire(GameObject attacker, GameObject hit)
+    {
+        GameObject eff = PhotonNetwork.Instantiate("MysticArrow_Boom", hit.transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        GameMgr.Instance.DestroyTarget(eff, 1f);
+    }
     protected override void SkillFire()
     {
         if (skillInfo.skillType == SkillType.Immediate) GameMgr.Instance.uIMgr.onSetItemDescription -= ItemRadius;

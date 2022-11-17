@@ -39,6 +39,8 @@ public class PlayerStatusUI : MonoBehaviourPun
     private void SetHPvalue(float playerHP)
     {
         hpBar.value = playerHP;
+        if(photonView.IsMine==true)
+        GameMgr.Instance.uIMgr.SetHPUI(playerHP);
     }
 
 }
