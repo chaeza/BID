@@ -355,13 +355,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'SwordStab
 
-    Description: Spreads the sword in a straight line, dealing
-    damage and temporarily stunning it.
+    Spreads the sword in a straight line, dealing damage and
+    temporarily stunning it.
 
     0.5 second stun damage: 10
 
-    Cooldown:
-    5 seconds'
+    Cooldown: 5 seconds'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
