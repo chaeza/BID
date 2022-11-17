@@ -43,4 +43,5 @@ public partial class GameMgr : Singleton<GameMgr>
     [field: SerializeField]
     public PotalSystem potalSystem { get; private set; } = null;
 
+
 }

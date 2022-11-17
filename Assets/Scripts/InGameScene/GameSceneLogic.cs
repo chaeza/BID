@@ -56,6 +56,11 @@ public class GameSceneLogic : MonoBehaviourPunCallbacks
         GameMgr.Instance.uIMgr.SetBlackUI();
         GameMgr.Instance.playerInput.gameStartFaidIn = true;
     }
+    [PunRPC]
+    public void KillCount(int Num)
+    {
+        GameMgr.Instance.uIMgr.KillUpDate(Num);
+    }
 
     public void AliveNumCheck()
     {
