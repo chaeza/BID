@@ -26,12 +26,14 @@ public class ItemSpawner : MonoBehaviourPun
     //아이템
     private int itemCount = 0;
     private int randomItemPos;
-
+    [System.Obsolete]
     private void Start()
     {
         newSpawnArea = new List<SpawnArea_Ver2>(itemMaxCount);
         if (PhotonNetwork.IsMasterClient)
-        { RandomItemSpawn(itemMaxCount); }
+        { 
+            RandomItemSpawn(itemMaxCount);
+        }
 
         for (int i = 0; i < itemAreaPos.Count; i++)
         {
@@ -44,12 +46,13 @@ public class ItemSpawner : MonoBehaviourPun
 
 
     }
+    [System.Obsolete]
     public void RandomItemSpawn(int value)
     {
         for (int i = 0; i < 4; i++)
         {
             Debug.Log("생성됨");
-            GameObject box = PhotonNetwork.Instantiate("ItemBox", itemSpecialAreaPos.getRandomPos(), Quaternion.identity);
+            GameObject box = PhotonNetwork.InstantiateSceneObject("ItemBox", itemSpecialAreaPos.getRandomPos(), Quaternion.identity);
             Debug.Log("위치함");
         }
         for (int i = 4; i < value; i++)
@@ -58,12 +61,12 @@ public class ItemSpawner : MonoBehaviourPun
             if (ran == 0 || ran == 1 || ran == 2)
             {
                 randomItemPos = Random.Range(0, itemAreaPos.Count);
-                GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos[randomItemPos].getRandomPos(), Quaternion.identity);
+                GameObject box = PhotonNetwork.InstantiateSceneObject("ItemBox", itemAreaPos[randomItemPos].getRandomPos(), Quaternion.identity);
             }
             else
             {
                 randomItemPos = Random.Range(0, itemAreaPos2.Count);
-                GameObject box = PhotonNetwork.Instantiate("ItemBox", itemAreaPos2[randomItemPos].getRandomPos(), Quaternion.identity);
+                GameObject box = PhotonNetwork.InstantiateSceneObject("ItemBox", itemAreaPos2[randomItemPos].getRandomPos(), Quaternion.identity);
             }
         }
     }
