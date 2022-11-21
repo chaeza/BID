@@ -197,10 +197,8 @@ public class PlayerInfo : MonoBehaviourPun
         }
         else
         {
-            // if (photonView.IsMine == true)
-            //     GameMgr.Instance.gameSceneLogic.gameObject.GetPhotonView().RPC("KillCount", RpcTarget.All, GameMgr.Instance.PunFindObject(attackerViewID2).GetComponent<PlayerInfo>().myPlayerNum);
-
-            GameMgr.Instance.uIMgr.KillUpDate(GameMgr.Instance.PunFindObject(attackerViewID2).GetComponent<PlayerInfo>().myPlayerNum);
+            if (photonView.IsMine == true)
+                 GameMgr.Instance.gameSceneLogic.gameObject.GetPhotonView().RPC("KillCount", RpcTarget.All, GameMgr.Instance.PunFindObject(attackerViewID2).GetComponent<PlayerInfo>().myPlayerNum);
             GameMgr.Instance.uIMgr.TabUpDate(myPlayerNum, state.Die);
         }
     }

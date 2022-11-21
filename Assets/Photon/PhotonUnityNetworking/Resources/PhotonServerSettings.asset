@@ -76,6 +76,7 @@ MonoBehaviour:
   - SortItmes
   - MyMiniMapRender
   - KillCount
+  - RandomItemSpawn
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

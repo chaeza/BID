@@ -21,11 +21,11 @@ public class NonTarget_FallTheRain : Skill
         skillInfo.hitBoxInfo.attackType = AttackType.Continuous;
         skillInfo.hitBoxInfo.interval = 0.5f;
 
-        skillInfo.hitBoxInfo.damageInfo.attackState = state.Slow;
+        skillInfo.hitBoxInfo.damageInfo.attackState = state.None;
         skillInfo.hitBoxInfo.damageInfo.attackDamage = 5;
         skillInfo.hitBoxInfo.damageInfo.attackerViewID = gameObject.GetPhotonView().ViewID;
-        skillInfo.hitBoxInfo.damageInfo.slowDownRate = 30;
-        skillInfo.hitBoxInfo.damageInfo.timer = 1f;
+        skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
+        skillInfo.hitBoxInfo.damageInfo.timer = 0f;
     }
 
     private void Update()
