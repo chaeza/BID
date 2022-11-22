@@ -23,9 +23,7 @@ public class LogoFadeOut : MonoBehaviour
 
     public void DarkHoleFadeOut()
     {
-        Debug.Log(" »ç¤Ó¤©ÇØ");
         StartCoroutine(DarkHole());
-
     }
     IEnumerator DarkHole()
     {

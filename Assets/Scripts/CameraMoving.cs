@@ -32,12 +32,13 @@ public class CameraMoving : MonoBehaviour
 
                 if (Time.timeScale == 1.0f)
                     Time.timeScale = 3.0f;
-                else
-                    Time.timeScale = 1.0f;
+              
                 // Adjust fixed delta time according to timescale
                 // The fixed delta time will now be 0.02 real-time seconds per frame
                 Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
             }
+            else
+                Time.timeScale = 1.0f;
         }
     }
 
