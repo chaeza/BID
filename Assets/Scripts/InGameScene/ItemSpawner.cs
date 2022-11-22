@@ -122,7 +122,7 @@ public class ItemSpawner : MonoBehaviourPun
 
     IEnumerator TenSec()
     {
-        yield return new WaitForSeconds(45f);
+        yield return new WaitForSeconds(30f);
 
         if (PhotonNetwork.IsMasterClient)
         {
