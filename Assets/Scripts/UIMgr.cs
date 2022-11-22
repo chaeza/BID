@@ -48,16 +48,14 @@ public class UIMgr : MonoBehaviourPun
     public event OnSetItemDescription onSetItemDescription;
     public delegate void OnSetSkillDescription();
     public event OnSetSkillDescription onSetSkillDescription;
-    private Vector2 createPoint = new Vector2(143, 78);
-    private Vector2 dashCreatePoint = new Vector2(347, 78);
-    private Vector2[] itemCreatePoint = { new Vector2(728, 63), new Vector2(888, 63), new Vector2(1046, 63), new Vector2(1207, 63) };
+    private Vector3[] itemCreatePoint = { new Vector3(2, 0, 0), new Vector3(162, 0, 0), new Vector3(321, 0, 0), new Vector3(482, 0, 0) };
 
     private void Awake()
     {
         SetBlackUI();
         blackUI.SetActive(true);
-        skillSilence[0] = Instantiate(skillSilenceIcon, createPoint, Quaternion.identity, GameObject.Find("Canvas").transform);
-        skillSilence[1] = Instantiate(skillSilenceIcon, dashCreatePoint, Quaternion.identity, GameObject.Find("Canvas").transform);
+        skillSilence[0] = Instantiate(skillSilenceIcon, skillIconP.transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        skillSilence[1] = Instantiate(skillSilenceIcon, skillIconP.transform.position+new Vector3(200,0,0), Quaternion.identity, GameObject.Find("Canvas").transform);
         skillSilence[0].transform.SetParent(silenceIconP.transform);
         skillSilence[1].transform.SetParent(silenceIconP.transform);
     }
@@ -182,14 +180,11 @@ public class UIMgr : MonoBehaviourPun
         if (alive == state.None)
             playerNameText[PlayerNum].text = PhotonNetwork.PlayerList[PlayerNum].NickName;
         else playerNameText[PlayerNum].color = Color.red;
-        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-        {
-            playerKillText[i].text = $"KILL : {KillCount[i]/PhotonNetwork.PlayerList.Length}";
-        }
     }
     public void KillUpDate(int Num)
     {
         KillCount[Num]++;
+        playerKillText[Num].text = $"KILL : {KillCount[Num]}";
     }
     public void EndGame(bool win)
     {
@@ -238,7 +233,7 @@ public class UIMgr : MonoBehaviourPun
     }
     public void SetItemIcon(int itemType, int itemNum)
     {
-        itemUI[itemNum] = Instantiate(itemIcon[itemType], itemCreatePoint[itemNum], Quaternion.identity, GameObject.Find("Canvas").transform);
+        itemUI[itemNum] = Instantiate(itemIcon[itemType], itemIconP.transform.position + itemCreatePoint[itemNum], Quaternion.identity, GameObject.Find("Canvas").transform);
         itemUI[itemNum].transform.SetParent(itemIconP.transform);
         itemDescription[itemNum] = itemUI[itemNum].transform.GetChild(0).gameObject;
     }
@@ -271,8 +266,8 @@ public class UIMgr : MonoBehaviourPun
     //  Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
     public void SetSkillIcon(int skillNum, int num)
     {
-        if (num == 1) skillUI[num] = Instantiate(skillIcon[skillNum], dashCreatePoint, Quaternion.identity, GameObject.Find("Canvas").transform);
-        else skillUI[num] = Instantiate(skillIcon[skillNum], createPoint, Quaternion.identity, GameObject.Find("Canvas").transform);
+        if (num == 1) skillUI[num] = Instantiate(skillIcon[skillNum], skillIconP.transform.position + new Vector3(200, 0, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+        else skillUI[num] = Instantiate(skillIcon[skillNum], skillIconP.transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
         if (skillUI[num] == null)
             Debug.LogError("널인데요??");
         skillUI[num].transform.SetParent(skillIconP.transform);
