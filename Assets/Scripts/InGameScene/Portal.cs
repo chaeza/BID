@@ -97,7 +97,8 @@ public partial class Portal : MonoBehaviourPun
                             player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[ran].gameObject.transform.position + Vector3.right * 5;
                         else if (ran == 6)
                             player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[ran].gameObject.transform.position + Vector3.forward * 5;
-                        cameraReSetting();
+                        if (player.gameObject.GetPhotonView().IsMine)
+                            cameraReSetting();
                         break;
                     }
                     else
