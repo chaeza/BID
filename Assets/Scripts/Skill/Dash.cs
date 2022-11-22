@@ -14,7 +14,7 @@ public class Dash : Skill
         skillInfo.skillType = SkillType.Buff;
         GameMgr.Instance.uIMgr.SetSkillIcon(0, 1);
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.F) SkillUse();

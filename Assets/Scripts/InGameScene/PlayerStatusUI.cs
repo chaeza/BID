@@ -31,7 +31,7 @@ public class PlayerStatusUI : MonoBehaviourPun
         nickName.text = name;
     }
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //카메라 보기
         gameObject.transform.LookAt(transform.position + cam.rotation * Vector3.forward, cam.rotation * Vector3.up);
