@@ -26,9 +26,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject lobbyPanel;
     public GameObject[] readyButton;
     public GameObject[] lobbyTorchlightOn;
-    public Text[] lobbyTorchlightOff;
+    public GameObject[] lobbyTorchlightOff;
+    public GameObject vote;
+    public Text voteText;
+    public Text voteCountText;
 
     [Header("LobbyNickNameScene")]
+    public Button agreeButton;
+    public Button theOppositeCountButton;
     public Button lobbyButton;
     public RawImage lobbyInsertImage;
     public RawImage lobbyGameLogo;
@@ -100,7 +105,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         //마스터 서버 접속 요청
         PhotonNetwork.ConnectUsingSettings(); //Photon.Pun 내부 클래스
-        Debug.Log(PhotonNetwork.NetworkClientState+"*********************");
+        Debug.Log(PhotonNetwork.NetworkClientState + "*********************");
     }
 
     public override void OnConnectedToMaster()
@@ -159,10 +164,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     IEnumerator DoorPos()
     {
-       // lobbyButton.gameObject.GetComponent<RawImage>().enabled = false;
+        // lobbyButton.gameObject.GetComponent<RawImage>().enabled = false;
         lobbyButton.gameObject.SetActive(false);
         lobbyInsertImage.gameObject.SetActive(false);
-       // lobbyGameLogo.gameObject.SetActive(false);
+        // lobbyGameLogo.gameObject.SetActive(false);
 
         //yield return new WaitForSeconds(0.8f);
 
@@ -181,7 +186,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             }
             time -= Time.deltaTime;
             yield return new WaitForFixedUpdate();
-          
+
         }
         logoFadeOut.DarkHoleFadeOut();
         lobbyleftDoor.gameObject.SetActive(false);
@@ -359,7 +364,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     #region 버튼 클릭
     public void ButtonClick()
     {
+        
         if (fadeIn == false) return;
+        if (isDropOut == true) return;
         gameObject.GetPhotonView().RPC("ZeroCounT", RpcTarget.MasterClient);
         if (myReadyState == ReadyState.Ready)
         {
@@ -371,6 +378,118 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             myReadyState = ReadyState.Ready;
             SortedPlayer();
         }
+    }
+    #endregion 
+    #region 강퇴버튼
+    private int playerDropOutNum;
+    private bool isDropOut;
+    private bool isVote;
+    private int agreeCount;
+    private int theOppositeCount;
+
+    public void DropOutClick0()
+    {
+        if (isDropOut == true) return;
+        if (readyButton[0].GetComponent<Image>().color == Color.yellow) return;
+        gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 0);
+    }
+    public void DropOutClick1()
+    {
+        if (isDropOut == true) return;
+        if (readyButton[1].GetComponent<Image>().color == Color.yellow) return;
+        gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 1);
+    }
+    public void DropOutClick2()
+    {
+        if (isDropOut == true) return;
+        if (readyButton[2].GetComponent<Image>().color == Color.yellow) return;
+        gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 2);
+    }
+    public void DropOutClick3()
+    {
+        if (isDropOut == true) return;
+        if (readyButton[3].GetComponent<Image>().color == Color.yellow) return;
+        gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 3);
+    }
+    public void DropOutClick4()
+    {
+        if (isDropOut == true) return;
+        if (readyButton[4].GetComponent<Image>().color == Color.yellow) return;
+        gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 4);
+    }
+    public void Agree()
+    {
+        if (isVote == true) return;
+        isVote = true;
+        gameObject.GetPhotonView().RPC("VoteMaster", RpcTarget.All, true);
+        agreeButton.GetComponent<Image>().color = Color.yellow;
+
+    }
+    public void TheOpposite()
+    {
+        if (isVote == true) return;
+        isVote = true;
+        gameObject.GetPhotonView().RPC("VoteMaster", RpcTarget.All, false);
+        theOppositeCountButton.GetComponent<Image>().color = Color.yellow;
+    }
+    [PunRPC]
+    public void VoteMaster(bool vote)
+    {
+        if (vote == true) agreeCount++;
+        else if (vote == false) theOppositeCount++;
+
+    }
+    [PunRPC]
+    public void DropOutNum(int Num)
+    {
+        if (Num == 5)
+        {
+            isDropOut = false;
+            isVote = false;
+            vote.SetActive(false);
+            agreeCount = 0;
+            theOppositeCount = 0;
+            theOppositeCountButton.GetComponent<Image>().color = Color.white;
+            agreeButton.GetComponent<Image>().color = Color.white;
+
+        }
+        else
+        {
+            isDropOut = true;
+            playerDropOutNum = Num;
+            vote.SetActive(true);
+            voteText.text = $"{PhotonNetwork.PlayerList[Num].NickName} Player Drop Out";
+            StartCoroutine(DropOutNum_Delay());
+        }
+    }
+    IEnumerator DropOutNum_Delay()
+    {
+        voteCountText.text = "5";
+        yield return new WaitForSeconds(1f);
+        voteCountText.text = "4";
+        yield return new WaitForSeconds(1f);
+        voteCountText.text = "3";
+        yield return new WaitForSeconds(1f);
+        voteCountText.text = "2";
+        yield return new WaitForSeconds(1f);
+        voteCountText.text = "1";
+        yield return new WaitForSeconds(1f);
+        if (PhotonNetwork.IsMasterClient == true)
+        {
+            if (agreeCount > theOppositeCount)
+            {
+                gameObject.GetPhotonView().RPC("GetOutHere", RpcTarget.All, playerDropOutNum);
+            }
+            gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 5);
+        }
+
+    }
+    [PunRPC]
+    public void GetOutHere(int Num)
+    {
+        if (PhotonNetwork.PlayerList[Num].NickName != PhotonNetwork.NickName) return;
+        PhotonNetwork.Disconnect();
+        PhotonNetwork.LoadLevel("TitleScene");
     }
     #endregion 
     //게임 시작 2초 지연
@@ -448,7 +567,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                 btnConnect.interactable = true;
             }
         });
-  
+
     }
     delegate void resCallback_GetUserInfo(Res_UserProfile response);
     IEnumerator requestGetUserInfo(resCallback_GetUserInfo callback)
