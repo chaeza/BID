@@ -46,6 +46,7 @@ public class ItemSpawner : MonoBehaviourPun
 
 
     }
+    [PunRPC]
     [System.Obsolete]
     public void RandomItemSpawn(int value)
     {
@@ -106,6 +107,7 @@ public class ItemSpawner : MonoBehaviourPun
         Debug.Log("ReleasePool");
         if (GameMgr.Instance.PunFindObject(viewID) != null) Release(GameMgr.Instance.PunFindObject(viewID));
     }
+    [PunRPC]
     public void Release(GameObject obj)
     {   //큐로 다시 보낸다
         Debug.Log("Release");
