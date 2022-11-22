@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 47972
+  controlID: 56052
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 47973
+  controlID: 56053
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -412,14 +412,14 @@ MonoBehaviour:
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
-  m_2DMode: 0
+  m_2DMode: 1
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -344.22186, y: -413.08572, z: 1958.8639}
+    m_Target: {x: 400.52798, y: 438.5063, z: 57.105217}
     speed: 2
-    m_Value: {x: -344.22186, y: -413.08572, z: 1958.8639}
+    m_Value: {x: 400.52798, y: 438.5063, z: 57.105217}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -448,17 +448,17 @@ MonoBehaviour:
       m_Size: {x: 0, y: 0}
     yGrid:
       m_Fade:
-        m_Target: 1
+        m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
     zGrid:
       m_Fade:
-        m_Target: 0
+        m_Target: 1
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -466,17 +466,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.18926328, y: 0.2465192, z: -0.049153823, w: -0.94920844}
+    m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: -0.1892628, y: 0.24651858, z: -0.0491537, w: -0.94920605}
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1620.4736
+    m_Target: 582.1792
     speed: 2
-    m_Value: 1620.4736
+    m_Value: 582.1792
   m_Ortho:
-    m_Target: 0
+    m_Target: 1
     speed: 2
-    m_Value: 0
+    m_Value: 1
   m_CameraSettings:
     m_Speed: 2
     m_SpeedNormalized: 1
@@ -490,7 +490,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.18926328, y: 0.2465192, z: -0.049153823, w: -0.94920844}
+  m_LastSceneViewRotation: {x: -0.08420697, y: -0.008373381, z: 0.00070755964, w: -0.9964154}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -643,7 +643,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 47910
+  controlID: 56076
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -706,18 +706,18 @@ MonoBehaviour:
       m_ExpandedIDs: c8fcecfffe8eedff2a05eeff084ceeff5acff0ff60cff0ff5a56f3ff702cf4ff7ab1f4ff82b1f4ffacddf4ff8a24f5ff6c74f5ffa01bf6ffd462f6ffbed1f6ffb892f8ff94a0f9ff1ca1f9ff24a1f9ff4ecdf9ffb471faff9eb8faff8a15fbff1216fbff1a16fbff4442fbff6ae5fbfffa1efcff821ffcff8a1ffcffb44bfcff6aeefcff0e2afeff4c57feffba0dffff8a0effff1059ffff1a59ffff46a8ffff04fbffff20d50a00d6240b0054ce1d0068ce1d004ccf1d008adc20009edc200014dd200030dd200082dd20000656250016562500fe562500625b2800765b2800ec5b28005a5c2800
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Text (Legacy)
-        m_OriginalName: Text (Legacy)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 2446920
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 10}
       m_SearchString: 
@@ -806,7 +806,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 18}
+    scrollPos: {x: 0, y: 34}
     m_SelectedIDs: c8622200
     m_LastClickedID: 2253512
     m_ExpandedIDs: 000000007ebd050080bd050082bd050084bd050086bd050088bd05008abd05008cbd05008ebd050090bd050092bd050094bd050096bd050098bd05009abd05009cbd05009ebd0500a0bd0500a2bd0500a4bd05002cbf050000ca9a3b
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 47874
+  controlID: 56011
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
