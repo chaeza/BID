@@ -41,7 +41,7 @@ public class PlayerMove : MonoBehaviourPun
         Debug.Log("델리게이트 무브스피드 변경");
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
       //Debug.Log("X = " + Input.mousePosition.x);
       //Debug.Log("Y = " + Input.mousePosition.y);
@@ -141,12 +141,12 @@ public class PlayerMove : MonoBehaviourPun
     [PunRPC]
     private void SetGhostEff(float time)
     {
-        trailEff.SetActive(true);
         if (ghostEff != null) StopCoroutine(ghostEff);
         ghostEff= StartCoroutine(ghostEffDelady(time));
     }
     IEnumerator ghostEffDelady(float time)
-    {    
+    {
+        trailEff.SetActive(true);
         yield return new WaitForSeconds(time);
         Debug.Log("트레일 삭제");
         trailEff.SetActive(false);

@@ -21,7 +21,7 @@ public class Buff_HpRecovery : Skill
         skillInfo.type = SkillType.Item;
         skillInfo.skillType = SkillType.Buff;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (itemNum == 0 && GameMgr.Instance.playerInput.inputKey == KeyCode.Q) SkillUse();

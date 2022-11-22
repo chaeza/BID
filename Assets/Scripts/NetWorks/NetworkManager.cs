@@ -77,6 +77,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Screen.SetResolution(1920, 1080, false);
         PhotonNetwork.SendRate = 300;
         PhotonNetwork.SerializationRate = 150;
+        Application.targetFrameRate = 60;
     }
     IEnumerator AutoSyncDelay()
     {

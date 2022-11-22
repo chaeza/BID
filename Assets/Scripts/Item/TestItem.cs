@@ -35,7 +35,7 @@ public class TestItem : Skill
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
         skillInfo.hitBoxInfo.damageInfo.timer = 0;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (itemNum == 0 && GameMgr.Instance.playerInput.inputKey == KeyCode.Q) SkillUse();
         else if (itemNum == 1 && GameMgr.Instance.playerInput.inputKey == KeyCode.W) SkillUse();

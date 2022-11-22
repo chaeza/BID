@@ -29,7 +29,7 @@ public class Immediate_BloodField : Skill
         skillInfo.hitBoxInfo.damageInfo.timer = 3;
 
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.D) SkillUse();

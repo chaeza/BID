@@ -30,7 +30,7 @@ public class TestSkill : Skill
         skillInfo.hitBoxInfo.damageInfo.timer = 0;
 
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.D) SkillUse();
         else if (GameMgr.Instance.playerInput.inputKey == KeyCode.Mouse0) SkillClick(Input.mousePosition);

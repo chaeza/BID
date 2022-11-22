@@ -52,14 +52,13 @@ public class UIMgr : MonoBehaviourPun
 
     private void Awake()
     {
-        SetBlackUI();
         blackUI.SetActive(true);
         skillSilence[0] = Instantiate(skillSilenceIcon, skillIconP.transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
         skillSilence[1] = Instantiate(skillSilenceIcon, skillIconP.transform.position+new Vector3(200,0,0), Quaternion.identity, GameObject.Find("Canvas").transform);
         skillSilence[0].transform.SetParent(silenceIconP.transform);
         skillSilence[1].transform.SetParent(silenceIconP.transform);
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (GameMgr.Instance.playerInput.Esc == KeyCode.Escape)

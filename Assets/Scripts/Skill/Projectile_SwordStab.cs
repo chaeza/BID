@@ -31,7 +31,7 @@ public class Projectile_SwordStab : Skill
         skillInfo.hitBoxInfo.damageInfo.timer = 0.5f;
 
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.D) SkillUse();

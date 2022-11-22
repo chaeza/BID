@@ -15,7 +15,7 @@ public class PlayerInput : MonoBehaviour
     public KeyCode Esc { get; private set; }
     private bool escDown;
     public bool gameStartFaidIn;
-    void Update()
+    private void FixedUpdate()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (gameStartFaidIn == false) return;

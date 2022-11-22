@@ -28,7 +28,7 @@ public class NonTarget_FallTheRain : Skill
         skillInfo.hitBoxInfo.damageInfo.timer = 0f;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.D) SkillUse();
