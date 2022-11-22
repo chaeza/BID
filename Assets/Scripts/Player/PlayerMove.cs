@@ -13,7 +13,8 @@ public class PlayerMove : MonoBehaviourPun
     private GhostEffect ghostEffect;
     private float ratioX = 0.96588348396132983594601426304165f;
     private float ratioY = 1.0797068659017167862159843860718f;
-
+    [SerializeField] private float screenRatioX;
+    [SerializeField] private float screenRatioY;
     private RaycastHit hit;
     private Vector3 clickPos = Vector3.one;
     private Vector3 hitPos = Vector3.zero;
@@ -24,7 +25,11 @@ public class PlayerMove : MonoBehaviourPun
     private bool nullCheckHit;
     private int mask;
     private int count;
-
+    private void Awake()
+    {
+        screenRatioX = Screen.width / 1920f;
+        screenRatioY = Screen.height / 1080f;
+    }
     private void Start()
     {
         ghostEffect = GetComponent<GhostEffect>();
@@ -59,7 +64,7 @@ public class PlayerMove : MonoBehaviourPun
         else if (count != 0) count = 0;
         if (GameMgr.Instance.playerInput.inputKey2 == KeyCode.Mouse1)
         {
-            if (Input.mousePosition.x > 1632 && Input.mousePosition.x < 1873 & Input.mousePosition.y > 12 && Input.mousePosition.y < 254)
+            if (Input.mousePosition.x > 1632 * screenRatioX && Input.mousePosition.x < 1873 * screenRatioX & Input.mousePosition.y > 12 * screenRatioY && Input.mousePosition.y < 254 * screenRatioY)
             {
                 clickPos = Input.mousePosition;
                 MoveMiniMap(clickPos);
@@ -113,8 +118,8 @@ public class PlayerMove : MonoBehaviourPun
 
     public void MoveMiniMap(Vector3 mousePos)
     {
-        hitPos.x = mousePos.x - 1632.106f;
-        hitPos.y = mousePos.y - 12.89964f;
+        hitPos.x = mousePos.x / screenRatioX - 1632.106f;
+        hitPos.y = mousePos.y / screenRatioY - 12.89964f;
         mask = 1 << LayerMask.NameToLayer("Ground");
 
         nullCheck = Physics.Raycast(new Vector3(502.4f - hitPos.x * ratioX, 1000, 472.1f - hitPos.y * ratioY), Vector3.down, out hit, 9999, mask);

@@ -24,6 +24,8 @@ public class UIMgr : MonoBehaviourPun
     [SerializeField] private Text[] playerNameText;
     [SerializeField] private Text[] playerKillText;
     [SerializeField] private Text[] playerInfoText;
+    [SerializeField] private float screenRatioX;
+    [SerializeField] private float screenRatioY;
     private int[] KillCount = new int[5];
 
     [SerializeField] private GameObject blackUI;
@@ -56,6 +58,8 @@ public class UIMgr : MonoBehaviourPun
         skillSilence[1] = Instantiate(skillSilenceIcon, skillIconP[1].transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
         skillSilence[0].transform.SetParent(silenceIconP.transform);
         skillSilence[1].transform.SetParent(silenceIconP.transform);
+        screenRatioX = Screen.width / 1920f;
+        screenRatioY = Screen.height / 1080f;
     }
     private void FixedUpdate()
     {
@@ -77,7 +81,7 @@ public class UIMgr : MonoBehaviourPun
         {
             TAB.SetActive(false);
         }
-        if (Input.mousePosition.x > 60 && Input.mousePosition.x < 180 && Input.mousePosition.y > 25 && Input.mousePosition.y < 180)
+        if (Input.mousePosition.x > 60 * screenRatioX && Input.mousePosition.x < 180 * screenRatioX && Input.mousePosition.y > 25 * screenRatioY && Input.mousePosition.y < 180 * screenRatioY)
         {
             isCanSkillDescription[0] = true;
             SetSkillDescription(0);
@@ -87,22 +91,22 @@ public class UIMgr : MonoBehaviourPun
             isCanSkillDescription[0] = false;
             SetSkillDescription(0);
         }
-        if (Input.mousePosition.x > 680 && Input.mousePosition.x < 760 && Input.mousePosition.y > 25 && Input.mousePosition.y < 155 && GameMgr.Instance.inventory.InvetoryCount(0) == false)
+        if (Input.mousePosition.x > 680 * screenRatioX && Input.mousePosition.x < 760 * screenRatioX && Input.mousePosition.y > 25 * screenRatioY && Input.mousePosition.y < 155 * screenRatioY && GameMgr.Instance.inventory.InvetoryCount(0) == false)
         {
             isCanItemDescription = true;
             SetItemDescription(0);
         }
-        else if (Input.mousePosition.x > 845 && Input.mousePosition.x < 915 && Input.mousePosition.y > 25 && Input.mousePosition.y < 155 && GameMgr.Instance.inventory.InvetoryCount(1) == false)
+        else if (Input.mousePosition.x > 845 * screenRatioX && Input.mousePosition.x < 915 * screenRatioX && Input.mousePosition.y > 25 * screenRatioY && Input.mousePosition.y < 155 * screenRatioY && GameMgr.Instance.inventory.InvetoryCount(1) == false)
         {
             isCanItemDescription = true;
             SetItemDescription(1);
         }
-        else if (Input.mousePosition.x > 1005 && Input.mousePosition.x < 1080 && Input.mousePosition.y > 25 && Input.mousePosition.y < 155 && GameMgr.Instance.inventory.InvetoryCount(2) == false)
+        else if (Input.mousePosition.x > 1005 * screenRatioX && Input.mousePosition.x < 1080 * screenRatioX && Input.mousePosition.y > 25 * screenRatioY && Input.mousePosition.y < 155 * screenRatioY && GameMgr.Instance.inventory.InvetoryCount(2) == false)
         {
             isCanItemDescription = true;
             SetItemDescription(2);
         }
-        else if (Input.mousePosition.x > 1160 && Input.mousePosition.x < 1240 && Input.mousePosition.y > 25 && Input.mousePosition.y < 155 && GameMgr.Instance.inventory.InvetoryCount(3) == false)
+        else if (Input.mousePosition.x > 1160 * screenRatioX && Input.mousePosition.x < 1240 * screenRatioX && Input.mousePosition.y > 25 * screenRatioY && Input.mousePosition.y < 155 * screenRatioY && GameMgr.Instance.inventory.InvetoryCount(3) == false)
         {
             isCanItemDescription = true;
             SetItemDescription(3);
@@ -112,7 +116,7 @@ public class UIMgr : MonoBehaviourPun
             isCanItemDescription = false;
             SetItemDescription(5);
         }
-        if (Input.mousePosition.x > 292 && Input.mousePosition.x < 404 && Input.mousePosition.y > 15 && Input.mousePosition.y < 186)
+        if (Input.mousePosition.x > 292 * screenRatioX && Input.mousePosition.x < 404 * screenRatioX && Input.mousePosition.y > 15 * screenRatioY && Input.mousePosition.y < 186 * screenRatioY)
         {
             isCanSkillDescription[1] = true;
             SetSkillDescription(1);
