@@ -35,7 +35,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public RawImage lobbyleftDoor;
     public RawImage lobbyRightDoor;
     public RawImage lobbyDarkHole;
-
+    private bool fadeIn;
     private bool lobbyLogin = false;
 
 
@@ -77,6 +77,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Screen.SetResolution(1920, 1080, false);
         PhotonNetwork.SendRate = 300;
         PhotonNetwork.SerializationRate = 150;
+        Application.targetFrameRate = 60;
     }
     IEnumerator AutoSyncDelay()
     {
@@ -147,6 +148,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(9.5f);
         lobbyPanel.SetActive(true);
         logoFadeOut.LobbyFadeIn(lobbyPanel);
+        yield return new WaitForSeconds(1.5f);
+        fadeIn = true;
 
         //로비패널 온 
     }
@@ -356,6 +359,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     #region 버튼 클릭
     public void ButtonClick()
     {
+        if (fadeIn == false) return;
         gameObject.GetPhotonView().RPC("ZeroCounT", RpcTarget.MasterClient);
         if (myReadyState == ReadyState.Ready)
         {
