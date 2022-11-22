@@ -48,7 +48,6 @@ public class UIMgr : MonoBehaviourPun
     public event OnSetItemDescription onSetItemDescription;
     public delegate void OnSetSkillDescription();
     public event OnSetSkillDescription onSetSkillDescription;
-    private Vector3[] itemCreatePoint = { new Vector3(2, 0, 0), new Vector3(162, 0, 0), new Vector3(321, 0, 0), new Vector3(482, 0, 0) };
 
     private void Awake()
     {
