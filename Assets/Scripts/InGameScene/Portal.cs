@@ -21,10 +21,13 @@ public partial class Portal : MonoBehaviourPun
 {
     public Portal[] exit;
     public PortalData portalData;
-    //Delay 
-    [SerializeField]
-    private float transferTimer = 0;
+}
 
+
+public partial class Portal : MonoBehaviourPun
+{ 
+    //Delay 
+    [SerializeField] private float transferTimer = 0;
     public CameraReSetting cameraReSetting;
 
     //Priority Queue for Transfer Player
@@ -94,7 +97,8 @@ public partial class Portal : MonoBehaviourPun
                             player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[ran].gameObject.transform.position + Vector3.right * 5;
                         else if (ran == 6)
                             player.GetComponent<PlayerMove>().navMeshAgent.transform.position = exit[ran].gameObject.transform.position + Vector3.forward * 5;
-                        cameraReSetting();
+                        if (player.gameObject.GetPhotonView().IsMine)
+                            cameraReSetting();
                         break;
                     }
                     else
