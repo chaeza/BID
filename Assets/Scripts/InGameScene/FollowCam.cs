@@ -8,6 +8,8 @@ public partial class FollowCam : MonoBehaviour
     [SerializeField] private float distanceFromPlayerY;
     [SerializeField] private float distanceFromPlayerX;
     [SerializeField] private float cameraSpeed;
+    [SerializeField] private float screenRatioX;
+    [SerializeField] private float screenRatioY;
     [SerializeField] private ViewScreen viewScreen;
     [SerializeField] private Vector2 mousePos;
     private Portal[] portals;
@@ -40,6 +42,8 @@ public partial class FollowCam : MonoBehaviour
     {
         viewScreen = FindObjectOfType<ViewScreen>();
         portals = FindObjectsOfType<Portal>();
+        screenRatioX = Screen.width / 1920f;
+        screenRatioY = Screen.height / 1080f;
     }
 
     private void Start()
@@ -60,10 +64,10 @@ public partial class FollowCam : MonoBehaviour
             transform.position = new Vector3(playerPos.position.x, playerY, playerPos.position.z) + Vector3.forward * distanceFromPlayerZ + Vector3.up * distanceFromPlayerY + Vector3.right * distanceFromPlayerX;
         }
         // Click on the mini map
-        if (Input.GetKey(KeyCode.Mouse0) && Input.mousePosition.x > 1632 && Input.mousePosition.x < 1873 & Input.mousePosition.y > 12 && Input.mousePosition.y < 254)
+        if (Input.GetKey(KeyCode.Mouse0) && Input.mousePosition.x > 1632 * screenRatioX && Input.mousePosition.x < 1873 * screenRatioX & Input.mousePosition.y > 12 * screenRatioY && Input.mousePosition.y < 254 * screenRatioY)
         {
-            mousePos.x = Input.mousePosition.x - 1632.106f;
-            mousePos.y = Input.mousePosition.y - 12.89964f;
+            mousePos.x = Input.mousePosition.x / screenRatioX - 1632.106f;
+            mousePos.y = Input.mousePosition.y / screenRatioY - 12.89964f;
             transform.position = new Vector3(502.4f - mousePos.x * ratioX + distanceFromPlayerX, transform.position.y, 472.1f - mousePos.y * ratioY + distanceFromPlayerZ);
         }
         if (GameMgr.Instance.playerInput.yKey == KeyCode.Y && followBool == false) followBool = true;
@@ -71,22 +75,22 @@ public partial class FollowCam : MonoBehaviour
         if (followBool == false)
         {
             // 오른쪽
-            if (Input.mousePosition.x >= 1909 && viewScreen.transform.localPosition.x <= 90)
+            if (Input.mousePosition.x >= 1909 * screenRatioX && viewScreen.transform.localPosition.x <= 90)
             {
                 transform.position = transform.position + rightDir * cameraSpeed;
             }
             // 왼쪽
-            else if (Input.mousePosition.x <= 5 && viewScreen.transform.localPosition.x >= -90)
+            else if (Input.mousePosition.x <= 5 * screenRatioX && viewScreen.transform.localPosition.x >= -90)
             {
                 transform.position = transform.position - rightDir * cameraSpeed;
             }
             // 위쪽
-            if (Input.mousePosition.y >= 1079 && viewScreen.transform.localPosition.y <= 103)
+            if (Input.mousePosition.y >= 1079 * screenRatioY && viewScreen.transform.localPosition.y <= 103)
             {
                 transform.position = transform.position + forwardDir * cameraSpeed;
             }
             // 아래쪽
-            else if (Input.mousePosition.y <= 3 && viewScreen.transform.localPosition.y >= -103)
+            else if (Input.mousePosition.y <= 3 * screenRatioY && viewScreen.transform.localPosition.y >= -103)
             {
                 transform.position = transform.position - forwardDir * cameraSpeed;
             }

@@ -20,16 +20,18 @@ public class BlackHole : MonoBehaviourPun
     private BlackHolePos4[] collider4 = null;
     private BlackHolePos5[] collider5 = null;
     private BlackHolePos6[] collider6 = null;
-    
 
+    ItemSpawner ItemSpawner = null;
 
+    private bool isUsed = false;
     // variable to hold the time
     private float time;
     // Variable for direction
     private Vector3 dir;
-    
+
     private void Start()
     {
+        ItemSpawner = FindObjectOfType<ItemSpawner>();
         if (blackHolePos == 1) collider1 = FindObjectsOfType<BlackHolePos1>();
         else if (blackHolePos == 2) collider2 = FindObjectsOfType<BlackHolePos2>();
         else if (blackHolePos == 3) collider3 = FindObjectsOfType<BlackHolePos3>();
@@ -44,13 +46,15 @@ public class BlackHole : MonoBehaviourPun
         // save time
         time += Time.deltaTime;
         // Creates a sphere inside and returns an array of colliders that touched the sphere // x radius
-        BlackHoleCheck(blackHolePos);
+        if (isUsed == false)
+            BlackHoleCheck(blackHolePos);
     }
 
     private void BlackHoleCheck(int Num)
     {
+        isUsed = true;
+        ItemSpawner.itemMaxCount -= 2;
         // Run the loop to control the objects in the collider array.
-
         if (Num == 1) foreach (BlackHolePos1 collider in collider1)
             {
                 // measure distance
