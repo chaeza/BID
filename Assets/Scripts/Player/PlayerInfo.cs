@@ -169,7 +169,10 @@ public class PlayerInfo : MonoBehaviourPun
             }
         }
         if (damageDecrease < 100)
+        {
+            if(photonView.IsMine==true) myAnimator.SetTrigger("isHit");
             curHP -= attackDamage * ((100 - damageDecrease) / 100);
+        }
 
         if (onGetDamage != null) onGetDamage();
         if (curHP <= 0)

@@ -26,7 +26,7 @@ public class LodingSync : MonoBehaviourPunCallbacks
             photonView.StartCoroutine(PlayerSceneCoroutine());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         time += Time.deltaTime;
     }

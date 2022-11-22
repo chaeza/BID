@@ -353,15 +353,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'FallTheRain
-
-    Makes arrows rain down on a designated area for 5 seconds,
-    dealing damage and slowing down every 0.5 seconds.
-
-    30% Slow Damage: 5
-
-    Cooldown:
-    15 seconds'
+  m_text: "FallTheRain\nMakes arrows rain down on a designated area for 5 seconds,
+    dealing damage \nDamage: 5\nCooldown: 15 seconds"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
   m_sharedMaterial: {fileID: -8393954978777015591, guid: 3af2303a68b621f4fb2b96580654485e, type: 2}
