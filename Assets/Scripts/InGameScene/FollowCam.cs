@@ -28,11 +28,13 @@ public partial class FollowCam : MonoBehaviour
     }
     public void SetCameraResetting()
     {
-        followBool = true;
-        Invoke("ReSetCameraResetting", 0.1f);
+        if (followBool == false)
+        {
+            followBool = true;
+            Invoke("ReSetCameraResetting", 0.1f);
+        }
     }
-
-    void ReSetCameraResetting() => followBool=false;
+    void ReSetCameraResetting() => followBool = false;
 
     private void Awake()
     {
