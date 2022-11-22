@@ -15,7 +15,8 @@ public class SpawnArea_Ver2 : MonoBehaviour
 		// 행렬(위치이동, 회전, 스케일)을 이용해서 랜덤위치의 정확한 값을 계산한다.
 		Matrix4x4 rMat = Matrix4x4.TRS(transform.position, transform.rotation, size);
 
-		Vector3 randomPos = rMat.MultiplyPoint(new Vector3(Random.Range(-0.5f, 0.5f), transform.position.y, Random.Range(-0.5f, 0.5f)));
+		Vector3 randomPos = rMat.MultiplyPoint(new Vector3(Random.Range(-0.5f, 0.5f),
+			transform.position.y, Random.Range(-0.5f, 0.5f)));
 		//randomPos.y = transform.position.y;
 		return randomPos;
 	}
