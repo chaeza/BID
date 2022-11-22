@@ -18,7 +18,7 @@ public class MyPos : MonoBehaviour
         transform.position = myPosInfo.myPos.transform.position;
         transform.Translate(myPosInfo.xPos, myPosInfo.yPos, myPosInfo.zPos);
     }
-    void Update()
+    private void FixedUpdate()
     {
         transform.position = myPosInfo.myPos.transform.position;
         transform.Translate(myPosInfo.xPos, myPosInfo.yPos, myPosInfo.zPos);

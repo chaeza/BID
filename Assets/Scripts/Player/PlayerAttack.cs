@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviourPun
         skillInfo.hitBoxInfo.damageInfo.timer = 0;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (photonView.IsMine != true) return;
