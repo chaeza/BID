@@ -12,8 +12,8 @@ public class UIMgr : MonoBehaviourPun
     [SerializeField] private GameObject[] skillIcon;
     [SerializeField] private GameObject skillSilenceIcon;
     [SerializeField] private GameObject[] itemIcon;
-    [SerializeField] private GameObject skillIconP;
-    [SerializeField] private GameObject itemIconP;
+    [SerializeField] private GameObject[] skillIconP;
+    [SerializeField] private GameObject[] itemIconP;
     [SerializeField] private GameObject silenceIconP;
     [Header("Ending Images")]
     public GameObject winLogo;
@@ -48,13 +48,12 @@ public class UIMgr : MonoBehaviourPun
     public event OnSetItemDescription onSetItemDescription;
     public delegate void OnSetSkillDescription();
     public event OnSetSkillDescription onSetSkillDescription;
-    private Vector3[] itemCreatePoint = { new Vector3(2, 0, 0), new Vector3(162, 0, 0), new Vector3(321, 0, 0), new Vector3(482, 0, 0) };
 
     private void Awake()
     {
         blackUI.SetActive(true);
-        skillSilence[0] = Instantiate(skillSilenceIcon, skillIconP.transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
-        skillSilence[1] = Instantiate(skillSilenceIcon, skillIconP.transform.position+new Vector3(200,0,0), Quaternion.identity, GameObject.Find("Canvas").transform);
+        skillSilence[0] = Instantiate(skillSilenceIcon, skillIconP[0].transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        skillSilence[1] = Instantiate(skillSilenceIcon, skillIconP[1].transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
         skillSilence[0].transform.SetParent(silenceIconP.transform);
         skillSilence[1].transform.SetParent(silenceIconP.transform);
     }
@@ -232,8 +231,8 @@ public class UIMgr : MonoBehaviourPun
     }
     public void SetItemIcon(int itemType, int itemNum)
     {
-        itemUI[itemNum] = Instantiate(itemIcon[itemType], itemIconP.transform.position + itemCreatePoint[itemNum], Quaternion.identity, GameObject.Find("Canvas").transform);
-        itemUI[itemNum].transform.SetParent(itemIconP.transform);
+        itemUI[itemNum] = Instantiate(itemIcon[itemType], itemIconP[itemNum].transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        itemUI[itemNum].transform.SetParent(itemIconP[itemNum].transform);
         itemDescription[itemNum] = itemUI[itemNum].transform.GetChild(0).gameObject;
     }
     public void UseItem(int itemNum)
@@ -265,11 +264,10 @@ public class UIMgr : MonoBehaviourPun
     //  Vector3 IconPos= Camera.main.WorldToScreenPoint(Vector3.zero);
     public void SetSkillIcon(int skillNum, int num)
     {
-        if (num == 1) skillUI[num] = Instantiate(skillIcon[skillNum], skillIconP.transform.position + new Vector3(200, 0, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
-        else skillUI[num] = Instantiate(skillIcon[skillNum], skillIconP.transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        skillUI[num] = Instantiate(skillIcon[skillNum], skillIconP[num].transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
         if (skillUI[num] == null)
             Debug.LogError("널인데요??");
-        skillUI[num].transform.SetParent(skillIconP.transform);
+        skillUI[num].transform.SetParent(skillIconP[num].transform);
         skillDescription[num] = skillUI[num].transform.GetChild(0).gameObject;
         skillCoolTime[num] = skillUI[num].transform.GetChild(1).gameObject;
         skillCoolTimeText[num] = skillCoolTime[num].GetComponent<TextMeshProUGUI>();
