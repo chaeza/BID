@@ -21,7 +21,7 @@ public class BlackHole : MonoBehaviourPun
     private BlackHolePos5[] collider5 = null;
     private BlackHolePos6[] collider6 = null;
     
-
+    ItemSpawner ItemSpawner = null;
 
     // variable to hold the time
     private float time;
@@ -30,6 +30,7 @@ public class BlackHole : MonoBehaviourPun
     
     private void Start()
     {
+        ItemSpawner = FindObjectOfType<ItemSpawner>();
         if (blackHolePos == 1) collider1 = FindObjectsOfType<BlackHolePos1>();
         else if (blackHolePos == 2) collider2 = FindObjectsOfType<BlackHolePos2>();
         else if (blackHolePos == 3) collider3 = FindObjectsOfType<BlackHolePos3>();
@@ -50,12 +51,11 @@ public class BlackHole : MonoBehaviourPun
     private void BlackHoleCheck(int Num)
     {
         // Run the loop to control the objects in the collider array.
-
         if (Num == 1) foreach (BlackHolePos1 collider in collider1)
             {
                 // measure distance
                 float dis = Vector3.Distance(this.transform.position, collider.transform.position);
-
+                
                 if (time > 6)
                 {
                     dir = this.transform.position - collider.transform.position;
@@ -91,7 +91,7 @@ public class BlackHole : MonoBehaviourPun
             {
                 // measure distance
                 float dis = Vector3.Distance(this.transform.position, collider.transform.position);
-
+                
                 if (time > 6)
                 {
                     dir = this.transform.position - collider.transform.position;
@@ -128,7 +128,7 @@ public class BlackHole : MonoBehaviourPun
             {
                 // measure distance
                 float dis = Vector3.Distance(this.transform.position, collider.transform.position);
-
+                
                 if (time > 6)
                 {
                     dir = this.transform.position - collider.transform.position;
@@ -165,7 +165,7 @@ public class BlackHole : MonoBehaviourPun
             {
                 // measure distance
                 float dis = Vector3.Distance(this.transform.position, collider.transform.position);
-
+                
                 if (time > 6)
                 {
                     dir = this.transform.position - collider.transform.position;
@@ -202,7 +202,7 @@ public class BlackHole : MonoBehaviourPun
             {
                 // measure distance
                 float dis = Vector3.Distance(this.transform.position, collider.transform.position);
-
+                
                 if (time > 6)
                 {
                     dir = this.transform.position - collider.transform.position;
@@ -241,7 +241,7 @@ public class BlackHole : MonoBehaviourPun
                 // measure distance
                 // 블랙홀과 배열에 들어온 콜라이더의 거리 확인
                 float dis = Vector3.Distance(this.transform.position, collider.transform.position);
-
+                
                 if (time > 6)
                 {
                     dir = this.transform.position - collider.transform.position;

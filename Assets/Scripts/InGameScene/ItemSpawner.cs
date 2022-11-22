@@ -84,19 +84,23 @@ public class ItemSpawner : MonoBehaviourPun
     [PunRPC]
     void ItemRespawn()
     {
-        if(itemCount < 10)
-        { 
-        newSpawnArea.Clear();
-        newSpawnArea.AddRange(FindObjectsOfType<SpawnArea_Ver2>());
-        GameObject obj;
-        obj = itemQueue.Dequeue();
-        int num = Random.Range(0, itemAreaPos.Count);
-        randomItemPos = Random.Range(0, newSpawnArea.Count + 1);
-        obj.transform.position = newSpawnArea[randomItemPos].getRandomPos();
-        obj.gameObject.SetActive(true);
-        itemCount++;
-        
+        if(itemMaxCount > itemCount)
+        {
+            newSpawnArea.Clear();
+            newSpawnArea.AddRange(FindObjectsOfType<SpawnArea_Ver2>());
+            GameObject obj;
+            obj = itemQueue.Dequeue();
+            int num = Random.Range(0, itemAreaPos.Count);
+            randomItemPos = Random.Range(0, newSpawnArea.Count + 1);
+            obj.transform.position = newSpawnArea[randomItemPos].getRandomPos();
+            obj.gameObject.SetActive(true);
+            itemCount++;
         }
+        else
+        {
+            return;
+        }
+
     }
 
 
