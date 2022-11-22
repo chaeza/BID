@@ -41,7 +41,7 @@ public class PlayerMove : MonoBehaviourPun
         Debug.Log("델리게이트 무브스피드 변경");
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
       //Debug.Log("X = " + Input.mousePosition.x);
       //Debug.Log("Y = " + Input.mousePosition.y);

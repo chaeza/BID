@@ -30,7 +30,7 @@ public class Projectile_MysticArrow : Skill
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 30;
         skillInfo.hitBoxInfo.damageInfo.timer = 1;
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.D) SkillUse();

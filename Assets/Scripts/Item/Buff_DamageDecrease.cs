@@ -21,7 +21,7 @@ public class Buff_DamageDecrease : Skill
         skillInfo.type = SkillType.Item;
         skillInfo.skillType = SkillType.Buff;
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (itemNum == 0 && GameMgr.Instance.playerInput.inputKey == KeyCode.Q) SkillUse();

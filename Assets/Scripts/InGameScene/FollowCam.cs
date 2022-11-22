@@ -49,7 +49,7 @@ public partial class FollowCam : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (GameMgr.Instance.GameState == false) return;
 

@@ -781,7 +781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[10].Name
@@ -792,8 +792,64 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[11].Name
+      value: isHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[11].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeLayers.Array.data[0].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[0].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[1].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[2].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[3].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[4].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[5].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[6].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[7].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[8].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[9].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[10].SynchronizeType
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[11].SynchronizeType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4552917917704453669, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_Layer

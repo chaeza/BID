@@ -36,7 +36,7 @@ public class Projectile_Bash : Skill
         skillInfo.hitBoxInfo.damageInfo.slowDownRate = 0;
         skillInfo.hitBoxInfo.damageInfo.timer = 2f;
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.D) SkillUse();

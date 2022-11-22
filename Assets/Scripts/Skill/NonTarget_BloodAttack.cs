@@ -29,7 +29,7 @@ public class NonTarget_BloodAttack : Skill
         skillInfo.hitBoxInfo.damageInfo.timer = 0f;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (GameMgr.Instance.GameState == false) return;
         if (GameMgr.Instance.playerInput.inputKey == KeyCode.D) SkillUse();
