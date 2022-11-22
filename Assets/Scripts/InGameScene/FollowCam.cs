@@ -42,12 +42,12 @@ public partial class FollowCam : MonoBehaviour
     {
         viewScreen = FindObjectOfType<ViewScreen>();
         portals = FindObjectsOfType<Portal>();
+        screenRatioX = Screen.width / 1920f;
+        screenRatioY = Screen.height / 1080f;
     }
 
     private void Start()
     {
-        screenRatioX = Screen.width / 1920;
-        screenRatioY = Screen.height / 1080;
         Cursor.lockState = CursorLockMode.Confined;
         for (int i = 0; i < portals.Length; i++)
         {
