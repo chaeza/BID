@@ -19,6 +19,7 @@ public class ItemSpawner : MonoBehaviourPun
     [Header("아이템 개수")]
     public int itemMaxCount = 0;
 
+    [SerializeField] private GameObject itemObj;
     //아이템 풀을 담을 큐
     Queue<GameObject> itemQueue = new Queue<GameObject>();
 
@@ -29,6 +30,7 @@ public class ItemSpawner : MonoBehaviourPun
     [System.Obsolete]
     private void Start()
     {
+        itemObj = new GameObject("ItemObj");
         newSpawnArea = new List<SpawnArea_Ver2>(itemMaxCount);
         if (PhotonNetwork.IsMasterClient)
         {
@@ -54,6 +56,7 @@ public class ItemSpawner : MonoBehaviourPun
         {
             Debug.Log("생성됨");
             GameObject box = PhotonNetwork.InstantiateSceneObject("ItemBox", itemSpecialAreaPos.getRandomPos(), Quaternion.identity);
+            box.transform.SetParent(itemObj.transform);
             Debug.Log("위치함");
             itemCount++;
         }
@@ -64,12 +67,14 @@ public class ItemSpawner : MonoBehaviourPun
             {
                 randomItemPos = Random.Range(0, itemAreaPos.Count);
                 GameObject box = PhotonNetwork.InstantiateSceneObject("ItemBox", itemAreaPos[randomItemPos].getRandomPos(), Quaternion.identity);
+                box.transform.SetParent(itemObj.transform);
                 itemCount++;
             }
             else
             {
                 randomItemPos = Random.Range(0, itemAreaPos2.Count);
                 GameObject box = PhotonNetwork.InstantiateSceneObject("ItemBox", itemAreaPos2[randomItemPos].getRandomPos(), Quaternion.identity);
+                box.transform.SetParent(itemObj.transform);
                 itemCount++;
             }
         }
