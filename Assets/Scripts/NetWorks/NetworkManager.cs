@@ -41,7 +41,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public RawImage lobbyRightDoor;
     public RawImage lobbyDarkHole;
     private bool fadeIn;
-    private bool lobbyLogin = false;
+    private bool lobbyLogin;
 
 
     private GameObject postman;
@@ -150,11 +150,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     IEnumerator PannelOn()
     {
+        gameObject.GetPhotonView().RPC("DropOutBool", RpcTarget.All, true);
         yield return new WaitForSeconds(9.5f);
         lobbyPanel.SetActive(true);
         logoFadeOut.LobbyFadeIn(lobbyPanel);
         yield return new WaitForSeconds(1.5f);
         fadeIn = true;
+        gameObject.GetPhotonView().RPC("DropOutBool", RpcTarget.All,false);
 
         //로비패널 온 
     }
@@ -231,6 +233,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
 
         myReadyState = ReadyState.UnReady;
+        gameObject.GetPhotonView().RPC("DropOutBool", RpcTarget.All, true);
         SortedPlayer();
     }
 
@@ -255,7 +258,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected)
+        if(Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsConnected&&(fadeIn==true|| lobbyLogin==false))
         {
             PhotonNetwork.Disconnect();
             PhotonNetwork.LoadLevel("TitleScene");
@@ -364,7 +367,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     #region 버튼 클릭
     public void ButtonClick()
     {
-        
+
         if (fadeIn == false) return;
         if (isDropOut == true) return;
         gameObject.GetPhotonView().RPC("ZeroCounT", RpcTarget.MasterClient);
@@ -389,31 +392,31 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void DropOutClick0()
     {
-        if (isDropOut == true) return;
+        if (isDropOut == true||fadeIn == false) return;
         if (readyButton[0].GetComponent<Image>().color == Color.yellow) return;
         gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 0);
     }
     public void DropOutClick1()
     {
-        if (isDropOut == true) return;
+        if (isDropOut == true || fadeIn == false) return;
         if (readyButton[1].GetComponent<Image>().color == Color.yellow) return;
         gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 1);
     }
     public void DropOutClick2()
     {
-        if (isDropOut == true) return;
+        if (isDropOut == true || fadeIn == false) return;
         if (readyButton[2].GetComponent<Image>().color == Color.yellow) return;
         gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 2);
     }
     public void DropOutClick3()
     {
-        if (isDropOut == true) return;
+        if (isDropOut == true || fadeIn == false) return;
         if (readyButton[3].GetComponent<Image>().color == Color.yellow) return;
         gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 3);
     }
     public void DropOutClick4()
     {
-        if (isDropOut == true) return;
+        if (isDropOut == true || fadeIn == false) return;
         if (readyButton[4].GetComponent<Image>().color == Color.yellow) return;
         gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 4);
     }
@@ -439,11 +442,32 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         else if (vote == false) theOppositeCount++;
 
     }
+    private int boolCount;
+    [PunRPC]
+    public void DropOutBool(bool isBool)
+    {
+        if (photonView.IsMine) return;
+        if (isBool == true)
+        {
+            boolCount++;
+            isDropOut = isBool;
+        }
+        else if (boolCount == 1 && isBool == false)
+        {
+            isDropOut = isBool;
+            boolCount = 0;
+        }
+        else
+        {
+            boolCount--;
+        }
+    }
     [PunRPC]
     public void DropOutNum(int Num)
     {
         if (Num == 5)
         {
+            if (PhotonNetwork.IsMasterClient == true) PhotonNetwork.CurrentRoom.IsOpen = true;
             isDropOut = false;
             isVote = false;
             vote.SetActive(false);
@@ -455,6 +479,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
         else
         {
+            if (PhotonNetwork.IsMasterClient == true) PhotonNetwork.CurrentRoom.IsOpen = false;
             isDropOut = true;
             playerDropOutNum = Num;
             vote.SetActive(true);
