@@ -520,7 +520,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void GetOutHere(int Num)
     {
         if (PhotonNetwork.PlayerList[Num].NickName != PhotonNetwork.NickName) return;
-        if(PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 5);
+        StartCoroutine(GetOutHere_Delay());
+    }
+    IEnumerator GetOutHere_Delay()
+    {
+        yield return new WaitForSeconds(1f);
         PhotonNetwork.Disconnect();
         PhotonNetwork.LoadLevel("TitleScene");
     }
