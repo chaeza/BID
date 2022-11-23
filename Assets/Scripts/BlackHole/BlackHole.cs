@@ -46,14 +46,16 @@ public class BlackHole : MonoBehaviourPun
         // save time
         time += Time.deltaTime;
         // Creates a sphere inside and returns an array of colliders that touched the sphere // x radius
-        if (isUsed == false)
             BlackHoleCheck(blackHolePos);
     }
 
     private void BlackHoleCheck(int Num)
     {
-        isUsed = true;
-        ItemSpawner.itemMaxCount -= 2;
+        if (isUsed == false)
+        {
+            isUsed = true;
+            ItemSpawner.itemMaxCount -= 2;
+        }
         // Run the loop to control the objects in the collider array.
         if (Num == 1) foreach (BlackHolePos1 collider in collider1)
             {
