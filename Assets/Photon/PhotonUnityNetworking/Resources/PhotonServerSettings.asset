@@ -82,6 +82,8 @@ MonoBehaviour:
   - Vote
   - VoteMaster
   - GetOutHere
+  - DropOut
+  - DropOutBool
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

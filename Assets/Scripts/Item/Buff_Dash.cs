@@ -6,7 +6,6 @@ using Photon.Pun;
 public class Buff_Dash : Skill
 {
     [SerializeField] private int itemNum = 0;
-    PlayerInfo playerInfo;
     public void GetItem(int itemType,int itemnum)//inventory order
     {
         if (itemNum == 0)
@@ -19,7 +18,6 @@ public class Buff_Dash : Skill
     }
     private void Awake()
     {
-        playerInfo = GetComponent<PlayerInfo>();
         skillInfo.type = SkillType.Item;
         skillInfo.skillType = SkillType.Buff;
     }
