@@ -508,11 +508,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(1f);
         if (PhotonNetwork.IsMasterClient == true)
         {
-            gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 5);
             if (agreeCount > theOppositeCount)
             {
                 gameObject.GetPhotonView().RPC("GetOutHere", RpcTarget.All, playerDropOutNum);
             }
+            gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 5);
         }
 
     }
@@ -520,6 +520,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void GetOutHere(int Num)
     {
         if (PhotonNetwork.PlayerList[Num].NickName != PhotonNetwork.NickName) return;
+        if(PhotonNetwork.IsMasterClient) gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 5);
         PhotonNetwork.Disconnect();
         PhotonNetwork.LoadLevel("TitleScene");
     }
