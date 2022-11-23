@@ -76,7 +76,7 @@ public class PlayerAttack : MonoBehaviourPun
         playerInfo.StayPlayer(0.7f);
         yield return new WaitForSeconds(0.2f);
         GameObject eff = PhotonNetwork.Instantiate("BasicAttackEff", transform.position + new Vector3(0, 2.5f, 0), Quaternion.identity);
-        eff.gameObject.transform.localScale = Vector3.one*3* playerInfo.basicAttackRange;
+        eff.GetPhotonView().RPC("AttackRangeScale", RpcTarget.All, Vector3.one * 3 * playerInfo.basicAttackRange);
         if (num == 0 || num == 1) eff.transform.Rotate(0, 0, -30);
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
         eff.GetComponent<HitBox>().DestroyHitBox(0.2f);

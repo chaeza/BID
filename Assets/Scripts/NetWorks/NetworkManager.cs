@@ -395,30 +395,35 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void DropOutClick0()
     {
         if (isDropOut == true||fadeIn == false) return;
+        if (PhotonNetwork.PlayerList[0].NickName == PhotonNetwork.NickName) return;
         if (readyButton[0].GetComponent<Image>().color == Color.yellow) return;
         gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 0);
     }
     public void DropOutClick1()
     {
         if (isDropOut == true || fadeIn == false) return;
+        if (PhotonNetwork.PlayerList[1].NickName == PhotonNetwork.NickName) return;
         if (readyButton[1].GetComponent<Image>().color == Color.yellow) return;
         gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 1);
     }
     public void DropOutClick2()
     {
         if (isDropOut == true || fadeIn == false) return;
+        if (PhotonNetwork.PlayerList[2].NickName == PhotonNetwork.NickName) return;
         if (readyButton[2].GetComponent<Image>().color == Color.yellow) return;
         gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 2);
     }
     public void DropOutClick3()
     {
         if (isDropOut == true || fadeIn == false) return;
+        if (PhotonNetwork.PlayerList[3].NickName == PhotonNetwork.NickName) return;
         if (readyButton[3].GetComponent<Image>().color == Color.yellow) return;
         gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 3);
     }
     public void DropOutClick4()
     {
         if (isDropOut == true || fadeIn == false) return;
+        if (PhotonNetwork.PlayerList[4].NickName == PhotonNetwork.NickName) return;
         if (readyButton[4].GetComponent<Image>().color == Color.yellow) return;
         gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 4);
     }
@@ -503,11 +508,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(1f);
         if (PhotonNetwork.IsMasterClient == true)
         {
+            gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 5);
             if (agreeCount > theOppositeCount)
             {
                 gameObject.GetPhotonView().RPC("GetOutHere", RpcTarget.All, playerDropOutNum);
             }
-            gameObject.GetPhotonView().RPC("DropOutNum", RpcTarget.All, 5);
         }
 
     }
