@@ -23,9 +23,7 @@ public class LogoFadeOut : MonoBehaviour
 
     public void DarkHoleFadeOut()
     {
-        Debug.Log(" »ç¤Ó¤©ÇØ");
         StartCoroutine(DarkHole());
-
     }
     IEnumerator DarkHole()
     {
@@ -82,6 +80,15 @@ public class LogoFadeOut : MonoBehaviour
                 lobbyText[j].color = color2[j];
                 rawImage.color = color3;
             }
+        }
+        for (int j = 0; j < color1.Length; j++)
+        {
+            color1[j].a = 1f;
+            color2[j].a = 1f;
+            color3.a = 1f;
+            lobby[j].color = color1[j];
+            lobbyText[j].color = color2[j];
+            rawImage.color = color3;
         }
     }
     IEnumerator FadeOut(RawImage ri)

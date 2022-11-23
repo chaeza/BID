@@ -12,7 +12,6 @@ public class PotalSystem : MonoBehaviourPun
 
     private void Start()
     {
-        
         centerPortal.exit = nonCenterPortal;
         centerPortal.portalData.num = 0;
         centerPortal.portalData.isCenter = true;

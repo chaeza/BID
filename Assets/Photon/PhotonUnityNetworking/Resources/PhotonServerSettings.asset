@@ -78,6 +78,10 @@ MonoBehaviour:
   - KillCount
   - RandomItemSpawn
   - Release
+  - DropOutNum
+  - Vote
+  - VoteMaster
+  - GetOutHere
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
