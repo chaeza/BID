@@ -154,7 +154,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         gameObject.GetPhotonView().RPC("DropOutBool", RpcTarget.All, true);
         yield return new WaitForSeconds(9.5f);
         lobbyPanel.SetActive(true);
-        logoFadeOut.LobbyFadeIn(lobbyPanel);
+        logoFadeOut.LobbyFadeIn();
         yield return new WaitForSeconds(1.5f);
         fadeIn = true;
         gameObject.GetPhotonView().RPC("DropOutBool", RpcTarget.All,false);

@@ -37,58 +37,21 @@ public class LogoFadeOut : MonoBehaviour
         }
         darkHole.gameObject.SetActive(false);
     }
-    Image[] lobby;
-    Text[] lobbyText;
-    RawImage rawImage;
-    public void LobbyFadeIn(GameObject obj)
+    [SerializeField] GameObject canvas;
+    CanvasGroup canvasGroup;
+    public void LobbyFadeIn()
     {
-        rawImage= obj.GetComponentInChildren<RawImage>();
-        lobby = obj.GetComponentsInChildren<Image>();
-        lobbyText = obj.GetComponentsInChildren<Text>();
-        StartCoroutine(Lobby(obj));
+        canvasGroup = canvas.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0;
+        StartCoroutine(LobbyFadeIn_Delay());
 
     }
-    IEnumerator Lobby(GameObject obj)
+    IEnumerator LobbyFadeIn_Delay()
     {
-
-        Color[] color1 = new Color[lobby.Length];
-        Color[] color2 = new Color[lobbyText.Length];
-        Color color3 = new Color();
-
-        for(int i = 0; i<color1.Length;i++)
+        for (int i = 0; i < 100; i++)
         {
-            color1[i] = lobby[i].color;
-            color2[i] = lobbyText[i].color;
-            color3 = rawImage.color;
-            color1[i].a =0f;
-            color2[i].a =0f;
-            color3.a =0f;
-            lobby[i].color = color1[i];
-            lobbyText[i].color = color2[i];
-            rawImage.color = color3;
-
-        }
-        for (int i = 100; i > 0; i--)
-        {
-            yield return new WaitForSeconds(0.015f);
-            for (int j = 0; j < color1.Length; j++)
-            {
-                color1[j].a += 0.01f;
-                color2[j].a += 0.01f;
-                color3.a += 0.01f;
-                lobby[j].color = color1[j];
-                lobbyText[j].color = color2[j];
-                rawImage.color = color3;
-            }
-        }
-        for (int j = 0; j < color1.Length; j++)
-        {
-            color1[j].a = 1f;
-            color2[j].a = 1f;
-            color3.a = 1f;
-            lobby[j].color = color1[j];
-            lobbyText[j].color = color2[j];
-            rawImage.color = color3;
+            yield return new WaitForSeconds(0.01f);
+            canvasGroup.alpha += 0.01f;
         }
     }
     IEnumerator FadeOut(RawImage ri)
