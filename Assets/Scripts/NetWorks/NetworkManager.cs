@@ -97,6 +97,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             lobbyTorchlightOn[i].gameObject.SetActive(false);
             lobbyTorchlightOff[i].gameObject.SetActive(false);
+            readyButton[i].gameObject.SetActive(false);
             //  soulEff[i].SetActive(false);
             readyButton[i].GetComponent<Image>().color = Color.gray;
             readyButton[i].GetComponent<Button>().interactable = false;
@@ -293,6 +294,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             nickName[i].text = sortedPlayers[i].NickName;
             lobbyTorchlightOn[i].gameObject.SetActive(true);
             lobbyTorchlightOff[i].gameObject.SetActive(true);
+            readyButton[i].gameObject.SetActive(true);
             // soulEff[i].SetActive(true);
             //자신의 버튼만 활성화 하기 
             if (sortedPlayers[i].NickName == PhotonNetwork.NickName)
