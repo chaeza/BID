@@ -9778,6 +9778,7 @@ GameObject:
   - component: {fileID: 6604217198206011205}
   - component: {fileID: 6343287934506243243}
   - component: {fileID: 4659553403521522205}
+  - component: {fileID: 2281843572927305050}
   m_Layer: 0
   m_Name: BasicAttackEff
   m_TagString: Untagged
@@ -14705,6 +14706,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: -0.7}
+--- !u!114 &2281843572927305050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826012968489582100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2cc184fa0c2d964a8790ba1daea5926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4826195427452250804
 GameObject:
   m_ObjectHideFlags: 0
