@@ -5,6 +5,8 @@ using Photon.Pun;
 
 public class BlackHoleMove : MonoBehaviourPun
 {
+    [SerializeField] private GameObject[] closeGate = null;
+
     [SerializeField] private List<GameObject> blackHoleList = null;
     //private float blackHoleTime = 100f;
     private float blackHoleTime = 60f;
@@ -14,7 +16,9 @@ public class BlackHoleMove : MonoBehaviourPun
     [PunRPC]
     public void BlackHolePos(int MasterRan)
     {
+        Debug.Log(MasterRan);
         blackHoleList[MasterRan].SetActive(true);
+        StartCoroutine(CloseGate(MasterRan));
         blackHoleList.Remove(blackHoleList[MasterRan]);
     }
     private void Update()
@@ -33,5 +37,12 @@ public class BlackHoleMove : MonoBehaviourPun
             return;
         }
     }
+
+    IEnumerator CloseGate(int MasterRan)
+    {
+        yield return new WaitForSeconds(11f);
+        closeGate[MasterRan].gameObject.SetActive(true);
+    }
+
 
 }
