@@ -71,7 +71,7 @@ public class NonTarget_BloodAttack : Skill
             eff.transform.Translate(Vector3.back);
             float distance = Vector3.Distance(eff.transform.position, attacker.transform.position);
             //eff.GetComponentInChildren<Transform>().localScale = new Vector3()
-            if (distance <= 0.7f) break;
+            if (distance <= 1f) break;
             yield return new WaitForSeconds(0.05f);
         }
         GameMgr.Instance.DestroyTarget(eff, 0.1f);
