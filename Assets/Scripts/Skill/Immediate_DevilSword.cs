@@ -44,6 +44,11 @@ public class Immediate_DevilSword : Skill
         //
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum, 0);
     }
+    protected override void HitFire(GameObject attacker, GameObject hit)
+    {
+        GameObject eff = PhotonNetwork.Instantiate("MysticArrow_Boom", hit.transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        GameMgr.Instance.DestroyTarget(eff, 1f);
+    }
     IEnumerator SkillFire_Delay(float time)
     {
 

@@ -45,10 +45,12 @@ public class NonTarget_BloodAttack : Skill
     }
     protected override void HitFire(GameObject attacker, GameObject hit)
     {
-        GameObject eff = PhotonNetwork.Instantiate("BloodAbsorption", hit.transform.position, Quaternion.identity);
-        eff.transform.LookAt(attacker.transform);
-        eff.transform.Rotate(new Vector3(0, 180f, 0));
-        StartCoroutine(BloodAbsorptionMotion(attacker, eff));
+        GameObject eff1 = PhotonNetwork.Instantiate("BloodAbsorption", hit.transform.position, Quaternion.identity);
+        GameObject eff2 = PhotonNetwork.Instantiate("blood_01", hit.transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        GameMgr.Instance.DestroyTarget(eff2, 1f);
+        eff1.transform.LookAt(attacker.transform);
+        eff1.transform.Rotate(new Vector3(0, 180f, 0));
+        StartCoroutine(BloodAbsorptionMotion(attacker, eff1));
         attacker.GetPhotonView().RPC("ChangeHP", RpcTarget.All, 15f);
 
     }
