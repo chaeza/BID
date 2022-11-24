@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 using Photon.Realtime;
 using TMPro;
 using Photon.Pun;
+using System.Text.RegularExpressions;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -28,6 +29,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public GameObject[] lobbyTorchlightOn;
     public GameObject[] lobbyTorchlightOff;
     public GameObject vote;
+    public GameObject nickText;
     public Text voteText;
     public Text voteCountText;
 
@@ -130,6 +132,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // ÀÌ¸§ ÀÔ·Â ÄÁÆ®·Ñ(inputField)
     public void OnEndEdit(string instr)
     {
+        // if (Regex.IsMatch(instr, @"[¤¡-¤¾°¡-ÆR]")!=true) return;
+        if (Regex.IsMatch(instr, @"^[a-zA-Z]+[0-9]*$") != true)
+        {
+            nickText.SetActive(true);
+            return;
+        }
         Debug.Log("!!!!!");
         PhotonNetwork.NickName = instr; //´Ð³×ÀÓ ÇÒ´ç
     }
@@ -137,6 +145,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // ´Ð³×ÀÓ ¹Ø¿¡ Ä¿³ØÆ® ¹öÆ° Å¬¸¯½Ã 
     public void OnClick_Connected()
     {
+        if (PhotonNetwork.NickName.Length < 2) return;
+        nickText.SetActive(false);
         StartCoroutine(DoorPos());
 
         if (string.IsNullOrEmpty(PhotonNetwork.NickName) == true)
