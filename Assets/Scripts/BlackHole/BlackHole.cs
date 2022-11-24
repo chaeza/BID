@@ -21,6 +21,10 @@ public class BlackHole : MonoBehaviourPun
     private BlackHolePos5[] collider5 = null;
     private BlackHolePos6[] collider6 = null;
 
+    [Header("BlackHoleLogic2")]
+    private Collider[] blackHoleCollider = null;
+
+
     ItemSpawner ItemSpawner = null;
 
     private bool isUsed = false;
