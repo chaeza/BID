@@ -39,10 +39,10 @@ public class Projectile_SwordStab : Skill
     }
     protected override void SkillFire()
     {
-        playerInfo.StayPlayer(0.2f);
-        animator.SetTrigger("isSkill1");
+        playerInfo.StayPlayer(0.4f);
+        animator.SetTrigger("Prick");
         transform.LookAt(desiredDir);
-        StartCoroutine(SkillFire_Delay(0.2f));
+        StartCoroutine(SkillFire_Delay(0.4f));
 
 
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum, 0);

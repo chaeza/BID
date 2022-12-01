@@ -4902,7 +4902,8 @@ GameObject:
   - component: {fileID: 4104543912862744}
   - component: {fileID: 95917606463240272}
   - component: {fileID: 114324111912427922}
-  - component: {fileID: 3848636367428724769}
+  - component: {fileID: 4190431903638198696}
+  - component: {fileID: 8633490014906632347}
   m_Layer: 0
   m_Name: Effect_26_SpiralWall
   m_TagString: Untagged
@@ -4963,7 +4964,23 @@ MonoBehaviour:
   m_durationTime: 5
   m_lerpValue: 5
   m_lookValue: 0
---- !u!65 &3848636367428724769
+--- !u!208 &4190431903638198696
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635346684015588}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3, y: 1.52, z: 0.88}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.12, z: -0.08}
+  m_TimeToStationary: 0.5
+--- !u!65 &8633490014906632347
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4974,8 +4991,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: -5.82, y: 3.04, z: 1.76}
-  m_Center: {x: 0, y: 0.12, z: -0.08}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1653677488147906
 GameObject:
   m_ObjectHideFlags: 0

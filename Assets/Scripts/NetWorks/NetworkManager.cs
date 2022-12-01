@@ -130,11 +130,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
     }
     // ÀÌ¸§ ÀÔ·Â ÄÁÆ®·Ñ(inputField)
+    bool edit;
     public void OnEndEdit(string instr)
     {
         // if (Regex.IsMatch(instr, @"[¤¡-¤¾°¡-ÆR]")!=true) return;
+        edit = true;
         if (Regex.IsMatch(instr, @"^[a-zA-Z]+[0-9]*$") != true)
         {
+            PhotonNetwork.NickName = instr;
             nickText.SetActive(true);
             return;
         }
@@ -145,7 +148,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // ´Ð³×ÀÓ ¹Ø¿¡ Ä¿³ØÆ® ¹öÆ° Å¬¸¯½Ã 
     public void OnClick_Connected()
     {
-        if (PhotonNetwork.NickName.Length < 2) return;
+        if (!edit) return;
+        if (Regex.IsMatch(PhotonNetwork.NickName, @"^[a-zA-Z]+[0-9]*$") != true) return;
         nickText.SetActive(false);
         StartCoroutine(DoorPos());
 
