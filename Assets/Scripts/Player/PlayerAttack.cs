@@ -77,7 +77,7 @@ public class PlayerAttack : MonoBehaviourPun
         yield return new WaitForSeconds(0.2f);
         GameObject eff = PhotonNetwork.Instantiate("BasicAttackEff", transform.position + new Vector3(0, 2.5f, 0), Quaternion.identity);
         eff.GetPhotonView().RPC("AttackRangeScale", RpcTarget.All, Vector3.one * 3 * playerInfo.basicAttackRange);
-        if (num == 0 || num == 1) eff.transform.Rotate(0, 0, -30);
+        if (num == 0 || num == 1) eff.transform.Rotate(0, 0, 30);
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
         eff.GetComponent<HitBox>().DestroyHitBox(0.2f);
         GameMgr.Instance.DestroyTarget(eff, 1f);
