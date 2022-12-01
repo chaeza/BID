@@ -801,11 +801,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.size
-      value: 12
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[6].Name
+      value: isKick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[7].Name
+      value: isBash
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[8].Name
+      value: isUpperAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[9].Name
+      value: DashAttack
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[10].Name
-      value: isUpperAttack
+      value: Slam
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[10].Type
@@ -813,10 +829,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[11].Name
-      value: isHit
+      value: Throw
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[11].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[12].Name
+      value: Prick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[12].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[13].Name
+      value: StunDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[13].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[14].Name
+      value: StunLoop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[14].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[15].Name
+      value: StunShort
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[15].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[16].Name
+      value: BloodAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[16].Type
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[17].Name
+      value: GroundTouch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[17].Type
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
@@ -865,11 +929,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[10].SynchronizeType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_SynchronizeParameters.Array.data[11].SynchronizeType
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[12].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[13].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[14].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[15].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[16].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535766667334637552, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[17].SynchronizeType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4552917917704453669, guid: bf6cf7e2c80d858448824a2566742a3f, type: 3}
       propertyPath: m_Layer

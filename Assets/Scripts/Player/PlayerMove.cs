@@ -136,7 +136,7 @@ public class PlayerMove : MonoBehaviourPun
         myAnimator.SetBool("isMove", false);
         Debug.Log("stop");
         navMeshAgent.ResetPath();
-        navMeshAgent.updatePosition = false;
+        navMeshAgent.updatePosition = false; 
         navMeshAgent.updateRotation = false;
         navMeshAgent.velocity = Vector3.zero;
         isMove = false;

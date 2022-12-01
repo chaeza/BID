@@ -36,10 +36,10 @@ public class NonTarget_FallTheRain : Skill
     }
     protected override void SkillFire()
     {
-        playerInfo.StayPlayer(0.5f);
-        animator.SetTrigger("isSkill2");
+        playerInfo.StayPlayer(0.9f);
+        animator.SetTrigger("isUpperAttack");
         transform.LookAt(desiredDir);
-        StartCoroutine(SkillFire_Delay(0.5f));
+        StartCoroutine(SkillFire_Delay(0.9f));
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);
     }
     IEnumerator SkillFire_Delay(float time)

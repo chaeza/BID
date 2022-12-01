@@ -123,7 +123,7 @@ public class PlayerInfo : MonoBehaviourPun
         }
         else if (info == ChangeableInfo.damageDecrease)
         {
-            damageDecrease += infoValue;
+            gameObject.GetPhotonView().RPC("SetDamageDecrease", RpcTarget.All, infoValue,0f);
             GameMgr.Instance.uIMgr.PlayInfoChange(4, damageDecrease);
         }
         else if (info == ChangeableInfo.basicMoveSpeed)
@@ -147,9 +147,27 @@ public class PlayerInfo : MonoBehaviourPun
     {
         if (playerAlive == state.Die) return;
         if (playerUnbeatable == state.Unbeatable) return;
+        if (damageDecrease < 100)
+        {
+            curHP -= attackDamage * ((100 - damageDecrease) / 100);
+        }
+
+        if (onGetDamage != null) onGetDamage();
+        if (curHP <= 0)
+        {
+            curHP = 0;
+            HPTransfer(curHP);
+            gameObject.GetPhotonView().RPC("RPC_Die", RpcTarget.All, attackerViewID);
+            return;
+        }
+        HPTransfer(curHP);
         if (attackState == state.Stun)
         {
-            if (stunCoroutine != null) StopCoroutine(stunCoroutine);
+            if (stunCoroutine != null)
+            {
+                StopCoroutine(stunCoroutine);
+                if (photonView.IsMine) myAnimator.SetBool("StunLoop", false);
+            }
             stunCoroutine = StartCoroutine(RPC_GetDamage_Stun(timer));
         }
         else if (attackState == state.Slow)
@@ -168,19 +186,6 @@ public class PlayerInfo : MonoBehaviourPun
                 silenceCoroutine = StartCoroutine(Silence(timer));
             }
         }
-        if (damageDecrease < 100)
-        {
-            if(photonView.IsMine==true) myAnimator.SetTrigger("isHit");
-            curHP -= attackDamage * ((100 - damageDecrease) / 100);
-        }
-
-        if (onGetDamage != null) onGetDamage();
-        if (curHP <= 0)
-        {
-            curHP = 0;
-            gameObject.GetPhotonView().RPC("RPC_Die", RpcTarget.All, attackerViewID);
-        }
-        HPTransfer(curHP);
     }
     [PunRPC]
     private void RPC_Die(int attackerViewID2)
@@ -247,8 +252,14 @@ public class PlayerInfo : MonoBehaviourPun
         unbeatableCoroutine = StartCoroutine(Unbeatable(time));
 
     }
+    [PunRPC]
     public void SetDamageDecrease(float value, float time)
     {
+        if(time==0)
+        {
+            damageDecrease += value;
+        }
+        else
         StartCoroutine(DamageDecrease(value, time));
     }
     #region playerStateChange
@@ -285,7 +296,20 @@ public class PlayerInfo : MonoBehaviourPun
     {
         stunEff.SetActive(true);
         playerStun = state.Stun;
-        yield return new WaitForSeconds(time);
+        if (time >= 0.5f && time < 1f)
+        {
+            if (photonView.IsMine) myAnimator.SetTrigger("StunShort");
+            yield return new WaitForSeconds(time);
+
+        }
+        else if (time >= 1f)
+        {   
+            if(photonView.IsMine) myAnimator.SetTrigger("StunDown");
+            if (photonView.IsMine) myAnimator.SetBool("StunLoop", true); 
+            yield return new WaitForSeconds(time - 0.3f);
+            if (photonView.IsMine) myAnimator.SetBool("StunLoop", false);
+            yield return new WaitForSeconds(0.3f);
+        }
         if (playerStun == state.Stun) playerStun = state.None;
         stunEff.SetActive(false);
         yield break;
