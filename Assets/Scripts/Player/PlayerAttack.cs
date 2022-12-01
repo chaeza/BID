@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviourPun
         //sound = GetComponent<AudioSource>();
         myAnimator = GetComponent<Animator>();
         playerInfo = GetComponent<PlayerInfo>();
-        
+
         skillInfo.type = SkillType.Skill;
         skillInfo.skillType = SkillType.Passive;
         skillInfo.hitReturn = false;
@@ -75,14 +75,18 @@ public class PlayerAttack : MonoBehaviourPun
     {
         playerInfo.StayPlayer(0.7f);
         yield return new WaitForSeconds(0.2f);
-        GameObject eff = PhotonNetwork.Instantiate("BasicAttackEff", transform.position + new Vector3(0, 2.5f, 0), Quaternion.identity);
+        GameObject eff = PhotonNetwork.Instantiate("BasicAttackEff", transform.position + new Vector3(0, 2.5f, 0) + transform.forward * 4, Quaternion.identity);
+        eff.transform.rotation = gameObject.transform.rotation;
         eff.GetPhotonView().RPC("AttackRangeScale", RpcTarget.All, Vector3.one * 3 * playerInfo.basicAttackRange);
-        if (num == 0 || num == 1) eff.transform.Rotate(0, 0, 30);
+        if (num == 0) eff.transform.Rotate(0, 0, transform.rotation.z + 30);
+        else if (num == 1) eff.transform.Rotate(0, 0, transform.rotation.z + 210);
+        else if (num == 2) eff.transform.Rotate(0, 0, transform.rotation.z + 180);
+
         eff.AddComponent<HitBox>().skillInfo = skillInfo;
         eff.GetComponent<HitBox>().DestroyHitBox(0.2f);
         GameMgr.Instance.DestroyTarget(eff, 1f);
         //
-        yield return new WaitForSeconds(playerInfo.basicAttackSpeed-0.4f);
+        yield return new WaitForSeconds(playerInfo.basicAttackSpeed - 0.4f);
         isAttack = true;
     }
 
