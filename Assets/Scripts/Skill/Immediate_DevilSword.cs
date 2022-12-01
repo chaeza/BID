@@ -38,9 +38,9 @@ public class Immediate_DevilSword : Skill
     protected override void SkillFire()
     {
         //
-        playerInfo.StayPlayer(0.5f);
-        animator.SetTrigger("isSkill1");
-        StartCoroutine(SkillFire_Delay(0.5f));
+        playerInfo.StayPlayer(0.8f);
+        animator.SetTrigger("Slam");
+        StartCoroutine(SkillFire_Delay(0.8f));
         //
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum, 0);
     }

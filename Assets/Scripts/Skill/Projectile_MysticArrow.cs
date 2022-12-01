@@ -39,9 +39,9 @@ public class Projectile_MysticArrow : Skill
     protected override void SkillFire()
     {
         //
-        playerInfo.StayPlayer(0.2f);
-        animator.SetTrigger("isAttack1");
-        StartCoroutine(SkillFire_Delay(0.2f));
+        playerInfo.StayPlayer(0.4f);
+        animator.SetTrigger("Throw");
+        StartCoroutine(SkillFire_Delay(0.4f));
         transform.LookAt(desiredDir);
         //
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum,0);

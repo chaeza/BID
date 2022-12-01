@@ -38,7 +38,7 @@ public class NonTarget_BloodAttack : Skill
     protected override void SkillFire()
     {
         playerInfo.StayPlayer(0.5f);
-        animator.SetTrigger("isSkill2");
+        animator.SetTrigger("BloodAttack");
         transform.LookAt(desiredDir);
         StartCoroutine(SkillFire_Delay(0.5f));
         if (skillInfo.cooltime != 0) GameMgr.Instance.uIMgr.SkillCooltime(skillInfo.cooltime, skillInfo.skillNum, 0);
@@ -69,9 +69,10 @@ public class NonTarget_BloodAttack : Skill
         {
             if (eff == null) break;
             eff.transform.Translate(Vector3.back);
-            float distance = Vector3.Distance(eff.transform.position, attacker.transform.position);
+            Vector3 apos = attacker.transform.position;
+            float distance = Vector3.Distance(eff.transform.position, apos);
             //eff.GetComponentInChildren<Transform>().localScale = new Vector3()
-            if (distance <= 1f) break;
+            if (distance <= 2f) break;
             yield return new WaitForSeconds(0.05f);
         }
         GameMgr.Instance.DestroyTarget(eff, 0.1f);

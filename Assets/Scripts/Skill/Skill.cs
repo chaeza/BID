@@ -39,9 +39,9 @@ public class Skill : MonoBehaviourPun
     protected Animator animator;
 
 
+    private RaycastHit hit;
     private bool isCanSkill = true;
     private bool setRadius;
-    private RaycastHit hit;
     private bool nullCheck;
     private bool nullCheckHit;
     private int mask;

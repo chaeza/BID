@@ -36,7 +36,7 @@ public class Buff_OverPhysical : Skill
     protected override void SkillFire()
     {
         playerInfo.StayPlayer(1f);
-        animator.SetTrigger("isUpperAttack");
+        animator.SetTrigger("GroundTouch");
         // init value : setting basicAttackRange == 1,movespeed == 7 , damageDecrease == 0
         if (OPstate == 0)
         {
